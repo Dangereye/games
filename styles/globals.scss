@@ -25,12 +25,14 @@ ul {
 // Global
 body {
   font-size: clamp(1.6rem, 2.5vw, 2rem);
+  background-color: #f7f7f7;
 }
 
 .page-content {
   width: 100%;
   min-height: 100vh;
-  padding: $page-vert-padding;
+  margin-top: 6rem;
+  padding: $page-vert-padding $page-hoz-padding;
 }
 
 .container {
