@@ -1,0 +1,40 @@
+// Partials
+@import "partials/variables";
+@import "partials/typography";
+
+// Components
+@import "components/navbar";
+@import "components/footer";
+
+// Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+// Global
+body {
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+}
+
+.page-content {
+  width: 100%;
+  min-height: 100vh;
+  padding: $page-vert-padding;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: $page-width;
+}
