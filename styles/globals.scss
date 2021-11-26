@@ -1,10 +1,12 @@
 // Partials
 @import "partials/variables";
 @import "partials/typography";
+@import "partials/grids";
 
 // Components
 @import "components/navbar";
 @import "components/footer";
+@import "components/game";
 
 // Reset
 * {
@@ -24,14 +26,14 @@ ul {
 
 // Global
 body {
-  font-size: clamp(1.6rem, 2.5vw, 2rem);
+  font-size: $base-font-size;
   background-color: #f7f7f7;
 }
 
 .page-content {
   width: 100%;
-  min-height: 100vh;
-  margin-top: 6rem;
+  min-height: 90vh;
+  margin-top: 10vh;
   padding: $page-vert-padding $page-hoz-padding;
 }
 

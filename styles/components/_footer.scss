@@ -2,7 +2,14 @@
   width: 100%;
   padding: 1rem $page-hoz-padding;
 
-  &__copyright {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__copyright,
+  &__backlink {
     font-size: 1.2rem;
   }
 }

@@ -1,3 +1,7 @@
-$page-width: 1080px;
+$page-width: 1920px;
 $page-vert-padding: clamp(4rem, 5vw, 8rem);
-$page-hoz-padding: 1rem;
+$page-hoz-padding: clamp(1rem, 2.5vw, 4rem);
+
+$base-font-size: clamp(1.6rem, 2.5vw, 1.8rem);
+
+$time: 0.4s;

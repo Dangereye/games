@@ -6,7 +6,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Navbar />
-      <Component {...pageProps} />
+      <div className="grid grid--sidebar">
+        <sidebar>abcd</sidebar>
+        <Component {...pageProps} />
+      </div>
+
       <Footer />
     </>
   );

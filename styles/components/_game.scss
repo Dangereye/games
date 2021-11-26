@@ -1,0 +1,20 @@
+.game {
+  &__card {
+    font-size: 1.6rem;
+    border-radius: 1rem;
+    background-color: #fff;
+    overflow: hidden;
+    transition: transform $time;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-8px);
+    }
+  }
+
+  &__image {
+  }
+  &__text {
+    padding: 1rem;
+  }
+}
