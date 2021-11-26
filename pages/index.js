@@ -1,8 +1,10 @@
 import Image from "next/image";
+
 function Home({ data }) {
   const { results } = data;
+  console.log(results);
   return (
-    <div className="page-content">
+    <section className="section" id="all-games">
       <div className="container">
         <h2 className="page-title">Games</h2>
         <div className="grid grid--multiple">
@@ -19,12 +21,26 @@ function Home({ data }) {
                   placeholder="blur"
                 />
               </div>
-              <div className="game__text">{game.name}</div>
+              <div className="game__text">
+                <div className="game__platforms">
+                  {game.parent_platforms.map((item) => (
+                    <Image
+                      src={`/svg/platforms/${item.platform.slug}.svg`}
+                      width="20"
+                      height="20
+                      "
+                      alt={item.platform.name}
+                      title={item.platform.slug}
+                    />
+                  ))}
+                </div>
+                <div>{game.name}</div>
+              </div>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -5,6 +5,7 @@
 
 // Components
 @import "components/navbar";
+@import "components/sidebar";
 @import "components/footer";
 @import "components/game";
 
@@ -30,7 +31,7 @@ body {
   background-color: #f7f7f7;
 }
 
-.page-content {
+.page {
   width: 100%;
   min-height: 90vh;
   margin-top: 10vh;
