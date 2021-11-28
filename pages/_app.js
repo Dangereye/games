@@ -1,19 +1,16 @@
-import Footer from "../components/layout/Footer";
-import Navbar from "../components/layout/Navbar";
-import Sidebar from "../components/layout/Sidebar";
+import { useState } from "react";
+import ThemeComponent from "../contexts/ThemeContext";
 import "../styles/globals.scss";
+import Layout from "../components/layout/Layout";
 
 function MyApp({ Component, pageProps }) {
+  const [darkMode, setDarkMode] = useState(true);
   return (
-    <>
-      <Navbar />
-      <div className="page grid grid--sidebar">
-        <Sidebar />
-        <Component {...pageProps} />{" "}
-      </div>
-
-      <Footer />
-    </>
+    <ThemeComponent>
+      <Layout darkMode={darkMode}>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeComponent>
   );
 }
 

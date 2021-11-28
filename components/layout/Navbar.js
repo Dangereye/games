@@ -1,8 +1,8 @@
-function Navbar() {
+function Navbar({ bgc }) {
   return (
-    <nav className="navbar">
+    <nav className="navbar" style={{ backgroundColor: bgc }}>
       <div className="container">
-        <div className="navbar__logo">Games.</div>
+        <div className="navbar__logo">Games</div>
         <div className="navbar__search">
           <input type="text" />
         </div>
