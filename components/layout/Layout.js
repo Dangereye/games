@@ -4,24 +4,19 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 
-function Layout({ darkMode, children }) {
-  const theme = useContext(ThemeContext);
-  console.log("Dark Mode?", darkMode);
+function Layout({ darkMode, setDarkMode, children }) {
+  const { state } = useContext(ThemeContext);
+  console.log("Dark Mode?", state.dark_mode);
 
-  const style = {
-    color: darkMode ? theme.dark.color : theme.light.color,
-    bgc: darkMode ? theme.dark.background.a : theme.light.background.a,
-  };
   return (
     <div
       style={{
-        color: style.color,
-        backgroundColor: style.bgc,
+        backgroundColor: state.background.primary,
       }}
     >
-      <Navbar bgc={style.bgc} />
+      <Navbar text_primary={state.text.primary} />
       <div className="page grid grid--sidebar">
-        <Sidebar />
+        <Sidebar darkMode={darkMode} setDarkMode={setDarkMode} />
         {children}
       </div>
       <Footer />

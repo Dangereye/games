@@ -24,6 +24,32 @@
   }
 
   &__search {
+    width: 100%;
+    margin: 0 2rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    border-radius: 2rem;
+
+    &__icon {
+      display: grid;
+      place-items: center;
+      fill: inherit;
+      margin-right: 1rem;
+    }
+
+    input {
+      font-size: inherit;
+      color: inherit;
+      width: 100%;
+      background-color: transparent;
+      border: none;
+      outline: none;
+    }
+
+    ::placeholder {
+      color: inherit;
+    }
   }
 
   &__list {

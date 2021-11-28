@@ -4,10 +4,10 @@ import "../styles/globals.scss";
 import Layout from "../components/layout/Layout";
 
 function MyApp({ Component, pageProps }) {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState("light");
   return (
     <ThemeComponent>
-      <Layout darkMode={darkMode}>
+      <Layout darkMode={darkMode} setDarkMode={setDarkMode}>
         <Component {...pageProps} />
       </Layout>
     </ThemeComponent>

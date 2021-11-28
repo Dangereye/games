@@ -1,5 +1,6 @@
 .sidebar {
   display: flex;
+  flex-direction: column;
 
   @media (max-width: $mobile) {
     display: none;
