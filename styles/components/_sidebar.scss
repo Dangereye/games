@@ -1,6 +1,10 @@
 .sidebar {
+  position: sticky;
+  top: 12rem;
+
   display: flex;
   flex-direction: column;
+  height: max-content;
 
   @media (max-width: $mobile) {
     display: none;

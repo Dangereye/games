@@ -1,12 +1,17 @@
+import { useContext } from "react";
 import Image from "next/image";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 function Home({ data }) {
+  const { state, dispatch } = useContext(ThemeContext);
   // const { results } = data;
   // console.log(results);
   return (
     <section className="section" id="all-games">
       <div className="container">
-        <h2 className="page-title">Games</h2>
+        <h1 className="page-title" style={{ color: state.text.primary }}>
+          Games
+        </h1>
         <div className="grid grid--multiple">
           <Image
             src="/svg/platforms/android.svg"
