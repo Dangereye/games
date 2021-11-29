@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import Link from "next/link";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import Button from "../shared/Button";
 
 function Sidebar() {
   const { state, dispatch } = useContext(ThemeContext);
@@ -20,7 +21,7 @@ function Sidebar() {
           Home
         </a>
       </Link>
-      <button onClick={toggleDM}>Toggle Dark Mode</button>
+      <Button name="Toggle Dark Mode" func={toggleDM} />
     </aside>
   );
 }

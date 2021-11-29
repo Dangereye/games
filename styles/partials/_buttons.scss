@@ -1,0 +1,28 @@
+.btn {
+  display: flex;
+  align-items: center;
+
+  width: max-content;
+  border: none;
+  border-radius: 4rem;
+
+  font-family: "Inter", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  &--accent {
+    color: #fff;
+    background-color: $accent;
+  }
+
+  &--small {
+    margin-top: 2rem;
+    padding: 0.8rem 1.6rem;
+  }
+  &--large {
+    margin-top: 3rem;
+    padding: 1.6rem 3.2rem;
+  }
+}
