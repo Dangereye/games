@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../../contexts/ThemeContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export function _3do() {
   const { state } = useContext(ThemeContext);
@@ -173,9 +173,9 @@ export function Nintendo() {
       <switch>
         <g>
           <path
-            fill-rule="evenodd"
+            fillRule="evenodd"
             d="M115.4 265.4C51.6 265.4 0 213.7 0 150S51.6 34.6 115.4 34.6h69.2C248.3 34.6 300 86.2 300 150s-51.6 115.4-115.4 115.4h-69.2zm0-28.9c-47.8 0-86.5-38.7-86.5-86.5s38.7-86.5 86.5-86.5h69.2c47.8 0 86.5 38.7 86.5 86.5s-38.7 86.5-86.5 86.5h-69.2z"
-            clip-rule="evenodd"
+            clipRule="evenodd"
           />
           <path d="M92.8 95.7h33.9l46.8 75.7V95.7h33.6v108.6h-33.5l-47-75.8v75.8H92.9l-.1-108.6z" />
         </g>

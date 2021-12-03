@@ -1,0 +1,38 @@
+.game-card {
+  overflow: hidden;
+  border-radius: 2rem;
+  cursor: pointer;
+
+  transition: transform $time;
+
+  &__image {
+  }
+
+  &__body {
+    padding: 2rem;
+  }
+
+  &__platforms {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+
+    > svg:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+
+    svg {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+  }
+
+  &__title {
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
+
+  &:hover {
+    transform: translateY(-1rem);
+  }
+}
