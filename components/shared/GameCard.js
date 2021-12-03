@@ -31,7 +31,7 @@ function GameCard({ game }) {
   );
 }
 
-GameCard.defaultprops = {
+GameCard.defaultProps = {
   game: {
     background_image: "/images/missing-image.jpg",
     name: "Unknown",
