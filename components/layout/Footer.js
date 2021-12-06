@@ -4,8 +4,8 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 function Footer() {
   const { state } = useContext(ThemeContext);
   return (
-    <footer className="footer">
-      <div className="container" style={{ color: state.text.tertiary }}>
+    <footer className="footer" style={{ color: state.text.tertiary }}>
+      <div className="container">
         <p className="footer__copyright">
           &copy; Craig Puxty, 2021. All rights Reserved.
         </p>

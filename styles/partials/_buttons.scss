@@ -21,8 +21,43 @@
     margin-top: 2rem;
     padding: 0.8rem 1.6rem;
   }
+
   &--large {
     margin-top: 3rem;
     padding: 1.6rem 3.2rem;
+  }
+  &__toggle-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &--toggle {
+    position: relative;
+    width: 4rem;
+    height: 1.2rem;
+    background-color: #d1d2d4;
+    transition: background-color $time;
+
+    .switch {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 2.4rem;
+      height: 2.4rem;
+      background-color: #fff;
+      border: 1px solid #d1d2d4;
+      border-radius: 50%;
+      transform: translateY(-50%);
+      transition: left $time;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    &.active {
+      background-color: #49d162;
+      .switch {
+        left: 50%;
+      }
+    }
   }
 }

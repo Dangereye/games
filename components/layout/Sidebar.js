@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Link from "next/link";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import Button from "../shared/Button";
+import ToggleButton from "../shared/ToggleButton";
 
 function Sidebar() {
   const { state, dispatch } = useContext(ThemeContext);
@@ -15,13 +15,11 @@ function Sidebar() {
   };
 
   return (
-    <aside className="sidebar">
+    <aside className="sidebar" style={{ color: state.text.primary }}>
       <Link href="/">
-        <a className="sidebar__title" style={{ color: state.text.primary }}>
-          Home
-        </a>
+        <a className="sidebar__title">Home</a>
       </Link>
-      <Button name="Toggle Dark Mode" func={toggleDM} />
+      <ToggleButton name="Dark Mode" option={state.dark_mode} func={toggleDM} />
     </aside>
   );
 }

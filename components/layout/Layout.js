@@ -4,9 +4,8 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 
-function Layout({ darkMode, setDarkMode, children }) {
+function Layout({ children }) {
   const { state } = useContext(ThemeContext);
-  console.log("Dark Mode?", state.dark_mode);
 
   return (
     <div
@@ -14,9 +13,9 @@ function Layout({ darkMode, setDarkMode, children }) {
         backgroundColor: state.background.primary,
       }}
     >
-      <Navbar text_primary={state.text.primary} />
+      <Navbar />
       <div className="page grid grid--sidebar">
-        <Sidebar darkMode={darkMode} setDarkMode={setDarkMode} />
+        <Sidebar />
         {children}
       </div>
       <Footer />

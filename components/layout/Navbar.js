@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { FaSearch } from "react-icons/fa";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { FaSearch } from "react-icons/fa";
 
 function Navbar() {
   const { state } = useContext(ThemeContext);
@@ -8,6 +8,7 @@ function Navbar() {
     <nav
       className="navbar"
       style={{
+        color: state.text.tertiary,
         backgroundColor: state.background.primary,
       }}
     >
@@ -25,13 +26,9 @@ function Navbar() {
           >
             <FaSearch />
           </div>
-          <input
-            type="text"
-            placeholder="Search games..."
-            style={{ color: state.text.tertiary }}
-          />
+          <input type="text" placeholder="Search games..." />
         </div>
-        <ul className="navbar__list" style={{ color: state.text.tertiary }}>
+        <ul className="navbar__list">
           <li className="navbar__list-item">1</li>
           <li className="navbar__list-item">2</li>
           <li className="navbar__list-item">3</li>
