@@ -9,15 +9,15 @@ const ThemeReducer = (state, action) => {
         ...state,
         dark_mode: true,
         text: {
-          primary: "#111",
-          secondary: "#222",
-          tertiary: "#444",
-          accent: "crimson",
-        },
-        background: {
           primary: "#fff",
           secondary: "#eee",
           tertiary: "#ccc",
+          accent: "crimson",
+        },
+        background: {
+          primary: "#111",
+          secondary: "#222",
+          tertiary: "#444",
           accent: "crimson",
         },
       };
@@ -26,15 +26,15 @@ const ThemeReducer = (state, action) => {
         ...state,
         dark_mode: false,
         text: {
-          primary: "#fff",
-          secondary: "#eee",
-          tertiary: "#ccc",
-          accent: "crimson",
-        },
-        background: {
           primary: "#111",
           secondary: "#222",
           tertiary: "#444",
+          accent: "crimson",
+        },
+        background: {
+          primary: "#fff",
+          secondary: "#eee",
+          tertiary: "#ccc",
           accent: "crimson",
         },
       };
@@ -45,15 +45,15 @@ function ThemeComponent({ children }) {
   const [state, dispatch] = useReducer(ThemeReducer, {
     dark_mode: false,
     text: {
-      primary: "#fff",
-      secondary: "#eee",
-      tertiary: "#ccc",
-      accent: "crimson",
-    },
-    background: {
       primary: "#111",
       secondary: "#222",
       tertiary: "#444",
+      accent: "crimson",
+    },
+    background: {
+      primary: "#fff",
+      secondary: "#eee",
+      tertiary: "#ccc",
       accent: "crimson",
     },
   });

@@ -41,9 +41,13 @@ export async function getStaticProps() {
         headers: { "Content-Type": "application/json" },
       }
     );
-
+    if (!response.ok) {
+      throw Error("Service currently unavailable.");
+    }
     data = await response.json();
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 
   return { props: { data } };
 }
