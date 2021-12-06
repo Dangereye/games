@@ -34,9 +34,14 @@ body {
 .page {
   position: relative;
   width: 100%;
-  min-height: 90vh;
-  margin-top: 10vh;
+  min-height: calc(100vh - 8rem);
+  margin-top: 8rem;
   padding: $page-vert-padding $page-hoz-padding;
+
+  @media (max-width: $mobile) {
+    min-height: calc(100vh - 6rem);
+    margin-top: 6rem;
+  }
 }
 
 .container {

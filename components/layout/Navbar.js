@@ -3,7 +3,18 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import { FaSearch } from "react-icons/fa";
 
 function Navbar() {
-  const { state } = useContext(ThemeContext);
+  const { state, dispatch } = useContext(ThemeContext);
+
+  const toggleMobileMenu = () => {
+    if (state.mobileMenu_isOpen) {
+      dispatch({ type: "CLOSE_MOBILE_MENU" });
+    } else {
+      dispatch({ type: "OPEN_MOBILE_MENU" });
+    }
+  };
+
+  console.log(state);
+
   return (
     <nav
       className="navbar"
@@ -13,6 +24,19 @@ function Navbar() {
       }}
     >
       <div className="container">
+        <div
+          className={
+            state.mobileMenu_isOpen
+              ? "navbar__mobile-menu active"
+              : "navbar__mobile-menu"
+          }
+          onClick={toggleMobileMenu}
+        >
+          <div style={{ backgroundColor: state.text.primary }}></div>
+          <div style={{ backgroundColor: state.text.primary }}></div>
+          <div style={{ backgroundColor: state.text.primary }}></div>
+        </div>
+
         <div className="navbar__logo" style={{ color: state.text.primary }}>
           Games
         </div>

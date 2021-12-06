@@ -38,11 +38,24 @@ const ThemeReducer = (state, action) => {
           accent: "crimson",
         },
       };
+    case "OPEN_MOBILE_MENU":
+      return {
+        ...state,
+        mobileMenu_isOpen: true,
+      };
+    case "CLOSE_MOBILE_MENU":
+      return {
+        ...state,
+        mobileMenu_isOpen: false,
+      };
+    default:
+      return;
   }
 };
 
 function ThemeComponent({ children }) {
   const [state, dispatch] = useReducer(ThemeReducer, {
+    mobileMenu_isOpen: false,
     dark_mode: false,
     text: {
       primary: "#111",
