@@ -13,8 +13,6 @@ function Navbar() {
     }
   };
 
-  console.log(state);
-
   return (
     <nav
       className="navbar"

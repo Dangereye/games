@@ -1,0 +1,19 @@
+.mobile-menu {
+  border: 2px solid red;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 8rem;
+  left: -100%;
+  padding: $page-vert-padding $page-hoz-padding;
+  z-index: 99;
+  transition: left $time;
+
+  &.active {
+    left: 0;
+
+    @media (min-width: $mobile) {
+      left: -100%;
+    }
+  }
+}
