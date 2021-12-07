@@ -6,12 +6,12 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 
 function Layout({ children }) {
-  const { state } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
 
   return (
     <div
       style={{
-        backgroundColor: state.background.primary,
+        backgroundColor: themeState.background.primary,
       }}
     >
       <Navbar />

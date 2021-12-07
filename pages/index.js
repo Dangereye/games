@@ -4,24 +4,32 @@ import { ThemeContext } from "../contexts/ThemeContext";
 import GameCard from "../components/shared/GameCard";
 
 function Home({ data }) {
-  const { state, dispatch } = useContext(ThemeContext);
+  const { themeState, themeDispatch } = useContext(ThemeContext);
+  console.log("Data: ", data);
   const { results } = data;
 
   return (
     <section
       className="section"
       id="all-games"
-      style={{ color: state.text.primary }}
+      style={{ color: themeState.text.primary }}
     >
       <div className="container">
-        <h1 className="page-title">Games</h1>
-        {!data.length && <p>Service currently unavailable.</p>}
+        {!data.results && (
+          <>
+            <h1>Network Error:</h1>
+            <p>This service is temporarily unavailable.</p>
+          </>
+        )}
         {results && (
-          <div className="grid grid--multiple">
-            {results.map((game) => (
-              <GameCard game={game} key={game.id} />
-            ))}
-          </div>
+          <>
+            <h1 className="page-title">{data.seo_h1}</h1>
+            <div className="grid grid--multiple">
+              {results.map((game) => (
+                <GameCard game={game} key={game.id} />
+              ))}
+            </div>
+          </>
         )}
       </div>
     </section>

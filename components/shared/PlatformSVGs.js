@@ -2,12 +2,12 @@ import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 
 export function _3do() {
-  const { state } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
   return (
     <svg
       xmlSpace="preserve"
       viewBox="0 0 300 300"
-      style={{ fill: state.text.primary }}
+      style={{ fill: themeState.text.primary }}
     >
       <switch>
         <g>
@@ -20,12 +20,12 @@ export function _3do() {
 }
 
 export function Amiga() {
-  const { state } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
   return (
     <svg
       xmlSpace="preserve"
       viewBox="0 0 300 300"
-      style={{ fill: state.text.primary }}
+      style={{ fill: themeState.text.primary }}
     >
       <switch>
         <g>
@@ -46,12 +46,12 @@ export function Amiga() {
 }
 
 export function Android() {
-  const { state } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
   return (
     <svg
       xmlSpace="preserve"
       viewBox="0 0 300 300"
-      style={{ fill: state.text.primary }}
+      style={{ fill: themeState.text.primary }}
     >
       <switch>
         <g>
@@ -63,12 +63,12 @@ export function Android() {
 }
 
 export function Atari() {
-  const { state } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
   return (
     <svg
       xmlSpace="preserve"
       viewBox="0 0 300 300"
-      style={{ fill: state.text.primary }}
+      style={{ fill: themeState.text.primary }}
     >
       <switch>
         <g>
@@ -80,12 +80,12 @@ export function Atari() {
 }
 
 export function Ios() {
-  const { state } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
   return (
     <svg
       xmlSpace="preserve"
       viewBox="0 0 300 300"
-      style={{ fill: state.text.primary }}
+      style={{ fill: themeState.text.primary }}
     >
       <switch>
         <g>
@@ -97,12 +97,12 @@ export function Ios() {
 }
 
 export function Linux() {
-  const { state } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
   return (
     <svg
       xmlSpace="preserve"
       viewBox="0 0 300 300"
-      style={{ fill: state.text.primary }}
+      style={{ fill: themeState.text.primary }}
     >
       <switch>
         <g>
@@ -114,12 +114,12 @@ export function Linux() {
 }
 
 export function Mac() {
-  const { state } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
   return (
     <svg
       xmlSpace="preserve"
       viewBox="0 0 300 300"
-      style={{ fill: state.text.primary }}
+      style={{ fill: themeState.text.primary }}
     >
       <switch>
         <g>
@@ -131,12 +131,12 @@ export function Mac() {
 }
 
 export function NeoGeo() {
-  const { state } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
   return (
     <svg
       xmlSpace="preserve"
       viewBox="0 0 300 300"
-      style={{ fill: state.text.primary }}
+      style={{ fill: themeState.text.primary }}
     >
       <switch>
         <g>
@@ -163,12 +163,12 @@ export function NeoGeo() {
 }
 
 export function Nintendo() {
-  const { state } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
   return (
     <svg
       xmlSpace="preserve"
       viewBox="0 0 300 300"
-      style={{ fill: state.text.primary }}
+      style={{ fill: themeState.text.primary }}
     >
       <switch>
         <g>
@@ -185,12 +185,12 @@ export function Nintendo() {
 }
 
 export function Pc() {
-  const { state } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
   return (
     <svg
       xmlSpace="preserve"
       viewBox="0 0 300 300"
-      style={{ fill: state.text.primary }}
+      style={{ fill: themeState.text.primary }}
     >
       <switch>
         <g>
@@ -202,12 +202,12 @@ export function Pc() {
 }
 
 export function Playstation() {
-  const { state } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
   return (
     <svg
       xmlSpace="preserve"
       viewBox="0 0 300 300"
-      style={{ fill: state.text.primary }}
+      style={{ fill: themeState.text.primary }}
     >
       <switch>
         <g>
@@ -219,12 +219,12 @@ export function Playstation() {
 }
 
 export function Sega() {
-  const { state } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
   return (
     <svg
       xmlSpace="preserve"
       viewBox="0 0 300 300"
-      style={{ fill: state.text.primary }}
+      style={{ fill: themeState.text.primary }}
     >
       <switch>
         <g>
@@ -236,12 +236,12 @@ export function Sega() {
 }
 
 export function Web() {
-  const { state } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
   return (
     <svg
       xmlSpace="preserve"
       viewBox="0 0 300 300"
-      style={{ fill: state.text.primary }}
+      style={{ fill: themeState.text.primary }}
     >
       <switch>
         <g>
@@ -253,12 +253,12 @@ export function Web() {
 }
 
 export function Xbox() {
-  const { state } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
   return (
     <svg
       xmlSpace="preserve"
       viewBox="0 0 300 300"
-      style={{ fill: state.text.primary }}
+      style={{ fill: themeState.text.primary }}
     >
       <switch>
         <g>

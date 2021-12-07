@@ -1,30 +1,38 @@
 import { useContext } from "react";
+import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import Link from "next/link";
 import ToggleButton from "../shared/ToggleButton";
 
 function MobileMenu() {
-  const { state, dispatch } = useContext(ThemeContext);
+  const { appState, appDispatch } = useContext(AppContext);
+  const { themeState, themeDispatch } = useContext(ThemeContext);
 
   const toggleDM = () => {
-    if (state.dark_mode) {
-      dispatch({ type: "LIGHT" });
+    if (themeState.dark_mode) {
+      themeDispatch({ type: "LIGHT" });
     } else {
-      dispatch({ type: "DARK" });
+      themeDispatch({ type: "DARK" });
     }
   };
   return (
     <div
-      className={state.mobileMenu_isOpen ? "mobile-menu active" : "mobile-menu"}
+      className={
+        appState.mobileMenu_isOpen ? "mobile-menu active" : "mobile-menu"
+      }
       style={{
-        color: state.text.primary,
-        backgroundColor: state.background.primary,
+        color: themeState.text.primary,
+        backgroundColor: themeState.background.primary,
       }}
     >
       <Link href="/">
         <a className="sidebar__title">Home</a>
       </Link>
-      <ToggleButton name="Dark Mode" option={state.dark_mode} func={toggleDM} />
+      <ToggleButton
+        name="Dark Mode"
+        option={themeState.dark_mode}
+        func={toggleDM}
+      />
     </div>
   );
 }

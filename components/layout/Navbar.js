@@ -1,15 +1,20 @@
 import { useContext } from "react";
+import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { FaSearch } from "react-icons/fa";
 
 function Navbar() {
-  const { state, dispatch } = useContext(ThemeContext);
+  const { appState, appDispatch } = useContext(AppContext);
+  const { themeState } = useContext(ThemeContext);
+  console.log(appState);
 
   const toggleMobileMenu = () => {
-    if (state.mobileMenu_isOpen) {
-      dispatch({ type: "CLOSE_MOBILE_MENU" });
+    if (appState.mobileMenu_isOpen) {
+      appDispatch({
+        type: "CLOSE_MOBILE_MENU",
+      });
     } else {
-      dispatch({ type: "OPEN_MOBILE_MENU" });
+      appDispatch({ type: "OPEN_MOBILE_MENU" });
     }
   };
 
@@ -17,34 +22,37 @@ function Navbar() {
     <nav
       className="navbar"
       style={{
-        color: state.text.tertiary,
-        backgroundColor: state.background.primary,
+        color: themeState.text.tertiary,
+        backgroundColor: themeState.background.primary,
       }}
     >
       <div className="container">
         <div
           className={
-            state.mobileMenu_isOpen
+            appState.mobileMenu_isOpen
               ? "navbar__mobile-menu active"
               : "navbar__mobile-menu"
           }
           onClick={toggleMobileMenu}
         >
-          <div style={{ backgroundColor: state.text.primary }}></div>
-          <div style={{ backgroundColor: state.text.primary }}></div>
-          <div style={{ backgroundColor: state.text.primary }}></div>
+          <div style={{ backgroundColor: themeState.text.primary }}></div>
+          <div style={{ backgroundColor: themeState.text.primary }}></div>
+          <div style={{ backgroundColor: themeState.text.primary }}></div>
         </div>
 
-        <div className="navbar__logo" style={{ color: state.text.primary }}>
+        <div
+          className="navbar__logo"
+          style={{ color: themeState.text.primary }}
+        >
           Games
         </div>
         <div
           className="navbar__search"
-          style={{ backgroundColor: state.background.tertiary }}
+          style={{ backgroundColor: themeState.background.tertiary }}
         >
           <div
             className="navbar__search__icon"
-            style={{ color: state.text.primary }}
+            style={{ color: themeState.text.primary }}
           >
             <FaSearch />
           </div>

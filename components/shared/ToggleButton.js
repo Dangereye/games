@@ -2,9 +2,12 @@ import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 
 function ToggleButton({ name, option, func }) {
-  const { state } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
   return (
-    <div className="btn__toggle-group" style={{ color: state.text.primary }}>
+    <div
+      className="btn__toggle-group"
+      style={{ color: themeState.text.primary }}
+    >
       <p>{name}</p>
       <div
         className={option ? "btn btn--toggle active" : "btn btn--toggle"}

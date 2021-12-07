@@ -4,11 +4,11 @@ import PlatformComponent from "./Platforms";
 import Image from "next/image";
 
 function GameCard({ game }) {
-  const { state } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
   return (
     <div
       className="game-card"
-      style={{ backgroundColor: state.background.tertiary }}
+      style={{ backgroundColor: themeState.background.tertiary }}
     >
       <div className="game-card__image">
         <Image
@@ -23,7 +23,10 @@ function GameCard({ game }) {
       </div>
       <div className="game-card__body">
         <PlatformComponent platforms={game.parent_platforms} />
-        <div className="game-card__title" style={{ color: state.text.primary }}>
+        <div
+          className="game-card__title"
+          style={{ color: themeState.text.primary }}
+        >
           {game.name}
         </div>
       </div>

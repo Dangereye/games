@@ -4,22 +4,26 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import ToggleButton from "../shared/ToggleButton";
 
 function Sidebar() {
-  const { state, dispatch } = useContext(ThemeContext);
+  const { themeState, themeDispatch } = useContext(ThemeContext);
 
   const toggleDM = () => {
-    if (state.dark_mode) {
-      dispatch({ type: "LIGHT" });
+    if (themeState.dark_mode) {
+      themeDispatch({ type: "LIGHT" });
     } else {
-      dispatch({ type: "DARK" });
+      themeDispatch({ type: "DARK" });
     }
   };
 
   return (
-    <aside className="sidebar" style={{ color: state.text.primary }}>
+    <aside className="sidebar" style={{ color: themeState.text.primary }}>
       <Link href="/">
         <a className="sidebar__title">Home</a>
       </Link>
-      <ToggleButton name="Dark Mode" option={state.dark_mode} func={toggleDM} />
+      <ToggleButton
+        name="Dark Mode"
+        option={themeState.dark_mode}
+        func={toggleDM}
+      />
     </aside>
   );
 }
