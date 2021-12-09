@@ -10,14 +10,23 @@
 
   &__body {
     padding: 2rem;
+
+    > *:not(:last-child) {
+      margin-bottom: 1rem;
+    }
   }
 
   &__platforms {
-    margin-bottom: 1rem;
     display: flex;
     align-items: center;
 
-    > svg:not(:last-child) {
+    > *:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+  }
+
+  &__platform {
+    svg:not(:last-child) {
       margin-right: 0.5rem;
     }
 
@@ -28,8 +37,12 @@
   }
 
   &__title {
-    font-size: 2.4rem;
-    font-weight: 600;
+    font-size: clamp(1.8rem, 2.5vw, 2rem);
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+
+  &__date {
   }
 
   &:hover {

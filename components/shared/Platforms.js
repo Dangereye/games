@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import {
   _3do,
   Amiga,
@@ -15,44 +17,36 @@ import {
   Xbox,
 } from "./PlatformSVGs";
 
+const GetSVG = (name) => {
+  if (name === "3do") return <_3do />;
+  if (name === "amiga") return <Amiga />;
+  if (name === "android") return <Android />;
+  if (name === "atari") return <Atari />;
+  if (name === "ios") return <Ios />;
+  if (name === "linux") return <Linux />;
+  if (name === "mac") return <Mac />;
+  if (name === "neo-geo") return <NeoGeo />;
+  if (name === "nintendo") return <Nintendo />;
+  if (name === "pc") return <Pc />;
+  if (name === "playstation") return <Playstation />;
+  if (name === "sega") return <Sega />;
+  if (name === "web") return <Web />;
+  if (name === "xbox") return <Xbox />;
+  return;
+};
+
 function PlatformComponent({ platforms }) {
+  const { themeState } = useContext(ThemeContext);
   return (
-    <div className="game-card__platforms">
-      {platforms.map((p) => {
-        <div className="platform"></div>;
-        switch (p.platform.slug) {
-          case "3do":
-            return <_3do key={p.platform.slug} />;
-          case "amiga":
-            return <Amiga key={p.platform.slug} />;
-          case "android":
-            return <Android key={p.platform.slug} />;
-          case "atari":
-            return <Atari key={p.platform.slug} />;
-          case "ios":
-            return <Ios key={p.platform.slug} />;
-          case "linux":
-            return <Linux key={p.platform.slug} />;
-          case "mac":
-            return <Mac key={p.platform.slug} />;
-          case "neo-geo":
-            return <NeoGeo key={p.platform.slug} />;
-          case "nintendo":
-            return <Nintendo key={p.platform.slug} />;
-          case "pc":
-            return <Pc key={p.platform.slug} />;
-          case "playstation":
-            return <Playstation key={p.platform.slug} />;
-          case "sega":
-            return <Sega key={p.platform.slug} />;
-          case "web":
-            return <Web key={p.platform.slug} />;
-          case "xbox":
-            return <Xbox key={p.platform.slug} />;
-          default:
-            return;
-        }
-      })}
+    <div
+      className="game-card__platforms"
+      style={{ fill: themeState.text.secondary }}
+    >
+      {platforms.map((p) => (
+        <div className="game-card__platform" key={p.platform.slug}>
+          {GetSVG(p.platform.slug)}
+        </div>
+      ))}
     </div>
   );
 }

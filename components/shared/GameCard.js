@@ -8,7 +8,10 @@ function GameCard({ game }) {
   return (
     <div
       className="game-card"
-      style={{ backgroundColor: themeState.background.tertiary }}
+      style={{
+        color: themeState.text.tertiary,
+        backgroundColor: themeState.background.tertiary,
+      }}
     >
       <div className="game-card__image">
         <Image
@@ -29,6 +32,7 @@ function GameCard({ game }) {
         >
           {game.name}
         </div>
+        <div className="game-card__date">{game.released.substring(0, 4)}</div>
       </div>
     </div>
   );

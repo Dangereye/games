@@ -6,7 +6,6 @@ import { FaSearch } from "react-icons/fa";
 function Navbar() {
   const { appState, appDispatch } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
-  console.log(appState);
 
   const toggleMobileMenu = () => {
     if (appState.mobileMenu_isOpen) {

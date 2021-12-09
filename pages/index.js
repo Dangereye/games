@@ -2,16 +2,17 @@ import { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 
 import GameCard from "../components/shared/GameCard";
+import Button from "../components/shared/Button";
 
 function Home({ data }) {
   const { themeState, themeDispatch } = useContext(ThemeContext);
-  console.log("Data: ", data);
+  // console.log("Data: ", data);
   const { results } = data;
 
   return (
     <section
       className="section"
-      id="all-games"
+      id="game-list"
       style={{ color: themeState.text.primary }}
     >
       <div className="container">
@@ -29,6 +30,7 @@ function Home({ data }) {
                 <GameCard game={game} key={game.id} />
               ))}
             </div>
+            <Button name="Load More" styles="btn--large" func="" />
           </>
         )}
       </div>
@@ -38,20 +40,22 @@ function Home({ data }) {
 
 export default Home;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   let data = [];
   try {
     const response = await fetch(
-      `https://api.rawg.io/api/games?key=${process.env.API_KEY}`,
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=10`,
       {
         method: "GET",
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
       }
     );
-    if (!response.ok) {
-      throw Error("Service currently unavailable.");
+
+    if (!response.statusText === "ok") {
+      throw Error("This service is temporarily unavailable.");
     }
+
     data = await response.json();
   } catch (error) {
     console.log(error);
