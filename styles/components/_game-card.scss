@@ -9,6 +9,7 @@
   }
 
   &__body {
+    position: relative;
     padding: 2rem;
 
     > *:not(:last-child) {
@@ -26,14 +27,20 @@
   }
 
   &__platform {
-    svg:not(:last-child) {
-      margin-right: 0.5rem;
-    }
-
     svg {
       width: 1.6rem;
       height: 1.6rem;
     }
+  }
+
+  &__metacritic {
+    width: max-content;
+    margin-left: auto;
+    padding: 5px;
+    font-size: 1.6rem;
+    font-weight: 800;
+    border: 1px solid transparent;
+    border-radius: 4px;
   }
 
   &__title {

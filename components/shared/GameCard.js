@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import PlatformComponent from "./Platforms";
 import Image from "next/image";
+import Metacritic from "./Metacritic";
 
 function GameCard({ game }) {
   const { themeState } = useContext(ThemeContext);
@@ -25,7 +26,11 @@ function GameCard({ game }) {
         />
       </div>
       <div className="game-card__body">
-        <PlatformComponent platforms={game.parent_platforms} />
+        <div className="grid grid--50-50">
+          <PlatformComponent platforms={game.parent_platforms} />
+          <Metacritic score={game.metacritic} />
+        </div>
+
         <div
           className="game-card__title"
           style={{ color: themeState.text.primary }}

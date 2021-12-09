@@ -5,7 +5,7 @@ import GameCard from "../components/shared/GameCard";
 import Button from "../components/shared/Button";
 
 function Home({ data }) {
-  const { themeState, themeDispatch } = useContext(ThemeContext);
+  const { themeState } = useContext(ThemeContext);
   // console.log("Data: ", data);
   const { results } = data;
 
@@ -30,7 +30,7 @@ function Home({ data }) {
                 <GameCard game={game} key={game.id} />
               ))}
             </div>
-            <Button name="Load More" styles="btn--large" func="" />
+            <Button name="Load More" styles="btn--large" />
           </>
         )}
       </div>
