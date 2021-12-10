@@ -39,14 +39,21 @@ function PlatformComponent({ platforms }) {
   const { themeState } = useContext(ThemeContext);
   return (
     <div
-      className="game-card__platforms"
+      className="game-card__platform-icons"
       style={{ fill: themeState.text.secondary }}
     >
-      {platforms.map((p) => (
-        <div className="game-card__platform" key={p.platform.slug}>
-          {GetSVG(p.platform.slug)}
-        </div>
-      ))}
+      {platforms
+        .filter((p, index) => index < 3)
+        .map((p) => (
+          <div className="game-card__platform" key={p.platform.slug}>
+            {GetSVG(p.platform.slug)}
+          </div>
+        ))}
+      {platforms.length > 3 ? (
+        <div className="game-card__platform">+{+platforms.length - 3}</div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

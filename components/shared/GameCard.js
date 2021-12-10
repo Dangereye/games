@@ -26,7 +26,7 @@ function GameCard({ game }) {
         />
       </div>
       <div className="game-card__body">
-        <div className="grid grid--50-50">
+        <div className="game-card__platforms">
           <PlatformComponent platforms={game.parent_platforms} />
           <Metacritic score={game.metacritic} />
         </div>
