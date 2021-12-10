@@ -30,7 +30,10 @@ function Home({ data }) {
                 <GameCard game={game} key={game.id} />
               ))}
             </div>
-            <Button name="Load More" styles="btn--large btn--accent" />
+            <Button
+              name="Load More"
+              styles="btn--large btn--accent btn--center"
+            />
           </>
         )}
       </div>
@@ -44,7 +47,7 @@ export async function getServerSideProps() {
   let data = [];
   try {
     const response = await fetch(
-      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=10`,
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=14`,
       {
         method: "GET",
         mode: "no-cors",

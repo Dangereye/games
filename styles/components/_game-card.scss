@@ -15,6 +15,10 @@
     > *:not(:last-child) {
       margin-bottom: 1rem;
     }
+
+    @media (max-width: $mobile) {
+      padding: 2rem 1rem;
+    }
   }
 
   &__platforms {
@@ -36,7 +40,7 @@
   &__metacritic {
     width: max-content;
     margin-left: auto;
-    padding: 5px;
+    padding: 3px;
     font-size: 1.6rem;
     font-weight: 800;
     border: 1px solid transparent;

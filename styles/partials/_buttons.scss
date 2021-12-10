@@ -19,6 +19,10 @@
     background-color: $accent;
   }
 
+  &--center {
+    margin: 0 auto;
+  }
+
   &--small {
     margin-top: 2rem;
     padding: 0.8rem 1.6rem;
