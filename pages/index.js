@@ -30,7 +30,7 @@ function Home({ data }) {
                 <GameCard game={game} key={game.id} />
               ))}
             </div>
-            <Button name="Load More" styles="btn--large" />
+            <Button name="Load More" styles="btn--large btn--accent" />
           </>
         )}
       </div>

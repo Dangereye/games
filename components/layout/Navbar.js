@@ -21,7 +21,6 @@ function Navbar() {
     <nav
       className="navbar"
       style={{
-        color: themeState.text.tertiary,
         backgroundColor: themeState.background.primary,
       }}
     >
@@ -45,19 +44,16 @@ function Navbar() {
         >
           Games
         </div>
-        <div
-          className="navbar__search"
-          style={{ backgroundColor: themeState.background.tertiary }}
-        >
-          <div
-            className="navbar__search__icon"
-            style={{ color: themeState.text.primary }}
-          >
+        <div className="navbar__search">
+          <div className="navbar__search__icon">
             <FaSearch />
           </div>
           <input type="text" placeholder="Search games..." />
         </div>
-        <ul className="navbar__list">
+        <ul
+          className="navbar__list"
+          style={{ color: themeState.text.secondary }}
+        >
           <li className="navbar__list-item">1</li>
           <li className="navbar__list-item">2</li>
           <li className="navbar__list-item">3</li>

@@ -71,31 +71,41 @@
   }
 
   &__search {
+    position: relative;
     width: 100%;
     margin-left: 2rem;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    border-radius: 2rem;
 
     &__icon {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
       display: grid;
       place-items: center;
-      fill: inherit;
-      margin-right: 1rem;
+      transform: translateY(-50%);
     }
 
     input {
+      padding: 1rem 1rem 1rem 4rem;
       font-size: inherit;
       color: inherit;
       width: 100%;
+      height: 100%;
       background-color: transparent;
       border: none;
+      border-radius: 5rem;
       outline: none;
+      color: #222;
+      background-color: #bbb;
+      transition: background-color $time;
+
+      &:hover,
+      &:focus {
+        background-color: #fff;
+      }
     }
 
     ::placeholder {
-      color: inherit;
+      color: #444;
     }
   }
 

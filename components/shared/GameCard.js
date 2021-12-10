@@ -11,7 +11,7 @@ function GameCard({ game }) {
       className="game-card"
       style={{
         color: themeState.text.tertiary,
-        backgroundColor: themeState.background.tertiary,
+        backgroundColor: themeState.background.secondary,
       }}
     >
       <div className="game-card__image">

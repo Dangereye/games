@@ -9,16 +9,14 @@ const ThemeReducer = (state, action) => {
         ...state,
         dark_mode: true,
         text: {
-          primary: "#fff",
+          primary: "#ffffff",
           secondary: "#eee",
           tertiary: "#ccc",
-          accent: "crimson",
         },
         background: {
-          primary: "#111",
-          secondary: "#222",
+          primary: "#222",
+          secondary: "#333",
           tertiary: "#444",
-          accent: "crimson",
         },
       };
     case "LIGHT":
@@ -26,16 +24,14 @@ const ThemeReducer = (state, action) => {
         ...state,
         dark_mode: false,
         text: {
-          primary: "#111",
-          secondary: "#222",
+          primary: "#222",
+          secondary: "#333",
           tertiary: "#444",
-          accent: "crimson",
         },
         background: {
-          primary: "#fff",
-          secondary: "#eee",
+          primary: "#eee",
+          secondary: "#fff",
           tertiary: "#ccc",
-          accent: "crimson",
         },
       };
     default:
@@ -49,15 +45,14 @@ function ThemeComponent({ children }) {
     text: {
       primary: "#111",
       secondary: "#222",
-      tertiary: "#444",
-      accent: "crimson",
+      tertiary: "#333",
     },
     background: {
-      primary: "#fff",
-      secondary: "#eee",
-      tertiary: "#ccc",
-      accent: "crimson",
+      primary: "#f0f0f0",
+      secondary: "#ffffff",
+      tertiary: "#32383D",
     },
+    accent: "#86c232",
   });
   return (
     <ThemeContext.Provider value={{ themeState, themeDispatch }}>
