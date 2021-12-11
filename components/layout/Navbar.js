@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { FaSearch } from "react-icons/fa";
@@ -6,6 +6,8 @@ import { FaSearch } from "react-icons/fa";
 function Navbar() {
   const { appState, appDispatch } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
+  const [search, setSearch] = useState("");
+  const searchInput = useRef(null);
 
   const toggleMobileMenu = () => {
     if (appState.mobileMenu_isOpen) {
@@ -15,6 +17,18 @@ function Navbar() {
     } else {
       appDispatch({ type: "OPEN_MOBILE_MENU" });
     }
+  };
+
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setSearch(value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Searching...");
+    setSearch("");
+    searchInput.current.blur();
   };
 
   return (
@@ -48,7 +62,15 @@ function Navbar() {
           <div className="navbar__search__icon">
             <FaSearch />
           </div>
-          <input type="text" placeholder="Search games..." />
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Search games..."
+              value={search}
+              onChange={handleChange}
+              ref={searchInput}
+            />
+          </form>
         </div>
         <ul
           className="navbar__list"
