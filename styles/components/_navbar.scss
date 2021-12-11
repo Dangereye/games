@@ -95,7 +95,7 @@
       border-radius: 5rem;
       outline: none;
       color: #222;
-      background-color: #bbb;
+      background-color: $input-bg;
       transition: background-color $time;
 
       &:hover,
