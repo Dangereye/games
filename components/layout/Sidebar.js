@@ -3,8 +3,11 @@ import Link from "next/link";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import ToggleButton from "../shared/ToggleButton";
 import {
+  AtariListData,
+  MacListData,
   NintendoListData,
   PlayStationListData,
+  SegaListData,
   XboxListData,
 } from "../../data/PlatformListData";
 import DropdownList from "../DropdownList";
@@ -27,16 +30,19 @@ function Sidebar() {
         option={themeState.dark_mode}
         func={toggleDM}
       />
-      <Link href="/">
-        <a className="sidebar__title">Home</a>
+      <Link href="/" passHref>
+        <div className="sidebar__title">Home</div>
       </Link>
       <div className="dropdown-list__title">Platforms</div>
-      <Link href="/platforms/4">
-        <a className="sidebar__title">PC</a>
+      <Link href="/platforms/4" passHref>
+        <div className="sidebar__title">PC</div>
       </Link>
       <DropdownList list={PlayStationListData} />
-      <DropdownList list={NintendoListData} />
       <DropdownList list={XboxListData} />
+      <DropdownList list={NintendoListData} />
+      <DropdownList list={SegaListData} />
+      <DropdownList list={AtariListData} />
+      <DropdownList list={MacListData} />
     </aside>
   );
 }

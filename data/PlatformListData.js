@@ -6,6 +6,8 @@ export const PlayStationListData = {
     { id: 16, link: "/platforms", name: "PlayStation 3" },
     { id: 15, link: "/platforms", name: "PlayStation 2" },
     { id: 27, link: "/platforms", name: "PlayStation" },
+    { id: 19, link: "/platforms", name: "PS Vita" },
+    { id: 17, link: "/platforms", name: "PSP" },
   ],
 };
 
@@ -35,5 +37,42 @@ export const XboxListData = {
     { id: 186, link: "/platforms", name: "Xbox Series S/X" },
     { id: 14, link: "/platforms", name: "Xbox 360" },
     { id: 80, link: "/platforms", name: "Xbox" },
+  ],
+};
+
+export const SegaListData = {
+  title: "Sega",
+  items: [
+    { id: 167, link: "/platforms", name: "Genesis" },
+    { id: 107, link: "/platforms", name: "Sega Saturn" },
+    { id: 119, link: "/platforms", name: "Sega CD" },
+    { id: 117, link: "/platforms", name: "Sega 32X" },
+    { id: 74, link: "/platforms", name: "Sega Master System" },
+    { id: 106, link: "/platforms", name: "Dreamcast" },
+    { id: 77, link: "/platforms", name: "Game Gear" },
+  ],
+};
+
+export const AtariListData = {
+  title: "Atari",
+  items: [
+    { id: 28, link: "/platforms", name: "Atari 7800" },
+    { id: 31, link: "/platforms", name: "Atari 5200" },
+    { id: 23, link: "/platforms", name: "Atari 2600" },
+    { id: 22, link: "/platforms", name: "Atari Flashback" },
+    { id: 25, link: "/platforms", name: "Atari 8-bit" },
+    { id: 34, link: "/platforms", name: "Atari ST" },
+    { id: 46, link: "/platforms", name: "Atari Lynx" },
+    { id: 50, link: "/platforms", name: "Atari XEGS" },
+    { id: 112, link: "/platforms", name: "Jaguar" },
+  ],
+};
+
+export const MacListData = {
+  title: "Apple Mac",
+  items: [
+    { id: 5, link: "/platforms", name: "macOS" },
+    { id: 55, link: "/platforms", name: "Classic Macintosh" },
+    { id: 41, link: "/platforms", name: "Apple II" },
   ],
 };
