@@ -2,6 +2,8 @@ import { useContext } from "react";
 import Link from "next/link";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import ToggleButton from "../shared/ToggleButton";
+import { PlaystationListData } from "../../data/PlatformListData";
+import DropdownList from "../DropdownList";
 
 function Sidebar() {
   const { themeState, themeDispatch } = useContext(ThemeContext);
@@ -24,24 +26,11 @@ function Sidebar() {
       <Link href="/">
         <a className="sidebar__title">Home</a>
       </Link>
-      <Link href="/platforms">
-        <a className="sidebar__title">Platforms</a>
-      </Link>
+      <div className="dropdown-list__title">Platforms</div>
       <Link href="/platforms/4">
         <a className="sidebar__title">PC</a>
       </Link>
-      <Link href="/platforms/187">
-        <a className="sidebar__title">Playstation 5</a>
-      </Link>
-      <Link href="/platforms/18">
-        <a className="sidebar__title">Playstation 4</a>
-      </Link>
-      <Link href="/platforms/16">
-        <a className="sidebar__title">Playstation 3</a>
-      </Link>
-      <Link href="/platforms/15">
-        <a className="sidebar__title">Playstation 2</a>
-      </Link>
+      <DropdownList list={PlaystationListData} />
     </aside>
   );
 }
