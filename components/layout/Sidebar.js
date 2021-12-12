@@ -2,7 +2,11 @@ import { useContext } from "react";
 import Link from "next/link";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import ToggleButton from "../shared/ToggleButton";
-import { PlaystationListData } from "../../data/PlatformListData";
+import {
+  NintendoListData,
+  PlayStationListData,
+  XboxListData,
+} from "../../data/PlatformListData";
 import DropdownList from "../DropdownList";
 
 function Sidebar() {
@@ -30,7 +34,9 @@ function Sidebar() {
       <Link href="/platforms/4">
         <a className="sidebar__title">PC</a>
       </Link>
-      <DropdownList list={PlaystationListData} />
+      <DropdownList list={PlayStationListData} />
+      <DropdownList list={NintendoListData} />
+      <DropdownList list={XboxListData} />
     </aside>
   );
 }

@@ -29,7 +29,7 @@ function DropdownList({ list }) {
       >
         {list.items.map((item) => (
           <Link
-            href={`/platforms/${item.id}`}
+            href={`${item.link}/${item.id}`}
             key={`${item.id}-${item.name}`}
             passHref
           >
