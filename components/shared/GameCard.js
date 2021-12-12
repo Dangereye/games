@@ -16,12 +16,20 @@ function GameCard({ game }) {
     >
       <div className="game-card__image">
         <Image
-          src={game.background_image}
-          width="150"
-          height="100"
+          src={
+            game.background_image
+              ? game.background_image
+              : "/images/missing-image.jpg"
+          }
+          width="200"
+          height="112.5"
           layout="responsive"
           alt={game.name}
-          blurDataURL={game.background_image}
+          blurDataURL={
+            game.background_image
+              ? game.background_image
+              : "/images/missing-image.jpg"
+          }
           placeholder="blur"
         />
       </div>
@@ -37,7 +45,9 @@ function GameCard({ game }) {
         >
           {game.name}
         </div>
-        <div className="game-card__date">{game.released.substring(0, 4)}</div>
+        <div className="game-card__date">
+          {game.released ? game.released.substring(0, 4) : "TBC"}
+        </div>
       </div>
     </div>
   );

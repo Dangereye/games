@@ -1,12 +1,11 @@
 import { useContext } from "react";
+import Button from "../components/shared/Button";
+import GameCard from "../components/shared/GameCard";
 import { ThemeContext } from "../contexts/ThemeContext";
 
-import GameCard from "../components/shared/GameCard";
-import Button from "../components/shared/Button";
-
-function Home({ data }) {
+function GamesList({ data }) {
   const { themeState } = useContext(ThemeContext);
-
+  console.log(data);
   return (
     <section
       className="section"
@@ -39,11 +38,22 @@ function Home({ data }) {
   );
 }
 
-export default Home;
+export default GamesList;
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const { query } = context;
+  const { ordering, page_size, parent_platforms } = query;
+  console.log("query: ", query);
+  const parentPlatforms = parent_platforms
+    ? `&parent_platforms=${parent_platforms}`
+    : "";
+  const order = ordering ? `&ordering=${ordering}` : "";
+  const pageSize = page_size ? `&page_size=${page_size}` : "";
+  const queryString = `${parentPlatforms}${order}${pageSize}`;
+
+  console.log("Query String: ", queryString);
   const res = await fetch(
-    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=14`,
+    `https://api.rawg.io/api/games?key=${process.env.API_KEY}${queryString}`,
     {
       method: "GET",
       mode: "no-cors",

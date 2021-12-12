@@ -26,7 +26,7 @@ function Navbar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Searching...");
+    console.log("Searching for", search);
     setSearch("");
     searchInput.current.blur();
   };
