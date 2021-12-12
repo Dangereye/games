@@ -24,47 +24,23 @@ function Sidebar() {
       <Link href="/">
         <a className="sidebar__title">Home</a>
       </Link>
-      <Link href="/filter?parent_platforms=1">
+      <Link href="/platforms">
+        <a className="sidebar__title">Platforms</a>
+      </Link>
+      <Link href="/platforms/4">
         <a className="sidebar__title">PC</a>
       </Link>
-      <Link href="/filter?parent_platforms=2">
-        <a className="sidebar__title">Playstation</a>
+      <Link href="/platforms/187">
+        <a className="sidebar__title">Playstation 5</a>
       </Link>
-      <Link href="/filter?parent_platforms=3">
-        <a className="sidebar__title">Xbox</a>
+      <Link href="/platforms/18">
+        <a className="sidebar__title">Playstation 4</a>
       </Link>
-      <Link href="/filter?parent_platforms=4">
-        <a className="sidebar__title">iOS</a>
+      <Link href="/platforms/16">
+        <a className="sidebar__title">Playstation 3</a>
       </Link>
-      <Link href="/filter?parent_platforms=5">
-        <a className="sidebar__title">Mac</a>
-      </Link>
-      <Link href="/filter?parent_platforms=6">
-        <a className="sidebar__title">Linux</a>
-      </Link>
-      <Link href="/filter?parent_platforms=7">
-        <a className="sidebar__title">Nintendo</a>
-      </Link>
-      <Link href="/filter?parent_platforms=8">
-        <a className="sidebar__title">Android</a>
-      </Link>
-      <Link href="/filter?parent_platforms=9">
-        <a className="sidebar__title">Atari</a>
-      </Link>
-      <Link href="/filter?parent_platforms=10">
-        <a className="sidebar__title">Commodore Amiga</a>
-      </Link>
-      <Link href="/filter?parent_platforms=11">
-        <a className="sidebar__title">Sega</a>
-      </Link>
-      <Link href="/filter?parent_platforms=12">
-        <a className="sidebar__title">3DO</a>
-      </Link>
-      <Link href="/filter?parent_platforms=13">
-        <a className="sidebar__title">Neo Geo</a>
-      </Link>
-      <Link href="/filter?parent_platforms=14">
-        <a className="sidebar__title">Web</a>
+      <Link href="/platforms/15">
+        <a className="sidebar__title">Playstation 2</a>
       </Link>
     </aside>
   );

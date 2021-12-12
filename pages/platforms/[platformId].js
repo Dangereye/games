@@ -1,22 +1,24 @@
 import { useContext } from "react";
-import { ThemeContext } from "../contexts/ThemeContext";
+import { useRouter } from "next/router";
 import Head from "next/head";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import GameCard from "../../components/shared/GameCard";
+import Button from "../../components/shared/Button";
 
-import GameCard from "../components/shared/GameCard";
-import Button from "../components/shared/Button";
-
-function Home({ data }) {
+function GamesList({ data }) {
   const { themeState } = useContext(ThemeContext);
+  const router = useRouter();
+  const { query } = router;
+  const { platformId } = query;
+  console.log("Data: ", data);
 
   return (
     <>
       <Head>
-        <title>Games | Video Game Database</title>
+        <title>{data.seo_title}</title>
         <meta name="author" content="Craig Puxty" />
-        <meta
-          name="description"
-          content="Video game database and discovery service - powered by RAWG.IO"
-        />
+        <meta name="keywords" content={data.seo_keywords} />
+        <meta name="description" content={data.seo_description} />
       </Head>
       <section className="section" style={{ color: themeState.text.primary }}>
         <div className="container">
@@ -45,12 +47,14 @@ function Home({ data }) {
     </>
   );
 }
+export default GamesList;
 
-export default Home;
-
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const { params, query } = context;
+  // console.log("Parameters: ", params);
+  // console.log("Query: ", query);
   const res = await fetch(
-    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=14`,
+    `https://api.rawg.io/api/games?platforms=${params.platformId}&page_size=14&filter=true&comments=true&key=${process.env.API_KEY}`,
     {
       method: "GET",
       mode: "no-cors",
@@ -59,5 +63,6 @@ export async function getServerSideProps() {
   );
 
   const data = await res.json();
+
   return { props: { data } };
 }
