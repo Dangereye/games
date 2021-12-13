@@ -14,6 +14,16 @@ const AppReducer = (state, action) => {
         ...state,
         mobileMenu_isOpen: false,
       };
+    case "LOADING":
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+    case "SUCCESS":
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
     default:
       return;
   }
@@ -22,6 +32,7 @@ const AppReducer = (state, action) => {
 function AppComponent({ children }) {
   const [appState, appDispatch] = useReducer(AppReducer, {
     mobileMenu_isOpen: false,
+    isLoading: true,
   });
 
   return (

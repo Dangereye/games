@@ -1,16 +1,22 @@
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { AppContext } from "../../contexts/AppContext";
+import Head from "next/head";
 import GameCard from "../../components/shared/GameCard";
 import Button from "../../components/shared/Button";
 
 function GamesList({ data }) {
   const { themeState } = useContext(ThemeContext);
-  const router = useRouter();
-  const { query } = router;
-  const { platformId } = query;
+  const { appState, appDispatch } = useContext(AppContext);
   console.log("Data: ", data);
+  console.log("App: ", appState);
+
+  useEffect(() => {
+    if (appState.isLoading) {
+      appDispatch({ type: "SUCCESS", payload: false });
+    }
+  }, [appState.isLoading]);
 
   return (
     <>
@@ -22,6 +28,7 @@ function GamesList({ data }) {
       </Head>
       <section className="section" style={{ color: themeState.text.primary }}>
         <div className="container">
+          {appState.isLoading && <p>Loading</p>}
           {!data.results && (
             <>
               <h1 className="page-title">Network error.</h1>

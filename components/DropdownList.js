@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useRouter } from "next/router";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import Link from "next/link";
+import { AppContext } from "../contexts/AppContext";
 
 function DropdownList({ list }) {
+  const { appDispatch } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   const toggleState = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleClick = (item) => {
+    appDispatch({ type: "LOADING", payload: true });
+    router.push(`${item.link}/${item.id}`);
   };
 
   return (
@@ -28,13 +36,13 @@ function DropdownList({ list }) {
         }
       >
         {list.items.map((item) => (
-          <Link
-            href={`${item.link}/${item.id}`}
+          <div
+            className="dropdown-list__item"
             key={`${item.id}-${item.name}`}
-            passHref
+            onClick={() => handleClick(item)}
           >
-            <div className="dropdown-list__item">{item.name}</div>
-          </Link>
+            {item.name}
+          </div>
         ))}
       </div>
     </div>
