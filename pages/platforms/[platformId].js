@@ -5,6 +5,7 @@ import { AppContext } from "../../contexts/AppContext";
 import Head from "next/head";
 import GameCard from "../../components/shared/GameCard";
 import Button from "../../components/shared/Button";
+import Loader from "../../components/shared/Loader";
 
 function GamesList({ data }) {
   const { themeState } = useContext(ThemeContext);
@@ -28,7 +29,7 @@ function GamesList({ data }) {
       </Head>
       <section className="section" style={{ color: themeState.text.primary }}>
         <div className="container">
-          {appState.isLoading && <p>Loading</p>}
+          {appState.isLoading && <Loader />}
           {!data.results && (
             <>
               <h1 className="page-title">Network error.</h1>

@@ -1,0 +1,22 @@
+.loader {
+  width: 100%;
+  height: 20vh;
+  display: grid;
+  place-items: center;
+
+  &__spinner {
+    width: 7.5rem;
+    height: 7.5rem;
+    border: 2px solid $input-bg;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: rotate $time forwards linear infinite;
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

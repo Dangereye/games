@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { AppContext } from "../contexts/AppContext";
+import { AppContext } from "../../contexts/AppContext";
 
 function DropdownList({ list }) {
   const { appDispatch } = useContext(AppContext);

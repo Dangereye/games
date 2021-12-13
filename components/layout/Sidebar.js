@@ -10,7 +10,7 @@ import {
   SegaListData,
   XboxListData,
 } from "../../data/PlatformListData";
-import DropdownList from "../DropdownList";
+import DropdownList from "../shared/DropdownList";
 
 function Sidebar() {
   const { themeState, themeDispatch } = useContext(ThemeContext);
