@@ -1,0 +1,81 @@
+.menu-group {
+  margin: 1rem 0;
+
+  &__title {
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+  }
+
+  &__items {
+    > *:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__item {
+    &__header {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+
+      &__icon {
+        margin-right: 1rem;
+        width: 2rem;
+        height: 2rem;
+
+        svg {
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+
+      &__title {
+        font-weight: 500;
+        transition: color $time;
+
+        &.link {
+          cursor: pointer;
+
+          &:hover {
+            color: $accent;
+          }
+        }
+      }
+
+      &__dropdown-button {
+        width: 2rem;
+        height: 2rem;
+        margin-left: auto;
+        cursor: pointer;
+
+        display: grid;
+        place-items: center;
+      }
+    }
+
+    &__dropdown-menu {
+      display: none;
+      margin: 2rem 0;
+
+      > *:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+
+      &.active {
+        display: block;
+      }
+
+      &__item {
+        margin-left: 3rem;
+        font-weight: 300;
+        cursor: pointer;
+        transition: color $time;
+
+        &:hover {
+          color: $accent;
+        }
+      }
+    }
+  }
+}

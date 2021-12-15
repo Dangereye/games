@@ -1,16 +1,9 @@
 import { useContext } from "react";
-import Link from "next/link";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { PlatformData } from "../../data/MenuData";
 import ToggleButton from "../shared/ToggleButton";
-import {
-  AtariListData,
-  MacListData,
-  NintendoListData,
-  PlayStationListData,
-  SegaListData,
-  XboxListData,
-} from "../../data/PlatformListData";
-import DropdownList from "../shared/DropdownList";
+import MenuGroup from "./MenuGroup";
+import Link from "next/link";
 
 function Sidebar() {
   const { themeState, themeDispatch } = useContext(ThemeContext);
@@ -30,19 +23,7 @@ function Sidebar() {
         option={themeState.dark_mode}
         func={toggleDM}
       />
-      <Link href="/" passHref>
-        <div className="sidebar__title">Home</div>
-      </Link>
-      <div className="dropdown-list__title">Platforms</div>
-      <Link href="/platforms/4" passHref>
-        <div className="sidebar__title">PC</div>
-      </Link>
-      <DropdownList list={PlayStationListData} />
-      <DropdownList list={XboxListData} />
-      <DropdownList list={NintendoListData} />
-      <DropdownList list={SegaListData} />
-      <DropdownList list={AtariListData} />
-      <DropdownList list={MacListData} />
+      <MenuGroup title="Platforms" data={PlatformData} />
     </aside>
   );
 }

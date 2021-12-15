@@ -10,8 +10,7 @@ import Loader from "../../components/shared/Loader";
 function GamesList({ data }) {
   const { themeState } = useContext(ThemeContext);
   const { appState, appDispatch } = useContext(AppContext);
-  console.log("Data: ", data);
-  console.log("App: ", appState);
+  // console.log("Data: ", data);
 
   useEffect(() => {
     if (appState.isLoading) {
@@ -29,26 +28,28 @@ function GamesList({ data }) {
       </Head>
       <section className="section" style={{ color: themeState.text.primary }}>
         <div className="container">
-          {appState.isLoading && <Loader />}
-          {!data.results && (
+          {appState.isLoading ? (
+            <Loader />
+          ) : !data.results ? (
             <>
               <h1 className="page-title">Network error.</h1>
               <p>Service temporarily unavailable.</p>
             </>
-          )}
-          {data.results && (
-            <>
-              <h1 className="page-title">{data.seo_h1}</h1>
-              <div className="grid grid--multiple">
-                {data.results.map((game) => (
-                  <GameCard game={game} key={game.id} />
-                ))}
-              </div>
-              <Button
-                name="Load More"
-                styles="btn--large btn--accent btn--center"
-              />
-            </>
+          ) : (
+            data.results && (
+              <>
+                <h1 className="page-title">{data.seo_h1}</h1>
+                <div className="grid grid--multiple">
+                  {data.results.map((game) => (
+                    <GameCard game={game} key={game.id} />
+                  ))}
+                </div>
+                <Button
+                  name="Load More"
+                  styles="btn--large btn--accent btn--center"
+                />
+              </>
+            )
           )}
         </div>
       </section>
