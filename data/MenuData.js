@@ -137,5 +137,12 @@ export const PlatformData = [
     link: "/platforms",
     dropdown: false,
   },
+  {
+    id: 111,
+    title: "3DO",
+    icon: <_3do />,
+    link: "/platforms",
+    dropdown: false,
+  },
   { id: 171, title: "Web", icon: <Web />, link: "/platforms", dropdown: false },
 ];
