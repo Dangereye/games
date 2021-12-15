@@ -15,6 +15,18 @@ import {
   Xbox,
 } from "../components/shared/PlatformSVGs";
 
+import { CgGames } from "react-icons/cg";
+
+export const BrowseData = [
+  {
+    id: " ",
+    title: "All Games",
+    icon: <CgGames />,
+    link: "/",
+    dropdown: false,
+  },
+];
+
 export const PlatformData = [
   { id: 4, title: "PC", icon: <Pc />, link: "/platforms", dropdown: false },
   {

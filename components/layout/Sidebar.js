@@ -1,9 +1,8 @@
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import { PlatformData } from "../../data/MenuData";
+import { BrowseData, PlatformData } from "../../data/MenuData";
 import ToggleButton from "../shared/ToggleButton";
 import MenuGroup from "./MenuGroup";
-import Link from "next/link";
 
 function Sidebar() {
   const { themeState, themeDispatch } = useContext(ThemeContext);
@@ -23,6 +22,7 @@ function Sidebar() {
         option={themeState.dark_mode}
         func={toggleDM}
       />
+      <MenuGroup title="Browse" data={BrowseData} />
       <MenuGroup title="Platforms" data={PlatformData} />
     </aside>
   );
