@@ -1,5 +1,4 @@
 import { useEffect, useContext } from "react";
-import { useRouter } from "next/router";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { AppContext } from "../../contexts/AppContext";
 import Head from "next/head";
@@ -7,16 +6,22 @@ import GameCard from "../../components/shared/GameCard";
 import Button from "../../components/shared/Button";
 import Loader from "../../components/shared/Loader";
 
-function GamesList({ data }) {
+function GamesList({ data, status }) {
   const { themeState } = useContext(ThemeContext);
   const { appState, appDispatch } = useContext(AppContext);
-  // console.log("Data: ", data);
+  console.log("Platform Data: ", data);
 
   useEffect(() => {
-    if (appState.isLoading) {
-      appDispatch({ type: "SUCCESS", payload: false });
+    if (data.error) {
+      appDispatch({
+        type: "ERROR",
+        payload: { isError: true, status, message: data.error },
+      });
     }
-  }, [appState.isLoading]);
+    if (data.results) {
+      appDispatch({ type: "SUCCESS", payload: data.results });
+    }
+  }, [data]);
 
   return (
     <>
@@ -30,26 +35,24 @@ function GamesList({ data }) {
         <div className="container">
           {appState.isLoading ? (
             <Loader />
-          ) : !data.results ? (
+          ) : appState.error.isError ? (
             <>
-              <h1 className="page-title">Network error.</h1>
-              <p>Service temporarily unavailable.</p>
+              <h1 className="page-title">Error: {appState.error.status}.</h1>
+              <p>{appState.error.message}.</p>
             </>
           ) : (
-            data.results && (
-              <>
-                <h1 className="page-title">{data.seo_h1}</h1>
-                <div className="grid grid--multiple">
-                  {data.results.map((game) => (
-                    <GameCard game={game} key={game.id} />
-                  ))}
-                </div>
-                <Button
-                  name="Load More"
-                  styles="btn--large btn--accent btn--center"
-                />
-              </>
-            )
+            <>
+              <h1 className="page-title">{data.seo_h1}</h1>
+              <div className="grid grid--multiple">
+                {appState.games.map((game) => (
+                  <GameCard game={game} key={game.id} />
+                ))}
+              </div>
+              <Button
+                name="Load More"
+                styles="btn--large btn--accent btn--center"
+              />
+            </>
           )}
         </div>
       </section>
@@ -59,11 +62,9 @@ function GamesList({ data }) {
 export default GamesList;
 
 export async function getServerSideProps(context) {
-  const { params, query } = context;
-  // console.log("Parameters: ", params);
-  // console.log("Query: ", query);
+  const { params } = context;
   const res = await fetch(
-    `https://api.rawg.io/api/games?platforms=${params.platformId}&page_size=14&filter=true&comments=true&key=${process.env.API_KEY}`,
+    `https://api.rawg.io/api/games?platforms=${params.platformId}&page_size=40&comments=true&key=${process.env.API_KEY}`,
     {
       method: "GET",
       mode: "no-cors",
@@ -71,7 +72,9 @@ export async function getServerSideProps(context) {
     }
   );
 
+  console.log(`Response status: ${res.status} - ${res.statusText}`);
+
   const data = await res.json();
 
-  return { props: { data } };
+  return { props: { data, status: `${res.status} - ${res.statusText}` } };
 }

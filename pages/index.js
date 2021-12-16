@@ -9,7 +9,7 @@ import Loader from "../components/shared/Loader";
 function Home({ data, status }) {
   const { themeState } = useContext(ThemeContext);
   const { appState, appDispatch } = useContext(AppContext);
-  console.log("Data: ", data);
+  console.log("Index Data: ", data);
 
   useEffect(() => {
     if (data.error) {
@@ -21,7 +21,7 @@ function Home({ data, status }) {
     if (data.results) {
       appDispatch({ type: "SUCCESS", payload: data.results });
     }
-  }, []);
+  }, [data]);
 
   return (
     <>
@@ -65,9 +65,8 @@ function Home({ data, status }) {
 export default Home;
 
 export async function getServerSideProps() {
-  let data = [];
   const res = await fetch(
-    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=14`,
+    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=40`,
     {
       method: "GET",
       mode: "no-cors",
@@ -77,7 +76,7 @@ export async function getServerSideProps() {
 
   console.log(`Response status: ${res.status} - ${res.statusText}`);
 
-  data = await res.json();
+  const data = await res.json();
 
   return { props: { data, status: `${res.status} - ${res.statusText}` } };
 }

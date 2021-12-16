@@ -1,11 +1,12 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import { IoMdArrowDropdown } from "react-icons/io";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { AppContext } from "../../contexts/AppContext";
+import { IoMdArrowDropdown } from "react-icons/io";
 
 function MenuGroupItem({ data }) {
   const { themeState } = useContext(ThemeContext);
+  const { appDispatch } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
@@ -14,6 +15,7 @@ function MenuGroupItem({ data }) {
   };
 
   const titleLink = () => {
+    appDispatch({ type: "LOADING" });
     if (data.id) {
       router.push(`${data.link}/${data.id}`);
     } else {
@@ -22,6 +24,7 @@ function MenuGroupItem({ data }) {
   };
 
   const dropdownLink = (item) => {
+    appDispatch({ type: "LOADING" });
     router.push(`${data.link}/${item.id}`);
   };
 

@@ -17,7 +17,7 @@ const AppReducer = (state, action) => {
     case "LOADING":
       return {
         ...state,
-        isLoading: action.payload,
+        isLoading: true,
       };
     case "ERROR":
       return { ...state, isLoading: false, error: action.payload };
