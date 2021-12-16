@@ -1,6 +1,7 @@
 import { useEffect, useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { AppContext } from "../../contexts/AppContext";
+import useStatus from "../../hooks/useStatus";
 import Head from "next/head";
 import GameCard from "../../components/shared/GameCard";
 import Button from "../../components/shared/Button";
@@ -8,19 +9,12 @@ import Loader from "../../components/shared/Loader";
 
 function GamesList({ data, status }) {
   const { themeState } = useContext(ThemeContext);
-  const { appState, appDispatch } = useContext(AppContext);
+  const { appState } = useContext(AppContext);
+  const validateStatus = useStatus();
   console.log("Platform Data: ", data);
 
   useEffect(() => {
-    if (data.error) {
-      appDispatch({
-        type: "ERROR",
-        payload: { isError: true, status, message: data.error },
-      });
-    }
-    if (data.results) {
-      appDispatch({ type: "SUCCESS", payload: data.results });
-    }
+    validateStatus(data, status);
   }, [data]);
 
   return (
