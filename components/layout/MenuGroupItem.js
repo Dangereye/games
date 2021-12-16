@@ -16,6 +16,8 @@ function MenuGroupItem({ data }) {
   const titleLink = () => {
     if (data.id) {
       router.push(`${data.link}/${data.id}`);
+    } else {
+      router.push(data.link);
     }
   };
 
@@ -36,7 +38,7 @@ function MenuGroupItem({ data }) {
         )}
         <div
           className={
-            data.id
+            !data.dropdown
               ? "menu-group__item__header__title link"
               : "menu-group__item__header__title"
           }

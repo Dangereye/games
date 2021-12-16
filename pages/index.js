@@ -1,12 +1,27 @@
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
+import { AppContext } from "../contexts/AppContext";
 import Head from "next/head";
-
 import GameCard from "../components/shared/GameCard";
 import Button from "../components/shared/Button";
+import Loader from "../components/shared/Loader";
 
-function Home({ data }) {
+function Home({ data, status }) {
   const { themeState } = useContext(ThemeContext);
+  const { appState, appDispatch } = useContext(AppContext);
+  console.log("Data: ", data);
+
+  useEffect(() => {
+    if (data.error) {
+      appDispatch({
+        type: "ERROR",
+        payload: { isError: true, status, message: data.error },
+      });
+    }
+    if (data.results) {
+      appDispatch({ type: "SUCCESS", payload: data.results });
+    }
+  }, []);
 
   return (
     <>
@@ -20,17 +35,18 @@ function Home({ data }) {
       </Head>
       <section className="section" style={{ color: themeState.text.primary }}>
         <div className="container">
-          {!data.results && (
+          {appState.isLoading ? (
+            <Loader />
+          ) : appState.error.isError ? (
             <>
-              <h1 className="page-title">Network error.</h1>
-              <p>Service temporarily unavailable.</p>
+              <h1 className="page-title">Error: {appState.error.status}.</h1>
+              <p>{appState.error.message}.</p>
             </>
-          )}
-          {data.results && (
+          ) : (
             <>
               <h1 className="page-title">{data.seo_h1}</h1>
               <div className="grid grid--multiple">
-                {data.results.map((game) => (
+                {appState.games.map((game) => (
                   <GameCard game={game} key={game.id} />
                 ))}
               </div>
@@ -49,6 +65,7 @@ function Home({ data }) {
 export default Home;
 
 export async function getServerSideProps() {
+  let data = [];
   const res = await fetch(
     `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=14`,
     {
@@ -58,6 +75,9 @@ export async function getServerSideProps() {
     }
   );
 
-  const data = await res.json();
-  return { props: { data } };
+  console.log(`Response status: ${res.status} - ${res.statusText}`);
+
+  data = await res.json();
+
+  return { props: { data, status: `${res.status} - ${res.statusText}` } };
 }

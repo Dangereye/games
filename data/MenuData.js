@@ -19,7 +19,6 @@ import { CgGames } from "react-icons/cg";
 
 export const BrowseData = [
   {
-    id: " ",
     title: "All Games",
     icon: <CgGames />,
     link: "/",
