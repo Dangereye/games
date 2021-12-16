@@ -65,6 +65,7 @@ function MenuGroupItem({ data }) {
             <div
               className="menu-group__item__dropdown-menu__item"
               onClick={() => dropdownLink(item)}
+              key={item.name}
             >
               {item.name}
             </div>

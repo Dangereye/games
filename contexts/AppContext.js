@@ -33,6 +33,8 @@ function AppComponent({ children }) {
   const [appState, appDispatch] = useReducer(AppReducer, {
     mobileMenu_isOpen: false,
     isLoading: true,
+    error: { isError: false, message: "" },
+    games: [],
   });
 
   return (
