@@ -64,7 +64,7 @@ export default GamesList;
 export async function getServerSideProps(context) {
   const { params } = context;
   const res = await fetch(
-    `https://api.rawg.io/api/games?platforms=${params.platformId}&page_size=40&comments=true&key=${process.env.API_KEY}`,
+    `https://api.rawg.io/api/games?platforms=${params.platformId}&page_size=40&filter=true&comments=true&key=${process.env.API_KEY}`,
     {
       method: "GET",
       mode: "no-cors",

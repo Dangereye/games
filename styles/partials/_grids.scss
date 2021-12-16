@@ -4,6 +4,7 @@
   row-gap: 2rem;
 
   &--sidebar {
+    column-gap: 4rem;
     grid-template-columns: 20rem 1fr;
 
     @media (max-width: $mobile) {
