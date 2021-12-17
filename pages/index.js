@@ -6,12 +6,18 @@ import Head from "next/head";
 import GameCard from "../components/shared/GameCard";
 import Button from "../components/shared/Button";
 import Loader from "../components/shared/Loader";
+import useClientFetch from "../hooks/useClientFetch";
 
 function Home({ data, status }) {
   const { themeState } = useContext(ThemeContext);
   const { appState } = useContext(AppContext);
   const validateStatus = useStatus();
-  console.log("Index Data: ", data);
+  const addGames = useClientFetch();
+  // console.log("Index appState: ", appState);
+
+  const fetchMore = () => {
+    addGames(appState.data.next);
+  };
 
   useEffect(() => {
     validateStatus(data, status);
@@ -33,21 +39,27 @@ function Home({ data, status }) {
             <Loader />
           ) : appState.error.isError ? (
             <>
-              <h1 className="page-title">Error: {appState.error.status}.</h1>
+              <h1 className="page-title">
+                Network error{appState.error.status}.
+              </h1>
               <p>{appState.error.message}.</p>
             </>
           ) : (
             <>
               <h1 className="page-title">{data.seo_h1}</h1>
               <div className="grid grid--multiple">
-                {appState.games.map((game) => (
+                {appState.data.results.map((game) => (
                   <GameCard game={game} key={game.id} />
                 ))}
               </div>
-              <Button
-                name="Load More"
-                styles="btn--large btn--accent btn--center"
-              />
+              {appState.data.next && (
+                <Button
+                  loader={appState.isLoading ? true : false}
+                  name="Load More"
+                  styles="btn--large btn--accent btn--center"
+                  func={fetchMore}
+                />
+              )}
             </>
           )}
         </div>

@@ -26,7 +26,14 @@ const AppReducer = (state, action) => {
         ...state,
         isLoading: false,
         error: { isError: false, status: "", message: "" },
-        games: action.payload,
+        data: action.payload,
+      };
+    case "LOAD_MORE_GAMES":
+      return {
+        ...state,
+        isLoading: false,
+        error: { isError: false, status: "", message: "" },
+        data: { results: action.payload.results, next: action.payload.next },
       };
     default:
       return;
@@ -38,7 +45,7 @@ function AppComponent({ children }) {
     mobileMenu_isOpen: false,
     isLoading: true,
     error: { isError: false, status: "", message: "" },
-    games: [],
+    data: [],
   });
 
   return (

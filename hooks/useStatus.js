@@ -11,9 +11,13 @@ function useStatus() {
       });
     }
     if (data.results) {
-      appDispatch({ type: "SUCCESS", payload: data.results });
+      appDispatch({
+        type: "SUCCESS",
+        payload: data,
+      });
     }
   };
+
   return validateStatus;
 }
 
