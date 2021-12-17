@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { BrowseData, PlatformData } from "../../data/MenuData";
 import ToggleButton from "../shared/ToggleButton";
-import MenuGroup from "./MenuGroup";
+import MenuGroup from "../shared/MenuGroup";
 
 function Sidebar() {
   const { themeState, themeDispatch } = useContext(ThemeContext);
