@@ -13,7 +13,7 @@ function GamesList({ data, status }) {
   const { appState } = useContext(AppContext);
   const validateStatus = useStatus();
   const addGames = useClientFetch();
-  console.log("Platform Data: ", data);
+  // console.log("Platform Data: ", data);
 
   const fetchMore = () => {
     addGames(appState.data.next);

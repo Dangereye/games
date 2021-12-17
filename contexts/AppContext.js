@@ -33,7 +33,11 @@ const AppReducer = (state, action) => {
         ...state,
         isLoading: false,
         error: { isError: false, status: "", message: "" },
-        data: { results: action.payload.results, next: action.payload.next },
+        data: {
+          ...state.data,
+          results: action.payload.results,
+          next: action.payload.next,
+        },
       };
     default:
       return;
