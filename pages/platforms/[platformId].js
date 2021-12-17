@@ -2,6 +2,7 @@ import { useEffect, useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { AppContext } from "../../contexts/AppContext";
 import useStatus from "../../hooks/useStatus";
+import useClientFetch from "../../hooks/useClientFetch";
 import Head from "next/head";
 import GameCard from "../../components/shared/GameCard";
 import Button from "../../components/shared/Button";
@@ -11,7 +12,12 @@ function GamesList({ data, status }) {
   const { themeState } = useContext(ThemeContext);
   const { appState } = useContext(AppContext);
   const validateStatus = useStatus();
+  const addGames = useClientFetch();
   console.log("Platform Data: ", data);
+
+  const fetchMore = () => {
+    addGames(appState.data.next);
+  };
 
   useEffect(() => {
     validateStatus(data, status);
@@ -22,8 +28,8 @@ function GamesList({ data, status }) {
       <Head>
         <title>{data.seo_title}</title>
         <meta name="author" content="Craig Puxty" />
-        <meta name="keywords" content={data.seo_keywords} />
-        <meta name="description" content={data.seo_description} />
+        <meta name="keywords" content={appState.data.seo_keywords} />
+        <meta name="description" content={appState.data.seo_description} />
       </Head>
       <section className="section" style={{ color: themeState.text.primary }}>
         <div className="container">
@@ -31,21 +37,26 @@ function GamesList({ data, status }) {
             <Loader />
           ) : appState.error.isError ? (
             <>
-              <h1 className="page-title">Error: {appState.error.status}.</h1>
+              <h1 className="page-title">
+                Network error{appState.error.status}.
+              </h1>
               <p>{appState.error.message}.</p>
             </>
           ) : (
             <>
-              <h1 className="page-title">{data.seo_h1}</h1>
+              <h1 className="page-title">{appState.data.seo_h1}</h1>
               <div className="grid grid--multiple">
-                {appState.games.map((game) => (
+                {appState.data.results.map((game) => (
                   <GameCard game={game} key={game.id} />
                 ))}
               </div>
-              <Button
-                name="Load More"
-                styles="btn--large btn--accent btn--center"
-              />
+              {appState.data.next && (
+                <Button
+                  name="Load More"
+                  styles="btn--large btn--accent btn--center"
+                  func={fetchMore}
+                />
+              )}
             </>
           )}
         </div>

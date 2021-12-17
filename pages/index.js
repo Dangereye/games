@@ -2,11 +2,11 @@ import { useEffect, useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { AppContext } from "../contexts/AppContext";
 import useStatus from "../hooks/useStatus";
+import useClientFetch from "../hooks/useClientFetch";
 import Head from "next/head";
 import GameCard from "../components/shared/GameCard";
 import Button from "../components/shared/Button";
 import Loader from "../components/shared/Loader";
-import useClientFetch from "../hooks/useClientFetch";
 
 function Home({ data, status }) {
   const { themeState } = useContext(ThemeContext);
@@ -46,7 +46,7 @@ function Home({ data, status }) {
             </>
           ) : (
             <>
-              <h1 className="page-title">{data.seo_h1}</h1>
+              <h1 className="page-title">{appState.data.seo_h1}</h1>
               <div className="grid grid--multiple">
                 {appState.data.results.map((game) => (
                   <GameCard game={game} key={game.id} />
@@ -54,7 +54,6 @@ function Home({ data, status }) {
               </div>
               {appState.data.next && (
                 <Button
-                  loader={appState.isLoading ? true : false}
                   name="Load More"
                   styles="btn--large btn--accent btn--center"
                   func={fetchMore}
