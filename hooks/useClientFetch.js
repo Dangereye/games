@@ -4,7 +4,7 @@ import { AppContext } from "../contexts/AppContext";
 function useClientFetch() {
   const { appState, appDispatch } = useContext(AppContext);
   const addGames = async (url) => {
-    appDispatch({ type: "LOADING" });
+    appDispatch({ type: "LOADING_MORE" });
 
     try {
       const res = await fetch(url, {

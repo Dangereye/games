@@ -13,7 +13,7 @@ function Home({ data, status }) {
   const { appState } = useContext(AppContext);
   const validateStatus = useStatus();
   const addGames = useClientFetch();
-  console.log("Index appState: ", appState);
+  // console.log("Index appState: ", appState);
 
   const fetchMore = () => {
     addGames(appState.data.next);
@@ -52,6 +52,7 @@ function Home({ data, status }) {
                   <GameCard game={game} key={game.id} />
                 ))}
               </div>
+              {appState.isLoadingMore && <Loader />}
               {appState.data.next && (
                 <Button
                   name="Load More"

@@ -19,6 +19,11 @@ const AppReducer = (state, action) => {
         ...state,
         isLoading: true,
       };
+    case "LOADING_MORE":
+      return {
+        ...state,
+        isLoadingMore: true,
+      };
     case "ERROR":
       return { ...state, isLoading: false, error: action.payload };
     case "SUCCESS":
@@ -31,7 +36,7 @@ const AppReducer = (state, action) => {
     case "LOAD_MORE_GAMES":
       return {
         ...state,
-        isLoading: false,
+        isLoadingMore: false,
         error: { isError: false, status: "", message: "" },
         data: {
           ...state.data,
@@ -48,6 +53,7 @@ function AppComponent({ children }) {
   const [appState, appDispatch] = useReducer(AppReducer, {
     mobileMenu_isOpen: false,
     isLoading: true,
+    isLoadingMore: false,
     error: { isError: false, status: "", message: "" },
     data: [],
   });

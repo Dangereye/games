@@ -50,6 +50,7 @@ function GamesList({ data, status }) {
                   <GameCard game={game} key={game.id} />
                 ))}
               </div>
+              {appState.isLoadingMore && <Loader />}
               {appState.data.next && (
                 <Button
                   name="Load More"
