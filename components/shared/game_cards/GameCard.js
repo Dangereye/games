@@ -3,6 +3,7 @@ import { ThemeContext } from "../../../contexts/ThemeContext";
 import GameCardPlatforms from "./GameCardPlatforms";
 import Image from "next/image";
 import GameCardMetacritic from "./GameCardMetacritic";
+import GameCardDate from "./GameCardDate";
 
 function GameCard({ game }) {
   const { themeState } = useContext(ThemeContext);
@@ -45,9 +46,7 @@ function GameCard({ game }) {
         >
           {game.name ? game.name : "Unknown"}
         </div>
-        <div className="game-card__date">
-          {game.released ? game.released.substring(0, 4) : "TBC"}
-        </div>
+        <GameCardDate date={game.released} />
       </div>
     </div>
   );
