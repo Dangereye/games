@@ -9,8 +9,7 @@ function useStatus() {
         type: "ERROR",
         payload: { isError: true, status, message: data.error },
       });
-    }
-    if (data.results) {
+    } else {
       appDispatch({
         type: "SUCCESS",
         payload: data,

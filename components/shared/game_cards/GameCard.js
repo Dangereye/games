@@ -1,12 +1,22 @@
 import { useContext } from "react";
 import { ThemeContext } from "../../../contexts/ThemeContext";
-import GameCardPlatforms from "./GameCardPlatforms";
+import { AppContext } from "../../../contexts/AppContext";
+import { useRouter } from "next/router";
 import Image from "next/image";
+import GameCardPlatforms from "./GameCardPlatforms";
 import GameCardMetacritic from "./GameCardMetacritic";
 import GameCardDate from "./GameCardDate";
 
 function GameCard({ game }) {
+  const { appDispatch } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
+  const router = useRouter();
+
+  const gameDetails = (id) => {
+    appDispatch({ type: "LOADING" });
+    router.push(`/game/${id}`);
+  };
+
   return (
     <div
       className="game-card"
@@ -14,6 +24,7 @@ function GameCard({ game }) {
         color: themeState.text.tertiary,
         backgroundColor: themeState.background.secondary,
       }}
+      onClick={() => gameDetails(game.id)}
     >
       <div className="game-card__image">
         <Image
