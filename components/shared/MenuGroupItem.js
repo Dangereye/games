@@ -10,16 +10,16 @@ function MenuGroupItem({ data }) {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
-  const toggleOpen = () => {
-    setIsOpen(!isOpen);
-  };
-
   const titleLink = () => {
-    appDispatch({ type: "LOADING" });
-    if (data.id) {
-      router.push(`${data.link}/${data.id}`);
+    if (data.dropdown) {
+      setIsOpen(!isOpen);
     } else {
-      router.push(data.link);
+      appDispatch({ type: "LOADING" });
+      if (data.id) {
+        router.push(`${data.link}/${data.id}`);
+      } else {
+        router.push(data.link);
+      }
     }
   };
 
@@ -30,7 +30,7 @@ function MenuGroupItem({ data }) {
 
   return (
     <div className="menu-group__item">
-      <div className="menu-group__item__header">
+      <div className="menu-group__item__header" onClick={titleLink}>
         {data.icon && (
           <div
             className="menu-group__item__header__icon"
@@ -39,24 +39,10 @@ function MenuGroupItem({ data }) {
             {data.icon}
           </div>
         )}
-        <div
-          className={
-            !data.dropdown
-              ? "menu-group__item__header__title link"
-              : "menu-group__item__header__title"
-          }
-          onClick={titleLink}
-        >
-          {data.title}
+        <div className="menu-group__item__header__title" onClick={titleLink}>
+          <span>{data.title}</span>
+          {data.dropdown && <IoMdArrowDropdown />}
         </div>
-        {data.dropdown && (
-          <div
-            className="menu-group__item__header__dropdown-button"
-            onClick={toggleOpen}
-          >
-            <IoMdArrowDropdown />
-          </div>
-        )}
       </div>
       {data.items && (
         <div

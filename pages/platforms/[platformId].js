@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import Head from "next/head";
-import GameCards from "../../components/shared/GameCards";
+import GameCards from "../../components/shared/game_cards/GameCards";
 
 function GamesList({ data, status }) {
   const { appState } = useContext(AppContext);

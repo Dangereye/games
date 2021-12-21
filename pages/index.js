@@ -1,5 +1,5 @@
 import Head from "next/head";
-import GameCards from "../components/shared/GameCards";
+import GameCards from "../components/shared/game_cards/GameCards";
 
 function Home({ data, status }) {
   return (

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../contexts/ThemeContext";
+import { ThemeContext } from "../../../contexts/ThemeContext";
 import {
   _3do,
   Amiga,
@@ -15,7 +15,7 @@ import {
   Sega,
   Web,
   Xbox,
-} from "./PlatformSVGs";
+} from ".././PlatformSVGs";
 
 const GetSVG = (name) => {
   if (name === "3do") return <_3do />;
@@ -35,20 +35,22 @@ const GetSVG = (name) => {
   return;
 };
 
-function PlatformComponent({ platforms }) {
+function GameCardPlatforms({ platforms }) {
   const { themeState } = useContext(ThemeContext);
   return (
     <div
       className="game-card__platform-icons"
       style={{ fill: themeState.text.secondary }}
     >
-      {platforms
-        .filter((p, index) => index < 3)
-        .map((p) => (
-          <div className="game-card__platform" key={p.platform.slug}>
-            {GetSVG(p.platform.slug)}
-          </div>
-        ))}
+      {platforms.length
+        ? platforms
+            .filter((p, index) => index < 3)
+            .map((p) => (
+              <div className="game-card__platform" key={p.platform.slug}>
+                {GetSVG(p.platform.slug)}
+              </div>
+            ))
+        : ""}
       {platforms.length > 3 ? (
         <div className="game-card__platform">+{+platforms.length - 3}</div>
       ) : (
@@ -58,8 +60,4 @@ function PlatformComponent({ platforms }) {
   );
 }
 
-PlatformComponent.defaultProps = {
-  games: [],
-};
-
-export default PlatformComponent;
+export default GameCardPlatforms;

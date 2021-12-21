@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import Link from "next/link";
-import ToggleButton from "../shared/ToggleButton";
+import ToggleButton from "../shared/buttons/ToggleButton";
 
 function MobileMenu() {
   const { appState, appDispatch } = useContext(AppContext);

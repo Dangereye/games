@@ -1,8 +1,4 @@
-import { useContext } from "react";
-import { ThemeContext } from "../../contexts/ThemeContext";
-
-function Metacritic({ score }) {
-  const { themeState } = useContext(ThemeContext);
+function GameCardMetacritic({ score }) {
   let color;
   const colorMeta = (num) => {
     if (num < 50) color = "#fc4b37";
@@ -13,7 +9,7 @@ function Metacritic({ score }) {
   colorMeta(score);
   return (
     <>
-      {score && (
+      {score ? (
         <div
           className="game-card__metacritic"
           style={{
@@ -23,9 +19,11 @@ function Metacritic({ score }) {
         >
           {score}
         </div>
+      ) : (
+        ""
       )}
     </>
   );
 }
 
-export default Metacritic;
+export default GameCardMetacritic;

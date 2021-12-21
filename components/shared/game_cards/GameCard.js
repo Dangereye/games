@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../contexts/ThemeContext";
-import PlatformComponent from "./Platforms";
+import { ThemeContext } from "../../../contexts/ThemeContext";
+import GameCardPlatforms from "./GameCardPlatforms";
 import Image from "next/image";
-import Metacritic from "./Metacritic";
+import GameCardMetacritic from "./GameCardMetacritic";
 
 function GameCard({ game }) {
   const { themeState } = useContext(ThemeContext);
@@ -24,7 +24,7 @@ function GameCard({ game }) {
           width="200"
           height="112.5"
           layout="responsive"
-          alt={game.name}
+          alt={game.name ? game.name : "Unknown"}
           blurDataURL={
             game.background_image
               ? game.background_image
@@ -35,15 +35,15 @@ function GameCard({ game }) {
       </div>
       <div className="game-card__body">
         <div className="game-card__platforms">
-          <PlatformComponent platforms={game.parent_platforms} />
-          <Metacritic score={game.metacritic} />
+          <GameCardPlatforms platforms={game.parent_platforms} />
+          <GameCardMetacritic score={game.metacritic} />
         </div>
 
         <div
           className="game-card__title"
           style={{ color: themeState.text.primary }}
         >
-          {game.name}
+          {game.name ? game.name : "Unknown"}
         </div>
         <div className="game-card__date">
           {game.released ? game.released.substring(0, 4) : "TBC"}

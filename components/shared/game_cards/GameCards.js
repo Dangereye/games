@@ -1,11 +1,11 @@
 import { useEffect, useContext } from "react";
-import { AppContext } from "../../contexts/AppContext";
-import { ThemeContext } from "../../contexts/ThemeContext";
-import useClientFetch from "../../hooks/useClientFetch";
-import useStatus from "../../hooks/useStatus";
-import Button from "./Button";
+import { AppContext } from "../../../contexts/AppContext";
+import { ThemeContext } from "../../../contexts/ThemeContext";
+import useClientFetch from "../../../hooks/useClientFetch";
+import useStatus from "../../../hooks/useStatus";
+import Button from "../buttons/Button";
 import GameCard from "./GameCard";
-import Loader from "./Loader";
+import Loader from "../Loader";
 
 function GameCards({ data, status }) {
   const { themeState } = useContext(ThemeContext);

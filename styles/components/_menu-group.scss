@@ -18,6 +18,12 @@
       margin-bottom: 1rem;
       display: flex;
       align-items: center;
+      cursor: pointer;
+
+      span {
+        margin-right: 0.5rem;
+        transition: color $time;
+      }
 
       &__icon {
         margin-right: 1rem;
@@ -32,25 +38,12 @@
 
       &__title {
         font-weight: 500;
-        transition: color $time;
-
-        &.link {
-          cursor: pointer;
-
-          &:hover {
-            color: $accent;
-          }
-        }
       }
 
-      &__dropdown-button {
-        width: 2rem;
-        height: 2rem;
-        margin-left: auto;
-        cursor: pointer;
-
-        display: grid;
-        place-items: center;
+      &:hover {
+        span {
+          color: $accent;
+        }
       }
     }
 
