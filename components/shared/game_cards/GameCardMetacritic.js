@@ -6,10 +6,14 @@ function GameCardMetacritic({ score }) {
     if (num >= 70) color = "#86c232";
     return;
   };
-  colorMeta(score);
+
+  if (score) {
+    colorMeta(score);
+  }
+
   return (
     <>
-      {score ? (
+      {score && (
         <div
           className="game-card__metacritic"
           style={{
@@ -19,8 +23,6 @@ function GameCardMetacritic({ score }) {
         >
           {score}
         </div>
-      ) : (
-        ""
       )}
     </>
   );

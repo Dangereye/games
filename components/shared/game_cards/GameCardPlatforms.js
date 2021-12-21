@@ -42,15 +42,13 @@ function GameCardPlatforms({ platforms }) {
       className="game-card__platform-icons"
       style={{ fill: themeState.text.secondary }}
     >
-      {platforms.length
-        ? platforms
-            .filter((p, index) => index < 3)
-            .map((p) => (
-              <div className="game-card__platform" key={p.platform.slug}>
-                {GetSVG(p.platform.slug)}
-              </div>
-            ))
-        : ""}
+      {platforms
+        .filter((p, index) => index < 3)
+        .map((p) => (
+          <div className="game-card__platform" key={p.platform.slug}>
+            {GetSVG(p.platform.slug)}
+          </div>
+        ))}
       {platforms.length > 3 ? (
         <div className="game-card__platform">+{+platforms.length - 3}</div>
       ) : (
@@ -59,5 +57,9 @@ function GameCardPlatforms({ platforms }) {
     </div>
   );
 }
+
+GameCardPlatforms.defaultProps = {
+  platforms: [],
+};
 
 export default GameCardPlatforms;
