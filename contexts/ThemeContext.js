@@ -2,6 +2,19 @@ import { createContext, useReducer } from "react";
 
 export const ThemeContext = createContext();
 
+// RGB - Colour Palette
+const darkPrimary = "34,34,34";
+const darkSecondary = "51, 51, 51";
+const darkTertiary = "68, 68, 68";
+const darkGradient = `linear-gradient(rgba(${darkPrimary}, 0.7), rgb(${darkPrimary}))`;
+
+const lightPrimary = "238, 238, 238";
+const lightSecondary = "255, 255, 255";
+const lightTertiary = "204, 204, 204";
+const lightGradient = `linear-gradient(rgba(${lightPrimary}, 0.7), rgb(${lightPrimary}))`;
+
+const accent = "#86c232";
+
 const ThemeReducer = (state, action) => {
   switch (action.type) {
     case "DARK":
@@ -9,14 +22,15 @@ const ThemeReducer = (state, action) => {
         ...state,
         dark_mode: true,
         text: {
-          primary: "#ffffff",
-          secondary: "#eee",
-          tertiary: "#ccc",
+          primary: `rgb(${lightSecondary})`,
+          secondary: `rgb(${lightPrimary})`,
+          tertiary: `rgb(${lightTertiary})`,
         },
         background: {
-          primary: "#222",
-          secondary: "#333",
-          tertiary: "#444",
+          primary: `rgb(${darkPrimary})`,
+          secondary: `rgb(${darkSecondary})`,
+          tertiary: `rgb(${darkTertiary})`,
+          gradient: darkGradient,
         },
       };
     case "LIGHT":
@@ -24,14 +38,15 @@ const ThemeReducer = (state, action) => {
         ...state,
         dark_mode: false,
         text: {
-          primary: "#222",
-          secondary: "#333",
-          tertiary: "#444",
+          primary: `rgb(${darkPrimary})`,
+          secondary: `rgb(${darkSecondary})`,
+          tertiary: `rgb(${darkTertiary})`,
         },
         background: {
-          primary: "#eee",
-          secondary: "#fff",
-          tertiary: "#ccc",
+          primary: `rgb(${lightPrimary})`,
+          secondary: `rgb(${lightSecondary})`,
+          tertiary: `rgb(${lightTertiary})`,
+          gradient: lightGradient,
         },
       };
     default:
@@ -43,16 +58,17 @@ function ThemeComponent({ children }) {
   const [themeState, themeDispatch] = useReducer(ThemeReducer, {
     dark_mode: false,
     text: {
-      primary: "#111",
-      secondary: "#222",
-      tertiary: "#333",
+      primary: `rgb(${darkPrimary})`,
+      secondary: `rgb(${darkSecondary})`,
+      tertiary: `rgb(${darkTertiary})`,
     },
     background: {
-      primary: "#f0f0f0",
-      secondary: "#ffffff",
-      tertiary: "#32383D",
+      primary: `rgb(${lightPrimary})`,
+      secondary: `rgb(${lightSecondary})`,
+      tertiary: `rgb(${lightTertiary})`,
+      gradient: lightGradient,
     },
-    accent: "#86c232",
+    accent,
   });
   return (
     <ThemeContext.Provider value={{ themeState, themeDispatch }}>

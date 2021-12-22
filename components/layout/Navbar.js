@@ -32,12 +32,7 @@ function Navbar() {
   };
 
   return (
-    <nav
-      className="navbar"
-      style={{
-        backgroundColor: themeState.background.primary,
-      }}
-    >
+    <nav className="navbar">
       <div className="container">
         <div
           className={

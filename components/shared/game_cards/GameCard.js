@@ -3,7 +3,7 @@ import { ThemeContext } from "../../../contexts/ThemeContext";
 import { AppContext } from "../../../contexts/AppContext";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import GameCardPlatforms from "./GameCardPlatforms";
+import ParentPlatforms from "./ParentPlatforms";
 import GameCardMetacritic from "./GameCardMetacritic";
 import GameCardDate from "./GameCardDate";
 
@@ -14,7 +14,7 @@ function GameCard({ game }) {
 
   const gameDetails = (id) => {
     appDispatch({ type: "LOADING" });
-    router.push(`/game/${id}`);
+    router.push(`/games/${id}`);
   };
 
   return (
@@ -24,7 +24,7 @@ function GameCard({ game }) {
         color: themeState.text.tertiary,
         backgroundColor: themeState.background.secondary,
       }}
-      onClick={() => gameDetails(game.id)}
+      onClick={() => gameDetails(game.slug)}
     >
       <div className="game-card__image">
         <Image
@@ -47,7 +47,7 @@ function GameCard({ game }) {
       </div>
       <div className="game-card__body">
         <div className="game-card__platforms">
-          <GameCardPlatforms platforms={game.parent_platforms} />
+          <ParentPlatforms platforms={game.parent_platforms} />
           <GameCardMetacritic score={game.metacritic} />
         </div>
 

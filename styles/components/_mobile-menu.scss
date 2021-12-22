@@ -5,7 +5,8 @@
   position: fixed;
   top: 6rem;
   left: -100%;
-  padding: $page-vert-padding $page-hoz-padding;
+  padding: $page-top-padding $page-hoz-padding $page-bottom-padding
+    $page-hoz-padding;
   z-index: 99;
   transition: left $time;
 

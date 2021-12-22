@@ -12,6 +12,7 @@
 @import "components/menu-group";
 @import "components/footer";
 @import "components/game-card";
+@import "components/game-details";
 @import "components/loader";
 
 // Reset
@@ -34,17 +35,38 @@ ul {
 body {
   font-size: $base-font-size;
 }
+.layout {
+  position: relative;
 
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
 .page {
   position: relative;
   width: 100%;
-  min-height: calc(100vh - 8rem);
-  margin-top: 8rem;
-  padding: $page-vert-padding $page-hoz-padding;
+  min-height: 100vh;
+  padding: $page-top-padding $page-hoz-padding $page-bottom-padding
+    $page-hoz-padding;
 
   @media (max-width: $mobile) {
-    min-height: calc(100vh - 6rem);
-    margin-top: 6rem;
+    padding: $mobile-top-padding $page-hoz-padding $page-bottom-padding
+      $page-hoz-padding;
   }
 }
 

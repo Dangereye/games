@@ -15,7 +15,7 @@ import {
   Sega,
   Web,
   Xbox,
-} from ".././PlatformSVGs";
+} from "../PlatformSVGs";
 
 const GetSVG = (name) => {
   if (name === "3do") return <_3do />;
@@ -35,7 +35,7 @@ const GetSVG = (name) => {
   return;
 };
 
-function GameCardPlatforms({ platforms }) {
+function ParentPlatforms({ platforms }) {
   const { themeState } = useContext(ThemeContext);
   return (
     <div
@@ -58,8 +58,8 @@ function GameCardPlatforms({ platforms }) {
   );
 }
 
-GameCardPlatforms.defaultProps = {
+ParentPlatforms.defaultProps = {
   platforms: [],
 };
 
-export default GameCardPlatforms;
+export default ParentPlatforms;

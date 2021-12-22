@@ -1,5 +1,7 @@
 $page-width: 1920px;
-$page-vert-padding: clamp(4rem, 5vw, 8rem);
+$page-top-padding: 16rem;
+$mobile-top-padding: 10rem;
+$page-bottom-padding: clamp(4rem, 5vw, 8rem);
 $page-hoz-padding: clamp(1rem, 2.5vw, 4rem);
 
 $base-font-size: clamp(1.6rem, 2.5vw, 1.8rem);
@@ -10,4 +12,4 @@ $mobile: 768px;
 
 $accent: #86c232;
 $button: #d1d2d4;
-$input-bg: #d1d2d4;
+$input-bg: rgba(209, 210, 212, 0.7);
