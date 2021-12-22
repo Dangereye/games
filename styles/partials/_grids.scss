@@ -3,6 +3,10 @@
   column-gap: 2rem;
   row-gap: 2rem;
 
+  &.mt {
+    margin-top: 4rem;
+  }
+
   &--sidebar {
     column-gap: 4rem;
     grid-template-columns: 20rem 1fr;

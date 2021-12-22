@@ -5,7 +5,7 @@ html {
   font-size: 62.5%;
 }
 
-h1 {
-  font-size: clamp(2.4rem, 3vw, 5rem);
-  margin-bottom: 3rem;
+.display {
+  font-size: clamp(3rem, 5vw, 6rem);
+  margin-bottom: 1rem;
 }

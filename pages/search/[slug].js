@@ -2,6 +2,7 @@ import Head from "next/head";
 import GameCards from "../../components/shared/game_cards/GameCards";
 
 function SearchDetails({ data, status, slug }) {
+  console.log("Search: ", data);
   return (
     <>
       <Head>
@@ -24,7 +25,7 @@ export default SearchDetails;
 export async function getServerSideProps(context) {
   const { params } = context;
   const res = await fetch(
-    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${params.slug}`,
+    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${params.slug}&page_size=40`,
     {
       method: "GET",
       mode: "no-cors",

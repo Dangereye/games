@@ -35,10 +35,13 @@ function GameCards({ data, status, title }) {
           </>
         ) : (
           <>
-            <h1 className="page-title">
+            <h1 className="display">
               {appState.data.seo_h1 ? appState.data.seo_h1 : title}
             </h1>
-            <div className="grid grid--multiple">
+            <p className="page-results">
+              {`Found ${appState.data.count} results.`}
+            </p>
+            <div className="grid grid--multiple mt">
               {appState.data.results.map((game) => (
                 <GameCard game={game} key={game.id} />
               ))}

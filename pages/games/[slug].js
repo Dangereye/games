@@ -28,7 +28,7 @@ function GameDetails({ data, status }) {
           </>
         ) : (
           <>
-            <h1 className="page-title">{appState.data.name}</h1>
+            <h1 className="display">{appState.data.name}</h1>
           </>
         )}
       </div>

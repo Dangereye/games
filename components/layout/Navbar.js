@@ -106,7 +106,7 @@ function Navbar() {
           <form onSubmit={handleSubmit}>
             <input
               type="text"
-              placeholder="Search games..."
+              placeholder="Search  games."
               value={search}
               onChange={handleChange}
               ref={searchInput}
