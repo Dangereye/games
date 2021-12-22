@@ -1,11 +1,7 @@
-import { useContext } from "react";
-import { AppContext } from "../../contexts/AppContext";
 import Head from "next/head";
 import GameCards from "../../components/shared/game_cards/GameCards";
 
 function SearchDetails({ data, status, slug }) {
-  const { appState, appDispatch } = useContext(AppContext);
-  console.log("Search: ", data);
   return (
     <>
       <Head>
@@ -17,7 +13,7 @@ function SearchDetails({ data, status, slug }) {
       <GameCards
         data={data}
         status={status}
-        title={`Search results for "${slug}"`}
+        title={`Search results for "${slug}".`}
       />
     </>
   );
