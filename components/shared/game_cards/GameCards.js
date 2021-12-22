@@ -7,7 +7,7 @@ import Button from "../buttons/Button";
 import GameCard from "./GameCard";
 import Loader from "../Loader";
 
-function GameCards({ data, status }) {
+function GameCards({ data, status, title }) {
   const { themeState } = useContext(ThemeContext);
   const { appState } = useContext(AppContext);
   const validateStatus = useStatus();
@@ -35,14 +35,16 @@ function GameCards({ data, status }) {
           </>
         ) : (
           <>
-            <h1 className="page-title">{appState.data.seo_h1}</h1>
+            <h1 className="page-title">
+              {appState.data.seo_h1 ? appState.data.seo_h1 : title}
+            </h1>
             <div className="grid grid--multiple">
               {appState.data.results.map((game) => (
                 <GameCard game={game} key={game.id} />
               ))}
             </div>
             {appState.isLoadingMore && <Loader />}
-            {appState.data.next && (
+            {appState.data.next && !appState.isLoadingMore && (
               <Button
                 name="Load More"
                 styles="btn--large btn--accent btn--center"

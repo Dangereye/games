@@ -39,7 +39,7 @@ function MenuGroupItem({ data }) {
             {data.icon}
           </div>
         )}
-        <div className="menu-group__item__header__title" onClick={titleLink}>
+        <div className="menu-group__item__header__title">
           <span>{data.title}</span>
           {data.dropdown && <IoMdArrowDropdown />}
         </div>

@@ -2,6 +2,7 @@ import { useState, useEffect, useContext, useRef } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { FaSearch } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 function Navbar() {
   const [background, setBackground] = useState(false);
@@ -9,6 +10,7 @@ function Navbar() {
   const { themeState } = useContext(ThemeContext);
   const [search, setSearch] = useState("");
   const searchInput = useRef(null);
+  const router = useRouter();
 
   const toggleMobileMenu = () => {
     if (appState.mobileMenu_isOpen) {
@@ -30,6 +32,7 @@ function Navbar() {
     console.log("Searching for", search);
     setSearch("");
     searchInput.current.blur();
+    router.push(`/search/${search}`);
   };
 
   const searchFocus = (e) => {
