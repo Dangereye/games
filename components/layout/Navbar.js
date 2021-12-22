@@ -31,6 +31,22 @@ function Navbar() {
     searchInput.current.blur();
   };
 
+  const searchFocus = (e) => {
+    const { target } = e;
+    target.parentElement.parentElement.style.color = "#222";
+    target.style.color = "#222";
+    target.style.backgroundColor = "#fff";
+  };
+
+  const searchBlur = (e) => {
+    const { target } = e;
+    if (target !== document.activeElement) {
+      target.style.color = themeState.text.primary;
+      target.parentElement.parentElement.style.color = themeState.text.primary;
+      target.style.backgroundColor = themeState.background.inputs;
+    }
+  };
+
   return (
     <nav className="navbar">
       <div className="container">
@@ -53,7 +69,10 @@ function Navbar() {
         >
           Games
         </div>
-        <div className="navbar__search">
+        <div
+          className="navbar__search"
+          style={{ color: themeState.text.primary }}
+        >
           <div className="navbar__search__icon">
             <FaSearch />
           </div>
@@ -64,6 +83,14 @@ function Navbar() {
               value={search}
               onChange={handleChange}
               ref={searchInput}
+              onFocus={searchFocus}
+              onMouseEnter={searchFocus}
+              onBlur={searchBlur}
+              onMouseLeave={searchBlur}
+              style={{
+                color: themeState.text.primary,
+                backgroundColor: themeState.background.inputs,
+              }}
             />
           </form>
         </div>

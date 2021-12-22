@@ -13,6 +13,9 @@ const lightSecondary = "255, 255, 255";
 const lightTertiary = "204, 204, 204";
 const lightGradient = `linear-gradient(rgba(${lightPrimary}, 0.7), rgb(${lightPrimary}))`;
 
+const darkInputs = lightPrimary;
+const lightInputs = darkPrimary;
+
 const accent = "#86c232";
 
 const ThemeReducer = (state, action) => {
@@ -31,6 +34,7 @@ const ThemeReducer = (state, action) => {
           secondary: `rgb(${darkSecondary})`,
           tertiary: `rgb(${darkTertiary})`,
           gradient: darkGradient,
+          inputs: `rgba(${darkInputs},.2)`,
         },
       };
     case "LIGHT":
@@ -47,6 +51,7 @@ const ThemeReducer = (state, action) => {
           secondary: `rgb(${lightSecondary})`,
           tertiary: `rgb(${lightTertiary})`,
           gradient: lightGradient,
+          inputs: `rgba(${lightInputs},.2)`,
         },
       };
     default:
@@ -67,6 +72,7 @@ function ThemeComponent({ children }) {
       secondary: `rgb(${lightSecondary})`,
       tertiary: `rgb(${lightTertiary})`,
       gradient: lightGradient,
+      inputs: `rgba(${lightInputs},.2)`,
     },
     accent,
   });
