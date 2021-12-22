@@ -9,6 +9,7 @@
 
   display: flex;
   align-items: center;
+  transition: background-color $time;
 
   z-index: 100;
 

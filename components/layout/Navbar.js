@@ -1,9 +1,10 @@
-import { useState, useContext, useRef } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { FaSearch } from "react-icons/fa";
 
 function Navbar() {
+  const [background, setBackground] = useState(false);
   const { appState, appDispatch } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
   const [search, setSearch] = useState("");
@@ -47,8 +48,31 @@ function Navbar() {
     }
   };
 
+  const changeBackground = () => {
+    if (window.scrollY >= 100) {
+      setBackground(true);
+    } else {
+      setBackground(false);
+    }
+  };
+
+  const navBg = {
+    backgroundColor: background ? themeState.background.navbar : "transparent",
+    backdropFilter: background ? "blur(10px)" : "none",
+  };
+
+  useEffect(() => {
+    const watchScroll = () => {
+      window.addEventListener("scroll", changeBackground);
+    };
+    watchScroll();
+    return () => {
+      window.removeEventListener("scroll", changeBackground);
+    };
+  }, []);
+
   return (
-    <nav className="navbar">
+    <nav className="navbar" style={navBg}>
       <div className="container">
         <div
           className={
