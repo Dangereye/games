@@ -15,17 +15,13 @@ function MenuGroupItem({ data }) {
       setIsOpen(!isOpen);
     } else {
       appDispatch({ type: "LOADING" });
-      if (data.id) {
-        router.push(`${data.link}/${data.id}`);
-      } else {
-        router.push(data.link);
-      }
+      router.push(data.link);
     }
   };
 
   const dropdownLink = (item) => {
     appDispatch({ type: "LOADING" });
-    router.push(`${data.link}/${item.id}`);
+    router.push(item.link);
   };
 
   return (
