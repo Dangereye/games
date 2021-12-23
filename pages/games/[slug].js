@@ -3,11 +3,14 @@ import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import useStatus from "../../hooks/useStatus";
 import Loader from "../../components/shared/Loader";
+import ParentPlatforms from "../../components/shared/game_cards/ParentPlatforms";
+import Head from "next/head";
 
 function GameDetails({ data, status }) {
   const { appState, appDispatch } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
   const validateStatus = useStatus();
+  const game = appState.data;
   console.log(data);
 
   useEffect(() => {
@@ -15,24 +18,35 @@ function GameDetails({ data, status }) {
   }, [data]);
 
   return (
-    <section className="section" style={{ color: themeState.text.primary }}>
-      <div className="container">
-        {appState.isLoading ? (
-          <Loader />
-        ) : appState.error.isError ? (
-          <>
-            <h1 className="page-title">
-              Network error{appState.error.status}.
-            </h1>
-            <p>{appState.error.message}.</p>
-          </>
-        ) : (
-          <>
-            <h1 className="display">{appState.data.name}</h1>
-          </>
-        )}
-      </div>
-    </section>
+    <>
+      <Head>
+        <title>Games | {game.name}</title>
+        <meta name="author" content="Craig Puxty" />
+        <meta
+          name="description"
+          content="Video game database and discovery service - powered by RAWG.IO"
+        />
+      </Head>
+      <section className="section" style={{ color: themeState.text.primary }}>
+        <div className="container">
+          {appState.isLoading ? (
+            <Loader />
+          ) : appState.error.isError ? (
+            <>
+              <h1 className="page-title">
+                Network error{appState.error.status}.
+              </h1>
+              <p>{appState.error.message}.</p>
+            </>
+          ) : (
+            <>
+              <ParentPlatforms platforms={game.parent_platforms} />
+              <h1 className="display">{game.name}</h1>
+            </>
+          )}
+        </div>
+      </section>
+    </>
   );
 }
 

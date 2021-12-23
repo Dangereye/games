@@ -1,3 +1,21 @@
+export const GetSVG = (name) => {
+  if (name === "3do") return <_3do />;
+  if (name === "amiga") return <Amiga />;
+  if (name === "android") return <Android />;
+  if (name === "atari") return <Atari />;
+  if (name === "ios") return <Ios />;
+  if (name === "linux") return <Linux />;
+  if (name === "mac") return <Mac />;
+  if (name === "neo-geo") return <NeoGeo />;
+  if (name === "nintendo") return <Nintendo />;
+  if (name === "pc") return <Pc />;
+  if (name === "playstation") return <Playstation />;
+  if (name === "sega") return <Sega />;
+  if (name === "web") return <Web />;
+  if (name === "xbox") return <Xbox />;
+  return;
+};
+
 export function _3do() {
   return (
     <svg xmlSpace="preserve" viewBox="0 0 300 300">
