@@ -1,5 +1,8 @@
 .game-details {
+  margin-top: 30vh;
   &__info-banner {
+    margin-bottom: 4rem;
+    line-height: 1.618;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -7,14 +10,23 @@
 
     > *:not(:last-child)::after {
       content: "|";
-      margin-left: 0.5rem;
+      margin-left: 1rem;
     }
 
     &__genres {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
       > *:not(:last-child)::after {
         content: ",";
-        margin-right: 5px;
       }
     }
+  }
+
+  &__description {
+    width: 100%;
+    max-width: 90ch;
+    line-height: 1.618;
   }
 }

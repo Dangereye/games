@@ -22,27 +22,9 @@
     }
   }
 
-  &__platforms {
+  &__header {
     display: flex;
     align-items: center;
-  }
-
-  &__platform-icons {
-    display: flex;
-    align-items: center;
-
-    > *:not(:last-child) {
-      margin-right: 0.5rem;
-    }
-  }
-
-  &__platform {
-    display: grid;
-    place-items: center;
-    svg {
-      width: 1.6rem;
-      height: 1.6rem;
-    }
   }
 
   &__metacritic {

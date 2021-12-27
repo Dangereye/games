@@ -13,6 +13,7 @@
 @import "components/footer";
 @import "components/game-card";
 @import "components/game-details";
+@import "components/parent-platforms";
 @import "components/loader";
 
 // Reset
@@ -35,6 +36,7 @@ ul {
 body {
   font-size: $base-font-size;
 }
+
 .layout {
   position: relative;
 
@@ -43,8 +45,8 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 60vh;
-    background-position: center;
+    height: 70vh;
+    background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
 

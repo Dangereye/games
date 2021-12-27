@@ -3,7 +3,7 @@ import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import useStatus from "../../hooks/useStatus";
 import Loader from "../../components/shared/Loader";
-import ParentPlatforms from "../../components/shared/game_cards/ParentPlatforms";
+import ParentPlatforms from "../../components/shared/ParentPlatforms";
 import Head from "next/head";
 import DateComponent from "../../components/shared/DateComponent";
 import GenresComponent from "../../components/shared/GenresComponent";
@@ -46,10 +46,22 @@ function GameDetails({ data, status }) {
           ) : (
             <>
               <h1 className="display">{game.name}</h1>
-              <div className="game-details__info-banner">
+              <div
+                className="game-details__info-banner"
+                style={{
+                  color: themeState.text.secondary,
+                  fill: themeState.text.secondary,
+                }}
+              >
                 <DateComponent date={game.released} fullDate />
                 <GenresComponent genres={game.genres} />
                 <ParentPlatforms platforms={game.parent_platforms} />
+              </div>
+              <div
+                className="game-details__description"
+                style={{ color: themeState.text.tertiary }}
+              >
+                {game.description_raw}
               </div>
             </>
           )}

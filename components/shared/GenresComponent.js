@@ -1,8 +1,8 @@
 function GenresComponent({ genres }) {
   return (
     <div className="game-details__info-banner__genres">
-      {genres.map((genre) => (
-        <span>{genre.name}</span>
+      {genres.map((genre, index) => (
+        <span key={`genre-${genre}-${index}`}>{genre.name}</span>
       ))}
     </div>
   );

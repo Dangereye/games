@@ -6,12 +6,12 @@ export const ThemeContext = createContext();
 const darkPrimary = "34,34,34";
 const darkSecondary = "51, 51, 51";
 const darkTertiary = "68, 68, 68";
-const darkGradient = `linear-gradient(rgba(${darkPrimary}, 0.7), rgb(${darkPrimary}))`;
+const darkGradient = `linear-gradient(rgba(${darkPrimary}, 0.6), rgb(${darkPrimary}))`;
 
 const lightPrimary = "238, 238, 238";
 const lightSecondary = "255, 255, 255";
 const lightTertiary = "204, 204, 204";
-const lightGradient = `linear-gradient(rgba(${lightPrimary}, 0.7), rgb(${lightPrimary}))`;
+const lightGradient = `linear-gradient(rgba(${lightPrimary}, 0.6), rgb(${lightPrimary}))`;
 
 const accent = "#86c232";
 

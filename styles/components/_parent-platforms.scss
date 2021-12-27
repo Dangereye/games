@@ -1,0 +1,25 @@
+.parent-platforms {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    &__icon {
+      color: inherit;
+      fill: inherit;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  &__extras {
+    &__extra {
+      display: grid;
+      place-items: center;
+    }
+  }
+}

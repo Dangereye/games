@@ -3,7 +3,7 @@ import { ThemeContext } from "../../../contexts/ThemeContext";
 import { AppContext } from "../../../contexts/AppContext";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import ParentPlatforms from "./ParentPlatforms";
+import ParentPlatforms from "../ParentPlatforms";
 import GameCardMetacritic from "./GameCardMetacritic";
 import DateComponent from "../DateComponent";
 
@@ -46,7 +46,10 @@ function GameCard({ game }) {
         />
       </div>
       <div className="game-card__body">
-        <div className="game-card__platforms">
+        <div
+          className="game-card__header"
+          style={{ fill: themeState.text.secondary }}
+        >
           <ParentPlatforms platforms={game.parent_platforms} />
           <GameCardMetacritic score={game.metacritic} />
         </div>
