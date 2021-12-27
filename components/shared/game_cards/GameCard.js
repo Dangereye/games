@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import ParentPlatforms from "./ParentPlatforms";
 import GameCardMetacritic from "./GameCardMetacritic";
-import GameCardDate from "./GameCardDate";
+import DateComponent from "../DateComponent";
 
 function GameCard({ game }) {
   const { appDispatch } = useContext(AppContext);
@@ -57,7 +57,7 @@ function GameCard({ game }) {
         >
           {game.name ? game.name : "Unknown"}
         </div>
-        <GameCardDate date={game.released} />
+        <DateComponent date={game.released} />
       </div>
     </div>
   );

@@ -5,6 +5,8 @@ import useStatus from "../../hooks/useStatus";
 import Loader from "../../components/shared/Loader";
 import ParentPlatforms from "../../components/shared/game_cards/ParentPlatforms";
 import Head from "next/head";
+import DateComponent from "../../components/shared/DateComponent";
+import GenresComponent from "../../components/shared/GenresComponent";
 
 function GameDetails({ data, status }) {
   const { appState, appDispatch } = useContext(AppContext);
@@ -27,7 +29,10 @@ function GameDetails({ data, status }) {
           content="Video game database and discovery service - powered by RAWG.IO"
         />
       </Head>
-      <section className="section" style={{ color: themeState.text.primary }}>
+      <section
+        className="section game-details"
+        style={{ color: themeState.text.primary }}
+      >
         <div className="container">
           {appState.isLoading ? (
             <Loader />
@@ -40,8 +45,12 @@ function GameDetails({ data, status }) {
             </>
           ) : (
             <>
-              <ParentPlatforms platforms={game.parent_platforms} />
               <h1 className="display">{game.name}</h1>
+              <div className="game-details__info-banner">
+                <DateComponent date={game.released} fullDate />
+                <GenresComponent genres={game.genres} />
+                <ParentPlatforms platforms={game.parent_platforms} />
+              </div>
             </>
           )}
         </div>
