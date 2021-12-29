@@ -1,6 +1,7 @@
 import { useEffect, useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import Image from "next/image";
 import useStatus from "../../hooks/useStatus";
 import Loader from "../../components/shared/Loader";
 import ParentPlatforms from "../../components/shared/ParentPlatforms";
@@ -8,15 +9,17 @@ import Head from "next/head";
 import DateComponent from "../../components/shared/DateComponent";
 import GenresComponent from "../../components/shared/GenresComponent";
 
-function GameDetails({ data, status }) {
+function GameDetails({ data, screenshots, trailers }) {
   const { appState, appDispatch } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
   const validateStatus = useStatus();
   const game = appState.data;
-  console.log(data);
+  console.log("Details: ", data);
+  console.log("Screenshots:", screenshots);
+  console.log("Trailers: ", trailers);
 
   useEffect(() => {
-    validateStatus(data, status);
+    validateStatus(data);
   }, [data]);
 
   return (
@@ -63,6 +66,22 @@ function GameDetails({ data, status }) {
               >
                 {game.description_raw}
               </div>
+              <div className="game-details__trailer grid grid--multiple mt">
+                {trailers.results.map((trailer) => (
+                  <video width="100%" height="auto" controls>
+                    <source src={trailer.data.max} type="video/mp4" />
+                  </video>
+                ))}
+              </div>
+              <div className="game-details__screenshots grid grid--multiple mt">
+                {screenshots.results.map((pic) => (
+                  <Image
+                    src={pic.image}
+                    width={pic.width}
+                    height={pic.height}
+                  />
+                ))}
+              </div>
             </>
           )}
         </div>
@@ -75,18 +94,35 @@ export default GameDetails;
 
 export async function getServerSideProps(context) {
   const { params } = context;
-  const res = await fetch(
-    `https://api.rawg.io/api/games/${params.slug}?key=${process.env.API_KEY}`,
-    {
-      method: "GET",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
-    }
-  );
+  const options = {
+    method: "GET",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+  };
 
-  console.log(`Response status: ${res.status} - ${res.statusText}`);
+  let [data, screenshots, trailers] = await Promise.all([
+    fetch(
+      `https://api.rawg.io/api/games/${params.slug}?key=${process.env.API_KEY}`,
+      options
+    ),
+    fetch(
+      `https://api.rawg.io/api/games/${params.slug}/screenshots?key=${process.env.API_KEY}`,
+      options
+    ),
+    fetch(
+      `https://api.rawg.io/api/games/${params.slug}/movies?key=${process.env.API_KEY}`,
+      options
+    ),
+  ]);
+  data = await data.json();
+  screenshots = await screenshots.json();
+  trailers = await trailers.json();
 
-  const data = await res.json();
-
-  return { props: { data, status: `${res.status} - ${res.statusText}` } };
+  return {
+    props: {
+      data,
+      screenshots,
+      trailers,
+    },
+  };
 }

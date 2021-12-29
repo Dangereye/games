@@ -6,6 +6,7 @@ import useStatus from "../../../hooks/useStatus";
 import Button from "../buttons/Button";
 import GameCard from "./GameCard";
 import Loader from "../Loader";
+import FormatNumber from "../FormatNumber";
 
 function GameCards({ data, status, title }) {
   const { themeState } = useContext(ThemeContext);
@@ -39,7 +40,7 @@ function GameCards({ data, status, title }) {
               {appState.data.seo_h1 ? appState.data.seo_h1 : title}
             </h1>
             <p className="page-results">
-              {`Found ${appState.data.count} results.`}
+              Found <FormatNumber num={appState.data.count} /> results.
             </p>
             <div className="grid grid--multiple mt">
               {appState.data.results.map((game) => (

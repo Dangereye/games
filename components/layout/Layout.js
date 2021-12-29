@@ -19,7 +19,11 @@ function Layout({ children }) {
     >
       <div
         className="layout__background"
-        style={{ backgroundImage: `url(${appState.data.background_image})` }}
+        style={{
+          backgroundImage: appState.data.background_image
+            ? `url(${appState.data.background_image})`
+            : "none",
+        }}
       >
         <div
           className="layout__background__overlay"
