@@ -1,0 +1,13 @@
+.metacritic {
+  font-weight: 700;
+  border-radius: 4px;
+
+  &__group {
+    display: grid;
+    place-items: center;
+  }
+
+  &__label {
+    margin-top: 1rem;
+  }
+}

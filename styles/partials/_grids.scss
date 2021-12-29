@@ -25,7 +25,12 @@
     }
   }
 
-  &--50-50 {
-    grid-template-columns: repeat(2, 1fr);
+  &--game-details {
+    grid-template-columns: 2fr 1fr;
+    column-gap: 4rem;
+
+    @media (max-width: 1299px) {
+      grid-template-columns: 1fr;
+    }
   }
 }

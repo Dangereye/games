@@ -1,4 +1,4 @@
-function GameCardMetacritic({ score }) {
+function MetacriticComponent({ score }) {
   let color;
   const colorMeta = (num) => {
     if (num < 50) color = "#fc4b37";
@@ -15,7 +15,7 @@ function GameCardMetacritic({ score }) {
     <>
       {score && (
         <div
-          className="game-card__metacritic"
+          className="metacritic"
           style={{
             color: color,
             borderColor: color,
@@ -28,4 +28,4 @@ function GameCardMetacritic({ score }) {
   );
 }
 
-export default GameCardMetacritic;
+export default MetacriticComponent;

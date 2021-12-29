@@ -4,7 +4,7 @@ import { AppContext } from "../../../contexts/AppContext";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import ParentPlatforms from "../ParentPlatforms";
-import GameCardMetacritic from "./GameCardMetacritic";
+import MetacriticComponent from "../MetacriticComponent";
 import DateComponent from "../DateComponent";
 
 function GameCard({ game }) {
@@ -51,7 +51,7 @@ function GameCard({ game }) {
           style={{ fill: themeState.text.secondary }}
         >
           <ParentPlatforms platforms={game.parent_platforms} />
-          <GameCardMetacritic score={game.metacritic} />
+          <MetacriticComponent score={game.metacritic} />
         </div>
 
         <div

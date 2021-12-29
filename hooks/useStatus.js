@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
 
 function useStatus() {
-  const { appDispatch } = useContext(AppContext);
+  const { appState, appDispatch } = useContext(AppContext);
   const validateStatus = (data, status) => {
     if (data.error) {
       appDispatch({

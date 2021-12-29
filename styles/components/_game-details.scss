@@ -1,5 +1,6 @@
 .game-details {
   margin-top: 30vh;
+
   &__info-banner {
     margin-bottom: 4rem;
     line-height: 1.618;
@@ -24,9 +25,64 @@
     }
   }
 
+  &__ratings {
+    margin: 4rem 0;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+
+    &__group {
+      display: grid;
+      place-items: center;
+
+      &__label {
+        margin-top: 2rem;
+      }
+    }
+
+    .metacritic {
+      width: 10rem;
+      height: 10rem;
+      font-size: 4.2rem;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+  }
+
   &__description {
     width: 100%;
-    max-width: 90ch;
+    max-width: 85ch;
     line-height: 1.618;
+  }
+
+  &__trailer {
+    border-radius: $border-radius;
+    margin-bottom: 4rem;
+    box-shadow: $shadow;
+    overflow: hidden;
+
+    img,
+    video,
+    source {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__screenshots {
+    &__screenshot {
+      overflow: hidden;
+      border-radius: $border-radius;
+      box-shadow: $shadow;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
   }
 }

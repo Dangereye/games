@@ -10,7 +10,7 @@ import FormatNumber from "../FormatNumber";
 
 function GameCards({ data, status, title }) {
   const { themeState } = useContext(ThemeContext);
-  const { appState } = useContext(AppContext);
+  const { appState, appDispatch } = useContext(AppContext);
   const validateStatus = useStatus();
   const addGames = useClientFetch();
 
@@ -19,8 +19,14 @@ function GameCards({ data, status, title }) {
   };
 
   useEffect(() => {
+    if (!appState.data.results) {
+      appDispatch({ type: "LOADING" });
+    }
+  });
+
+  useEffect(() => {
     validateStatus(data, status);
-  }, [data]);
+  }, []);
 
   return (
     <section className="section" style={{ color: themeState.text.primary }}>

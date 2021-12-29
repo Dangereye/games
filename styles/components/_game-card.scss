@@ -27,14 +27,12 @@
     align-items: center;
   }
 
-  &__metacritic {
+  .metacritic {
     width: max-content;
     margin-left: auto;
     padding: 4px;
     font-size: 1.6rem;
-    font-weight: 700;
     border: 1px solid transparent;
-    border-radius: 4px;
   }
 
   &__title {
