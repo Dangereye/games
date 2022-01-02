@@ -1,7 +1,15 @@
-import Head from "next/head";
+import { useEffect } from "react";
+import useStatus from "../hooks/useStatus";
 import GameCards from "../components/shared/game_cards/GameCards";
+import Head from "next/head";
 
-function Home({ data, status }) {
+function Home({ initial }) {
+  const validateStatus = useStatus();
+
+  useEffect(() => {
+    validateStatus(initial);
+  }, [initial]);
+
   return (
     <>
       <Head>
@@ -12,7 +20,7 @@ function Home({ data, status }) {
           content="Video game database and discovery service - powered by RAWG.IO"
         />
       </Head>
-      <GameCards data={data} status={status} />
+      <GameCards />
     </>
   );
 }
@@ -29,9 +37,9 @@ export async function getServerSideProps() {
     }
   );
 
-  console.log(`Response status: ${res.status} - ${res.statusText}`);
+  const initial = await res.json();
 
-  const data = await res.json();
-
-  return { props: { data, status: `${res.status} - ${res.statusText}` } };
+  return {
+    props: { initial },
+  };
 }

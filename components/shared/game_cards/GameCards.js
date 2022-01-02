@@ -1,32 +1,20 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import useClientFetch from "../../../hooks/useClientFetch";
-import useStatus from "../../../hooks/useStatus";
 import Button from "../buttons/Button";
 import GameCard from "./GameCard";
 import Loader from "../Loader";
 import FormatNumber from "../FormatNumber";
 
-function GameCards({ data, status, title }) {
+function GameCards({ title }) {
   const { themeState } = useContext(ThemeContext);
-  const { appState, appDispatch } = useContext(AppContext);
-  const validateStatus = useStatus();
+  const { appState } = useContext(AppContext);
   const addGames = useClientFetch();
 
   const fetchMore = () => {
     addGames(appState.data.next);
   };
-
-  useEffect(() => {
-    if (!appState.data.results) {
-      appDispatch({ type: "LOADING" });
-    }
-  });
-
-  useEffect(() => {
-    validateStatus(data, status);
-  }, []);
 
   return (
     <section className="section" style={{ color: themeState.text.primary }}>
@@ -35,9 +23,7 @@ function GameCards({ data, status, title }) {
           <Loader />
         ) : appState.error.isError ? (
           <>
-            <h1 className="page-title">
-              Network error{appState.error.status}.
-            </h1>
+            <h1 className="page-title">Network error.</h1>
             <p>{appState.error.message}.</p>
           </>
         ) : (

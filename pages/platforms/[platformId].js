@@ -1,10 +1,16 @@
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
+import useStatus from "../../hooks/useStatus";
 import Head from "next/head";
 import GameCards from "../../components/shared/game_cards/GameCards";
 
-function GamesList({ data, status }) {
+function GamesList({ initial }) {
   const { appState } = useContext(AppContext);
+  const validateStatus = useStatus();
+
+  useEffect(() => {
+    validateStatus(initial);
+  }, [initial]);
 
   return (
     <>
@@ -14,7 +20,7 @@ function GamesList({ data, status }) {
         <meta name="keywords" content={appState.data.seo_keywords} />
         <meta name="description" content={appState.data.seo_description} />
       </Head>
-      <GameCards data={data} status={status} />
+      <GameCards />
     </>
   );
 }
@@ -31,9 +37,9 @@ export async function getServerSideProps(context) {
     }
   );
 
-  console.log(`Response status: ${res.status} - ${res.statusText}`);
+  const initial = await res.json();
 
-  const data = await res.json();
-
-  return { props: { data, status: `${res.status} - ${res.statusText}` } };
+  return {
+    props: { initial },
+  };
 }

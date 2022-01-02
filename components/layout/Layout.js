@@ -1,14 +1,38 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import Footer from "./Footer";
-import MobileMenu from "./MobileMenu";
+import { useRouter } from "next/router";
+
 import Navbar from "./Navbar";
+import MobileMenu from "./MobileMenu";
 import Sidebar from "./Sidebar";
+import Footer from "./Footer";
 
 function Layout({ children }) {
   const { themeState } = useContext(ThemeContext);
-  const { appState } = useContext(AppContext);
+  const { appState, appDispatch } = useContext(AppContext);
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleStart = () => {
+      console.log("Starting...");
+      appDispatch({ type: "LOADING" });
+    };
+
+    const handleStop = () => {
+      console.log("Finished...");
+    };
+
+    router.events.on("routeChangeStart", handleStart);
+    router.events.on("routeChangeComplete", handleStop);
+    router.events.on("routeChangeError", handleStop);
+
+    return () => {
+      router.events.off("routeChangeStart", handleStart);
+      router.events.off("routeChangeComplete", handleStop);
+      router.events.off("routeChangeError", handleStop);
+    };
+  }, []);
 
   return (
     <div

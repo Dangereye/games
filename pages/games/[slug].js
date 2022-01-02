@@ -11,18 +11,15 @@ import GenresComponent from "../../components/shared/GenresComponent";
 import ESRBRating from "../../components/shared/ESRBRating";
 import MetacriticComponent from "../../components/shared/MetacriticComponent";
 
-function GameDetails({ data, screenshots, trailers }) {
-  const { appState, appDispatch } = useContext(AppContext);
+function GameDetails({ initial, screenshots, trailers }) {
+  const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
   const validateStatus = useStatus();
   const game = appState.data;
-  console.log("Details: ", data);
-  console.log("Screenshots:", screenshots);
-  console.log("Trailers: ", trailers);
 
   useEffect(() => {
-    validateStatus(data);
-  }, [data]);
+    validateStatus(initial);
+  }, [initial]);
 
   return (
     <>
@@ -43,9 +40,7 @@ function GameDetails({ data, screenshots, trailers }) {
             <Loader />
           ) : appState.error.isError ? (
             <>
-              <h1 className="page-title">
-                Network error{appState.error.status}.
-              </h1>
+              <h1 className="page-title">Network error.</h1>
               <p>{appState.error.message}.</p>
             </>
           ) : (
@@ -103,7 +98,10 @@ function GameDetails({ data, screenshots, trailers }) {
                   )}
                   <div className="game-details__screenshots grid grid--multiple mt">
                     {screenshots.results.map((pic) => (
-                      <div className="game-details__screenshots__screenshot">
+                      <div
+                        className="game-details__screenshots__screenshot"
+                        key={pic.id}
+                      >
                         <Image
                           src={pic.image}
                           width={pic.width}
@@ -136,7 +134,7 @@ export async function getServerSideProps(context) {
     headers: { "Content-Type": "application/json" },
   };
 
-  let [data, screenshots, trailers] = await Promise.all([
+  let [initial, screenshots, trailers] = await Promise.all([
     fetch(
       `https://api.rawg.io/api/games/${params.slug}?key=${process.env.API_KEY}`,
       options
@@ -150,13 +148,14 @@ export async function getServerSideProps(context) {
       options
     ),
   ]);
-  data = await data.json();
+
+  initial = await initial.json();
   screenshots = await screenshots.json();
   trailers = await trailers.json();
 
   return {
     props: {
-      data,
+      initial,
       screenshots,
       trailers,
     },

@@ -2,12 +2,12 @@ import { useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
 
 function useStatus() {
-  const { appState, appDispatch } = useContext(AppContext);
-  const validateStatus = (data, status) => {
+  const { appDispatch } = useContext(AppContext);
+  const validateStatus = (data) => {
     if (data.error) {
       appDispatch({
         type: "ERROR",
-        payload: { isError: true, status, message: data.error },
+        payload: { isError: true, message: data.error },
       });
     } else {
       appDispatch({
