@@ -1,8 +1,16 @@
+import { useEffect } from "react";
 import Head from "next/head";
 import GameCards from "../../components/shared/game_cards/GameCards";
+import useStatus from "../../hooks/useStatus";
 
-function SearchDetails({ data, status, slug }) {
-  console.log("Search: ", data);
+function SearchDetails({ initial, slug }) {
+  const validateStatus = useStatus();
+  console.log("Search: ", initial);
+
+  useEffect(() => {
+    validateStatus(initial);
+  }, [initial]);
+
   return (
     <>
       <Head>
@@ -11,11 +19,7 @@ function SearchDetails({ data, status, slug }) {
         <meta name="keywords" content={slug} />
         <meta name="description" content={`Games including ${slug}`} />
       </Head>
-      <GameCards
-        data={data}
-        status={status}
-        title={`Search results for "${slug}".`}
-      />
+      <GameCards title={`Search results for "${slug}".`} />
     </>
   );
 }
@@ -33,15 +37,11 @@ export async function getServerSideProps(context) {
     }
   );
 
-  console.log(`Response status: ${res.status} - ${res.statusText}`);
-  console.log(`Game: ${params.game}`);
-
-  const data = await res.json();
+  const initial = await res.json();
 
   return {
     props: {
-      data,
-      status: `${res.status} - ${res.statusText}`,
+      initial,
       slug: params.slug,
     },
   };
