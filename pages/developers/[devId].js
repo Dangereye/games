@@ -21,7 +21,7 @@ function Developers({ dev, games }) {
         <meta name="keywords" content={appState.data.seo_keywords} />
         <meta name="description" content={appState.data.seo_description} />
       </Head>
-      <GameCards title={`Developed By ${dev.name}`} />
+      <GameCards title={`Games for ${dev.name}`} />
     </>
   );
 }

@@ -11,6 +11,7 @@ import GenresComponent from "../../components/shared/GenresComponent";
 import ESRBRating from "../../components/shared/ESRBRating";
 import MetacriticComponent from "../../components/shared/MetacriticComponent";
 import Link from "next/link";
+import GameDetailsLinkGroup from "../../components/shared/game_details/GameDetailsLinkGroup";
 
 function GameDetails({ initial, screenshots, trailers, achievements }) {
   const { appState } = useContext(AppContext);
@@ -80,39 +81,54 @@ function GameDetails({ initial, screenshots, trailers, achievements }) {
                     <div className="game-details__ratings__group">
                       <MetacriticComponent score={game.metacritic} />
                       <div className="game-details__ratings__group__label">
-                        Metacritic
+                        {game.metacritic ? "Metacritic" : ""}
                       </div>
                     </div>
                   </div>
-                  <div className="game-details__creators grid grid--multiple mt">
-                    <div className="game-details__publishers">
-                      <h3>Publishers</h3>
+                  <div className="grid grid--multiple mt">
+                    <GameDetailsLinkGroup title="Publishers">
                       {game.publishers.map((x) => (
-                        <span key={x.id}>{x.name}</span>
-                      ))}
-                    </div>
-                    <div className="game-details__developers">
-                      <h3>Developers</h3>
-                      {game.developers.map((x) => (
-                        <Link href={`/developers/${x.id}`} key={x.id}>
-                          <a>{x.name}</a>
+                        <Link href={`/publishers/${x.id}`} key={x.id}>
+                          <a className="game-details__links-group__link">
+                            {x.name}
+                          </a>
                         </Link>
                       ))}
-                    </div>
+                    </GameDetailsLinkGroup>
+                    <GameDetailsLinkGroup title="Developers">
+                      {game.developers.map((x) => (
+                        <Link href={`/developers/${x.id}`} key={x.id}>
+                          <a className="game-details__links-group__link">
+                            {x.name}
+                          </a>
+                        </Link>
+                      ))}
+                    </GameDetailsLinkGroup>
                     <div className="game-details__website">
                       <h3>Website</h3>
-                      <a href={game.website} target="_blank" rel="noreferrer">
-                        {game.website}
+                      <a
+                        href={game.website}
+                        className="btn btn--large btn--primary"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Visit
                       </a>
                     </div>
                   </div>
                   <div className="game-details__specs grid grid--multiple mt">
-                    <div className="game-details__platforms">
-                      <h3>Platforms</h3>
+                    <GameDetailsLinkGroup title="Platforms">
                       {game.platforms.map((x) => (
-                        <span key={x.platform.id}>{x.platform.name}</span>
+                        <Link
+                          href={`/platforms/${x.platform.id}`}
+                          key={x.platform.id}
+                        >
+                          <a className="game-details__links-group__link">
+                            {x.platform.name}
+                          </a>
+                        </Link>
                       ))}
-                    </div>
+                    </GameDetailsLinkGroup>
                   </div>
                 </div>
                 <div className="grid--game-details__right">
