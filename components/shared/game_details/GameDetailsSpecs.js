@@ -4,6 +4,13 @@ import Link from "next/link";
 function GameDetailsSpecs({ game }) {
   return (
     <div className="game-details__specs grid grid--multiple mt">
+      <GameDetailsLinkGroup title="Tags">
+        {game.tags.map((x) => (
+          <Link href={`/genres/${x.slug}`} key={`genre-${x.id}`}>
+            <a className="game-details__links-group__link">{x.name}</a>
+          </Link>
+        ))}
+      </GameDetailsLinkGroup>
       <GameDetailsLinkGroup title="Platforms">
         {game.platforms.map((x) => (
           <Link href={`/platforms/${x.platform.id}`} key={x.platform.id}>
