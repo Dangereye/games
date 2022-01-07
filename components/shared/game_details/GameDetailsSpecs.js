@@ -1,31 +1,34 @@
 import GameDetailsLinkGroup from "./GameDetailsLinkGroup";
-import Link from "next/link";
+import GameDetailsLink from "./GameDetailsLink";
 
 function GameDetailsSpecs({ game }) {
   return (
     <div className="game-details__specs grid grid--multiple mt">
       <GameDetailsLinkGroup title="Tags">
         {game.tags.map((x) => (
-          <Link href={`/tags/${x.slug}`} key={`tag-${x.id}`}>
-            <a className="game-details__links-group__link ">{x.name}</a>
-          </Link>
+          <GameDetailsLink
+            href={`/tags/${x.slug}`}
+            key={`tag-${x.id}`}
+            name={x.name}
+          />
         ))}
       </GameDetailsLinkGroup>
       <GameDetailsLinkGroup title="Platforms">
         {game.platforms.map((x) => (
-          <Link
+          <GameDetailsLink
             href={`/platforms/${x.platform.id}`}
             key={`platform-${x.platform.id}`}
-          >
-            <a className="game-details__links-group__link">{x.platform.name}</a>
-          </Link>
+            name={x.platform.name}
+          />
         ))}
       </GameDetailsLinkGroup>
       <GameDetailsLinkGroup title="Genres">
         {game.genres.map((x) => (
-          <Link href={`/genres/${x.slug}`} key={`genre-${x.id}`}>
-            <a className="game-details__links-group__link">{x.name}</a>
-          </Link>
+          <GameDetailsLink
+            href={`/genres/${x.slug}`}
+            key={`genre-${x.id}`}
+            name={x.name}
+          />
         ))}
       </GameDetailsLinkGroup>
     </div>
