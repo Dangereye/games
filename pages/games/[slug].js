@@ -9,6 +9,7 @@ import Link from "next/link";
 import GameDetailsLinkGroup from "../../components/shared/game_details/GameDetailsLinkGroup";
 import GameDetailsInfoBanner from "../../components/shared/game_details/GameDetailsInfoBannner";
 import GameDetailsRatings from "../../components/shared/game_details/GameDetailsRatings";
+import GameDetailsCompanies from "../../components/shared/game_details/GameDetailsCompanies";
 
 function GameDetails({ initial, screenshots, trailers, achievements }) {
   const { appState } = useContext(AppContext);
@@ -59,37 +60,7 @@ function GameDetails({ initial, screenshots, trailers, achievements }) {
                     {game.description_raw}
                   </div>
                   <GameDetailsRatings game={game} />
-                  <div className="grid grid--multiple mt">
-                    <GameDetailsLinkGroup title="Publishers">
-                      {game.publishers.map((x) => (
-                        <Link href={`/publishers/${x.id}`} key={x.id}>
-                          <a className="game-details__links-group__link">
-                            {x.name}
-                          </a>
-                        </Link>
-                      ))}
-                    </GameDetailsLinkGroup>
-                    <GameDetailsLinkGroup title="Developers">
-                      {game.developers.map((x) => (
-                        <Link href={`/developers/${x.id}`} key={x.id}>
-                          <a className="game-details__links-group__link">
-                            {x.name}
-                          </a>
-                        </Link>
-                      ))}
-                    </GameDetailsLinkGroup>
-                    <div className="game-details__website">
-                      <h3>Website</h3>
-                      <a
-                        href={game.website}
-                        className="btn btn--large btn--primary"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Visit
-                      </a>
-                    </div>
-                  </div>
+                  <GameDetailsCompanies game={game} />
                   <div className="game-details__specs grid grid--multiple mt">
                     <GameDetailsLinkGroup title="Platforms">
                       {game.platforms.map((x) => (
