@@ -4,15 +4,11 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import Image from "next/image";
 import useStatus from "../../hooks/useStatus";
 import Loader from "../../components/shared/Loader";
-import ParentPlatforms from "../../components/shared/ParentPlatforms";
 import Head from "next/head";
-import DateComponent from "../../components/shared/DateComponent";
-import GenresComponent from "../../components/shared/GenresComponent";
-import ESRBRating from "../../components/shared/ESRBRating";
-import MetacriticComponent from "../../components/shared/MetacriticComponent";
 import Link from "next/link";
 import GameDetailsLinkGroup from "../../components/shared/game_details/GameDetailsLinkGroup";
 import GameDetailsInfoBanner from "../../components/shared/game_details/GameDetailsInfoBannner";
+import GameDetailsRatings from "../../components/shared/game_details/GameDetailsRatings";
 
 function GameDetails({ initial, screenshots, trailers, achievements }) {
   const { appState } = useContext(AppContext);
@@ -62,20 +58,7 @@ function GameDetails({ initial, screenshots, trailers, achievements }) {
                   >
                     {game.description_raw}
                   </div>
-                  <div className="game-details__ratings">
-                    <div className="game-details__ratings__group">
-                      <ESRBRating esrb={game.esrb_rating} />
-                      <div className="game-details__ratings__group__label">
-                        ESRB
-                      </div>
-                    </div>
-                    <div className="game-details__ratings__group">
-                      <MetacriticComponent score={game.metacritic} />
-                      <div className="game-details__ratings__group__label">
-                        {game.metacritic ? "Metacritic" : ""}
-                      </div>
-                    </div>
-                  </div>
+                  <GameDetailsRatings game={game} />
                   <div className="grid grid--multiple mt">
                     <GameDetailsLinkGroup title="Publishers">
                       {game.publishers.map((x) => (
