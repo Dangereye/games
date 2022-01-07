@@ -4,15 +4,6 @@ import GameDetailsLink from "./GameDetailsLink";
 function GameDetailsSpecs({ game }) {
   return (
     <div className="game-details__specs grid grid--multiple mt">
-      <GameDetailsLinkGroup title="Tags">
-        {game.tags.map((x) => (
-          <GameDetailsLink
-            href={`/tags/${x.slug}`}
-            key={`tag-${x.id}`}
-            name={x.name}
-          />
-        ))}
-      </GameDetailsLinkGroup>
       <GameDetailsLinkGroup title="Platforms">
         {game.platforms.map((x) => (
           <GameDetailsLink
@@ -27,6 +18,15 @@ function GameDetailsSpecs({ game }) {
           <GameDetailsLink
             href={`/genres/${x.slug}`}
             key={`genre-${x.id}`}
+            name={x.name}
+          />
+        ))}
+      </GameDetailsLinkGroup>
+      <GameDetailsLinkGroup title="Tags" styles="s2">
+        {game.tags.map((x) => (
+          <GameDetailsLink
+            href={`/tags/${x.slug}`}
+            key={`tag-${x.id}`}
             name={x.name}
           />
         ))}

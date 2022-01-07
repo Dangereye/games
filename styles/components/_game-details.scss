@@ -87,6 +87,10 @@
   }
 
   &__links-group {
+    &.s2 {
+      grid-column: span 2;
+    }
+
     &__links {
       display: flex;
       flex-wrap: wrap;

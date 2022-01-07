@@ -22,14 +22,9 @@ function GameDetailsCompanies({ game }) {
           />
         ))}
       </GameDetailsLinkGroup>
-      <GameDetailsLinkGroup title="Website">
-        <a
-          href={game.website}
-          className="btn btn--large btn--primary"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Visit
+      <GameDetailsLinkGroup title="Website" styles="s2">
+        <a href={game.website} target="_blank" rel="noreferrer">
+          {game.website}
         </a>
       </GameDetailsLinkGroup>
     </div>
