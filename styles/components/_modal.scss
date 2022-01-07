@@ -10,4 +10,54 @@
   &.active {
     display: block;
   }
+
+  &__navigation {
+    margin-top: 4rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+
+    &__prev,
+    &__next,
+    &__close {
+      display: grid;
+      place-items: center;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      cursor: pointer;
+
+      svg {
+        fill: inherit;
+        stroke: inherit;
+        width: 2rem;
+        height: auto;
+      }
+    }
+
+    &__prev {
+      svg {
+        margin-right: 2px;
+      }
+    }
+    &__next {
+      svg {
+        margin-left: 2px;
+      }
+    }
+
+    &__close {
+      position: absolute;
+      top: 50%;
+      right: 2rem;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__viewbox {
+    width: 80%;
+    max-width: 115rem;
+    margin: 4rem auto;
+  }
 }

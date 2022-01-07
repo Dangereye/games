@@ -2,11 +2,14 @@ import { useContext } from "react";
 import { BsPlayFill } from "react-icons/bs";
 import { AppContext } from "../../../contexts/AppContext";
 
-function GameDetailsTrailer() {
-  const { appState, appDispatch } = useContext(AppContext);
+function GameDetailsTrailer({ trailers }) {
+  const { appDispatch } = useContext(AppContext);
 
   const handleClick = (e) => {
-    console.log(e.target);
+    appDispatch({
+      type: "OPEN_MODAL",
+      payload: { type: "trailers", data: trailers },
+    });
   };
   return (
     <div className="game-details__trailer" onClick={handleClick}>

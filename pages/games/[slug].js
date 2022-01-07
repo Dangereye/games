@@ -53,7 +53,9 @@ function GameDetails({ initial, screenshots, trailers, achievements }) {
                 <div className="grid--game-details__left">
                   <h1 className="display">{game.name}</h1>
                   <GameDetailsInfoBanner game={game} />
-                  {trailers.count > 0 && <GameDetailsTrailer />}
+                  {trailers.count > 0 && (
+                    <GameDetailsTrailer trailers={trailers.results} />
+                  )}
                   <div
                     className="game-details__description"
                     style={{ color: themeState.text.tertiary }}
