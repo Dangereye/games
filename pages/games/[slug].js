@@ -12,6 +12,7 @@ import ESRBRating from "../../components/shared/ESRBRating";
 import MetacriticComponent from "../../components/shared/MetacriticComponent";
 import Link from "next/link";
 import GameDetailsLinkGroup from "../../components/shared/game_details/GameDetailsLinkGroup";
+import GameDetailsInfoBanner from "../../components/shared/game_details/GameDetailsInfoBannner";
 
 function GameDetails({ initial, screenshots, trailers, achievements }) {
   const { appState } = useContext(AppContext);
@@ -54,17 +55,7 @@ function GameDetails({ initial, screenshots, trailers, achievements }) {
               <div className="grid grid--game-details">
                 <div className="grid--game-details__left">
                   <h1 className="display">{game.name}</h1>
-                  <div
-                    className="game-details__info-banner"
-                    style={{
-                      color: themeState.text.secondary,
-                      fill: themeState.text.secondary,
-                    }}
-                  >
-                    <DateComponent date={game.released} fullDate />
-                    <GenresComponent genres={game.genres} />
-                    <ParentPlatforms platforms={game.parent_platforms} />
-                  </div>
+                  <GameDetailsInfoBanner game={game} />
                   <div
                     className="game-details__description"
                     style={{ color: themeState.text.tertiary }}
