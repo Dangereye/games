@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 import MobileMenu from "./MobileMenu";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
+import Modal from "../shared/game_details/Modal";
 
 function Layout({ children }) {
   const { themeState } = useContext(ThemeContext);
@@ -35,35 +36,38 @@ function Layout({ children }) {
   }, []);
 
   return (
-    <div
-      className="layout"
-      style={{
-        backgroundColor: themeState.background.primary,
-      }}
-    >
+    <>
+      <Modal />
       <div
-        className="layout__background"
+        className="layout"
         style={{
-          backgroundImage: appState.data.background_image
-            ? `url(${appState.data.background_image})`
-            : "none",
+          backgroundColor: themeState.background.primary,
         }}
       >
         <div
-          className="layout__background__overlay"
+          className="layout__background"
           style={{
-            background: themeState.background.gradient,
+            backgroundImage: appState.data.background_image
+              ? `url(${appState.data.background_image})`
+              : "none",
           }}
-        ></div>
+        >
+          <div
+            className="layout__background__overlay"
+            style={{
+              background: themeState.background.gradient,
+            }}
+          ></div>
+        </div>
+        <Navbar />
+        <div className="page grid grid--sidebar">
+          <MobileMenu />
+          <Sidebar />
+          {children}
+        </div>
+        <Footer />
       </div>
-      <Navbar />
-      <div className="page grid grid--sidebar">
-        <MobileMenu />
-        <Sidebar />
-        {children}
-      </div>
-      <Footer />
-    </div>
+    </>
   );
 }
 export default Layout;

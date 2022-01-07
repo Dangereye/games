@@ -5,12 +5,11 @@ import Image from "next/image";
 import useStatus from "../../hooks/useStatus";
 import Loader from "../../components/shared/Loader";
 import Head from "next/head";
-import Link from "next/link";
-import GameDetailsLinkGroup from "../../components/shared/game_details/GameDetailsLinkGroup";
 import GameDetailsInfoBanner from "../../components/shared/game_details/GameDetailsInfoBannner";
 import GameDetailsRatings from "../../components/shared/game_details/GameDetailsRatings";
 import GameDetailsCompanies from "../../components/shared/game_details/GameDetailsCompanies";
 import GameDetailsSpecs from "../../components/shared/game_details/GameDetailsSpecs";
+import GameDetailsTrailer from "../../components/shared/game_details/GameDetailsTrailer";
 
 function GameDetails({ initial, screenshots, trailers, achievements }) {
   const { appState } = useContext(AppContext);
@@ -54,6 +53,7 @@ function GameDetails({ initial, screenshots, trailers, achievements }) {
                 <div className="grid--game-details__left">
                   <h1 className="display">{game.name}</h1>
                   <GameDetailsInfoBanner game={game} />
+                  {trailers.count > 0 && <GameDetailsTrailer />}
                   <div
                     className="game-details__description"
                     style={{ color: themeState.text.tertiary }}
@@ -65,21 +65,6 @@ function GameDetails({ initial, screenshots, trailers, achievements }) {
                   <GameDetailsSpecs game={game} />
                 </div>
                 <div className="grid--game-details__right">
-                  {trailers.results.length > 0 && (
-                    <div className="game-details__trailer">
-                      <video
-                        width="100%"
-                        height="auto"
-                        poster={screenshots.results[0].image}
-                        controls
-                      >
-                        <source
-                          src={trailers.results[0].data.max}
-                          type="video/mp4"
-                        />
-                      </video>
-                    </div>
-                  )}
                   <div className="game-details__screenshots grid grid--multiple mt">
                     {screenshots.results.map((pic) => (
                       <div
