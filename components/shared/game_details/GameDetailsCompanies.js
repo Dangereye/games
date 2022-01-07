@@ -1,25 +1,28 @@
 import GameDetailsLinkGroup from "./GameDetailsLinkGroup";
-import Link from "next/link";
+import GameDetailsLink from "./GameDetailsLink";
 
 function GameDetailsCompanies({ game }) {
   return (
     <div className="grid grid--multiple mt">
       <GameDetailsLinkGroup title="Publishers">
         {game.publishers.map((x) => (
-          <Link href={`/publishers/${x.id}`} key={x.id}>
-            <a className="game-details__links-group__link">{x.name}</a>
-          </Link>
+          <GameDetailsLink
+            href={`/publishers/${x.id}`}
+            key={`publisher-${x.id}`}
+            name={x.name}
+          />
         ))}
       </GameDetailsLinkGroup>
       <GameDetailsLinkGroup title="Developers">
         {game.developers.map((x) => (
-          <Link href={`/developers/${x.id}`} key={x.id}>
-            <a className="game-details__links-group__link">{x.name}</a>
-          </Link>
+          <GameDetailsLink
+            href={`/developers/${x.id}`}
+            key={`developer-${x.id}`}
+            name={x.name}
+          />
         ))}
       </GameDetailsLinkGroup>
-      <div className="game-details__website">
-        <h3>Website</h3>
+      <GameDetailsLinkGroup title="Website">
         <a
           href={game.website}
           className="btn btn--large btn--primary"
@@ -28,7 +31,7 @@ function GameDetailsCompanies({ game }) {
         >
           Visit
         </a>
-      </div>
+      </GameDetailsLinkGroup>
     </div>
   );
 }
