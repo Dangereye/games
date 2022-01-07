@@ -10,6 +10,7 @@ import GameDetailsLinkGroup from "../../components/shared/game_details/GameDetai
 import GameDetailsInfoBanner from "../../components/shared/game_details/GameDetailsInfoBannner";
 import GameDetailsRatings from "../../components/shared/game_details/GameDetailsRatings";
 import GameDetailsCompanies from "../../components/shared/game_details/GameDetailsCompanies";
+import GameDetailsSpecs from "../../components/shared/game_details/GameDetailsSpecs";
 
 function GameDetails({ initial, screenshots, trailers, achievements }) {
   const { appState } = useContext(AppContext);
@@ -61,20 +62,7 @@ function GameDetails({ initial, screenshots, trailers, achievements }) {
                   </div>
                   <GameDetailsRatings game={game} />
                   <GameDetailsCompanies game={game} />
-                  <div className="game-details__specs grid grid--multiple mt">
-                    <GameDetailsLinkGroup title="Platforms">
-                      {game.platforms.map((x) => (
-                        <Link
-                          href={`/platforms/${x.platform.id}`}
-                          key={x.platform.id}
-                        >
-                          <a className="game-details__links-group__link">
-                            {x.platform.name}
-                          </a>
-                        </Link>
-                      ))}
-                    </GameDetailsLinkGroup>
-                  </div>
+                  <GameDetailsSpecs game={game} />
                 </div>
                 <div className="grid--game-details__right">
                   {trailers.results.length > 0 && (
