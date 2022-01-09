@@ -5,14 +5,14 @@ import { AppContext } from "../../../contexts/AppContext";
 function GameDetailsTrailer({ trailers }) {
   const { appDispatch } = useContext(AppContext);
 
-  const handleClick = (e) => {
+  const addTrailers = (e) => {
     appDispatch({
       type: "OPEN_MODAL",
       payload: { type: "trailers", data: trailers, index: 0 },
     });
   };
   return (
-    <div className="game-details__trailer" onClick={handleClick}>
+    <div className="game-details__trailer" onClick={addTrailers}>
       <div className="game-details__trailer__icon">
         <BsPlayFill />
       </div>

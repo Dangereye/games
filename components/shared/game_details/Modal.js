@@ -4,6 +4,7 @@ import { MdClose } from "react-icons/md";
 import ModalPrevButton from "./ModalPrevButton";
 import ModalNextButton from "./ModalNextButton";
 import ModalVideo from "./ModalVideo";
+import ModalScreenshots from "./ModalScreenshots";
 function Modal() {
   const { appState, appDispatch } = useContext(AppContext);
   console.log("Modal: ", appState.modal);
@@ -36,6 +37,7 @@ function Modal() {
         <MdClose />
       </div>
       <ModalVideo func={nextItem} />
+      <ModalScreenshots />
     </div>
   );
 }

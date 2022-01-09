@@ -10,6 +10,7 @@ import GameDetailsRatings from "../../components/shared/game_details/GameDetails
 import GameDetailsCompanies from "../../components/shared/game_details/GameDetailsCompanies";
 import GameDetailsSpecs from "../../components/shared/game_details/GameDetailsSpecs";
 import GameDetailsTrailer from "../../components/shared/game_details/GameDetailsTrailer";
+import GameDetailsScreenshots from "../../components/shared/game_details/GameDetailsScreenshots";
 
 function GameDetails({ initial, screenshots, trailers, achievements }) {
   const { appState } = useContext(AppContext);
@@ -67,24 +68,7 @@ function GameDetails({ initial, screenshots, trailers, achievements }) {
                   <GameDetailsSpecs game={game} />
                 </div>
                 <div className="grid--game-details__right">
-                  <div className="game-details__screenshots grid grid--multiple mt">
-                    {screenshots.results.map((pic) => (
-                      <div
-                        className="game-details__screenshots__screenshot"
-                        key={pic.id}
-                      >
-                        <Image
-                          src={pic.image}
-                          width={pic.width}
-                          height={pic.height}
-                          layout="responsive"
-                          alt="Screenshot"
-                          blurDataURL={pic.image}
-                          placeholder="blur"
-                        />
-                      </div>
-                    ))}
-                  </div>
+                  <GameDetailsScreenshots screenshots={screenshots.results} />
                 </div>
               </div>
             </>
