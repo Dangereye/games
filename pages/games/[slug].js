@@ -12,7 +12,7 @@ import GameDetailsSpecs from "../../components/shared/game_details/GameDetailsSp
 import GameDetailsTrailer from "../../components/shared/game_details/GameDetailsTrailer";
 import GameDetailsScreenshots from "../../components/shared/game_details/GameDetailsScreenshots";
 
-function GameDetails({ initial, screenshots, trailers, achievements }) {
+function GameDetails({ initial, screenshots, trailers, series, achievements }) {
   const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
   const validateStatus = useStatus();
@@ -20,6 +20,7 @@ function GameDetails({ initial, screenshots, trailers, achievements }) {
   console.log("Data: ", initial);
   console.log("Screenshots: ", screenshots);
   console.log("Trailers", trailers);
+  console.log("Series", series);
   console.log("Achievements", achievements);
 
   useEffect(() => {
@@ -65,7 +66,7 @@ function GameDetails({ initial, screenshots, trailers, achievements }) {
                   </div>
                   <GameDetailsRatings game={game} />
                   <GameDetailsCompanies game={game} />
-                  <GameDetailsSpecs game={game} />
+                  <GameDetailsSpecs game={game} series={series.results} />
                 </div>
                 <div className="grid--game-details__right">
                   <GameDetailsScreenshots screenshots={screenshots.results} />
@@ -89,28 +90,34 @@ export async function getServerSideProps(context) {
     headers: { "Content-Type": "application/json" },
   };
 
-  let [initial, screenshots, trailers, achievements] = await Promise.all([
-    fetch(
-      `https://api.rawg.io/api/games/${params.slug}?key=${process.env.API_KEY}`,
-      options
-    ),
-    fetch(
-      `https://api.rawg.io/api/games/${params.slug}/screenshots?key=${process.env.API_KEY}`,
-      options
-    ),
-    fetch(
-      `https://api.rawg.io/api/games/${params.slug}/movies?key=${process.env.API_KEY}`,
-      options
-    ),
-    fetch(
-      `https://api.rawg.io/api/games/${params.slug}/achievements?key=${process.env.API_KEY}`,
-      options
-    ),
-  ]);
+  let [initial, screenshots, trailers, series, achievements] =
+    await Promise.all([
+      fetch(
+        `https://api.rawg.io/api/games/${params.slug}?key=${process.env.API_KEY}`,
+        options
+      ),
+      fetch(
+        `https://api.rawg.io/api/games/${params.slug}/screenshots?key=${process.env.API_KEY}`,
+        options
+      ),
+      fetch(
+        `https://api.rawg.io/api/games/${params.slug}/movies?key=${process.env.API_KEY}`,
+        options
+      ),
+      fetch(
+        `https://api.rawg.io/api/games/${params.slug}/game-series?key=${process.env.API_KEY}`,
+        options
+      ),
+      fetch(
+        `https://api.rawg.io/api/games/${params.slug}/achievements?key=${process.env.API_KEY}`,
+        options
+      ),
+    ]);
 
   initial = await initial.json();
   screenshots = await screenshots.json();
   trailers = await trailers.json();
+  series = await series.json();
   achievements = await achievements.json();
 
   return {
@@ -118,6 +125,7 @@ export async function getServerSideProps(context) {
       initial,
       screenshots,
       trailers,
+      series,
       achievements,
     },
   };

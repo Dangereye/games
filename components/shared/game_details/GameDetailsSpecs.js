@@ -1,9 +1,13 @@
 import GameDetailsLinkGroup from "./GameDetailsLinkGroup";
 import GameDetailsLink from "./GameDetailsLink";
+import DateComponent from "../DateComponent";
 
-function GameDetailsSpecs({ game }) {
+function GameDetailsSpecs({ game, series }) {
   return (
     <div className="game-details__specs grid grid--multiple mt">
+      <GameDetailsLinkGroup title="Released">
+        <DateComponent date={game.released} fullDate />
+      </GameDetailsLinkGroup>
       <GameDetailsLinkGroup title="Platforms">
         {game.platforms.map((x) => (
           <GameDetailsLink
@@ -18,6 +22,15 @@ function GameDetailsSpecs({ game }) {
           <GameDetailsLink
             href={`/genres/${x.slug}`}
             key={`genre-${x.id}`}
+            name={x.name}
+          />
+        ))}
+      </GameDetailsLinkGroup>
+      <GameDetailsLinkGroup title="Game Series" styles="s2">
+        {series.map((x) => (
+          <GameDetailsLink
+            href={`/games/${x.slug}`}
+            key={`game-${x.id}`}
             name={x.name}
           />
         ))}
