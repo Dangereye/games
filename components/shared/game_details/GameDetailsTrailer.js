@@ -8,7 +8,7 @@ function GameDetailsTrailer({ trailers }) {
   const handleClick = (e) => {
     appDispatch({
       type: "OPEN_MODAL",
-      payload: { type: "trailers", data: trailers },
+      payload: { type: "trailers", data: trailers, index: 0 },
     });
   };
   return (

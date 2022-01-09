@@ -21,12 +21,18 @@ const AppReducer = (state, action) => {
           isOpen: true,
           type: action.payload.type,
           data: action.payload.data,
+          index: action.payload.index,
         },
       };
     case "CLOSE_MODAL":
       return {
         ...state,
-        modal: { ...state.modal, isOpen: false },
+        modal: { ...state.modal, isOpen: false, type: "", data: [], index: 0 },
+      };
+    case "MODAL_INDEX":
+      return {
+        ...state,
+        modal: { ...state.modal, index: action.payload },
       };
     case "LOADING":
       return {
@@ -66,7 +72,7 @@ const AppReducer = (state, action) => {
 function AppComponent({ children }) {
   const [appState, appDispatch] = useReducer(AppReducer, {
     mobileMenu_isOpen: false,
-    modal: { isOpen: false, type: "", data: [] },
+    modal: { isOpen: false, type: "", data: [], index: 0 },
     isLoading: true,
     isLoadingMore: false,
     error: { isError: false, status: "", message: "" },

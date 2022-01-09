@@ -1,60 +1,41 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
-import { ThemeContext } from "../../../contexts/ThemeContext";
-import { GrPrevious, GrNext, GrClose } from "react-icons/gr";
-
+import { MdClose } from "react-icons/md";
+import ModalPrevButton from "./ModalPrevButton";
+import ModalNextButton from "./ModalNextButton";
+import ModalVideo from "./ModalVideo";
 function Modal() {
   const { appState, appDispatch } = useContext(AppContext);
-  const { themeState } = useContext(ThemeContext);
-  const [active, setActive] = useState(0);
   console.log("Modal: ", appState.modal);
 
   const closeModal = () => {
     appDispatch({ type: "CLOSE_MODAL" });
   };
+
+  const prevItem = (index) => {
+    if (index > 0) {
+      appDispatch({ type: "MODAL_INDEX", payload: index - 1 });
+    }
+  };
+
+  const nextItem = (index) => {
+    if (index < appState.modal.data.length - 1) {
+      appDispatch({ type: "MODAL_INDEX", payload: index + 1 });
+    }
+  };
+
+  const changeItem = (index) => {
+    appDispatch({ type: "MODAL_INDEX", payload: index });
+  };
+
   return (
-    <div
-      className={appState.modal.isOpen ? "modal active" : "modal"}
-      style={{ backgroundColor: themeState.background.primary }}
-    >
-      <div className="modal__navigation">
-        <div
-          className="modal__navigation__prev"
-          style={{
-            backgroundColor: themeState.background.secondary,
-          }}
-        >
-          <GrPrevious />
-        </div>
-        <div
-          className="modal__navigation__next"
-          style={{
-            backgroundColor: themeState.background.secondary,
-          }}
-        >
-          <GrNext />
-        </div>
-        <div
-          className="modal__navigation__close"
-          style={{
-            backgroundColor: themeState.background.secondary,
-          }}
-          onClick={closeModal}
-        >
-          <GrClose />
-        </div>
+    <div className={appState.modal.isOpen ? "modal active" : "modal"}>
+      <ModalPrevButton func={prevItem} />
+      <ModalNextButton func={nextItem} />
+      <div className="modal__close" onClick={closeModal}>
+        <MdClose />
       </div>
-      {appState.modal.isOpen && (
-        <div className="modal__viewbox">
-          <video width="100%" height="auto" controls autoPlay>
-            <source
-              src={appState.modal.data[active].data.max}
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      )}
+      <ModalVideo func={nextItem} />
     </div>
   );
 }

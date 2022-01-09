@@ -1,6 +1,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["media.rawg.io"],
+    domains: ["media.rawg.io", "steamcdn-a.akamaihd.net"],
   },
 };

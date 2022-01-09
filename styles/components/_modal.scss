@@ -4,60 +4,141 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 101;
+  background-color: #000;
+  z-index: 200;
   display: none;
 
-  &.active {
-    display: block;
+  @mixin modal-button {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    z-index: 300;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    backdrop-filter: blur(4px);
+    transition: background-color $time;
+
+    svg {
+      fill: #fff;
+      stroke: #fff;
+      width: 2rem;
+      height: auto;
+      transition: fill $time, stroke $time;
+    }
+
+    &:hover {
+      background-color: #fff;
+
+      svg {
+        fill: #000;
+        stroke: #000;
+      }
+    }
   }
 
-  &__navigation {
-    margin-top: 4rem;
-    position: relative;
+  &.active {
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 2rem;
+  }
 
-    &__prev,
-    &__next,
-    &__close {
-      display: grid;
-      place-items: center;
-      width: 4rem;
-      height: 4rem;
-      border-radius: 50%;
-      cursor: pointer;
+  &__title {
+    width: 100%;
+    padding: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 1.618;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0)
+    );
+    z-index: 250;
 
+    > :nth-child(1) {
+      color: #fff;
+    }
+    > :nth-child(2) {
+      color: rgb(170, 170, 170);
+    }
+  }
+
+  &__close {
+    @include modal-button;
+    top: 2rem;
+    right: 2rem;
+
+    &:hover {
+      background-color: red;
       svg {
-        fill: inherit;
-        stroke: inherit;
-        width: 2rem;
-        height: auto;
+        fill: #fff;
+        stroke: #fff;
       }
     }
 
-    &__prev {
-      svg {
-        margin-right: 2px;
-      }
+    @media (max-width: $mobile) {
+      top: unset;
+      right: unset;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
     }
-    &__next {
-      svg {
-        margin-left: 2px;
-      }
+  }
+
+  &__prev,
+  &__next {
+    transform: translateY(-50%);
+  }
+
+  &__prev {
+    @include modal-button;
+    top: 50%;
+    left: 2rem;
+
+    svg {
+      margin-left: 5px;
+    }
+    @media (max-width: $mobile) {
+      transform: translateY(0);
+      top: unset;
+      bottom: 2rem;
+    }
+  }
+
+  &__next {
+    @include modal-button;
+    top: 50%;
+    right: 2rem;
+
+    svg {
+      margin-left: 3px;
     }
 
-    &__close {
-      position: absolute;
-      top: 50%;
-      right: 2rem;
-      transform: translateY(-50%);
+    @media (max-width: $mobile) {
+      transform: translateY(0);
+      top: unset;
+      bottom: 2rem;
     }
   }
 
   &__viewbox {
-    width: 80%;
-    max-width: 115rem;
-    margin: 4rem auto;
+    position: relative;
+    width: 100vw;
+    height: auto;
+    max-width: 120rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (max-height: 420px) {
+    video {
+      width: 65vw;
+    }
   }
 }
