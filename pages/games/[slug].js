@@ -1,18 +1,24 @@
 import { useEffect, useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import Image from "next/image";
 import useStatus from "../../hooks/useStatus";
 import Loader from "../../components/shared/Loader";
 import Head from "next/head";
 import GameDetailsInfoBanner from "../../components/shared/game_details/GameDetailsInfoBannner";
 import GameDetailsRatings from "../../components/shared/game_details/GameDetailsRatings";
-import GameDetailsCompanies from "../../components/shared/game_details/GameDetailsCompanies";
 import GameDetailsSpecs from "../../components/shared/game_details/GameDetailsSpecs";
+import GameDetailsAdditional from "../../components/shared/game_details/GameDetailsAdditional";
 import GameDetailsTrailer from "../../components/shared/game_details/GameDetailsTrailer";
 import GameDetailsScreenshots from "../../components/shared/game_details/GameDetailsScreenshots";
 
-function GameDetails({ initial, screenshots, trailers, series, achievements }) {
+function GameDetails({
+  initial,
+  screenshots,
+  trailers,
+  series,
+  achievements,
+  stores,
+}) {
   const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
   const validateStatus = useStatus();
@@ -22,6 +28,7 @@ function GameDetails({ initial, screenshots, trailers, series, achievements }) {
   console.log("Trailers", trailers);
   console.log("Series", series);
   console.log("Achievements", achievements);
+  console.log("Stores", stores);
 
   useEffect(() => {
     validateStatus(initial);
@@ -63,11 +70,11 @@ function GameDetails({ initial, screenshots, trailers, series, achievements }) {
                     {game.description_raw}
                   </div>
                   <GameDetailsRatings game={game} />
-                  <GameDetailsCompanies game={game} />
-                  <GameDetailsSpecs game={game} series={series.results} />
+                  <GameDetailsSpecs game={game} />
                 </div>
                 <div className="grid--game-details__right">
                   <GameDetailsScreenshots screenshots={screenshots.results} />
+                  <GameDetailsAdditional game={game} series={series.results} />
                 </div>
               </div>
             </>
@@ -88,7 +95,7 @@ export async function getServerSideProps(context) {
     headers: { "Content-Type": "application/json" },
   };
 
-  let [initial, screenshots, trailers, series, achievements] =
+  let [initial, screenshots, trailers, series, achievements, stores] =
     await Promise.all([
       fetch(
         `https://api.rawg.io/api/games/${params.slug}?key=${process.env.API_KEY}`,
@@ -110,6 +117,10 @@ export async function getServerSideProps(context) {
         `https://api.rawg.io/api/games/${params.slug}/achievements?key=${process.env.API_KEY}`,
         options
       ),
+      fetch(
+        `https://api.rawg.io/api/games/${params.slug}/stores?key=${process.env.API_KEY}`,
+        options
+      ),
     ]);
 
   initial = await initial.json();
@@ -117,6 +128,7 @@ export async function getServerSideProps(context) {
   trailers = await trailers.json();
   series = await series.json();
   achievements = await achievements.json();
+  stores = await stores.json();
 
   return {
     props: {
@@ -125,6 +137,7 @@ export async function getServerSideProps(context) {
       trailers,
       series,
       achievements,
+      stores,
     },
   };
 }

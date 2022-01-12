@@ -29,8 +29,18 @@
     grid-template-columns: 2fr 1fr;
     column-gap: 4rem;
 
-    @media (max-width: 1299px) {
+    @media (max-width: 1636px) {
       grid-template-columns: 1fr;
+    }
+  }
+
+  &--game-specs {
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 4rem;
+
+    @media (max-width: 400px) {
+      grid-template-columns: 1fr;
+      column-gap: 2rem;
     }
   }
 }

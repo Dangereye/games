@@ -2,9 +2,9 @@ import GameDetailsLinkGroup from "./GameDetailsLinkGroup";
 import GameDetailsLink from "./GameDetailsLink";
 import DateComponent from "../DateComponent";
 
-function GameDetailsSpecs({ game, series }) {
+function GameDetailsSpecs({ game }) {
   return (
-    <div className="game-details__specs grid grid--multiple mt">
+    <div className="grid grid--game-specs mt">
       <GameDetailsLinkGroup title="Released">
         <DateComponent date={game.released} fullDate />
       </GameDetailsLinkGroup>
@@ -17,7 +17,7 @@ function GameDetailsSpecs({ game, series }) {
           />
         ))}
       </GameDetailsLinkGroup>
-      <GameDetailsLinkGroup title="Platforms">
+      <GameDetailsLinkGroup title="Platforms" styles="s2">
         {game.platforms.map((x) => (
           <GameDetailsLink
             href={`/platforms/${x.platform.id}`}
@@ -26,23 +26,28 @@ function GameDetailsSpecs({ game, series }) {
           />
         ))}
       </GameDetailsLinkGroup>
-      <GameDetailsLinkGroup title="Game Series" styles="s2">
-        {series.map((x) => (
+      <GameDetailsLinkGroup title="Publishers">
+        {game.publishers.map((x) => (
           <GameDetailsLink
-            href={`/games/${x.slug}`}
-            key={`game-${x.id}`}
+            href={`/publishers/${x.id}`}
+            key={`publisher-${x.id}`}
             name={x.name}
           />
         ))}
       </GameDetailsLinkGroup>
-      <GameDetailsLinkGroup title="Tags" styles="s2">
-        {game.tags.map((x) => (
+      <GameDetailsLinkGroup title="Developers">
+        {game.developers.map((x) => (
           <GameDetailsLink
-            href={`/tags/${x.slug}`}
-            key={`tag-${x.id}`}
+            href={`/developers/${x.id}`}
+            key={`developer-${x.id}`}
             name={x.name}
           />
         ))}
+      </GameDetailsLinkGroup>
+      <GameDetailsLinkGroup title="Website" styles="s2">
+        <a href={game.website} target="_blank" rel="noreferrer">
+          {game.website}
+        </a>
       </GameDetailsLinkGroup>
     </div>
   );

@@ -51,7 +51,7 @@
   }
 
   &__ratings {
-    margin: 4rem 0;
+    margin-top: 4rem;
     display: flex;
     align-items: center;
     gap: 4rem;
@@ -99,6 +99,10 @@
   &__links-group {
     &.s2 {
       grid-column: span 2;
+
+      @media (max-width: $mobile) {
+        grid-column: span 1;
+      }
     }
 
     &__links {
