@@ -1,5 +1,6 @@
 import GameDetailsLinkGroup from "./GameDetailsLinkGroup";
 import GameDetailsLink from "./GameDetailsLink";
+import DateComponent from "../DateComponent";
 
 function GameDetailsCompanies({ game }) {
   return (

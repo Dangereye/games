@@ -8,21 +8,21 @@ function GameDetailsSpecs({ game, series }) {
       <GameDetailsLinkGroup title="Released">
         <DateComponent date={game.released} fullDate />
       </GameDetailsLinkGroup>
-      <GameDetailsLinkGroup title="Platforms">
-        {game.platforms.map((x) => (
-          <GameDetailsLink
-            href={`/platforms/${x.platform.id}`}
-            key={`platform-${x.platform.id}`}
-            name={x.platform.name}
-          />
-        ))}
-      </GameDetailsLinkGroup>
       <GameDetailsLinkGroup title="Genres">
         {game.genres.map((x) => (
           <GameDetailsLink
             href={`/genres/${x.slug}`}
             key={`genre-${x.id}`}
             name={x.name}
+          />
+        ))}
+      </GameDetailsLinkGroup>
+      <GameDetailsLinkGroup title="Platforms">
+        {game.platforms.map((x) => (
+          <GameDetailsLink
+            href={`/platforms/${x.platform.id}`}
+            key={`platform-${x.platform.id}`}
+            name={x.platform.name}
           />
         ))}
       </GameDetailsLinkGroup>
