@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import { ThemeContext } from "../../../contexts/ThemeContext";
+import { useRouter } from "next/router";
 import useClientFetch from "../../../hooks/useClientFetch";
+import filters from "../../../data/FilterData";
 import Button from "../buttons/Button";
 import GameCard from "./GameCard";
 import Loader from "../Loader";
@@ -11,9 +13,14 @@ function GameCards({ title }) {
   const { themeState } = useContext(ThemeContext);
   const { appState } = useContext(AppContext);
   const addGames = useClientFetch();
+  const router = useRouter();
 
   const fetchMore = () => {
     addGames(appState.data.next);
+  };
+
+  const updateFilter = (query, value) => {
+    router.push(`${router.pathname}?${query}=${value}`);
   };
 
   return (
@@ -34,6 +41,21 @@ function GameCards({ title }) {
             <p className="page-results">
               Found <FormatNumber num={appState.data.count} /> results.
             </p>
+            <div className="filters">
+              <div className="filter-menu">
+                order by {appState.filters.order_by.value}
+                <div className="filter-menu__options">
+                  {filters.order_by.values.map((x) => (
+                    <div
+                      className="filter-menu__option"
+                      onClick={() => updateFilter("ordering", x.value)}
+                    >
+                      {x.title}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
             <div className="grid grid--multiple mt">
               {appState.data.results.map((game) => (
                 <GameCard game={game} key={game.id} />

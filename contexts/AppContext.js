@@ -77,6 +77,12 @@ function AppComponent({ children }) {
     isLoadingMore: false,
     error: { isError: false, status: "", message: "" },
     data: [],
+    filters: {
+      order_by: {
+        active: true,
+        value: "name",
+      },
+    },
   });
 
   return (
