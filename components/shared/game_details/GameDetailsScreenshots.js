@@ -11,7 +11,7 @@ function GameDetailsScreenshots({ screenshots }) {
   };
   return (
     <>
-      {screenshots.length && (
+      {screenshots.length ? (
         <div className="game-details__screenshots grid grid--multiple mt">
           {screenshots.map((pic, index) => (
             <div className="game-details__screenshots__screenshot" key={pic.id}>
@@ -28,7 +28,7 @@ function GameDetailsScreenshots({ screenshots }) {
             </div>
           ))}
         </div>
-      )}
+      ) : null}
     </>
   );
 }

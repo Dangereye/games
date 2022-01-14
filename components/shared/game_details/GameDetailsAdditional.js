@@ -5,7 +5,7 @@ import DateComponent from "../DateComponent";
 function GameDetailsAdditional({ game, series }) {
   return (
     <div className="game-details__specs grid grid--game-specs mt">
-      <GameDetailsLinkGroup title="Game Series" styles="s2">
+      <GameDetailsLinkGroup title="Games Series" styles="s2">
         {series.map((x) => (
           <GameDetailsLink
             href={`/games/${x.slug}`}

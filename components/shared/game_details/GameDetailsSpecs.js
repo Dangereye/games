@@ -26,7 +26,7 @@ function GameDetailsSpecs({ game }) {
           />
         ))}
       </GameDetailsLinkGroup>
-      <GameDetailsLinkGroup title="Publishers">
+      <GameDetailsLinkGroup title="Publishers" styles="s2">
         {game.publishers.map((x) => (
           <GameDetailsLink
             href={`/publishers/${x.id}`}
@@ -35,7 +35,7 @@ function GameDetailsSpecs({ game }) {
           />
         ))}
       </GameDetailsLinkGroup>
-      <GameDetailsLinkGroup title="Developers">
+      <GameDetailsLinkGroup title="Developers" styles="s2">
         {game.developers.map((x) => (
           <GameDetailsLink
             href={`/developers/${x.id}`}
