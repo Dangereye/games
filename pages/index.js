@@ -31,14 +31,13 @@ export async function getServerSideProps(context) {
   const { query } = context;
   const ordering = query.ordering ? `&ordering=${query.ordering}` : "";
   const res = await fetch(
-    `https://api.rawg.io/api/games/lists/main?key=${process.env.API_KEY}&page_size=40${ordering}`,
+    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=40${ordering}`,
     {
       method: "GET",
       mode: "no-cors",
       headers: { "Content-Type": "application/json" },
     }
   );
-  console.log(res.url);
   const initial = await res.json();
 
   return {

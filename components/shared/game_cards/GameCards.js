@@ -20,7 +20,8 @@ function GameCards({ title }) {
   };
 
   const updateFilter = (query, value) => {
-    router.push(`${router.pathname}?${query}=${value}`);
+    const { asPath } = router;
+    router.push(`${asPath.split("?")[0]}?${query}=${value}`);
   };
 
   return (
