@@ -3,15 +3,21 @@ import { AppContext } from "../../contexts/AppContext";
 import Head from "next/head";
 import useStatus from "../../hooks/useStatus";
 import GameCards from "../../components/shared/game_cards/GameCards";
+import useFilters from "../../hooks/useFilters";
 function Publishers({ pub, games }) {
   const { appState } = useContext(AppContext);
   const validateStatus = useStatus();
+  const { handleFilters, asPath, filter } = useFilters();
   console.log("Publisher: ", pub);
   console.log("Games: ", games);
 
   useEffect(() => {
     validateStatus(games);
   }, [games]);
+
+  useEffect(() => {
+    handleFilters();
+  }, [asPath, filter]);
 
   return (
     <>
@@ -29,7 +35,8 @@ function Publishers({ pub, games }) {
 export default Publishers;
 
 export async function getServerSideProps(context) {
-  const { params } = context;
+  const { params, query } = context;
+  const ordering = query.ordering ? `&ordering=${query.ordering}` : "";
   const options = {
     method: "GET",
     mode: "no-cors",
@@ -42,7 +49,7 @@ export async function getServerSideProps(context) {
       options
     ),
     fetch(
-      `https://api.rawg.io/api/games?publishers=${params.pubId}&key=${process.env.API_KEY}`,
+      `https://api.rawg.io/api/games?publishers=${params.pubId}&key=${process.env.API_KEY}${ordering}`,
       options
     ),
   ]);
