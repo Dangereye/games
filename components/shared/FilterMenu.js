@@ -33,6 +33,7 @@ function FilterMenu({ title, values, dispatch, query }) {
         </div>
         {values.map((x) => (
           <div
+            key={`filter-${x.name}`}
             className="filter-menu__option"
             onClick={() => activateFilter(dispatch, query, x.name, x.value)}
           >

@@ -10,7 +10,6 @@ function ESRBRating({ esrb }) {
           height="100"
         />
       </div>
-      {/* <div className="esrb-rating__title">{esrb ? esrb.name : "Pending"}</div> */}
     </div>
   );
 }
