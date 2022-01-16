@@ -17,13 +17,15 @@ function Sidebar() {
 
   return (
     <aside className="sidebar" style={{ color: themeState.text.primary }}>
-      <ToggleButton
-        name="Dark Mode"
-        option={themeState.dark_mode}
-        func={toggleDM}
-      />
-      <MenuGroup title="Browse" data={BrowseData} />
-      <MenuGroup title="Platforms" data={PlatformData} />
+      <div className="sidebar__menu">
+        <ToggleButton
+          name="Dark Mode"
+          option={themeState.dark_mode}
+          func={toggleDM}
+        />
+        <MenuGroup title="Browse" data={BrowseData} />
+        <MenuGroup title="Platforms" data={PlatformData} />
+      </div>
     </aside>
   );
 }

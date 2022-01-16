@@ -1,10 +1,20 @@
 .sidebar {
-  position: sticky;
-  top: 12rem;
+  position: relative;
+  &__menu {
+    width: 20rem;
+    height: max-content;
+    max-height: 80vh;
+    position: fixed;
+    top: $page-top-padding;
+    left: $page-hoz-padding;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
 
-  display: flex;
-  flex-direction: column;
-  height: max-content;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 
   @media (max-width: $mobile) {
     display: none;
