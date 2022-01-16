@@ -1,15 +1,12 @@
-import { useEffect, useContext } from "react";
-import { AppContext } from "../contexts/AppContext";
+import { useEffect } from "react";
 import useStatus from "../hooks/useStatus";
 import useFilters from "../hooks/useFilters";
 import Head from "next/head";
 import GameCards from "../components/shared/game_cards/GameCards";
 
 function Home({ initial }) {
-  const { appState } = useContext(AppContext);
   const validateStatus = useStatus();
-  const handleFilters = useFilters();
-  console.log(appState.filters);
+  const { handleFilters, asPath, filter } = useFilters();
 
   useEffect(() => {
     validateStatus(initial);
@@ -17,7 +14,7 @@ function Home({ initial }) {
 
   useEffect(() => {
     handleFilters();
-  }, [appState.filters]);
+  }, [asPath, filter]);
 
   return (
     <>

@@ -1,16 +1,22 @@
 import { useEffect, useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import useStatus from "../../hooks/useStatus";
+import useFilters from "../../hooks/useFilters";
 import Head from "next/head";
 import GameCards from "../../components/shared/game_cards/GameCards";
 
 function GamesList({ initial }) {
   const { appState } = useContext(AppContext);
   const validateStatus = useStatus();
+  const { handleFilters, asPath, filter } = useFilters();
 
   useEffect(() => {
     validateStatus(initial);
   }, [initial]);
+
+  useEffect(() => {
+    handleFilters();
+  }, [asPath, filter]);
 
   return (
     <>
