@@ -1,27 +1,21 @@
 import { useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import { ThemeContext } from "../../../contexts/ThemeContext";
-import { useRouter } from "next/router";
 import useClientFetch from "../../../hooks/useClientFetch";
 import filters from "../../../data/FilterData";
 import Button from "../buttons/Button";
 import GameCard from "./GameCard";
 import Loader from "../Loader";
 import FormatNumber from "../FormatNumber";
+import FilterMenu from "../FilterMenu";
 
 function GameCards({ title }) {
   const { themeState } = useContext(ThemeContext);
   const { appState } = useContext(AppContext);
   const addGames = useClientFetch();
-  const router = useRouter();
 
   const fetchMore = () => {
     addGames(appState.data.next);
-  };
-
-  const updateFilter = (query, value) => {
-    const { asPath } = router;
-    router.push(`${asPath.split("?")[0]}?${query}=${value}`);
   };
 
   return (
@@ -43,19 +37,12 @@ function GameCards({ title }) {
               Found <FormatNumber num={appState.data.count} /> results.
             </p>
             <div className="filters">
-              <div className="filter-menu">
-                order by {appState.filters.order_by.value}
-                <div className="filter-menu__options">
-                  {filters.order_by.values.map((x) => (
-                    <div
-                      className="filter-menu__option"
-                      onClick={() => updateFilter("ordering", x.value)}
-                    >
-                      {x.title}
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <FilterMenu
+                title={`Order by ${appState.filters.ordering.name}`}
+                values={filters.ordering_values}
+                dispatch="ORDERING"
+                query="ordering"
+              />
             </div>
             <div className="grid grid--multiple mt">
               {appState.data.results.map((game) => (

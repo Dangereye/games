@@ -64,6 +64,18 @@ const AppReducer = (state, action) => {
           next: action.payload.next,
         },
       };
+    case "ORDERING":
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          ordering: {
+            query: action.payload.query,
+            name: action.payload.name,
+            value: action.payload.value,
+          },
+        },
+      };
     default:
       return;
   }
@@ -78,9 +90,10 @@ function AppComponent({ children }) {
     error: { isError: false, status: "", message: "" },
     data: [],
     filters: {
-      order_by: {
-        active: true,
-        value: "name",
+      ordering: {
+        query: "",
+        name: "Relevance",
+        value: "",
       },
     },
   });
