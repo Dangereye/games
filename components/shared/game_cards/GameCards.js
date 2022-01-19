@@ -7,7 +7,7 @@ import Button from "../buttons/Button";
 import GameCard from "./GameCard";
 import Loader from "../Loader";
 import FormatNumber from "../FormatNumber";
-import FilterMenu from "../FilterMenu";
+import FilterMenu from "./FilterMenu";
 
 function GameCards({ title }) {
   const { themeState } = useContext(ThemeContext);
@@ -38,7 +38,8 @@ function GameCards({ title }) {
             </p>
             <div className="filters">
               <FilterMenu
-                title={`Order by ${appState.filters.ordering.name}`}
+                title={"Order by:"}
+                activeFilter={appState.filters.ordering.name}
                 values={filters.ordering_values}
                 dispatch="ORDERING"
                 query="ordering"

@@ -5,8 +5,24 @@
     width: max-content;
     padding: 1rem 2rem;
     border-radius: $border-radius;
+    font-size: 1.5rem;
 
     &__active-element {
+      display: flex;
+      align-items: center;
+      font-weight: 300;
+      font-style: italic;
+
+      span:first-child {
+        margin-left: 5px;
+        font-weight: 600;
+        font-style: normal;
+      }
+
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
     }
 
     &__options {
@@ -14,28 +30,39 @@
       overflow-y: scroll;
       width: 100%;
       height: min-content;
-      max-height: 21rem;
+      max-height: 25rem;
       position: absolute;
       top: 0;
       left: 0;
       border-radius: $border-radius;
       box-shadow: $shadow;
       z-index: 100;
-      display: none;
+      user-select: none;
+      pointer-events: none;
+      opacity: 0;
+
+      transition: opacity $time;
 
       &.active {
-        display: block;
+        user-select: initial;
+        pointer-events: initial;
+        opacity: 1;
       }
 
       &::-webkit-scrollbar {
         display: none;
       }
     }
+
     &__option-title {
-      padding: 1rem 2rem;
+      font-style: italic;
+      font-weight: 300;
+      padding: 1.5rem 2rem;
     }
+
     &__option {
-      padding: 1rem 2rem;
+      font-weight: 500;
+      padding: 1.5rem 2rem;
       &:hover {
         background-color: rgba(0, 0, 0, 0.1);
       }

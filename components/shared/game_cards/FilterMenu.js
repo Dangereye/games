@@ -1,8 +1,9 @@
 import { useState, useContext } from "react";
-import { AppContext } from "../../contexts/AppContext";
-import { ThemeContext } from "../../contexts/ThemeContext";
+import { AppContext } from "../../../contexts/AppContext";
+import { ThemeContext } from "../../../contexts/ThemeContext";
+import { RiArrowDropDownLine } from "react-icons/ri";
 
-function FilterMenu({ title, values, dispatch, query }) {
+function FilterMenu({ title, activeFilter, values, dispatch, query }) {
   const [isActive, setIsActive] = useState(false);
   const { appDispatch } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
@@ -29,7 +30,13 @@ function FilterMenu({ title, values, dispatch, query }) {
       onClick={openFilter}
       onBlur={closeFilter}
     >
-      <div className="filter-menu__active-element">{title}</div>
+      <div className="filter-menu__active-element">
+        {title}
+        <span>{activeFilter}</span>
+        <span>
+          <RiArrowDropDownLine />
+        </span>
+      </div>
       <div
         className={
           isActive ? "filter-menu__options active" : "filter-menu__options"
