@@ -7,16 +7,27 @@ function FilterMenu({ title, values, dispatch, query }) {
   const { appDispatch } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
 
+  const openFilter = (e) => {
+    e.target.focus();
+    setIsActive(true);
+  };
+
   const activateFilter = (dispatch, query, name, value) => {
     appDispatch({ type: dispatch, payload: { query, name, value } });
     setIsActive(false);
   };
 
+  const closeFilter = () => {
+    setIsActive(false);
+  };
+
   return (
     <div
+      tabIndex="-1"
       className="filter-menu"
       style={{ backgroundColor: themeState.background.secondary }}
-      onClick={() => setIsActive(!isActive)}
+      onClick={openFilter}
+      onBlur={closeFilter}
     >
       <div className="filter-menu__active-element">{title}</div>
       <div
