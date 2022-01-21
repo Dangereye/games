@@ -1,4 +1,4 @@
-const filters = {
+const filterData = {
   ordering_values: [
     { name: "Relevance", value: "" },
     { name: "Name", value: "name" },
@@ -7,4 +7,4 @@ const filters = {
   ],
 };
 
-export default filters;
+export default filterData;

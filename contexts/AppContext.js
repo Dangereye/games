@@ -64,13 +64,27 @@ const AppReducer = (state, action) => {
           next: action.payload.next,
         },
       };
-    case "ORDERING":
+    case "FILTERS_ORDERING":
       return {
         ...state,
         filters: {
           ...state.filters,
+          active: true,
           ordering: {
-            query: action.payload.query,
+            query: "ordering",
+            name: action.payload.name,
+            value: action.payload.value,
+          },
+        },
+      };
+    case "FILTERS_DATES":
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          active: true,
+          dates: {
+            query: "dates",
             name: action.payload.name,
             value: action.payload.value,
           },
@@ -90,9 +104,15 @@ function AppComponent({ children }) {
     error: { isError: false, status: "", message: "" },
     data: [],
     filters: {
+      active: false,
       ordering: {
-        query: "",
+        query: "ordering",
         name: "Relevance",
+        value: "",
+      },
+      dates: {
+        query: "dates",
+        name: "All",
         value: "",
       },
     },

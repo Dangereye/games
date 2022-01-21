@@ -7,6 +7,7 @@ import GameCards from "../components/shared/game_cards/GameCards";
 function Home({ initial }) {
   const validateStatus = useStatus();
   const { handleFilters, asPath, filter } = useFilters();
+  console.log("Index Data: ", initial);
 
   useEffect(() => {
     validateStatus(initial);
@@ -26,7 +27,7 @@ function Home({ initial }) {
           content="Video game database and discovery service - powered by RAWG.IO"
         />
       </Head>
-      <GameCards />
+      <GameCards years={initial.filters ? initial.filters.years : []} />
     </>
   );
 }
@@ -36,8 +37,9 @@ export default Home;
 export async function getServerSideProps(context) {
   const { query } = context;
   const ordering = query.ordering ? `&ordering=${query.ordering}` : "";
+  const dates = query.dates ? `&dates=${query.dates}` : "";
   const res = await fetch(
-    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=40${ordering}`,
+    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=40${ordering}${dates}`,
     {
       method: "GET",
       mode: "no-cors",
@@ -45,6 +47,7 @@ export async function getServerSideProps(context) {
     }
   );
   const initial = await res.json();
+  console.log("URL: ", res.url);
 
   return {
     props: { initial },

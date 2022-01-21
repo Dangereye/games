@@ -2,20 +2,33 @@ import { useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import useClientFetch from "../../../hooks/useClientFetch";
-import filters from "../../../data/FilterData";
 import Button from "../buttons/Button";
 import GameCard from "./GameCard";
 import Loader from "../Loader";
 import FormatNumber from "../FormatNumber";
-import FilterMenu from "./FilterMenu";
+import GameCardFilters from "./GameCardFilters";
 
-function GameCards({ title }) {
+function GameCards({ title, years }) {
   const { themeState } = useContext(ThemeContext);
-  const { appState } = useContext(AppContext);
+  const { appState, appDispatch } = useContext(AppContext);
   const addGames = useClientFetch();
 
   const fetchMore = () => {
     addGames(appState.data.next);
+  };
+
+  const openFilter = (e) => {
+    e.target.focus();
+    setIsActive(true);
+  };
+
+  const activateFilter = (dispatch, query, name, value) => {
+    appDispatch({ type: dispatch, payload: { query, name, value } });
+    setIsActive(false);
+  };
+
+  const closeFilter = () => {
+    setIsActive(false);
   };
 
   return (
@@ -36,15 +49,7 @@ function GameCards({ title }) {
             <p className="page-results">
               Found <FormatNumber num={appState.data.count} /> results.
             </p>
-            <div className="filters">
-              <FilterMenu
-                title={"Order by:"}
-                activeFilter={appState.filters.ordering.name}
-                values={filters.ordering_values}
-                dispatch="ORDERING"
-                query="ordering"
-              />
-            </div>
+            <GameCardFilters years={years} />
             <div className="grid grid--multiple mt">
               {appState.data.results.map((game) => (
                 <GameCard game={game} key={game.id} />
@@ -64,5 +69,10 @@ function GameCards({ title }) {
     </section>
   );
 }
+
+GameCards.defaultProps = {
+  title: "Unknown",
+  years: [],
+};
 
 export default GameCards;

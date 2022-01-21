@@ -7,7 +7,6 @@ import ModalVideo from "./ModalVideo";
 import ModalScreenshots from "./ModalScreenshots";
 function Modal() {
   const { appState, appDispatch } = useContext(AppContext);
-  console.log("Modal: ", appState.modal);
 
   const closeModal = () => {
     appDispatch({ type: "CLOSE_MODAL" });

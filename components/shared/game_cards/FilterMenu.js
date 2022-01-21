@@ -1,21 +1,14 @@
 import { useState, useContext } from "react";
-import { AppContext } from "../../../contexts/AppContext";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
-function FilterMenu({ title, activeFilter, values, dispatch, query }) {
+function FilterMenu({ title, subtitle, activeFilter, children }) {
   const [isActive, setIsActive] = useState(false);
-  const { appDispatch } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
 
   const openFilter = (e) => {
     e.target.focus();
     setIsActive(true);
-  };
-
-  const activateFilter = (dispatch, query, name, value) => {
-    appDispatch({ type: dispatch, payload: { query, name, value } });
-    setIsActive(false);
   };
 
   const closeFilter = () => {
@@ -25,12 +18,12 @@ function FilterMenu({ title, activeFilter, values, dispatch, query }) {
   return (
     <div
       tabIndex="-1"
-      className="filter-menu"
+      className="filters__menu"
       style={{ backgroundColor: themeState.background.secondary }}
       onClick={openFilter}
       onBlur={closeFilter}
     >
-      <div className="filter-menu__active-element">
+      <div className="filters__parent-element">
         {title}
         <span>{activeFilter}</span>
         <span>
@@ -38,26 +31,18 @@ function FilterMenu({ title, activeFilter, values, dispatch, query }) {
         </span>
       </div>
       <div
-        className={
-          isActive ? "filter-menu__options active" : "filter-menu__options"
-        }
+        className={isActive ? "filters__options active" : "filters__options"}
         style={{ backgroundColor: themeState.background.secondary }}
       >
-        <div
-          className="filter-menu__option-title"
-          style={{ color: themeState.text.tertiary }}
-        >
-          Select
-        </div>
-        {values.map((x) => (
+        {subtitle && (
           <div
-            key={`filter-${x.name}`}
-            className="filter-menu__option"
-            onClick={() => activateFilter(dispatch, query, x.name, x.value)}
+            className="filters__title"
+            style={{ color: themeState.text.tertiary }}
           >
-            {x.name}
+            {subtitle}
           </div>
-        ))}
+        )}
+        {children}
       </div>
     </div>
   );
