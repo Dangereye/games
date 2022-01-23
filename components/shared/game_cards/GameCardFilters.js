@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import filterData from "../../../data/FilterData";
 import FilterMenu from "./FilterMenu";
@@ -6,7 +6,6 @@ import FilterSubMenu from "./FilterSubMenu";
 
 function GameCardFilters({ years }) {
   const { appState, appDispatch } = useContext(AppContext);
-  console.log("GameCardFilters: ", years);
 
   const activateFilter = (dispatch, name, value) => {
     appDispatch({ type: dispatch, payload: { name, value } });
@@ -41,10 +40,13 @@ function GameCardFilters({ years }) {
           All
         </div>
         {years.map((x, index) => (
-          <FilterSubMenu subtitle={`${x.from} - ${x.to}`}>
+          <FilterSubMenu
+            key={`dates-filter ${index}`}
+            subtitle={`${x.from} - ${x.to}`}
+          >
             {x.years.map((y, index) => (
               <div
-                key={`dates-filter-${index}`}
+                key={`sub-dates-filter-${index}`}
                 className="filters__option"
                 onClick={() =>
                   activateFilter(
