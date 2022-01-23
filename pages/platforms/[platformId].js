@@ -9,8 +9,6 @@ function Platforms({ all, filters }) {
   const { appState } = useContext(AppContext);
   const validateStatus = useStatus();
   const { handleFilters, asPath, filter } = useFilters();
-  console.log("Platforms All Data: ", all);
-  console.log("Platforms Filters Data: ", filters);
 
   useEffect(() => {
     validateStatus(filters);
@@ -41,8 +39,7 @@ export async function getServerSideProps(context) {
     mode: "no-cors",
     headers: { "Content-Type": "application/json" },
   };
-  const activeFilters = query.filters ? true : false;
-  const ordering = query.ordering ? `&ordering=${query.ordering}` : "";
+  const ordering = `&ordering=${query.ordering}`;
   const dates = query.dates ? `&dates=${query.dates}` : "";
 
   let [all, filters] = await Promise.all([
@@ -60,6 +57,6 @@ export async function getServerSideProps(context) {
   filters = await filters.json();
 
   return {
-    props: { all, filters: { isActive: activeFilters, data: filters } },
+    props: { all, filters },
   };
 }
