@@ -14,7 +14,7 @@ function GameCard({ game }) {
 
   const gameDetails = (id) => {
     appDispatch({ type: "LOADING" });
-    router.push(`/games/${id}`);
+    router.push(`/game/${id}`);
   };
 
   return (

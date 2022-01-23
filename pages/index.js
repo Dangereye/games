@@ -7,11 +7,9 @@ import GameCards from "../components/shared/game_cards/GameCards";
 function Home({ all, filters }) {
   const validateStatus = useStatus();
   const { handleFilters, asPath, filter } = useFilters();
-  console.log("All Data: ", all);
-  console.log("Filters Data: ", filters);
 
   useEffect(() => {
-    validateStatus(filters.isActive ? filters.data : all);
+    validateStatus(filters);
   }, [all, filters]);
 
   useEffect(() => {
@@ -28,7 +26,7 @@ function Home({ all, filters }) {
           content="Video game database and discovery service - powered by RAWG.IO"
         />
       </Head>
-      <GameCards title={`All Games`} years={all.filters.years} />
+      <GameCards title={all.seo_h1} years={all.filters.years} />
     </>
   );
 }
@@ -42,9 +40,9 @@ export async function getServerSideProps(context) {
     mode: "no-cors",
     headers: { "Content-Type": "application/json" },
   };
-  const activeFilters = query.filters ? true : false;
-  const ordering = query.ordering ? `&ordering=${query.ordering}` : "";
+  const ordering = `&ordering=${query.ordering}`;
   const dates = query.dates ? `&dates=${query.dates}` : "";
+
   let [all, filters] = await Promise.all([
     fetch(
       `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=40`,
@@ -57,9 +55,8 @@ export async function getServerSideProps(context) {
   ]);
   all = await all.json();
   filters = await filters.json();
-  console.log("Query", query);
 
   return {
-    props: { all, filters: { isActive: activeFilters, data: filters } },
+    props: { all, filters },
   };
 }

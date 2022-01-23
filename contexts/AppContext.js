@@ -69,7 +69,6 @@ const AppReducer = (state, action) => {
         ...state,
         filters: {
           ...state.filters,
-          active: true,
           ordering: {
             query: "ordering",
             name: action.payload.name,
@@ -82,7 +81,6 @@ const AppReducer = (state, action) => {
         ...state,
         filters: {
           ...state.filters,
-          active: true,
           dates: {
             query: "dates",
             name: action.payload.name,
@@ -104,14 +102,11 @@ function AppComponent({ children }) {
     error: { isError: false, status: "", message: "" },
     data: [],
     filters: {
-      active: false,
       ordering: {
-        query: "ordering",
         name: "Relevance",
-        value: "",
+        value: "relevance",
       },
       dates: {
-        query: "dates",
         name: "All",
         value: "",
       },
