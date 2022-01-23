@@ -4,14 +4,15 @@ import useFilters from "../hooks/useFilters";
 import Head from "next/head";
 import GameCards from "../components/shared/game_cards/GameCards";
 
-function Home({ initial }) {
+function Home({ all, filters }) {
   const validateStatus = useStatus();
   const { handleFilters, asPath, filter } = useFilters();
-  console.log("Index Data: ", initial);
+  console.log("All Data: ", all);
+  console.log("Filters Data: ", filters);
 
   useEffect(() => {
-    validateStatus(initial);
-  }, [initial]);
+    validateStatus(filters.isActive ? filters.data : all);
+  }, [all, filters]);
 
   useEffect(() => {
     handleFilters();
@@ -27,7 +28,7 @@ function Home({ initial }) {
           content="Video game database and discovery service - powered by RAWG.IO"
         />
       </Head>
-      <GameCards years={initial.filters ? initial.filters.years : []} />
+      <GameCards title={`All Games`} years={all.filters.years} />
     </>
   );
 }
@@ -36,20 +37,29 @@ export default Home;
 
 export async function getServerSideProps(context) {
   const { query } = context;
+  const options = {
+    method: "GET",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+  };
+  const activeFilters = query.filters ? true : false;
   const ordering = query.ordering ? `&ordering=${query.ordering}` : "";
   const dates = query.dates ? `&dates=${query.dates}` : "";
-  const res = await fetch(
-    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=40${ordering}${dates}`,
-    {
-      method: "GET",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
-    }
-  );
-  const initial = await res.json();
-  console.log("URL: ", res.url);
+  let [all, filters] = await Promise.all([
+    fetch(
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=40`,
+      options
+    ),
+    fetch(
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=40${ordering}${dates}`,
+      options
+    ),
+  ]);
+  all = await all.json();
+  filters = await filters.json();
+  console.log("Query", query);
 
   return {
-    props: { initial },
+    props: { all, filters: { isActive: activeFilters, data: filters } },
   };
 }

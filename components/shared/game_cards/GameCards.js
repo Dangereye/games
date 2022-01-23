@@ -12,6 +12,9 @@ function GameCards({ title, years }) {
   const { themeState } = useContext(ThemeContext);
   const { appState, appDispatch } = useContext(AppContext);
   const addGames = useClientFetch();
+  const titleDates = appState.filters.dates.value
+    ? ` for ${appState.filters.dates.name}`
+    : "";
 
   const fetchMore = () => {
     addGames(appState.data.next);
@@ -43,9 +46,7 @@ function GameCards({ title, years }) {
           </>
         ) : (
           <>
-            <h1 className="display">
-              {appState.data.seo_h1 ? appState.data.seo_h1 : title}
-            </h1>
+            <h1 className="display">{`${title} ${titleDates}`}</h1>
             <p className="page-results">
               Found <FormatNumber num={appState.data.count} /> results.
             </p>

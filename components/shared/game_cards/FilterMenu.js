@@ -34,17 +34,20 @@ function FilterMenu({ title, subtitle, activeFilter, children }) {
         className={isActive ? "filters__options active" : "filters__options"}
         style={{ backgroundColor: themeState.background.secondary }}
       >
-        {subtitle && (
-          <div
-            className="filters__title"
-            style={{ color: themeState.text.tertiary }}
-          >
-            {subtitle}
-          </div>
-        )}
+        <div
+          className="filters__title"
+          style={{ color: themeState.text.tertiary }}
+        >
+          {subtitle}
+        </div>
         {children}
       </div>
     </div>
   );
 }
+
+FilterMenu.defaultProps = {
+  title: "Title",
+  subtitle: "Select",
+};
 export default FilterMenu;

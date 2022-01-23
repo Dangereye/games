@@ -6,7 +6,7 @@ import FilterSubMenu from "./FilterSubMenu";
 
 function GameCardFilters({ years }) {
   const { appState, appDispatch } = useContext(AppContext);
-  //   console.log("GameCardFilters: ", years);
+  console.log("GameCardFilters: ", years);
 
   const activateFilter = (dispatch, name, value) => {
     appDispatch({ type: dispatch, payload: { name, value } });
@@ -31,8 +31,15 @@ function GameCardFilters({ years }) {
       </FilterMenu>
       <FilterMenu
         title={"Release Date:"}
+        subtitle="Select"
         activeFilter={appState.filters.dates.name}
       >
+        <div
+          className="filters__option"
+          onClick={() => activateFilter("FILTERS_DATES", "All", "")}
+        >
+          All
+        </div>
         {years.map((x, index) => (
           <FilterSubMenu subtitle={`${x.from} - ${x.to}`}>
             {x.years.map((y, index) => (
