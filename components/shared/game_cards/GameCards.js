@@ -20,20 +20,6 @@ function GameCards({ title, years }) {
     addGames(appState.data.next);
   };
 
-  const openFilter = (e) => {
-    e.target.focus();
-    setIsActive(true);
-  };
-
-  const activateFilter = (dispatch, query, name, value) => {
-    appDispatch({ type: dispatch, payload: { query, name, value } });
-    setIsActive(false);
-  };
-
-  const closeFilter = () => {
-    setIsActive(false);
-  };
-
   return (
     <section className="section" style={{ color: themeState.text.primary }}>
       <div className="container">
