@@ -4,14 +4,16 @@ import useFilters from "../../hooks/useFilters";
 import Head from "next/head";
 import GameCards from "../../components/shared/game_cards/GameCards";
 
-function SearchDetails({ initial, slug }) {
+function SearchDetails({ all, filters, slug }) {
   const validateStatus = useStatus();
   const { handleFilters, asPath, filter } = useFilters();
-  console.log("Search: ", initial);
+  console.log("Search All: ", all);
+  console.log("Search Filters: ", filters);
+  console.log("Slug: ", slug);
 
   useEffect(() => {
-    validateStatus(initial);
-  }, [initial]);
+    validateStatus(filters);
+  }, [all, filters, slug]);
 
   useEffect(() => {
     handleFilters();
@@ -25,7 +27,10 @@ function SearchDetails({ initial, slug }) {
         <meta name="keywords" content={slug} />
         <meta name="description" content={`Games including ${slug}`} />
       </Head>
-      <GameCards title={`Search results for "${slug}".`} />
+      <GameCards
+        title={`Search results for "${slug}".`}
+        filters={all.filters ? all.filters : []}
+      />
     </>
   );
 }
@@ -34,21 +39,31 @@ export default SearchDetails;
 
 export async function getServerSideProps(context) {
   const { params, query } = context;
+  const options = {
+    method: "GET",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+  };
   const ordering = query.ordering ? `&ordering=${query.ordering}` : "";
-  const res = await fetch(
-    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${params.slug}&page_size=40${ordering}`,
-    {
-      method: "GET",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
-    }
-  );
+  const dates = query.dates ? `&dates=${query.dates}` : "";
+  let [all, filters] = await Promise.all([
+    fetch(
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${params.slug}`,
+      options
+    ),
+    fetch(
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${params.slug}&page_size=40${ordering}${dates}`,
+      options
+    ),
+  ]);
 
-  const initial = await res.json();
+  all = await all.json();
+  filters = await filters.json();
 
   return {
     props: {
-      initial,
+      all,
+      filters,
       slug: params.slug,
     },
   };
