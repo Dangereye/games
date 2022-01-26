@@ -45,11 +45,12 @@ export async function getServerSideProps(context) {
   };
   const ordering = `&ordering=${query.ordering}`;
   const dates = query.dates ? `&dates=${query.dates}` : "";
+  const genres = query.genres ? `&genres=${query.genres}` : "";
 
   let [all, filters] = await Promise.all([
     fetch(`https://api.rawg.io/api/games?key=${process.env.API_KEY}`, options),
     fetch(
-      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=40${ordering}${dates}`,
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=40${ordering}${dates}${genres}`,
       options
     ),
   ]);
