@@ -9,6 +9,8 @@ function Platforms({ all, filters }) {
   const { appState } = useContext(AppContext);
   const validateStatus = useStatus();
   const { handleFilters, asPath, filter } = useFilters();
+  console.log("Platforms All: ", all);
+  console.log("Platforms Filters: ", filters);
 
   useEffect(() => {
     validateStatus(filters);
@@ -26,7 +28,7 @@ function Platforms({ all, filters }) {
         <meta name="keywords" content={appState.data.seo_keywords} />
         <meta name="description" content={appState.data.seo_description} />
       </Head>
-      <GameCards title={all.seo_h1} years={all.filters.years} />
+      <GameCards title={all.seo_h1} filters={all.filters ? all.filters : []} />
     </>
   );
 }
@@ -44,7 +46,7 @@ export async function getServerSideProps(context) {
 
   let [all, filters] = await Promise.all([
     fetch(
-      `https://api.rawg.io/api/games?platforms=${params.platformId}&page_size=40&filter=true&comments=true&key=${process.env.API_KEY}`,
+      `https://api.rawg.io/api/games?platforms=${params.platformId}&filter=true&comments=true&key=${process.env.API_KEY}`,
       options
     ),
     fetch(

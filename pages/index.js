@@ -8,6 +8,9 @@ function Home({ all, filters }) {
   const validateStatus = useStatus();
   const { handleFilters, asPath, filter } = useFilters();
 
+  console.log("Home All: ", all);
+  console.log("Home Filters: ", filters);
+
   useEffect(() => {
     validateStatus(filters);
   }, [all, filters]);
@@ -26,7 +29,7 @@ function Home({ all, filters }) {
           content="Video game database and discovery service - powered by RAWG.IO"
         />
       </Head>
-      <GameCards title={all.seo_h1} years={all.filters.years} />
+      <GameCards title={all.seo_h1} filters={all.filters ? all.filters : []} />
     </>
   );
 }
@@ -44,10 +47,7 @@ export async function getServerSideProps(context) {
   const dates = query.dates ? `&dates=${query.dates}` : "";
 
   let [all, filters] = await Promise.all([
-    fetch(
-      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=40`,
-      options
-    ),
+    fetch(`https://api.rawg.io/api/games?key=${process.env.API_KEY}`, options),
     fetch(
       `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=40${ordering}${dates}`,
       options

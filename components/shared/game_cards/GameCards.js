@@ -8,7 +8,7 @@ import Loader from "../Loader";
 import FormatNumber from "../FormatNumber";
 import GameCardFilters from "./GameCardFilters";
 
-function GameCards({ title, years }) {
+function GameCards({ title, filters }) {
   const { themeState } = useContext(ThemeContext);
   const { appState, appDispatch } = useContext(AppContext);
   const addGames = useClientFetch();
@@ -36,7 +36,7 @@ function GameCards({ title, years }) {
             <p className="page-results">
               Found <FormatNumber num={appState.data.count} /> results.
             </p>
-            <GameCardFilters years={years} />
+            <GameCardFilters filters={filters} />
             <div className="grid grid--multiple mt">
               {appState.data.results.map((game) => (
                 <GameCard game={game} key={game.id} />

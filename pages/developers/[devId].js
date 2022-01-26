@@ -4,16 +4,17 @@ import useStatus from "../../hooks/useStatus";
 import useFilters from "../../hooks/useFilters";
 import Head from "next/head";
 import GameCards from "../../components/shared/game_cards/GameCards";
-function Developers({ dev, games }) {
+function Developers({ dev, all, filters }) {
   const { appState } = useContext(AppContext);
   const validateStatus = useStatus();
   const { handleFilters, asPath, filter } = useFilters();
   console.log("Developer: ", dev);
-  console.log("Games: ", games);
+  console.log("Developer All: ", all);
+  console.log("Developer Filters: ", filters);
 
   useEffect(() => {
-    validateStatus(games);
-  }, [games]);
+    validateStatus(filters);
+  }, [dev, all, filters]);
 
   useEffect(() => {
     handleFilters();
@@ -27,7 +28,10 @@ function Developers({ dev, games }) {
         <meta name="keywords" content={appState.data.seo_keywords} />
         <meta name="description" content={appState.data.seo_description} />
       </Head>
-      <GameCards title={`Games for ${dev.name}`} />
+      <GameCards
+        title={`Games for ${dev.name}`}
+        filters={all.filters ? all.filters : []}
+      />
     </>
   );
 }
@@ -36,31 +40,38 @@ export default Developers;
 
 export async function getServerSideProps(context) {
   const { params, query } = context;
-  const ordering = query.ordering ? `&ordering=${query.ordering}` : "";
   const options = {
     method: "GET",
     mode: "no-cors",
     headers: { "Content-Type": "application/json" },
   };
+  const ordering = query.ordering ? `&ordering=${query.ordering}` : "";
+  const dates = query.dates ? `&dates=${query.dates}` : "";
 
-  let [dev, games] = await Promise.all([
+  let [dev, all, filters] = await Promise.all([
     fetch(
       `https://api.rawg.io/api/developers/${params.devId}?key=${process.env.API_KEY}`,
       options
     ),
     fetch(
-      `https://api.rawg.io/api/games?developers=${params.devId}&key=${process.env.API_KEY}${ordering}`,
+      `https://api.rawg.io/api/games?developers=${params.devId}&key=${process.env.API_KEY}`,
+      options
+    ),
+    fetch(
+      `https://api.rawg.io/api/games?developers=${params.devId}&page_size=40&key=${process.env.API_KEY}${ordering}${dates}`,
       options
     ),
   ]);
 
   dev = await dev.json();
-  games = await games.json();
+  all = await all.json();
+  filters = await filters.json();
 
   return {
     props: {
       dev,
-      games,
+      all,
+      filters,
     },
   };
 }
