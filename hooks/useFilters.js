@@ -12,7 +12,7 @@ function useFilters() {
     router.push(
       `${asPath.split("?")[0]}${`?ordering=${filter.ordering.value}`}${
         filter.dates.value ? `&dates=${filter.dates.value}` : ""
-      }
+      }${filter.genres.value ? `&genres=${filter.genres.value}` : ""}
       `
     );
   };
