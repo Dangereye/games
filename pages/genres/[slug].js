@@ -5,15 +5,16 @@ import useFilters from "../../hooks/useFilters";
 import Head from "next/head";
 import GameCards from "../../components/shared/game_cards/GameCards";
 
-function Genres({ initial }) {
+function Genres({ all, filters }) {
   const { appState } = useContext(AppContext);
   const validateStatus = useStatus();
   const { handleFilters, asPath, filter } = useFilters();
-  console.log("Genres: ", initial);
+  console.log("Genres All: ", all);
+  console.log("Genres Filters: ", filters);
 
   useEffect(() => {
-    validateStatus(initial);
-  }, [initial]);
+    validateStatus(filters);
+  }, [all, filters]);
 
   useEffect(() => {
     handleFilters();
@@ -27,7 +28,7 @@ function Genres({ initial }) {
         <meta name="keywords" content={appState.data.seo_keywords} />
         <meta name="description" content={appState.data.seo_description} />
       </Head>
-      <GameCards />
+      <GameCards title={all.seo_h1} filters={all.filters ? all.filters : []} />
     </>
   );
 }
@@ -35,19 +36,29 @@ export default Genres;
 
 export async function getServerSideProps(context) {
   const { params, query } = context;
+  const options = {
+    method: "GET",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+  };
   const ordering = query.ordering ? `&ordering=${query.ordering}` : "";
-  const res = await fetch(
-    `https://api.rawg.io/api/games?genres=${params.slug}&page_size=40&filter=true&comments=true&key=${process.env.API_KEY}${ordering}`,
-    {
-      method: "GET",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
-    }
-  );
+  const dates = query.dates ? `&dates=${query.dates}` : "";
 
-  const initial = await res.json();
+  let [all, filters] = await Promise.all([
+    fetch(
+      `https://api.rawg.io/api/games?genres=${params.slug}&filter=true&comments=true&key=${process.env.API_KEY}`,
+      options
+    ),
+    fetch(
+      `https://api.rawg.io/api/games?genres=${params.slug}&page_size=40&filter=true&comments=true&key=${process.env.API_KEY}${ordering}${dates}`,
+      options
+    ),
+  ]);
+
+  all = await all.json();
+  filters = await filters.json();
 
   return {
-    props: { initial },
+    props: { all, filters },
   };
 }
