@@ -70,7 +70,6 @@ const AppReducer = (state, action) => {
         filters: {
           ...state.filters,
           ordering: {
-            query: "ordering",
             name: action.payload.name,
             value: action.payload.value,
           },
@@ -82,21 +81,19 @@ const AppReducer = (state, action) => {
         filters: {
           ...state.filters,
           dates: {
-            query: "dates",
             name: action.payload.name,
             value: action.payload.value,
           },
         },
       };
-    case "FILTERS_RESET":
+    case "FILTERS_GENRES":
       return {
         ...state,
         filters: {
           ...state.filters,
-          dates: {
-            query: "dates",
-            name: "all",
-            value: "",
+          genres: {
+            name: action.payload.name,
+            value: action.payload.value,
           },
         },
       };
@@ -119,6 +116,10 @@ function AppComponent({ children }) {
         value: "relevance",
       },
       dates: {
+        name: "All",
+        value: "",
+      },
+      genres: {
         name: "All",
         value: "",
       },
