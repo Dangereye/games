@@ -6,7 +6,7 @@ import FilterSubMenu from "./FilterSubMenu";
 
 function GameCardFilters({ filters }) {
   const { appState, appDispatch } = useContext(AppContext);
-  const { years, genres } = filters;
+  const years = filters.years ? filters.years : [];
 
   const activateFilter = (dispatch, name, value) => {
     appDispatch({ type: dispatch, payload: { name, value } });
@@ -14,6 +14,7 @@ function GameCardFilters({ filters }) {
 
   return (
     <div className="filters">
+      {/* Orders filter */}
       <FilterMenu
         title={"Ordered by:"}
         subtitle="select"
@@ -29,44 +30,41 @@ function GameCardFilters({ filters }) {
           </div>
         ))}
       </FilterMenu>
-
       {/* Years Filter */}
-      {years && (
-        <FilterMenu
-          title={"Release Date:"}
-          subtitle="Select"
-          activeFilter={appState.filters.dates.name}
+      <FilterMenu
+        title={"Release Date:"}
+        subtitle="Select"
+        activeFilter={appState.filters.dates.name}
+      >
+        <div
+          className="filters__option"
+          onClick={() => activateFilter("FILTERS_DATES", "All", "")}
         >
-          <div
-            className="filters__option"
-            onClick={() => activateFilter("FILTERS_DATES", "All", "")}
+          All
+        </div>
+        {years.map((x, index) => (
+          <FilterSubMenu
+            key={`dates-filter ${index}`}
+            subtitle={`${x.from} - ${x.to}`}
           >
-            All
-          </div>
-          {years.map((x, index) => (
-            <FilterSubMenu
-              key={`dates-filter ${index}`}
-              subtitle={`${x.from} - ${x.to}`}
-            >
-              {x.years.map((y, index) => (
-                <div
-                  key={`sub-dates-filter-${index}`}
-                  className="filters__option"
-                  onClick={() =>
-                    activateFilter(
-                      "FILTERS_DATES",
-                      y.year,
-                      `${y.year}-01-01,${y.year}-12-31`
-                    )
-                  }
-                >
-                  {y.year}
-                </div>
-              ))}
-            </FilterSubMenu>
-          ))}
-        </FilterMenu>
-      )}
+            {x.years.map((y, index) => (
+              <div
+                key={`sub-dates-filter-${index}`}
+                className="filters__option"
+                onClick={() =>
+                  activateFilter(
+                    "FILTERS_DATES",
+                    y.year,
+                    `${y.year}-01-01,${y.year}-12-31`
+                  )
+                }
+              >
+                {y.year}
+              </div>
+            ))}
+          </FilterSubMenu>
+        ))}
+      </FilterMenu>
     </div>
   );
 }

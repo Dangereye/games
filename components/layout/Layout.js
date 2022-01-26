@@ -16,12 +16,11 @@ function Layout({ children }) {
 
   useEffect(() => {
     const handleStart = () => {
-      console.log("Starting...");
       appDispatch({ type: "LOADING" });
     };
 
     const handleStop = () => {
-      console.log("Finished...");
+      return;
     };
 
     router.events.on("routeChangeStart", handleStart);

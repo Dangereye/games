@@ -88,6 +88,18 @@ const AppReducer = (state, action) => {
           },
         },
       };
+    case "FILTERS_RESET":
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          dates: {
+            query: "dates",
+            name: "all",
+            value: "",
+          },
+        },
+      };
     default:
       return;
   }
