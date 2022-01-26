@@ -65,6 +65,21 @@ function GameCardFilters({ filters }) {
           </FilterSubMenu>
         ))}
       </FilterMenu>
+      <FilterMenu
+        title={"Genres:"}
+        subtitle="select"
+        activeFilter={appState.filters.genres.name}
+      >
+        {filterData.genres_values.map((x, index) => (
+          <div
+            key={`ordering-filter-${index}`}
+            className="filters__option"
+            onClick={() => activateFilter("FILTERS_GENRES", x.name, x.value)}
+          >
+            {x.name}
+          </div>
+        ))}
+      </FilterMenu>
     </div>
   );
 }
