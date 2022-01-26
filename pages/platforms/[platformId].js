@@ -43,6 +43,7 @@ export async function getServerSideProps(context) {
   };
   const ordering = `&ordering=${query.ordering}`;
   const dates = query.dates ? `&dates=${query.dates}` : "";
+  const genres = query.genres ? `&genres=${query.genres}` : "";
 
   let [all, filters] = await Promise.all([
     fetch(
@@ -50,7 +51,7 @@ export async function getServerSideProps(context) {
       options
     ),
     fetch(
-      `https://api.rawg.io/api/games?platforms=${params.platformId}&page_size=40&key=${process.env.API_KEY}${ordering}${dates}`,
+      `https://api.rawg.io/api/games?platforms=${params.platformId}&page_size=40&key=${process.env.API_KEY}${ordering}${dates}${genres}`,
       options
     ),
   ]);
