@@ -7,6 +7,7 @@ import FilterSubMenu from "./FilterSubMenu";
 function GameCardFilters({ filters }) {
   const { appState, appDispatch } = useContext(AppContext);
   const years = filters.years ? filters.years : [];
+  const genres = filters.genres ? filters.genres : [];
 
   const activateFilter = (dispatch, name, value) => {
     appDispatch({ type: dispatch, payload: { name, value } });
@@ -30,7 +31,8 @@ function GameCardFilters({ filters }) {
           </div>
         ))}
       </FilterMenu>
-      {/* Years Filter */}
+
+      {/* Years filter */}
       <FilterMenu
         title={"Release Date:"}
         subtitle="Select"
@@ -65,6 +67,8 @@ function GameCardFilters({ filters }) {
           </FilterSubMenu>
         ))}
       </FilterMenu>
+
+      {/* Genre filter */}
       <FilterMenu
         title={"Genre:"}
         subtitle="select"
@@ -77,15 +81,22 @@ function GameCardFilters({ filters }) {
           >
             All
           </div>
-          {filterData.genres_values.map((x, index) => (
-            <div
-              key={`ordering-filter-${index}`}
-              className="filters__option"
-              onClick={() => activateFilter("FILTERS_GENRES", x.name, x.value)}
-            >
-              {x.name}
-            </div>
-          ))}
+          {genres.map((x, index) => {
+            const item = filterData.genres_values.find(
+              (item) => item.id === x.id
+            );
+            return (
+              <div
+                key={`ordering-filter-${index}`}
+                className="filters__option"
+                onClick={() =>
+                  activateFilter("FILTERS_GENRES", item.name, item.value)
+                }
+              >
+                {item.name}
+              </div>
+            );
+          })}
         </>
       </FilterMenu>
     </div>
