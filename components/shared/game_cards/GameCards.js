@@ -15,6 +15,9 @@ function GameCards({ title, filters }) {
   const titleDates = appState.filters.dates.value
     ? ` in ${appState.filters.dates.name} `
     : "";
+  const titleGenre = appState.filters.genres.value
+    ? `${appState.filters.genres.name} `
+    : "";
 
   const fetchMore = () => {
     addGames(appState.data.next);
@@ -32,7 +35,7 @@ function GameCards({ title, filters }) {
           </>
         ) : (
           <>
-            <h1 className="display">{`${title}${titleDates}`}</h1>
+            <h1 className="display">{`${titleGenre}${title}${titleDates}`}</h1>
             <p className="page-results">
               Found <FormatNumber num={appState.data.count} /> results.
             </p>
