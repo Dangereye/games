@@ -4,6 +4,8 @@
   position: fixed;
   top: 0;
   left: -100%;
+  display: flex;
+  flex-direction: column;
   padding: $page-top-padding $page-hoz-padding $page-bottom-padding
     $page-hoz-padding;
   z-index: 99;
