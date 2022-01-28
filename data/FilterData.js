@@ -23,7 +23,7 @@ const filterData = {
     { id: 6, name: "Fighting", value: "fighting" },
     { id: 19, name: "Family", value: "family" },
     { id: 28, name: "Board Games", value: "board-games" },
-    { id: 34, name: "Educational", value: "action" },
+    { id: 34, name: "Educational", value: "educational" },
     { id: 17, name: "Card", value: "card" },
   ],
 };
