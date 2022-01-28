@@ -42,19 +42,18 @@
 
   &--toggle {
     position: relative;
-    width: 4rem;
-    height: 1.2rem;
+    width: 5.4rem;
+    height: 3rem;
     background-color: $input-bg;
     transition: background-color $time;
 
     .switch {
       position: absolute;
       top: 50%;
-      left: 0;
+      left: 0.3rem;
       width: 2.4rem;
       height: 2.4rem;
       background-color: #fff;
-      border: 1px solid $input-bg;
       border-radius: 50%;
       transform: translateY(-50%);
       transition: left $time;
