@@ -16,6 +16,7 @@ function Layout({ children }) {
 
   useEffect(() => {
     const handleStart = () => {
+      appDispatch({ type: "CLOSE_MOBILE_MENU" });
       appDispatch({ type: "LOADING" });
     };
 

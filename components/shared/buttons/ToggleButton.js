@@ -8,7 +8,7 @@ function ToggleButton({ name, option, func }) {
       className="btn__toggle-group"
       style={{ color: themeState.text.primary }}
     >
-      <p>{name}</p>
+      <span>{name}</span>
       <div
         className={option ? "btn btn--toggle active" : "btn btn--toggle"}
         onClick={func}

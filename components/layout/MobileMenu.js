@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import Link from "next/link";
+import { BrowseData, PlatformData } from "../../data/MenuData";
 import ToggleButton from "../shared/buttons/ToggleButton";
+import MenuGroup from "../shared/MenuGroup";
 
 function MobileMenu() {
   const { appState, appDispatch } = useContext(AppContext);
@@ -15,6 +16,7 @@ function MobileMenu() {
       themeDispatch({ type: "DARK" });
     }
   };
+
   return (
     <div
       className={
@@ -25,14 +27,13 @@ function MobileMenu() {
         backgroundColor: themeState.background.primary,
       }}
     >
-      <Link href="/">
-        <a className="sidebar__title">Home</a>
-      </Link>
       <ToggleButton
         name="Dark Mode"
         option={themeState.dark_mode}
         func={toggleDM}
       />
+      <MenuGroup title="Browse" data={BrowseData} />
+      <MenuGroup title="Platforms" data={PlatformData} />
     </div>
   );
 }
