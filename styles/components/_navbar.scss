@@ -8,6 +8,7 @@
   left: 0;
 
   display: flex;
+  justify-content: center;
   align-items: center;
   transition: background-color $time;
 
@@ -18,6 +19,8 @@
   }
 
   .container {
+    width: 100%;
+    max-width: $page-width;
     display: flex;
     justify-content: space-between;
     align-items: center;

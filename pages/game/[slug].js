@@ -10,10 +10,8 @@ import GameDetailsSpecs from "../../components/shared/game_details/GameDetailsSp
 import GameDetailsAdditional from "../../components/shared/game_details/GameDetailsAdditional";
 import GameDetailsTrailer from "../../components/shared/game_details/GameDetailsTrailer";
 import GameDetailsScreenshots from "../../components/shared/game_details/GameDetailsScreenshots";
-import GameDetailsLinkGroup from "../../components/shared/game_details/GameDetailsLinkGroup";
-import GameDetailsLink from "../../components/shared/game_details/GameDetailsLink";
-import Button from "../../components/shared/buttons/Button";
 import GameDetailsDescription from "../../components/shared/game_details/GameDetailsDescription";
+import GameDetailsTeam from "../../components/shared/game_details/GameDetailsTeam";
 
 function GameDetails({
   initial,
@@ -22,6 +20,7 @@ function GameDetails({
   series,
   achievements,
   stores,
+  editions,
 }) {
   const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
@@ -29,10 +28,11 @@ function GameDetails({
   const game = appState.data;
   console.log("Data: ", initial);
   console.log("Screenshots: ", screenshots);
-  console.log("Trailers", trailers);
-  console.log("Series", series);
-  console.log("Achievements", achievements);
-  console.log("Stores", stores);
+  console.log("Editions: ", editions);
+  // console.log("Trailers", trailers);
+  // console.log("Series", series);
+  // console.log("Achievements", achievements);
+  // console.log("Stores", stores);
 
   useEffect(() => {
     validateStatus(initial);
@@ -62,55 +62,45 @@ function GameDetails({
             </>
           ) : (
             <>
-              <div className="grid grid--game-details">
+              <header>
                 <div className="grid--game-details__left">
                   <h1 className="display">{game.name}</h1>
                   <GameDetailsInfoBanner game={game} />
-                  <GameDetailsDescription description={game.description_raw} />
-                  <div className="game-details__team">
-                    <GameDetailsLinkGroup title="Publishers">
-                      <ul className="list">
-                        {game.publishers.map((x, index) => (
-                          <li key={`publishers-${index}`}>
-                            <GameDetailsLink
-                              href={`/publishers/${x.slug}`}
-                              name={x.name}
-                            />
-                          </li>
-                        ))}
-                      </ul>
-                    </GameDetailsLinkGroup>
-                    <GameDetailsLinkGroup title="Developers">
-                      <ul className="list">
-                        {game.developers.map((x, index) => (
-                          <li key={`developers-${index}`}>
-                            <GameDetailsLink
-                              href={`/publishers/${x.slug}`}
-                              name={x.name}
-                            />
-                          </li>
-                        ))}
-                      </ul>
-                    </GameDetailsLinkGroup>
-                    <GameDetailsLinkGroup title="Website">
-                      <a
-                        className="btn btn--small"
-                        href={game.website}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Visit
-                      </a>
-                    </GameDetailsLinkGroup>
-                  </div>
-
                   <GameDetailsTrailer trailers={trailers.results} />
-                  <GameDetailsRatings game={game} />
-                  <GameDetailsSpecs game={game} />
+                  <GameDetailsDescription description={game.description_raw} />
+                  <GameDetailsTeam game={game} />
+
+                  {/* <GameDetailsRatings game={game} /> */}
+                  {/* <GameDetailsSpecs game={game} /> */}
                 </div>
                 <div className="grid--game-details__right">
                   <GameDetailsScreenshots screenshots={screenshots.results} />
-                  <GameDetailsAdditional game={game} series={series.results} />
+                  {/* <GameDetailsAdditional game={game} series={series.results} /> */}
+                </div>
+              </header>
+              <div
+                className="game-details__stats"
+                style={{ backgroundColor: themeState.background.secondary }}
+              >
+                <div className="stats-group">
+                  <div className="figure">{game.playtime}</div>
+                  <div className="stat">Playtime (hrs)</div>
+                </div>
+                <div className="stats-group">
+                  <div className="figure">{game.metacritic}%</div>
+                  <div className="stat">Metacritic Score</div>
+                </div>
+                <div className="stats-group">
+                  <div className="figure">{game.game_series_count}</div>
+                  <div className="stat">Games in Series</div>
+                </div>
+                <div className="stats-group">
+                  <div className="figure">{game.additions_count}</div>
+                  <div className="stat">Additions</div>
+                </div>
+                <div className="stats-group">
+                  <div className="figure">{game.achievements_count}</div>
+                  <div className="stat">Achievements</div>
                 </div>
               </div>
             </>
@@ -131,14 +121,14 @@ export async function getServerSideProps(context) {
     headers: { "Content-Type": "application/json" },
   };
 
-  let [initial, screenshots, trailers, series, achievements, stores] =
+  let [initial, screenshots, trailers, series, achievements, stores, editions] =
     await Promise.all([
       fetch(
         `https://api.rawg.io/api/games/${params.slug}?key=${process.env.API_KEY}`,
         options
       ),
       fetch(
-        `https://api.rawg.io/api/games/${params.slug}/screenshots?key=${process.env.API_KEY}`,
+        `https://api.rawg.io/api/games/${params.slug}/screenshots?key=${process.env.API_KEY}&page_size=12`,
         options
       ),
       fetch(
@@ -157,6 +147,10 @@ export async function getServerSideProps(context) {
         `https://api.rawg.io/api/games/${params.slug}/stores?key=${process.env.API_KEY}`,
         options
       ),
+      fetch(
+        `https://api.rawg.io/api/games/${params.slug}/additions?key=${process.env.API_KEY}&page=1&page_size=40`,
+        options
+      ),
     ]);
 
   initial = await initial.json();
@@ -165,6 +159,7 @@ export async function getServerSideProps(context) {
   series = await series.json();
   achievements = await achievements.json();
   stores = await stores.json();
+  editions = await editions.json();
 
   return {
     props: {
@@ -174,6 +169,7 @@ export async function getServerSideProps(context) {
       series,
       achievements,
       stores,
+      editions,
     },
   };
 }

@@ -5,7 +5,7 @@
     width: 20rem;
     height: max-content;
     max-height: 80vh;
-    position: fixed;
+    position: sticky;
     top: $page-top-padding;
     left: $page-hoz-padding;
     display: flex;

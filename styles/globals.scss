@@ -70,8 +70,10 @@ body {
   }
 }
 .page {
+  margin: 0 auto;
   position: relative;
   width: 100%;
+  max-width: $page-width;
   min-height: 100vh;
   padding: $page-top-padding $page-hoz-padding $page-bottom-padding
     $page-hoz-padding;

@@ -12,7 +12,7 @@ function GameDetailsScreenshots({ screenshots }) {
   return (
     <>
       {screenshots.length ? (
-        <div className="game-details__screenshots grid grid--multiple mt">
+        <div className="game-details__screenshots grid grid--multiple">
           {screenshots.map((pic, index) => (
             <div className="game-details__screenshots__screenshot" key={pic.id}>
               <Image
