@@ -26,6 +26,7 @@
   }
 
   &__trailer {
+    margin-top: 2rem;
     width: max-content;
     display: flex;
     align-items: center;
@@ -77,9 +78,28 @@
   }
 
   &__description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+    text-overflow: ellipsis;
+    overflow: hidden;
     width: 100%;
-    max-width: 85ch;
-    line-height: 1.618;
+
+    &.full {
+      display: block;
+    }
+
+    p {
+      max-width: 80ch;
+      line-height: 1.618;
+    }
+  }
+
+  &__team {
+    margin: 4rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 4rem;
   }
 
   &__screenshots {
@@ -97,23 +117,22 @@
   }
 
   &__links-group {
-    &.s2 {
-      grid-column: span 2;
+    .list {
+      > *:not(:last-child) {
+        margin-bottom: 1rem;
+      }
 
-      @media (max-width: $mobile) {
-        grid-column: span 1;
+      li::before {
+        content: "";
+        margin-right: 8px;
+        width: 8px;
+        height: 8px;
+        display: inline-block;
+        border: 1px solid $accent;
+        border-radius: 50%;
       }
     }
 
-    &__links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 2rem;
-      > *:not(:last-child)::after {
-        content: ",";
-      }
-    }
     &__link {
     }
   }

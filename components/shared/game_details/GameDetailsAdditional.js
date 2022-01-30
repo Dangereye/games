@@ -1,6 +1,5 @@
 import GameDetailsLinkGroup from "./GameDetailsLinkGroup";
 import GameDetailsLink from "./GameDetailsLink";
-import DateComponent from "../DateComponent";
 
 function GameDetailsAdditional({ game, series }) {
   return (
@@ -8,7 +7,7 @@ function GameDetailsAdditional({ game, series }) {
       <GameDetailsLinkGroup title="Games Series" styles="s2">
         {series.map((x) => (
           <GameDetailsLink
-            href={`/games/${x.slug}`}
+            href={`/game/${x.slug}`}
             key={`game-${x.id}`}
             name={x.name}
           />

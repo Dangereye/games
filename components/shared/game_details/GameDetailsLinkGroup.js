@@ -1,12 +1,19 @@
-function GameDetailsGroup({ title, styles, children }) {
+import { useContext } from "react";
+import { ThemeContext } from "../../../contexts/ThemeContext";
+
+function GameDetailsLinkGroup({ title, styles, children }) {
+  const { themeState } = useContext(ThemeContext);
+  const text = themeState.text;
   return (
     <div className={`game-details__links-group ${styles}`}>
-      <h3>{title}</h3>
-      <div className="game-details__links-group__links">{children}</div>
+      <h4 className="title" style={{ color: text.tertiary }}>
+        {title}
+      </h4>
+      {children}
     </div>
   );
 }
 
-GameDetailsGroup.defaultProps = { title: "Unknown", styles: "" };
+GameDetailsLinkGroup.defaultProps = { title: "Title", styles: "" };
 
-export default GameDetailsGroup;
+export default GameDetailsLinkGroup;
