@@ -149,10 +149,10 @@
 
   &__stats {
     margin: 4rem 0;
-    padding: 4rem;
+    padding: 3rem;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
     gap: 4rem;
     box-shadow: $shadow;
     border-radius: $border-radius;
@@ -160,14 +160,9 @@
     .stats-group {
       display: grid;
       place-items: center;
-      text-align: center;
-      .figure {
-        margin-bottom: 1rem;
-        font-size: 6rem;
-        font-weight: 700;
-        line-height: 1;
-      }
+
       .stat {
+        text-align: center;
       }
     }
   }

@@ -1,7 +1,7 @@
 function GameDetailsStat({ figure, stat }) {
   return (
     <div className="stats-group">
-      <div className="figure">{figure}</div>
+      <div className="display">{figure}</div>
       <div className="stat">{stat}</div>
     </div>
   );
