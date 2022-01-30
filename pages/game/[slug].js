@@ -12,6 +12,7 @@ import GameDetailsTrailer from "../../components/shared/game_details/GameDetails
 import GameDetailsScreenshots from "../../components/shared/game_details/GameDetailsScreenshots";
 import GameDetailsDescription from "../../components/shared/game_details/GameDetailsDescription";
 import GameDetailsTeam from "../../components/shared/game_details/GameDetailsTeam";
+import GameDetailsStats from "../../components/shared/game_details/GameDetailsStats";
 
 function GameDetails({
   initial,
@@ -78,31 +79,7 @@ function GameDetails({
                   {/* <GameDetailsAdditional game={game} series={series.results} /> */}
                 </div>
               </header>
-              <div
-                className="game-details__stats"
-                style={{ backgroundColor: themeState.background.secondary }}
-              >
-                <div className="stats-group">
-                  <div className="figure">{game.playtime}</div>
-                  <div className="stat">Playtime (hrs)</div>
-                </div>
-                <div className="stats-group">
-                  <div className="figure">{game.metacritic}%</div>
-                  <div className="stat">Metacritic Score</div>
-                </div>
-                <div className="stats-group">
-                  <div className="figure">{game.game_series_count}</div>
-                  <div className="stat">Games in Series</div>
-                </div>
-                <div className="stats-group">
-                  <div className="figure">{game.additions_count}</div>
-                  <div className="stat">Additions</div>
-                </div>
-                <div className="stats-group">
-                  <div className="figure">{game.achievements_count}</div>
-                  <div className="stat">Achievements</div>
-                </div>
-              </div>
+              <GameDetailsStats game={game} />
             </>
           )}
         </div>
