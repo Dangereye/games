@@ -1,9 +1,12 @@
+import { useContext } from "react";
+import { ThemeContext } from "../../../contexts/ThemeContext";
 import storesData from "../../../data/storesData";
 
 function Stores({ stores }) {
+  const { themeState } = useContext(ThemeContext);
   return (
     <section className="stores">
-      <h4>Where to buy</h4>
+      <h4 className="title">Where to buy</h4>
       <div className="stores__list">
         {stores.map((store, index) => {
           const item = storesData.find((item) => item.id === store.store_id);
@@ -14,9 +17,13 @@ function Stores({ stores }) {
               href={store.url}
               target="_blank"
               rel="noreferrer"
+              style={{
+                backgroundColor: themeState.background.secondary,
+                fill: themeState.text.primary,
+              }}
             >
-              <span>{item.name}</span>
-              <span>{item.icon}</span>
+              <span className="stores__text">{item.name}</span>
+              <span className="stores__icon">{item.icon}</span>
             </a>
           );
         })}

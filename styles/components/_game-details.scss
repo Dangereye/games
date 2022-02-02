@@ -166,4 +166,36 @@
       }
     }
   }
+
+  .stores {
+    &__list {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+      gap: 2rem;
+    }
+
+    &__item {
+      padding: 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      border-radius: $border-radius;
+      cursor: pointer;
+    }
+
+    &__text {
+      margin-right: 1rem;
+    }
+    &__icon {
+      display: grid;
+      place-items: center;
+
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
 }
