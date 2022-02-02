@@ -13,6 +13,7 @@ import GameDetailsScreenshots from "../../components/shared/game_details/GameDet
 import GameDetailsDescription from "../../components/shared/game_details/GameDetailsDescription";
 import GameDetailsTeam from "../../components/shared/game_details/GameDetailsTeam";
 import GameDetailsStats from "../../components/shared/game_details/GameDetailsStats";
+import Stores from "../../components/shared/game_details/Stores";
 
 function GameDetails({
   initial,
@@ -30,10 +31,10 @@ function GameDetails({
   console.log("Data: ", initial);
   console.log("Screenshots: ", screenshots);
   console.log("Editions: ", editions);
-  // console.log("Trailers", trailers);
-  // console.log("Series", series);
-  // console.log("Achievements", achievements);
-  // console.log("Stores", stores);
+  console.log("Trailers", trailers);
+  console.log("Series", series);
+  console.log("Achievements", achievements);
+  console.log("Stores", stores);
 
   useEffect(() => {
     validateStatus(initial);
@@ -71,7 +72,7 @@ function GameDetails({
                   <GameDetailsDescription description={game.description_raw} />
                   <GameDetailsTeam game={game} />
 
-                  {/* <GameDetailsRatings game={game} /> */}
+                  <GameDetailsRatings game={game} />
                   {/* <GameDetailsSpecs game={game} /> */}
                 </div>
                 <div className="grid--game-details__right">
@@ -80,6 +81,7 @@ function GameDetails({
                 </div>
               </header>
               <GameDetailsStats game={game} />
+              <Stores stores={stores.results} />
             </>
           )}
         </div>
@@ -105,7 +107,7 @@ export async function getServerSideProps(context) {
         options
       ),
       fetch(
-        `https://api.rawg.io/api/games/${params.slug}/screenshots?key=${process.env.API_KEY}&page_size=12`,
+        `https://api.rawg.io/api/games/${params.slug}/screenshots?key=${process.env.API_KEY}&page_size=20`,
         options
       ),
       fetch(
