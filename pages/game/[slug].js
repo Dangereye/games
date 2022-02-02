@@ -14,6 +14,7 @@ import GameDetailsDescription from "../../components/shared/game_details/GameDet
 import GameDetailsTeam from "../../components/shared/game_details/GameDetailsTeam";
 import GameDetailsStats from "../../components/shared/game_details/GameDetailsStats";
 import Stores from "../../components/shared/game_details/Stores";
+import Editions from "../../components/shared/game_details/Editions";
 
 function GameDetails({
   initial,
@@ -23,6 +24,7 @@ function GameDetails({
   achievements,
   stores,
   editions,
+  parents,
 }) {
   const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
@@ -35,6 +37,7 @@ function GameDetails({
   console.log("Series", series);
   console.log("Achievements", achievements);
   console.log("Stores", stores);
+  console.log("Parents", parents);
 
   useEffect(() => {
     validateStatus(initial);
@@ -81,7 +84,8 @@ function GameDetails({
                 </div>
               </header>
               <GameDetailsStats game={game} />
-              <Stores stores={stores.results} />
+              <Stores stores={stores} />
+              <Editions editions={editions} />
             </>
           )}
         </div>
@@ -100,37 +104,49 @@ export async function getServerSideProps(context) {
     headers: { "Content-Type": "application/json" },
   };
 
-  let [initial, screenshots, trailers, series, achievements, stores, editions] =
-    await Promise.all([
-      fetch(
-        `https://api.rawg.io/api/games/${params.slug}?key=${process.env.API_KEY}`,
-        options
-      ),
-      fetch(
-        `https://api.rawg.io/api/games/${params.slug}/screenshots?key=${process.env.API_KEY}&page_size=20`,
-        options
-      ),
-      fetch(
-        `https://api.rawg.io/api/games/${params.slug}/movies?key=${process.env.API_KEY}`,
-        options
-      ),
-      fetch(
-        `https://api.rawg.io/api/games/${params.slug}/game-series?key=${process.env.API_KEY}`,
-        options
-      ),
-      fetch(
-        `https://api.rawg.io/api/games/${params.slug}/achievements?key=${process.env.API_KEY}`,
-        options
-      ),
-      fetch(
-        `https://api.rawg.io/api/games/${params.slug}/stores?key=${process.env.API_KEY}`,
-        options
-      ),
-      fetch(
-        `https://api.rawg.io/api/games/${params.slug}/additions?key=${process.env.API_KEY}&page=1&page_size=40`,
-        options
-      ),
-    ]);
+  let [
+    initial,
+    screenshots,
+    trailers,
+    series,
+    achievements,
+    stores,
+    editions,
+    parents,
+  ] = await Promise.all([
+    fetch(
+      `https://api.rawg.io/api/games/${params.slug}?key=${process.env.API_KEY}`,
+      options
+    ),
+    fetch(
+      `https://api.rawg.io/api/games/${params.slug}/screenshots?key=${process.env.API_KEY}&page_size=20`,
+      options
+    ),
+    fetch(
+      `https://api.rawg.io/api/games/${params.slug}/movies?key=${process.env.API_KEY}`,
+      options
+    ),
+    fetch(
+      `https://api.rawg.io/api/games/${params.slug}/game-series?key=${process.env.API_KEY}`,
+      options
+    ),
+    fetch(
+      `https://api.rawg.io/api/games/${params.slug}/achievements?key=${process.env.API_KEY}`,
+      options
+    ),
+    fetch(
+      `https://api.rawg.io/api/games/${params.slug}/stores?key=${process.env.API_KEY}`,
+      options
+    ),
+    fetch(
+      `https://api.rawg.io/api/games/${params.slug}/additions?key=${process.env.API_KEY}&page_size=40`,
+      options
+    ),
+    fetch(
+      `https://api.rawg.io/api/games/${params.slug}/parent-games?key=${process.env.API_KEY}&page_size=40`,
+      options
+    ),
+  ]);
 
   initial = await initial.json();
   screenshots = await screenshots.json();
@@ -139,6 +155,7 @@ export async function getServerSideProps(context) {
   achievements = await achievements.json();
   stores = await stores.json();
   editions = await editions.json();
+  parents = await parents.json();
 
   return {
     props: {
@@ -149,6 +166,7 @@ export async function getServerSideProps(context) {
       achievements,
       stores,
       editions,
+      parents,
     },
   };
 }
