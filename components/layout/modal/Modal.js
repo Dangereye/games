@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import { MdClose } from "react-icons/md";
-import ModalPrevButton from "./ModalPrevButton";
-import ModalNextButton from "./ModalNextButton";
-import ModalVideo from "./ModalVideo";
-import ModalScreenshots from "./ModalScreenshots";
+import PrevButton from "./PrevButton";
+import NextButton from "./NextButton";
+import Video from "./Video";
+import Screenshots from "./Screenshots";
 function Modal() {
   const { appState, appDispatch } = useContext(AppContext);
 
@@ -30,13 +30,13 @@ function Modal() {
 
   return (
     <div className={appState.modal.isOpen ? "modal active" : "modal"}>
-      <ModalPrevButton func={prevItem} />
-      <ModalNextButton func={nextItem} />
+      <PrevButton func={prevItem} />
+      <NextButton func={nextItem} />
       <div className="modal__close" onClick={closeModal}>
         <MdClose />
       </div>
-      <ModalVideo func={nextItem} />
-      <ModalScreenshots />
+      <Video func={nextItem} />
+      <Screenshots />
     </div>
   );
 }

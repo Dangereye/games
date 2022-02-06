@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { AppContext } from "../../../contexts/AppContext";
 import { MdArrowForwardIos } from "react-icons/md";
-function ModalNextButton({ func }) {
+import { AppContext } from "../../../contexts/AppContext";
+function NextButton({ func }) {
   const { appState } = useContext(AppContext);
 
   return (
@@ -14,4 +14,4 @@ function ModalNextButton({ func }) {
     </>
   );
 }
-export default ModalNextButton;
+export default NextButton;

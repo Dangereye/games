@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 
-function ModalVideo({ func }) {
+function Video({ func }) {
   const { appState } = useContext(AppContext);
   return (
     <>
@@ -34,4 +34,4 @@ function ModalVideo({ func }) {
     </>
   );
 }
-export default ModalVideo;
+export default Video;

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import { MdArrowBackIos } from "react-icons/md";
-function ModalPrevButton({ func }) {
+function PrevButton({ func }) {
   const { appState, appDispatch } = useContext(AppContext);
   return (
     <>
@@ -13,4 +13,4 @@ function ModalPrevButton({ func }) {
     </>
   );
 }
-export default ModalPrevButton;
+export default PrevButton;

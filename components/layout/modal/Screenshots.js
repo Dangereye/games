@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import Image from "next/image";
-function ModalScreenshots() {
+function Screenshots() {
   const { appState } = useContext(AppContext);
   return (
     <>
@@ -26,4 +26,4 @@ function ModalScreenshots() {
     </>
   );
 }
-export default ModalScreenshots;
+export default Screenshots;

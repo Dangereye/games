@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 import MobileMenu from "./MobileMenu";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
-import Modal from "../shared/game_details/Modal";
+import Modal from "./modal/modal";
 
 function Layout({ children }) {
   const { themeState } = useContext(ThemeContext);
