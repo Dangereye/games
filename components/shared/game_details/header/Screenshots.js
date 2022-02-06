@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { AppContext } from "../../../contexts/AppContext";
+import { AppContext } from "../../../../contexts/AppContext";
 import Image from "next/image";
-function GameDetailsScreenshots({ screenshots }) {
+function Screenshots({ screenshots }) {
   const { appState, appDispatch } = useContext(AppContext);
   const addScreenshots = (index) => {
     appDispatch({
@@ -12,9 +12,9 @@ function GameDetailsScreenshots({ screenshots }) {
   return (
     <>
       {screenshots.length ? (
-        <div className="game-details__screenshots grid grid--multiple">
+        <section className="screenshots grid grid--multiple">
           {screenshots.map((pic, index) => (
-            <div className="game-details__screenshots__screenshot" key={pic.id}>
+            <div className="screenshots__screenshot" key={pic.id}>
               <Image
                 src={pic.image}
                 width={pic.width}
@@ -27,9 +27,9 @@ function GameDetailsScreenshots({ screenshots }) {
               />
             </div>
           ))}
-        </div>
+        </section>
       ) : null}
     </>
   );
 }
-export default GameDetailsScreenshots;
+export default Screenshots;

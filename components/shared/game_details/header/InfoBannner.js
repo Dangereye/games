@@ -1,14 +1,14 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../../contexts/ThemeContext";
-import DateComponent from "../DateComponent";
-import GenresComponent from "../GenresComponent";
-import ParentPlatforms from "../ParentPlatforms";
+import { ThemeContext } from "../../../../contexts/ThemeContext";
+import DateComponent from "../../DateComponent";
+import GenresComponent from "../../GenresComponent";
+import ParentPlatforms from "../../ParentPlatforms";
 
-function GameDetailsInfoBanner({ game }) {
+function InfoBanner({ game }) {
   const { themeState } = useContext(ThemeContext);
   return (
     <div
-      className="game-details__info-banner"
+      className="info-banner"
       style={{
         color: themeState.text.secondary,
         fill: themeState.text.secondary,
@@ -20,4 +20,4 @@ function GameDetailsInfoBanner({ game }) {
     </div>
   );
 }
-export default GameDetailsInfoBanner;
+export default InfoBanner;

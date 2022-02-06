@@ -1,9 +1,9 @@
-import GameDetailsLink from "./GameDetailsLink";
-import GameDetailsLinkGroup from "./GameDetailsLinkGroup";
+import GameDetailsLink from ".././GameDetailsLink";
+import GameDetailsLinkGroup from ".././GameDetailsLinkGroup";
 
-function GameDetailsTeam({ game }) {
+function Team({ game }) {
   return (
-    <div className="game-details__team">
+    <section className="team">
       <GameDetailsLinkGroup title="Developers">
         <ul className="list">
           {game.developers.map((x, index) => (
@@ -32,7 +32,7 @@ function GameDetailsTeam({ game }) {
           Visit
         </a>
       </GameDetailsLinkGroup>
-    </div>
+    </section>
   );
 }
-export default GameDetailsTeam;
+export default Team;

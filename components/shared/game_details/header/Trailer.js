@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { BsPlayFill } from "react-icons/bs";
-import { AppContext } from "../../../contexts/AppContext";
+import { AppContext } from "../../../../contexts/AppContext";
 
-function GameDetailsTrailer({ trailers }) {
+function Trailer({ trailers }) {
   const { appDispatch } = useContext(AppContext);
 
   const addTrailers = (e) => {
@@ -14,14 +14,14 @@ function GameDetailsTrailer({ trailers }) {
   return (
     <>
       {trailers.length ? (
-        <div className="game-details__trailer" onClick={addTrailers}>
-          <div className="game-details__trailer__icon">
+        <section className="trailer" onClick={addTrailers}>
+          <div className="trailer__icon">
             <BsPlayFill />
           </div>
           <span>Watch Trailer</span>
-        </div>
+        </section>
       ) : null}
     </>
   );
 }
-export default GameDetailsTrailer;
+export default Trailer;

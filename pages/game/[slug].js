@@ -4,18 +4,16 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import useStatus from "../../hooks/useStatus";
 import Loader from "../../components/shared/Loader";
 import Head from "next/head";
-import GameDetailsInfoBanner from "../../components/shared/game_details/GameDetailsInfoBannner";
-import GameDetailsSpecs from "../../components/shared/game_details/GameDetailsSpecs";
-import GameDetailsAdditional from "../../components/shared/game_details/GameDetailsAdditional";
-import GameDetailsTrailer from "../../components/shared/game_details/GameDetailsTrailer";
-import GameDetailsScreenshots from "../../components/shared/game_details/GameDetailsScreenshots";
-import GameDetailsDescription from "../../components/shared/game_details/GameDetailsDescription";
-import GameDetailsTeam from "../../components/shared/game_details/GameDetailsTeam";
-import GameDetailsStats from "../../components/shared/game_details/GameDetailsStats";
+import InfoBanner from "../../components/shared/game_details/header/InfoBannner";
+import Trailer from "../../components/shared/game_details/header/Trailer";
+import Description from "../../components/shared/game_details/header/Description";
+import Team from "../../components/shared/game_details/header/Team";
+import ESRBRating from "../../components/shared/game_details/header/ESRBRating";
+import Screenshots from "../../components/shared/game_details/header/Screenshots";
+import Stats from "../../components/shared/game_details/Stats";
 import Stores from "../../components/shared/game_details/Stores";
 import Editions from "../../components/shared/game_details/Editions";
 import ParentGame from "../../components/shared/game_details/ParentGame";
-import ESRBRating from "../../components/shared/ESRBRating";
 
 function GameDetails({
   initial,
@@ -71,19 +69,19 @@ function GameDetails({
               <header>
                 <div className="grid--game-details__left">
                   <h1 className="display">{game.name}</h1>
-                  <GameDetailsInfoBanner game={game} />
-                  <GameDetailsTrailer trailers={trailers.results} />
-                  <GameDetailsDescription description={game.description_raw} />
-                  <GameDetailsTeam game={game} />
+                  <InfoBanner game={game} />
+                  <Trailer trailers={trailers.results} />
+                  <Description description={game.description_raw} />
+                  <Team game={game} />
                   <ESRBRating esrb={game.esrb_rating} />
                   {/* <GameDetailsSpecs game={game} /> */}
                 </div>
                 <div className="grid--game-details__right">
-                  <GameDetailsScreenshots screenshots={screenshots.results} />
+                  <Screenshots screenshots={screenshots.results} />
                   {/* <GameDetailsAdditional game={game} series={series.results} /> */}
                 </div>
               </header>
-              <GameDetailsStats game={game} />
+              <Stats game={game} />
               <Stores stores={stores} />
               <Editions editions={editions} />
               <ParentGame parent={parent} />

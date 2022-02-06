@@ -11,8 +11,11 @@
     }
   }
 
-  &__info-banner {
-    margin-bottom: 4rem;
+  section {
+    margin-top: 4rem;
+  }
+
+  .info-banner {
     line-height: 1.618;
     display: flex;
     align-items: center;
@@ -35,8 +38,7 @@
     }
   }
 
-  &__trailer {
-    margin-top: 2rem;
+  .trailer {
     width: max-content;
     display: flex;
     align-items: center;
@@ -61,13 +63,13 @@
     }
   }
 
-  &__description {
+  .description {
+    width: 100%;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 7;
     text-overflow: ellipsis;
     overflow: hidden;
-    width: 100%;
 
     &.full {
       display: block;
@@ -80,18 +82,16 @@
     }
   }
 
-  &__team {
-    margin-top: 4rem;
+  .team {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
     gap: 4rem;
   }
 
   .esrb-rating {
-    margin-top: 4rem;
   }
 
-  &__screenshots {
+  .screenshots {
     &__screenshot {
       overflow: hidden;
       border-radius: $border-radius;
@@ -126,8 +126,7 @@
     }
   }
 
-  &__stats {
-    margin: 4rem 0;
+  .stats {
     padding: 3rem;
     width: 100%;
     display: grid;
@@ -148,7 +147,6 @@
 
   .stores {
     &__list {
-      margin-top: 2rem;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
       gap: 2rem;
@@ -167,6 +165,7 @@
     &__text {
       margin-right: 1rem;
     }
+
     &__icon {
       display: grid;
       place-items: center;
