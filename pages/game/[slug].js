@@ -15,6 +15,7 @@ import GameDetailsTeam from "../../components/shared/game_details/GameDetailsTea
 import GameDetailsStats from "../../components/shared/game_details/GameDetailsStats";
 import Stores from "../../components/shared/game_details/Stores";
 import Editions from "../../components/shared/game_details/Editions";
+import ParentGame from "../../components/shared/game_details/ParentGame";
 
 function GameDetails({
   initial,
@@ -24,20 +25,20 @@ function GameDetails({
   achievements,
   stores,
   editions,
-  parents,
+  parent,
 }) {
   const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
   const validateStatus = useStatus();
   const game = appState.data;
-  console.log("Data: ", initial);
-  console.log("Screenshots: ", screenshots);
-  console.log("Editions: ", editions);
-  console.log("Trailers", trailers);
-  console.log("Series", series);
-  console.log("Achievements", achievements);
-  console.log("Stores", stores);
-  console.log("Parents", parents);
+  // console.log("Data: ", initial);
+  // console.log("Screenshots: ", screenshots);
+  // console.log("Editions: ", editions);
+  // console.log("Trailers", trailers);
+  // console.log("Series", series);
+  // console.log("Achievements", achievements);
+  // console.log("Stores", stores);
+  // console.log("Parent", parent);
 
   useEffect(() => {
     validateStatus(initial);
@@ -86,6 +87,7 @@ function GameDetails({
               <GameDetailsStats game={game} />
               <Stores stores={stores} />
               <Editions editions={editions} />
+              <ParentGame parent={parent} />
             </>
           )}
         </div>
@@ -112,7 +114,7 @@ export async function getServerSideProps(context) {
     achievements,
     stores,
     editions,
-    parents,
+    parent,
   ] = await Promise.all([
     fetch(
       `https://api.rawg.io/api/games/${params.slug}?key=${process.env.API_KEY}`,
@@ -155,7 +157,7 @@ export async function getServerSideProps(context) {
   achievements = await achievements.json();
   stores = await stores.json();
   editions = await editions.json();
-  parents = await parents.json();
+  parent = await parent.json();
 
   return {
     props: {
@@ -166,7 +168,7 @@ export async function getServerSideProps(context) {
       achievements,
       stores,
       editions,
-      parents,
+      parent,
     },
   };
 }

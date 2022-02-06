@@ -9,6 +9,14 @@ function GameDetailsDescription({ description }) {
   const toggleDescription = () => {
     setIsOpen(!isOpen);
   };
+
+  const formatDescription = (des) => {
+    const newDes = des.replace(/#{3}\w+/g, (match) => {
+      return match.replace(/#{3}/g, "").toUpperCase();
+    });
+    return newDes;
+  };
+
   return (
     <>
       <div
@@ -22,7 +30,9 @@ function GameDetailsDescription({ description }) {
         <h4 className="title" style={{ color: themeState.text.tertiary }}>
           Description
         </h4>
-        <p style={{ color: themeState.text.primary }}>{description}</p>
+        <p style={{ color: themeState.text.primary }}>
+          {formatDescription(description)}
+        </p>
       </div>
       <Button
         name={isOpen ? "Show Less" : "Show More"}
