@@ -61,32 +61,6 @@
     }
   }
 
-  &__ratings {
-    margin-top: 4rem;
-    display: flex;
-    align-items: center;
-    gap: 4rem;
-
-    &__group {
-      display: grid;
-      place-items: center;
-
-      &__label {
-        margin-top: 2rem;
-      }
-    }
-
-    .metacritic {
-      width: 10rem;
-      height: 10rem;
-      font-size: 4.2rem;
-      border: 2px solid transparent;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-    }
-  }
-
   &__description {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -111,6 +85,10 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
     gap: 4rem;
+  }
+
+  .esrb-rating {
+    margin-top: 4rem;
   }
 
   &__screenshots {

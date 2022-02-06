@@ -5,7 +5,6 @@ import useStatus from "../../hooks/useStatus";
 import Loader from "../../components/shared/Loader";
 import Head from "next/head";
 import GameDetailsInfoBanner from "../../components/shared/game_details/GameDetailsInfoBannner";
-import GameDetailsRatings from "../../components/shared/game_details/GameDetailsRatings";
 import GameDetailsSpecs from "../../components/shared/game_details/GameDetailsSpecs";
 import GameDetailsAdditional from "../../components/shared/game_details/GameDetailsAdditional";
 import GameDetailsTrailer from "../../components/shared/game_details/GameDetailsTrailer";
@@ -16,6 +15,7 @@ import GameDetailsStats from "../../components/shared/game_details/GameDetailsSt
 import Stores from "../../components/shared/game_details/Stores";
 import Editions from "../../components/shared/game_details/Editions";
 import ParentGame from "../../components/shared/game_details/ParentGame";
+import ESRBRating from "../../components/shared/ESRBRating";
 
 function GameDetails({
   initial,
@@ -75,8 +75,7 @@ function GameDetails({
                   <GameDetailsTrailer trailers={trailers.results} />
                   <GameDetailsDescription description={game.description_raw} />
                   <GameDetailsTeam game={game} />
-
-                  <GameDetailsRatings game={game} />
+                  <ESRBRating esrb={game.esrb_rating} />
                   {/* <GameDetailsSpecs game={game} /> */}
                 </div>
                 <div className="grid--game-details__right">
