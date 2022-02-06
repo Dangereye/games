@@ -92,10 +92,12 @@
   }
 
   .screenshots {
+    margin: 0;
     &__screenshot {
       overflow: hidden;
       border-radius: $border-radius;
       box-shadow: $shadow;
+      cursor: pointer;
 
       img {
         width: 100%;
@@ -127,20 +129,26 @@
   }
 
   .stats {
-    padding: 3rem;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-    gap: 4rem;
-    box-shadow: $shadow;
-    border-radius: $border-radius;
+    display: flex;
+    flex-wrap: wrap;
 
-    .stats-group {
-      display: grid;
-      place-items: center;
+    // > *:not(:last-child) {
+    //   border-right: 1px solid grey;
+    // }
+    &__group {
+      min-width: 18rem;
+      padding: 3rem;
 
+      .figure {
+        margin: 0;
+        font-size: 4.6rem;
+        font-weight: 600;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+      }
       .stat {
-        text-align: center;
+        font-weight: 500;
       }
     }
   }

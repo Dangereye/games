@@ -10,9 +10,9 @@ import Description from "../../components/shared/game_details/header/Description
 import Team from "../../components/shared/game_details/header/Team";
 import ESRBRating from "../../components/shared/game_details/header/ESRBRating";
 import Screenshots from "../../components/shared/game_details/header/Screenshots";
-import Stats from "../../components/shared/game_details/Stats";
+import Stats from "../../components/shared/game_details/stats/Stats";
 import Stores from "../../components/shared/game_details/Stores";
-import Editions from "../../components/shared/game_details/Editions";
+import Additions from "../../components/shared/game_details/Additions";
 import ParentGame from "../../components/shared/game_details/ParentGame";
 
 function GameDetails({
@@ -22,21 +22,21 @@ function GameDetails({
   series,
   achievements,
   stores,
-  editions,
+  additions,
   parent,
 }) {
   const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
   const validateStatus = useStatus();
   const game = appState.data;
-  // console.log("Data: ", initial);
-  // console.log("Screenshots: ", screenshots);
-  // console.log("Editions: ", editions);
-  // console.log("Trailers", trailers);
-  // console.log("Series", series);
-  // console.log("Achievements", achievements);
-  // console.log("Stores", stores);
-  // console.log("Parent", parent);
+  console.log("Data: ", initial);
+  console.log("Screenshots: ", screenshots);
+  console.log("Additions: ", additions);
+  console.log("Trailers", trailers);
+  console.log("Series", series);
+  console.log("Achievements", achievements);
+  console.log("Stores", stores);
+  console.log("Parent", parent);
 
   useEffect(() => {
     validateStatus(initial);
@@ -74,16 +74,19 @@ function GameDetails({
                   <Description description={game.description_raw} />
                   <Team game={game} />
                   <ESRBRating esrb={game.esrb_rating} />
-                  {/* <GameDetailsSpecs game={game} /> */}
                 </div>
                 <div className="grid--game-details__right">
                   <Screenshots screenshots={screenshots.results} />
-                  {/* <GameDetailsAdditional game={game} series={series.results} /> */}
                 </div>
               </header>
-              <Stats game={game} />
+              <Stats
+                game={game}
+                series={series}
+                additions={additions}
+                achievements={achievements}
+              />
               <Stores stores={stores} />
-              <Editions editions={editions} />
+              <Additions additions={additions} />
               <ParentGame parent={parent} />
             </>
           )}
@@ -110,7 +113,7 @@ export async function getServerSideProps(context) {
     series,
     achievements,
     stores,
-    editions,
+    additions,
     parent,
   ] = await Promise.all([
     fetch(
@@ -126,11 +129,11 @@ export async function getServerSideProps(context) {
       options
     ),
     fetch(
-      `https://api.rawg.io/api/games/${params.slug}/game-series?key=${process.env.API_KEY}`,
+      `https://api.rawg.io/api/games/${params.slug}/game-series?key=${process.env.API_KEY}&page_size=40`,
       options
     ),
     fetch(
-      `https://api.rawg.io/api/games/${params.slug}/achievements?key=${process.env.API_KEY}`,
+      `https://api.rawg.io/api/games/${params.slug}/achievements?key=${process.env.API_KEY}&page_size=40`,
       options
     ),
     fetch(
@@ -153,7 +156,7 @@ export async function getServerSideProps(context) {
   series = await series.json();
   achievements = await achievements.json();
   stores = await stores.json();
-  editions = await editions.json();
+  additions = await additions.json();
   parent = await parent.json();
 
   return {
@@ -164,7 +167,7 @@ export async function getServerSideProps(context) {
       series,
       achievements,
       stores,
-      editions,
+      additions,
       parent,
     },
   };

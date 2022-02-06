@@ -1,12 +1,12 @@
 import GameCard from "../game_cards/GameCard";
-function Editions({ editions }) {
+function Additions({ additions }) {
   return (
     <>
-      {editions.count > 0 && (
+      {additions.count > 0 && (
         <section className="editions">
-          <h4 className="title">DLC's, GOTY and other editions. </h4>
+          <h4 className="title">DLC's, GOTY and other additions. </h4>
           <div className="cards grid grid--multiple">
-            {editions.results.map((game, index) => (
+            {additions.results.map((game, index) => (
               <GameCard key={`edition-${index}`} game={game} />
             ))}
           </div>
@@ -15,4 +15,4 @@ function Editions({ editions }) {
     </>
   );
 }
-export default Editions;
+export default Additions;
