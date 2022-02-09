@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import useStatus from "../../hooks/useStatus";
 import useFilters from "../../hooks/useFilters";
@@ -7,18 +7,11 @@ import GameCards from "../../components/shared/game_cards/GameCards";
 
 function Genres({ all, filters }) {
   const { appState } = useContext(AppContext);
-  const validateStatus = useStatus();
-  const { handleFilters, asPath, filter } = useFilters();
-  console.log("Genres All: ", all);
-  console.log("Genres Filters: ", filters);
+  const {} = useStatus(filters);
+  const {} = useFilters("Genres");
 
-  useEffect(() => {
-    validateStatus(filters);
-  }, [all, filters]);
-
-  useEffect(() => {
-    handleFilters();
-  }, [asPath, filter]);
+  // console.log("Genres All: ", all);
+  // console.log("Genres Filters: ", filters);
 
   return (
     <>
