@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 import MobileMenu from "./MobileMenu";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
-import Modal from "./modal/modal";
+import Modal from "./modal/Modal";
 
 function Layout({ children }) {
   const { themeState } = useContext(ThemeContext);
@@ -33,7 +33,7 @@ function Layout({ children }) {
       router.events.off("routeChangeComplete", handleStop);
       router.events.off("routeChangeError", handleStop);
     };
-  }, []);
+  });
 
   return (
     <>
