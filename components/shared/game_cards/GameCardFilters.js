@@ -102,4 +102,9 @@ function GameCardFilters({ filters }) {
     </div>
   );
 }
+
+GameCardFilters.defaultProps = {
+  filters: [],
+};
+
 export default GameCardFilters;
