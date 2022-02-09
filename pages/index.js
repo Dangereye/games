@@ -1,7 +1,7 @@
-import useStatus from "../hooks/useStatus";
 import Head from "next/head";
-import GameCards from "../components/shared/game_cards/GameCards";
+import useStatus from "../hooks/useStatus";
 import useFilters from "../hooks/useFilters";
+import GameCards from "../components/shared/game_cards/GameCards";
 
 function Home({ all, filters }) {
   const {} = useStatus(filters);

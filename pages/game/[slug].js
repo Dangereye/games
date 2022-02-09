@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import useStatus from "../../hooks/useStatus";
@@ -27,20 +27,16 @@ function GameDetails({
 }) {
   const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
-  const validateStatus = useStatus();
+  const {} = useStatus(initial);
   const game = appState.data;
-  console.log("Data: ", initial);
-  console.log("Screenshots: ", screenshots);
-  console.log("Additions: ", additions);
-  console.log("Trailers", trailers);
-  console.log("Series", series);
-  console.log("Achievements", achievements);
-  console.log("Stores", stores);
-  console.log("Parent", parent);
-
-  useEffect(() => {
-    validateStatus(initial);
-  }, [initial]);
+  // console.log("Data: ", initial);
+  // console.log("Screenshots: ", screenshots);
+  // console.log("Additions: ", additions);
+  // console.log("Trailers", trailers);
+  // console.log("Series", series);
+  // console.log("Achievements", achievements);
+  // console.log("Stores", stores);
+  // console.log("Parent", parent);
 
   return (
     <>
