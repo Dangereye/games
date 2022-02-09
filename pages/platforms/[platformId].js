@@ -7,18 +7,11 @@ import GameCards from "../../components/shared/game_cards/GameCards";
 
 function Platforms({ all, filters }) {
   const { appState } = useContext(AppContext);
-  const validateStatus = useStatus();
-  const { handleFilters, asPath, filter } = useFilters();
-  console.log("Platforms All: ", all);
-  console.log("Platforms Filters: ", filters);
+  const {} = useStatus(filters);
+  const {} = useFilters("Platforms");
 
-  useEffect(() => {
-    validateStatus(filters);
-  }, [all, filters]);
-
-  useEffect(() => {
-    handleFilters();
-  }, [asPath, filter]);
+  // console.log("Platforms All: ", all);
+  // console.log("Platforms Filters: ", filters);
 
   return (
     <>
