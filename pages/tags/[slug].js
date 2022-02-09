@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import useStatus from "../../hooks/useStatus";
 import useFilters from "../../hooks/useFilters";
@@ -7,18 +7,11 @@ import GameCards from "../../components/shared/game_cards/GameCards";
 
 function Tags({ all, filters }) {
   const { appState } = useContext(AppContext);
-  const validateStatus = useStatus();
-  const { handleFilters, asPath, filter } = useFilters();
-  console.log("Tags All: ", all);
-  console.log("Tags Filters: ", filters);
+  const {} = useStatus(filters);
+  const {} = useFilters("Tags");
 
-  useEffect(() => {
-    validateStatus(filters);
-  }, [all, filters]);
-
-  useEffect(() => {
-    handleFilters();
-  }, [asPath, filter]);
+  // console.log("Tags All: ", all);
+  // console.log("Tags Filters: ", filters);
 
   return (
     <>
@@ -28,7 +21,7 @@ function Tags({ all, filters }) {
         <meta name="keywords" content={appState.data.seo_keywords} />
         <meta name="description" content={appState.data.seo_description} />
       </Head>
-      <GameCards title={all.seo_h1} filters={all.filters ? all.filters : []} />
+      <GameCards title={all.seo_h1} filters={all.filters} />
     </>
   );
 }
