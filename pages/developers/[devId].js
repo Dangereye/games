@@ -1,24 +1,18 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import useStatus from "../../hooks/useStatus";
 import useFilters from "../../hooks/useFilters";
 import Head from "next/head";
 import GameCards from "../../components/shared/game_cards/GameCards";
+
 function Developers({ dev, all, filters }) {
   const { appState } = useContext(AppContext);
-  const validateStatus = useStatus();
-  const { handleFilters, asPath, filter } = useFilters();
-  console.log("Developer: ", dev);
-  console.log("Developer All: ", all);
-  console.log("Developer Filters: ", filters);
+  const {} = useStatus(filters);
+  const {} = useFilters("Developers");
 
-  useEffect(() => {
-    validateStatus(filters);
-  }, [dev, all, filters]);
-
-  useEffect(() => {
-    handleFilters();
-  }, [asPath, filter]);
+  // console.log("Developer: ", dev);
+  // console.log("Developer All: ", all);
+  // console.log("Developer Filters: ", filters);
 
   return (
     <>
@@ -28,10 +22,7 @@ function Developers({ dev, all, filters }) {
         <meta name="keywords" content={appState.data.seo_keywords} />
         <meta name="description" content={appState.data.seo_description} />
       </Head>
-      <GameCards
-        title={`Games for ${dev.name}`}
-        filters={all.filters ? all.filters : []}
-      />
+      <GameCards title={`Games for ${dev.name}`} filters={all.filters} />
     </>
   );
 }
