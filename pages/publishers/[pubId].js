@@ -1,25 +1,18 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
-import Head from "next/head";
 import useStatus from "../../hooks/useStatus";
-import GameCards from "../../components/shared/game_cards/GameCards";
 import useFilters from "../../hooks/useFilters";
+import Head from "next/head";
+import GameCards from "../../components/shared/game_cards/GameCards";
 
 function Publishers({ pub, all, filters }) {
   const { appState } = useContext(AppContext);
-  const validateStatus = useStatus();
-  const { handleFilters, asPath, filter } = useFilters();
-  console.log("Publisher: ", pub);
-  console.log("Publisher All: ", all);
-  console.log("Publisher Filters: ", filters);
+  const {} = useStatus(filters);
+  const {} = useFilters("Publishers");
 
-  useEffect(() => {
-    validateStatus(filters);
-  }, [pub, all, filters]);
-
-  useEffect(() => {
-    handleFilters();
-  }, [asPath, filter]);
+  // console.log("Publisher: ", pub);
+  // console.log("Publisher All: ", all);
+  // console.log("Publisher Filters: ", filters);
 
   return (
     <>
