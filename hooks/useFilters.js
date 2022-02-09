@@ -1,23 +1,26 @@
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
 import { useRouter } from "next/router";
 
-function useFilters() {
+function useFilters(route) {
   const { appState } = useContext(AppContext);
-  const filter = appState.filters;
   const router = useRouter();
   const { asPath } = router;
 
-  const handleFilters = () => {
-    router.push(
-      `${asPath.split("?")[0]}${`?ordering=${filter.ordering.value}`}${
-        filter.dates.value ? `&dates=${filter.dates.value}` : ""
-      }${filter.genres.value ? `&genres=${filter.genres.value}` : ""}
-      `
-    );
-  };
+  const ordering = `?ordering=${appState.filters.ordering.value}`;
+  const dates = appState.filters.dates.value
+    ? `&dates=${appState.filters.dates.value}`
+    : "";
+  const genres = appState.filters.genres.value
+    ? `&genres=${appState.filters.genres.value}`
+    : "";
 
-  return { handleFilters, asPath, filter };
+  useEffect(() => {
+    console.log(`Updating ${route} Route`);
+    router.push(`${asPath.split("?")[0]}${ordering}${dates}${genres}`);
+  }, [appState.filters, asPath, ordering, dates, genres]);
+
+  return { ordering, dates, genres };
 }
 
 export default useFilters;

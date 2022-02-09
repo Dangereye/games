@@ -1,23 +1,20 @@
 import { useEffect } from "react";
 import useStatus from "../hooks/useStatus";
-import useFilters from "../hooks/useFilters";
 import Head from "next/head";
 import GameCards from "../components/shared/game_cards/GameCards";
+import useFilters from "../hooks/useFilters";
 
 function Home({ all, filters }) {
   const validateStatus = useStatus();
-  const { handleFilters, asPath, filter } = useFilters();
+  const {} = useFilters("Index");
 
-  console.log("Home All: ", all);
-  console.log("Home Filters: ", filters);
+  // console.log("Home All: ", all);
+  // console.log("Home Filters: ", filters);
+  // console.log("Filters: ", appState.filters);
 
   useEffect(() => {
     validateStatus(filters);
   }, [all, filters]);
-
-  useEffect(() => {
-    handleFilters();
-  }, [asPath, filter]);
 
   return (
     <>
