@@ -8,7 +8,7 @@ function Team({ game }) {
         <ul className="list">
           {game.developers.map((x, index) => (
             <li key={`developers-${index}`}>
-              <GameDetailsLink href={`/publishers/${x.slug}`} name={x.name} />
+              <GameDetailsLink href={`/developers/${x.slug}`} name={x.name} />
             </li>
           ))}
         </ul>

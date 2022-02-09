@@ -10,9 +10,9 @@ function Publishers({ pub, all, filters }) {
   const {} = useStatus(filters);
   const {} = useFilters("Publishers");
 
-  // console.log("Publisher: ", pub);
-  // console.log("Publisher All: ", all);
-  // console.log("Publisher Filters: ", filters);
+  console.log("Publisher: ", pub);
+  console.log("Publisher All: ", all);
+  console.log("Publisher Filters: ", filters);
 
   return (
     <>
@@ -22,10 +22,7 @@ function Publishers({ pub, all, filters }) {
         <meta name="keywords" content={appState.data.seo_keywords} />
         <meta name="description" content={appState.data.seo_description} />
       </Head>
-      <GameCards
-        title={`Games for ${pub.name}`}
-        filters={all.filters ? all.filters : []}
-      />
+      <GameCards title={`Games for ${pub.name}`} filters={all.filters} />
     </>
   );
 }
