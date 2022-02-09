@@ -1,20 +1,15 @@
-import { useEffect } from "react";
 import useStatus from "../hooks/useStatus";
 import Head from "next/head";
 import GameCards from "../components/shared/game_cards/GameCards";
 import useFilters from "../hooks/useFilters";
 
 function Home({ all, filters }) {
-  const validateStatus = useStatus();
+  const {} = useStatus(filters);
   const {} = useFilters("Index");
 
   // console.log("Home All: ", all);
   // console.log("Home Filters: ", filters);
   // console.log("Filters: ", appState.filters);
-
-  useEffect(() => {
-    validateStatus(filters);
-  }, [all, filters]);
 
   return (
     <>
@@ -26,7 +21,7 @@ function Home({ all, filters }) {
           content="Video game database and discovery service - powered by RAWG.IO"
         />
       </Head>
-      <GameCards title={all.seo_h1} filters={all.filters ? all.filters : []} />
+      <GameCards title={all.seo_h1} filters={all.filters} />
     </>
   );
 }

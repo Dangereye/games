@@ -1,9 +1,11 @@
 import { useContext } from "react";
+import { useEffect } from "react/cjs/react.development";
 import { AppContext } from "../contexts/AppContext";
 
-function useStatus() {
+function useStatus(data) {
   const { appDispatch } = useContext(AppContext);
-  const validateStatus = (data) => {
+
+  useEffect(() => {
     if (data.error) {
       appDispatch({
         type: "ERROR",
@@ -15,9 +17,9 @@ function useStatus() {
         payload: data,
       });
     }
-  };
+  }, [data]);
 
-  return validateStatus;
+  return { data };
 }
 
 export default useStatus;
