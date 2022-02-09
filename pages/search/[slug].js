@@ -1,23 +1,15 @@
-import { useEffect } from "react";
 import useStatus from "../../hooks/useStatus";
 import useFilters from "../../hooks/useFilters";
 import Head from "next/head";
 import GameCards from "../../components/shared/game_cards/GameCards";
 
 function SearchDetails({ all, filters, slug }) {
-  const validateStatus = useStatus();
-  const { handleFilters, asPath, filter } = useFilters();
-  console.log("Search All: ", all);
-  console.log("Search Filters: ", filters);
-  console.log("Slug: ", slug);
+  const {} = useStatus(filters);
+  const {} = useFilters("Search");
 
-  useEffect(() => {
-    validateStatus(filters);
-  }, [all, filters, slug]);
-
-  useEffect(() => {
-    handleFilters();
-  }, [asPath, filter]);
+  // console.log("Search All: ", all);
+  // console.log("Search Filters: ", filters);
+  // console.log("Slug: ", slug);
 
   return (
     <>
@@ -29,7 +21,7 @@ function SearchDetails({ all, filters, slug }) {
       </Head>
       <GameCards
         title={`Search results for "${slug}".`}
-        filters={all.filters ? all.filters : []}
+        filters={all.filters}
       />
     </>
   );
