@@ -7,9 +7,9 @@ function Home({ all, filters }) {
   const {} = useStatus(filters);
   const {} = useFilters("Index");
 
-  // console.log("Home All: ", all);
-  // console.log("Home Filters: ", filters);
-  // console.log("Filters: ", appState.filters);
+  console.log("Home All: ", all);
+  console.log("Home Filters: ", filters);
+  console.log("Filters: ", appState.filters);
 
   return (
     <>

@@ -10,9 +10,9 @@ function Publishers({ pub, all, filters }) {
   const {} = useStatus(filters);
   const {} = useFilters("Publishers");
 
-  console.log("Publisher: ", pub);
-  console.log("Publisher All: ", all);
-  console.log("Publisher Filters: ", filters);
+  // console.log("Publisher: ", pub);
+  // console.log("Publisher All: ", all);
+  // console.log("Publisher Filters: ", filters);
 
   return (
     <>
