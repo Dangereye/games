@@ -31,7 +31,7 @@ export async function getServerSideProps(context) {
   const { query } = context;
   const options = {
     method: "GET",
-    // mode: "no-cors",
+    mode: "no-cors",
     headers: { "Content-Type": "application/json" },
   };
 

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useEffect } from "react/cjs/react.development";
+import { useEffect } from "react";
 import { AppContext } from "../contexts/AppContext";
 
 function useStatus(data) {
