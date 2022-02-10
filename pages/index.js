@@ -9,7 +9,6 @@ function Home({ all, filters }) {
 
   console.log("Home All: ", all);
   console.log("Home Filters: ", filters);
-  console.log("Filters: ", appState.filters);
 
   return (
     <>
@@ -32,9 +31,10 @@ export async function getServerSideProps(context) {
   const { query } = context;
   const options = {
     method: "GET",
-    mode: "no-cors",
+    // mode: "no-cors",
     headers: { "Content-Type": "application/json" },
   };
+
   const ordering = `&ordering=${query.ordering}`;
   const dates = query.dates ? `&dates=${query.dates}` : "";
   const genres = query.genres ? `&genres=${query.genres}` : "";
