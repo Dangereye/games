@@ -1,6 +1,6 @@
 .game-card {
   overflow: hidden;
-  border-radius: 2rem;
+  border-radius: $border-radius;
   box-shadow: $shadow;
   cursor: pointer;
 
@@ -30,13 +30,12 @@
   .metacritic {
     width: max-content;
     margin-left: auto;
-    padding: 4px;
-    font-size: 1.6rem;
+    padding: clamp(3px, 0.8vw, 6px);
     border: 1px solid transparent;
   }
 
   &__title {
-    font-size: clamp(1.8rem, 2.5vw, 2rem);
+    font-size: clamp(1.6rem, 2.5vw, 2.4rem);
     font-weight: 800;
     letter-spacing: 0.5px;
   }
