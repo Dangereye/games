@@ -64,7 +64,7 @@
       }
     }
 
-    @media (max-width: $mobile) {
+    @media (max-width: $mobile), (max-height: $landscape) {
       display: block;
     }
   }
@@ -115,11 +115,8 @@
       margin-right: 1rem;
     }
 
-    @media (max-width: $mobile) {
+    @media (max-width: $mobile), (max-height: $landscape) {
       display: none;
     }
-  }
-
-  &__list-item {
   }
 }

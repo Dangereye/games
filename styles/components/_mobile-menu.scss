@@ -22,5 +22,9 @@
     @media (min-width: $mobile) {
       left: -100%;
     }
+
+    @media (max-height: $landscape) {
+      left: 0;
+    }
   }
 }

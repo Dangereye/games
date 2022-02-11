@@ -52,7 +52,7 @@ function Navbar() {
   };
 
   const changeBackground = () => {
-    if (window.scrollY >= 100) {
+    if (window.scrollY >= 50) {
       setBackground(true);
     } else {
       setBackground(false);
