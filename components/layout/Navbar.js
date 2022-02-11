@@ -52,7 +52,7 @@ function Navbar() {
   };
 
   const changeBackground = () => {
-    if (window.scrollY >= 50) {
+    if (window.scrollY >= 50 || appState.mobileMenu_isOpen) {
       setBackground(true);
     } else {
       setBackground(false);
@@ -65,14 +65,20 @@ function Navbar() {
   };
 
   useEffect(() => {
+    if (appState.mobileMenu_isOpen) {
+      setBackground(true);
+    }
+
     const watchScroll = () => {
       window.addEventListener("scroll", changeBackground);
     };
+
     watchScroll();
+
     return () => {
       window.removeEventListener("scroll", changeBackground);
     };
-  }, []);
+  }, [appState.mobileMenu_isOpen]);
 
   return (
     <nav className="navbar" style={navBg}>
