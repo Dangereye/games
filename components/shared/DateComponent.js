@@ -6,7 +6,7 @@ function DateComponent({ date, fullDate }) {
 
   return (
     <>
-      <div className="game-card__date">
+      <div className="date">
         {date ? d.toLocaleDateString("en-GB", fullDate ? full : short) : "TBA"}
       </div>
     </>

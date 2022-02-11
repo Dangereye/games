@@ -22,17 +22,21 @@ function ParentPlatforms({ platforms }) {
   return (
     <div className="parent-platforms">
       <div className="parent-platforms__icons">
-        {(router.route === "/games/[slug]"
+        {(router.route === "/game/[slug]"
           ? platforms
           : platforms.filter((p, index) => index < 3)
         ).map((p) => (
-          <div className="parent-platforms__icons__icon" key={p.platform.slug}>
+          <div
+            className="parent-platforms__icons__icon"
+            key={p.platform.slug}
+            title={p.platform.name}
+          >
             {GetSVG(p.platform.slug)}
           </div>
         ))}
       </div>
       <div className="parent-platform__extras">
-        {router.route !== "/games/[slug]" && platforms.length > 3 ? (
+        {router.route !== "/game/[slug]" && platforms.length > 3 ? (
           <div className="parent-platforms__extras__extra">
             +{+platforms.length - 3}
           </div>

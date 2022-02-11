@@ -20,11 +20,16 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    column-gap: 2rem;
+    row-gap: 1rem;
 
-    > *:not(:last-child)::after {
-      content: "|";
-      margin-left: 1rem;
+    .date {
+      min-width: max-content;
+      border: 1px solid $accent;
+      border-radius: $border-radius;
+      color: $accent;
+      // font-weight: 500;
+      padding: 5px 10px;
     }
 
     &__genres {
