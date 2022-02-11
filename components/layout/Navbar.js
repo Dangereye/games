@@ -78,19 +78,6 @@ function Navbar() {
     <nav className="navbar" style={navBg}>
       <div className="container">
         <div
-          className={
-            appState.mobileMenu_isOpen
-              ? "navbar__mobile-menu active"
-              : "navbar__mobile-menu"
-          }
-          onClick={toggleMobileMenu}
-        >
-          <div style={{ backgroundColor: themeState.text.primary }}></div>
-          <div style={{ backgroundColor: themeState.text.primary }}></div>
-          <div style={{ backgroundColor: themeState.text.primary }}></div>
-        </div>
-
-        <div
           className="navbar__logo"
           style={{ color: themeState.text.primary }}
         >
@@ -120,6 +107,18 @@ function Navbar() {
               }}
             />
           </form>
+        </div>
+        <div
+          className={
+            appState.mobileMenu_isOpen
+              ? "navbar__mobile-menu active"
+              : "navbar__mobile-menu"
+          }
+          onClick={toggleMobileMenu}
+        >
+          <div style={{ backgroundColor: themeState.text.primary }}></div>
+          <div style={{ backgroundColor: themeState.text.primary }}></div>
+          <div style={{ backgroundColor: themeState.text.primary }}></div>
         </div>
         <ul
           className="navbar__list"
