@@ -24,7 +24,7 @@ function Team({ game }) {
       </Links>
       <Links title="Website" condition={game.website && game.website !== ""}>
         <a
-          className="btn btn--small"
+          className="btn btn--small btn--accent"
           href={game.website}
           target="_blank"
           rel="noreferrer"
