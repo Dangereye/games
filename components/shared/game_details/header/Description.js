@@ -27,14 +27,16 @@ function Description({ description }) {
           Description
         </h4>
         <p style={{ color: themeState.text.primary }}>
-          {description ? formatDescription(description) : "Unknown"}
+          {description ? formatDescription(description) : "N/A"}
         </p>
       </section>
-      <Button
-        name={isOpen ? "Show Less" : "Show More"}
-        styles="btn--show-more"
-        func={toggleDescription}
-      />
+      {description && (
+        <Button
+          name={isOpen ? "Show Less" : "Show More"}
+          styles="btn--show-more"
+          func={toggleDescription}
+        />
+      )}
     </>
   );
 }

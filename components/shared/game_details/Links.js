@@ -9,7 +9,7 @@ function Links({ title, styles, condition, children }) {
       <h4 className="title" style={{ color: text.tertiary }}>
         {title}
       </h4>
-      {condition ? children : "Unknown"}
+      {condition ? children : "N/A"}
     </div>
   );
 }
