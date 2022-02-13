@@ -7,7 +7,7 @@ function Stats({ game, series, additions, achievements }) {
   return (
     <section
       className="stats"
-      style={{ backgroundColor: themeState.background.tertiary }}
+      // style={{ backgroundColor: themeState.background.tertiary }}
     >
       <Stat
         figure={`${game.metacritic}%`}
