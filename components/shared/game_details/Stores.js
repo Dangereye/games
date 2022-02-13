@@ -8,7 +8,9 @@ function Stores({ stores }) {
     <>
       {stores.count > 0 && (
         <section className="stores">
-          <h4 className="title">Where to buy</h4>
+          <h4 className="title" style={{ color: themeState.text.tertiary }}>
+            Where to buy
+          </h4>
           <div className="stores__list">
             {stores.results.map((store, index) => {
               const item = storesData.find(
