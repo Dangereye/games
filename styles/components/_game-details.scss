@@ -100,8 +100,12 @@
   }
 
   &__links {
-    &.double {
-      grid-column: span 2;
+    &.triple {
+      grid-column: span 3;
+
+      @media (max-width: 1760px) {
+        grid-column: span 2;
+      }
 
       @media (max-width: 420px) {
         grid-column: span 1;

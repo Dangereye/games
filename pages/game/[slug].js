@@ -12,10 +12,9 @@ import ESRBRating from "../../components/shared/game_details/header/ESRBRating";
 import Screenshots from "../../components/shared/game_details/header/Screenshots";
 import Stats from "../../components/shared/game_details/stats/Stats";
 import Stores from "../../components/shared/game_details/Stores";
-import Additions from "../../components/shared/game_details/Additions";
-import ParentGame from "../../components/shared/game_details/ParentGame";
 import Specification from "../../components/shared/game_details/Specification";
-import Series from "../../components/shared/game_details/Series";
+import CardsSection from "../../components/shared/game_details/CardsSection";
+import GameCard from "../../components/shared/game_cards/GameCard";
 
 function GameDetails({
   initial,
@@ -85,9 +84,30 @@ function GameDetails({
               />
               <Specification game={game} />
               <Stores stores={stores} />
-              <Additions additions={additions} />
-              <Series series={series} />
-              <ParentGame parent={parent} />
+
+              {/* Game Additions */}
+              <CardsSection
+                condition={additions.count > 0}
+                title="Game Additions"
+              >
+                {additions.results.map((game, index) => (
+                  <GameCard key={`edition-${index}`} game={game} />
+                ))}
+              </CardsSection>
+
+              {/* Game Series */}
+              <CardsSection condition={series.count > 0} title="Game Series">
+                {series.results.map((game, index) => (
+                  <GameCard key={`series-${index}`} game={game} />
+                ))}
+              </CardsSection>
+
+              {/* Parent Game */}
+              <CardsSection condition={parent.count > 0} title="Addition to">
+                {parent.results.map((game, index) => (
+                  <GameCard key={`parent-${index}`} game={game} />
+                ))}
+              </CardsSection>
             </>
           )}
         </div>

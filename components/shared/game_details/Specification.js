@@ -25,7 +25,7 @@ function Specification({ game }) {
           ))}
         </ul>
       </Links>
-      <Links title="Tags" styles={"double"}>
+      <Links title="Tags" styles={"triple"}>
         <div className="tags">
           {game.tags.map((item, index) => (
             <div className="tag" key={`tags-${index}`}>
