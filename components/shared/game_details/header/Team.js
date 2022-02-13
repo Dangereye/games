@@ -1,28 +1,28 @@
-import GameDetailsLink from ".././GameDetailsLink";
-import GameDetailsLinkGroup from ".././GameDetailsLinkGroup";
+import Links from ".././Links";
+import Link from ".././Link";
 
 function Team({ game }) {
   return (
     <section className="team">
-      <GameDetailsLinkGroup title="Developers">
+      <Links title="Developers">
         <ul className="list">
           {game.developers.map((x, index) => (
             <li key={`developers-${index}`}>
-              <GameDetailsLink href={`/developers/${x.slug}`} name={x.name} />
+              <Link href={`/developers/${x.slug}`} name={x.name} />
             </li>
           ))}
         </ul>
-      </GameDetailsLinkGroup>
-      <GameDetailsLinkGroup title="Publishers">
+      </Links>
+      <Links title="Publishers">
         <ul className="list">
           {game.publishers.map((x, index) => (
             <li key={`publishers-${index}`}>
-              <GameDetailsLink href={`/publishers/${x.slug}`} name={x.name} />
+              <Link href={`/publishers/${x.slug}`} name={x.name} />
             </li>
           ))}
         </ul>
-      </GameDetailsLinkGroup>
-      <GameDetailsLinkGroup title="Website">
+      </Links>
+      <Links title="Website">
         <a
           className="btn btn--small"
           href={game.website}
@@ -31,7 +31,7 @@ function Team({ game }) {
         >
           Visit
         </a>
-      </GameDetailsLinkGroup>
+      </Links>
     </section>
   );
 }

@@ -30,16 +30,6 @@
       color: $accent;
       padding: 5px 10px;
     }
-
-    &__genres {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      > *:not(:last-child)::after {
-        content: ",";
-      }
-    }
   }
 
   .trailer {
@@ -86,7 +76,8 @@
     }
   }
 
-  .team {
+  .team,
+  .specification {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
     gap: 4rem;
@@ -111,7 +102,15 @@
     }
   }
 
-  &__links-group {
+  &__links {
+    &.double {
+      grid-column: span 2;
+
+      @media (max-width: 420px) {
+        grid-column: span 1;
+      }
+    }
+
     .list {
       > *:not(:last-child) {
         margin-bottom: 1rem;
@@ -128,7 +127,18 @@
       }
     }
 
-    &__link {
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+
+      .tag {
+        padding: 5px 10px;
+        min-width: max-content;
+        border: 1px solid $accent;
+        border-radius: $border-radius;
+      }
     }
   }
 
@@ -137,9 +147,6 @@
     display: flex;
     flex-wrap: wrap;
 
-    // > *:not(:last-child) {
-    //   border-right: 1px solid grey;
-    // }
     &__group {
       min-width: 18rem;
       padding: 3rem;

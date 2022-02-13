@@ -14,6 +14,7 @@ import Stats from "../../components/shared/game_details/stats/Stats";
 import Stores from "../../components/shared/game_details/Stores";
 import Additions from "../../components/shared/game_details/Additions";
 import ParentGame from "../../components/shared/game_details/ParentGame";
+import Specification from "../../components/shared/game_details/Specification";
 
 function GameDetails({
   initial,
@@ -29,14 +30,14 @@ function GameDetails({
   const { themeState } = useContext(ThemeContext);
   const {} = useStatus(initial);
   const game = appState.data;
-  // console.log("Data: ", initial);
-  // console.log("Screenshots: ", screenshots);
-  // console.log("Additions: ", additions);
-  // console.log("Trailers", trailers);
-  // console.log("Series", series);
-  // console.log("Achievements", achievements);
-  // console.log("Stores", stores);
-  // console.log("Parent", parent);
+  console.log("Data: ", initial);
+  console.log("Screenshots: ", screenshots);
+  console.log("Additions: ", additions);
+  console.log("Trailers", trailers);
+  console.log("Series", series);
+  console.log("Achievements", achievements);
+  console.log("Stores", stores);
+  console.log("Parent", parent);
 
   return (
     <>
@@ -81,6 +82,7 @@ function GameDetails({
                 additions={additions}
                 achievements={achievements}
               />
+              <Specification game={game} />
               <Stores stores={stores} />
               <Additions additions={additions} />
               <ParentGame parent={parent} />
