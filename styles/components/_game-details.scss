@@ -185,6 +185,10 @@
       border: 1px solid transparent;
       border-radius: $border-radius;
       cursor: pointer;
+
+      &:hover {
+        color: inherit;
+      }
     }
 
     &__text {
