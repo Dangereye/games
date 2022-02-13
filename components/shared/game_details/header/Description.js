@@ -27,7 +27,7 @@ function Description({ description }) {
           Description
         </h4>
         <p style={{ color: themeState.text.primary }}>
-          {formatDescription(description)}
+          {description ? formatDescription(description) : "Unknown"}
         </p>
       </section>
       <Button
