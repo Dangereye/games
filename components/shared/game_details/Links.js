@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 
-function Links({ title, styles, children }) {
+function Links({ title, styles, condition, children }) {
   const { themeState } = useContext(ThemeContext);
   const text = themeState.text;
   return (
@@ -9,7 +9,7 @@ function Links({ title, styles, children }) {
       <h4 className="title" style={{ color: text.tertiary }}>
         {title}
       </h4>
-      {children}
+      {condition ? children : "Unknown"}
     </div>
   );
 }

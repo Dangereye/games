@@ -4,7 +4,7 @@ import Link from ".././Link";
 function Team({ game }) {
   return (
     <section className="team">
-      <Links title="Developers">
+      <Links title="Developers" condition={game.developers.length}>
         <ul className="list">
           {game.developers.map((x, index) => (
             <li key={`developers-${index}`}>
@@ -13,7 +13,7 @@ function Team({ game }) {
           ))}
         </ul>
       </Links>
-      <Links title="Publishers">
+      <Links title="Publishers" condition={game.publishers.length}>
         <ul className="list">
           {game.publishers.map((x, index) => (
             <li key={`publishers-${index}`}>
@@ -22,7 +22,7 @@ function Team({ game }) {
           ))}
         </ul>
       </Links>
-      <Links title="Website">
+      <Links title="Website" condition={game.website && game.website !== ""}>
         <a
           className="btn btn--small"
           href={game.website}
