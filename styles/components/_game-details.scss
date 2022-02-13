@@ -205,4 +205,45 @@
       }
     }
   }
+
+  .achievements {
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+      gap: 1rem;
+    }
+
+    .achievement {
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      border-radius: $border-radius-small;
+      gap: 1rem;
+
+      &__image {
+        display: grid;
+        place-content: center;
+      }
+
+      &__details {
+        > *:not(:last-child) {
+          margin-bottom: 5px;
+        }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      &__percent {
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+      &__name {
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+      &__description {
+        font-size: 1.2rem;
+      }
+    }
+  }
 }

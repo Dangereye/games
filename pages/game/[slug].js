@@ -15,6 +15,7 @@ import Stores from "../../components/shared/game_details/Stores";
 import Specification from "../../components/shared/game_details/Specification";
 import CardsSection from "../../components/shared/game_details/CardsSection";
 import GameCard from "../../components/shared/game_cards/GameCard";
+import Achievements from "../../components/shared/game_details/Achievements";
 
 function GameDetails({
   initial,
@@ -108,6 +109,7 @@ function GameDetails({
                   <GameCard key={`parent-${index}`} game={game} />
                 ))}
               </CardsSection>
+              <Achievements achievements={achievements} />
             </>
           )}
         </div>
