@@ -50,7 +50,7 @@ function GameCard({ game }) {
           className="game-card__header"
           style={{ fill: themeState.text.secondary }}
         >
-          <ParentPlatforms platforms={game.parent_platforms} />
+          <ParentPlatforms platforms={game.parent_platforms} limit />
           <MetacriticComponent score={game.metacritic} />
         </div>
 

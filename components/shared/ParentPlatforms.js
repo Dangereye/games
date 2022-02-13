@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import {
   GetSVG,
   _3do,
@@ -17,26 +16,24 @@ import {
   Xbox,
 } from "./PlatformSVGs";
 
-function ParentPlatforms({ platforms }) {
-  const router = useRouter();
+function ParentPlatforms({ platforms, limit }) {
   return (
     <div className="parent-platforms">
       <div className="parent-platforms__icons">
-        {(router.route === "/game/[slug]"
-          ? platforms
-          : platforms.filter((p, index) => index < 3)
-        ).map((p) => (
-          <div
-            className="parent-platforms__icons__icon"
-            key={p.platform.slug}
-            title={p.platform.name}
-          >
-            {GetSVG(p.platform.slug)}
-          </div>
-        ))}
+        {(limit ? platforms.filter((p, index) => index < 3) : platforms).map(
+          (p) => (
+            <div
+              className="parent-platforms__icons__icon"
+              key={p.platform.slug}
+              title={p.platform.name}
+            >
+              {GetSVG(p.platform.slug)}
+            </div>
+          )
+        )}
       </div>
       <div className="parent-platform__extras">
-        {router.route !== "/game/[slug]" && platforms.length > 3 ? (
+        {limit && platforms.length > 3 ? (
           <div className="parent-platforms__extras__extra">
             +{+platforms.length - 3}
           </div>

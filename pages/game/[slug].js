@@ -15,6 +15,7 @@ import Stores from "../../components/shared/game_details/Stores";
 import Additions from "../../components/shared/game_details/Additions";
 import ParentGame from "../../components/shared/game_details/ParentGame";
 import Specification from "../../components/shared/game_details/Specification";
+import Series from "../../components/shared/game_details/Series";
 
 function GameDetails({
   initial,
@@ -85,6 +86,7 @@ function GameDetails({
               <Specification game={game} />
               <Stores stores={stores} />
               <Additions additions={additions} />
+              <Series series={series} />
               <ParentGame parent={parent} />
             </>
           )}
