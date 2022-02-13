@@ -60,19 +60,19 @@ const ThemeReducer = (state, action) => {
 
 function ThemeComponent({ children }) {
   const [themeState, themeDispatch] = useReducer(ThemeReducer, {
-    dark_mode: false,
+    dark_mode: true,
     text: {
+      primary: `rgb(${lightSecondary})`,
+      secondary: `rgb(${lightPrimary})`,
+      tertiary: `rgb(${lightTertiary})`,
+    },
+    background: {
       primary: `rgb(${darkPrimary})`,
       secondary: `rgb(${darkSecondary})`,
       tertiary: `rgb(${darkTertiary})`,
-    },
-    background: {
-      primary: `rgb(${lightPrimary})`,
-      secondary: `rgb(${lightSecondary})`,
-      tertiary: `rgb(${lightTertiary})`,
-      navbar: `rgba(${lightPrimary},.9)`,
-      gradient: lightGradient,
-      inputs: `rgba(${darkPrimary},.2)`,
+      navbar: `rgba(${darkPrimary},.8)`,
+      gradient: darkGradient,
+      inputs: `rgba(${lightPrimary},.2)`,
     },
     accent,
   });
