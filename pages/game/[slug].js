@@ -90,25 +90,21 @@ function GameDetails({
               <CardsSection
                 condition={additions.count > 0}
                 title="Game Additions"
-              >
-                {additions.results.map((game, index) => (
-                  <GameCard key={`edition-${index}`} game={game} />
-                ))}
-              </CardsSection>
-
+                list={additions.results}
+              />
               {/* Game Series */}
-              <CardsSection condition={series.count > 0} title="Game Series">
-                {series.results.map((game, index) => (
-                  <GameCard key={`series-${index}`} game={game} />
-                ))}
-              </CardsSection>
+              <CardsSection
+                condition={series.count > 0}
+                title="GameSeries"
+                list={series.results}
+              />
 
               {/* Parent Game */}
-              <CardsSection condition={parent.count > 0} title="Addition to">
-                {parent.results.map((game, index) => (
-                  <GameCard key={`parent-${index}`} game={game} />
-                ))}
-              </CardsSection>
+              <CardsSection
+                condition={parent.count > 0}
+                title="Addition to"
+                list={parent.results}
+              />
               <Achievements achievements={achievements} />
             </>
           )}
