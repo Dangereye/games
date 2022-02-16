@@ -3,14 +3,14 @@
   margin-top: 4rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1rem;
 
   &__menu {
     position: relative;
     width: max-content;
-    padding: 1rem 2rem;
+    padding: clamp(0.5rem, 1vw, 1rem) clamp(1rem, 2vw, 2rem);
     border-radius: $border-radius;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   &__parent-element {

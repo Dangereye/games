@@ -4,7 +4,6 @@
 @import "partials/grids";
 @import "partials/buttons";
 @import "partials/dropdown-lists";
-@import "partials/filters";
 
 // Components
 @import "components/modal";
@@ -13,11 +12,11 @@
 @import "components/mobile-menu";
 @import "components/menu-group";
 @import "components/footer";
+@import "components/filters";
 @import "components/game-card";
 @import "components/game-details";
 @import "components/parent-platforms";
 @import "components/loader";
-@import "components/esrb-rating";
 @import "components/metacritic";
 
 // Reset
@@ -54,7 +53,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 70vh;
     background-position: top center;
     background-size: cover;
@@ -72,7 +71,7 @@ body {
 .page {
   margin: 0 auto;
   position: relative;
-  width: 100%;
+  width: 100vw;
   max-width: $page-width;
   min-height: 100vh;
   padding: $page-top-padding $page-hoz-padding $page-bottom-padding
