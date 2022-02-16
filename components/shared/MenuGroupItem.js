@@ -35,7 +35,10 @@ function MenuGroupItem({ data }) {
             {data.icon}
           </div>
         )}
-        <div className="menu-group__item__header__title">
+        <div
+          className="menu-group__item__header__title"
+          style={{ color: themeState.text.secondary }}
+        >
           <span>{data.title}</span>
           {data.dropdown && <IoMdArrowDropdown />}
         </div>
@@ -50,11 +53,12 @@ function MenuGroupItem({ data }) {
         >
           {data.items.map((item) => (
             <div
+              style={{ color: themeState.text.tertiary }}
               className="menu-group__item__dropdown-menu__item"
               onClick={() => dropdownLink(item)}
               key={item.name}
             >
-              {item.name}
+              <span>{item.name}</span>
             </div>
           ))}
         </div>

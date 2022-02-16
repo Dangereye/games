@@ -36,7 +36,10 @@ function GameCards({ title, filters }) {
         ) : (
           <>
             <h1 className="display">{`${titleGenre}${title}${titleDates}`}</h1>
-            <p className="page-results">
+            <p
+              className="page-results"
+              style={{ color: themeState.text.tertiary }}
+            >
               Found <FormatNumber num={appState.data.count} /> results.
             </p>
             <GameCardFilters filters={filters} />

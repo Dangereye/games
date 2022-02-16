@@ -4,16 +4,14 @@ export const ThemeContext = createContext();
 
 // RGB - Colour Palette
 const darkPrimary = "34,34,34";
-const darkSecondary = "51, 51, 51";
-const darkTertiary = "68, 68, 68";
+const darkSecondary = "64, 64, 64";
+const darkTertiary = "94, 94, 94";
 const darkGradient = `linear-gradient(rgba(${darkPrimary}, 0.6), rgb(${darkPrimary}))`;
 
-const lightPrimary = "238, 238, 238";
-const lightSecondary = "255, 255, 255";
-const lightTertiary = "204, 204, 204";
+const lightPrimary = "223, 223, 223";
+const lightSecondary = "253, 253, 253";
+const lightTertiary = "193, 193, 193";
 const lightGradient = `linear-gradient(rgba(${lightPrimary}, 0.6), rgb(${lightPrimary}))`;
-
-const accent = "#86c232";
 
 const ThemeReducer = (state, action) => {
   switch (action.type) {
@@ -74,7 +72,6 @@ function ThemeComponent({ children }) {
       gradient: darkGradient,
       inputs: `rgba(${lightPrimary},.2)`,
     },
-    accent,
   });
   return (
     <ThemeContext.Provider value={{ themeState, themeDispatch }}>
