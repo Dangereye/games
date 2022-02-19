@@ -38,6 +38,8 @@ function Layout({ children }) {
   return (
     <>
       <Modal />
+      <MobileMenu />
+      <Navbar />
       <div
         className="layout"
         style={{
@@ -59,11 +61,11 @@ function Layout({ children }) {
             }}
           ></div>
         </div>
-        <Navbar />
-        <div className="page grid grid--sidebar">
-          <MobileMenu />
-          <Sidebar />
-          {children}
+        <div className="page ">
+          <div className="container grid grid--sidebar">
+            <Sidebar />
+            {children}
+          </div>
         </div>
         <Footer />
       </div>
