@@ -1,6 +1,6 @@
 export const GetSVG = (name) => {
   if (name === "3do") return <_3do />;
-  if (name === "amiga") return <Amiga />;
+  if (name === "commodore-amiga") return <Amiga />;
   if (name === "android") return <Android />;
   if (name === "atari") return <Atari />;
   if (name === "ios") return <Ios />;
