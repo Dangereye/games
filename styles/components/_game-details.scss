@@ -5,7 +5,7 @@
     grid-template-columns: 1.5fr 1fr;
     gap: 4rem;
 
-    @media (max-width: 1420px) {
+    @media (max-width: $laptop) {
       grid-template-columns: 1fr;
     }
   }
