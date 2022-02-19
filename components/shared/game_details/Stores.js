@@ -11,7 +11,7 @@ function Stores({ stores }) {
           <h4 className="title" style={{ color: themeState.text.tertiary }}>
             Where to buy
           </h4>
-          <div className="stores__list">
+          <div className="stores__list grid">
             {stores.results.map((store, index) => {
               const item = storesData.find(
                 (item) => item.id === store.store_id

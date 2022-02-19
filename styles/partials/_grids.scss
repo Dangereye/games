@@ -2,6 +2,14 @@
   display: grid;
   gap: 2rem;
 
+  @media (max-width: $laptop) {
+    gap: 1.5rem;
+  }
+
+  @media (max-width: $mobile) {
+    gap: 1rem;
+  }
+
   &.mt {
     margin-top: 4rem;
   }
@@ -24,16 +32,13 @@
 
     @media (max-width: $laptop) {
       grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-      gap: 1.5rem;
     }
     @media (max-width: $tablet) {
       grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
-      gap: 1.5rem;
     }
 
     @media (max-width: $mobile) {
       grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-      gap: 1rem;
     }
   }
 
@@ -42,11 +47,9 @@
 
     @media (max-width: $laptop-lg) {
       grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-      gap: 1.5rem;
     }
 
     @media (max-width: $tablet) {
-      gap: 1rem;
     }
 
     @media (max-width: $mobile) {

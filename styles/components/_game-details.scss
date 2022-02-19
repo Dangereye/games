@@ -2,7 +2,6 @@
   margin-top: 30vh;
 
   header {
-    display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 4rem;
 
@@ -25,7 +24,6 @@
 
     .date {
       min-width: max-content;
-      // border: 1px solid $accent;
       border-radius: $border-radius-small;
       background-color: $accent;
       padding: 5px 10px;
@@ -79,13 +77,13 @@
 
   .team,
   .specification {
-    display: grid;
     grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-    gap: 4rem;
+    row-gap: 4rem;
   }
 
   .screenshots {
     margin: 0;
+
     &__screenshot {
       overflow: hidden;
       border-radius: $border-radius;
@@ -140,7 +138,6 @@
         min-width: max-content;
         border: 1px solid $accent;
         border-radius: $border-radius-small;
-        // color: $accent;
       }
     }
   }
@@ -173,9 +170,7 @@
 
   .stores {
     &__list {
-      display: grid;
       grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
-      gap: 2rem;
     }
 
     &__item {

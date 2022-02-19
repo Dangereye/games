@@ -3,7 +3,7 @@ import Link from "./Link";
 
 function Specification({ game }) {
   return (
-    <section className="specification">
+    <section className="specification grid">
       <Links title="Platforms" condition={game.platforms.length}>
         <ul className="list">
           {game.platforms.map((item, index) => (

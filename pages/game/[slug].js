@@ -64,8 +64,9 @@ function GameDetails({
             </>
           ) : (
             <>
-              <header>
-                <div className="grid--game-details__left">
+              <header className="grid">
+                {/* Left */}
+                <div>
                   <h1 className="display">{game.name}</h1>
                   <InfoBanner game={game} />
                   <Trailer trailers={trailers.results} />
@@ -73,7 +74,8 @@ function GameDetails({
                   <Team game={game} />
                   <ESRBRating esrb={game.esrb_rating} />
                 </div>
-                <div className="grid--game-details__right">
+                {/* Right */}
+                <div>
                   <Screenshots screenshots={screenshots.results} />
                 </div>
               </header>

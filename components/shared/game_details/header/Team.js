@@ -3,7 +3,7 @@ import Link from ".././Link";
 
 function Team({ game }) {
   return (
-    <section className="team">
+    <section className="team grid">
       <Links title="Developers" condition={game.developers.length}>
         <ul className="list">
           {game.developers.map((x, index) => (
