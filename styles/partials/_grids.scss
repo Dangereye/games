@@ -15,7 +15,7 @@
     }
   }
 
-  &--multiple {
+  &--cards {
     grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
 
     @media (max-width: 1440px) {

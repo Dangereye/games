@@ -43,7 +43,7 @@ function GameCards({ title, filters }) {
               Found <FormatNumber num={appState.data.count} /> results.
             </p>
             <GameCardFilters filters={filters} />
-            <div className="grid grid--multiple mt">
+            <div className="grid grid--cards mt">
               {appState.data.results.map((game) => (
                 <GameCard game={game} key={game.id} />
               ))}

@@ -14,18 +14,18 @@ function CardsSection({ condition, title, list }) {
   return (
     <>
       {condition && (
-        <section className={"cards"}>
+        <section className="cards">
           <h4 className="title" style={{ color: themeState.text.tertiary }}>
             {title}
           </h4>
-          <div className="cards grid grid--multiple">
-            {(limit ? list.filter((item, index) => index < 7) : list).map(
+          <div className="grid grid--cards">
+            {(limit ? list.filter((item, index) => index < 5) : list).map(
               (game, index) => (
                 <GameCard key={`parent-${index}`} game={game} />
               )
             )}
           </div>
-          {list.length > 7 && (
+          {list.length > 5 && (
             <Button
               name={limit ? "Show More" : "Show Less"}
               styles="btn--show-more"
