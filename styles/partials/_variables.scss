@@ -10,8 +10,12 @@ $shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.1);
 $time: 0.4s;
 $border-radius: 1rem;
 $border-radius-small: 5px;
-$mobile: 760px;
-$landscape: 420px;
+
+// Media queries
+$laptop-lg: 1440px;
+$laptop: 1024px;
+$tablet: 768px;
+$mobile: 550px;
 
 $accent: #0e88eb;
 $button: #d1d2d4;

@@ -10,7 +10,7 @@
     column-gap: 4rem;
     grid-template-columns: 20rem 1fr;
 
-    @media (max-width: $mobile), (max-height: $landscape) {
+    @media (max-width: $mobile), (max-height: $mobile) {
       grid-template-columns: 1fr;
     }
   }
@@ -18,15 +18,15 @@
   &--cards {
     grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
 
-    @media (max-width: 1440px) {
+    @media (max-width: $laptop-lg) {
       grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: $laptop) {
       grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
       gap: 1.5rem;
     }
-    @media (max-width: 768px) {
+    @media (max-width: $tablet) {
       grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
       gap: 1.5rem;
     }
@@ -34,6 +34,23 @@
     @media (max-width: $mobile) {
       grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
       gap: 1rem;
+    }
+  }
+
+  &--screenshots {
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+
+    @media (max-width: $laptop-lg) {
+      grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+      gap: 1.5rem;
+    }
+
+    @media (max-width: $tablet) {
+      gap: 1rem;
+    }
+
+    @media (max-width: $mobile) {
+      grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     }
   }
 }

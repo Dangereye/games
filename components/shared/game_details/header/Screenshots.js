@@ -12,7 +12,7 @@ function Screenshots({ screenshots }) {
   return (
     <>
       {screenshots.length ? (
-        <section className="screenshots grid grid--multiple">
+        <section className="screenshots grid grid--screenshots">
           {screenshots.map((pic, index) => (
             <div className="screenshots__screenshot" key={pic.id}>
               <Image

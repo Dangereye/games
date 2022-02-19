@@ -212,6 +212,10 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
       gap: 1rem;
+
+      @media (max-width: $mobile) {
+        grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+      }
     }
 
     .achievement {

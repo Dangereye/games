@@ -17,10 +17,7 @@
     }
   }
 
-  @media (max-width: $mobile), (max-height: $landscape) {
+  @media (max-width: $mobile), (max-height: $mobile) {
     display: none;
   }
-  // @media (max-height: 420px) {
-  //   display: none;
-  // }
 }

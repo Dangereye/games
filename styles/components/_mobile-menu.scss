@@ -23,7 +23,7 @@
       left: -100%;
     }
 
-    @media (max-height: $landscape) {
+    @media (max-height: $mobile) {
       left: 0;
     }
   }

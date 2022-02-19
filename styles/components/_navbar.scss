@@ -64,7 +64,7 @@
       }
     }
 
-    @media (max-width: $mobile), (max-height: $landscape) {
+    @media (max-width: $mobile), (max-height: $mobile) {
       display: block;
     }
   }
@@ -116,7 +116,7 @@
       margin-right: 1rem;
     }
 
-    @media (max-width: $mobile), (max-height: $landscape) {
+    @media (max-width: $mobile), (max-height: $mobile) {
       display: none;
     }
   }
