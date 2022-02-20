@@ -16,12 +16,19 @@ import {
 } from "../components/shared/PlatformSVGs";
 
 import { CgGames } from "react-icons/cg";
+import { HiDownload } from "react-icons/hi";
 
 export const BrowseData = [
   {
     title: "All Games",
     icon: <CgGames />,
     link: "/",
+    dropdown: false,
+  },
+  {
+    title: "Stores",
+    icon: <HiDownload />,
+    link: "/stores",
     dropdown: false,
   },
 ];
