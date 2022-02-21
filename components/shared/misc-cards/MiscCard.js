@@ -3,7 +3,7 @@ import { ThemeContext } from "../../../contexts/ThemeContext";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-function MiscCard({ title, subtitle, data }) {
+function MiscCard({ icon, title, subtitle, data }) {
   const { themeState } = useContext(ThemeContext);
   const router = useRouter();
 
@@ -30,7 +30,12 @@ function MiscCard({ title, subtitle, data }) {
         />
       </div>
       <header>
-        <div className="misc-card__title">{data.name}</div>
+        <div className="misc-card__title">
+          <span className="icon" style={{ fill: themeState.text.primary }}>
+            {icon && icon}
+          </span>
+          <span>{data.name}</span>
+        </div>
       </header>
       <div className="misc-card__body">
         <h4 className="title" style={{ color: themeState.text.tertiary }}>

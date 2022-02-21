@@ -1,6 +1,18 @@
 import Head from "next/head";
 import MiscCards from "../../components/shared/misc-cards/MiscCards";
 import MiscCard from "../../components/shared/misc-cards/MiscCard";
+import {
+  GetSVG,
+  Steam,
+  PlayStationStore,
+  XboxStore,
+  AppleStore,
+  GogStore,
+  NintendoStore,
+  GooglePlayStore,
+  ItchIo,
+  EpicGamesStore,
+} from "../../components/shared/StoresSVGs";
 
 function GameStores({ stores }) {
   console.log("Stores: ", stores);
@@ -14,6 +26,7 @@ function GameStores({ stores }) {
       <MiscCards title="Game Stores.">
         {stores.results.map((store, index) => (
           <MiscCard
+            icon={GetSVG(store.slug)}
             title={store.name}
             subtitle="Popular Games"
             data={store}

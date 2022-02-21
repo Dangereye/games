@@ -14,9 +14,18 @@
   }
 
   &__title {
+    display: flex;
+    align-items: center;
     font-size: clamp(1.6rem, 2vw, 3rem);
     font-weight: 500;
     margin-bottom: 5px;
+
+    .icon {
+      margin-right: 1rem;
+      display: inline-block;
+      width: clamp(1.6rem, 2vw, 3rem);
+      height: clamp(1.6rem, 2vw, 3rem);
+    }
   }
 
   &__results {
