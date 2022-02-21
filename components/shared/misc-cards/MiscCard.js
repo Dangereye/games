@@ -3,12 +3,16 @@ import { ThemeContext } from "../../../contexts/ThemeContext";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-function MiscCard({ icon, title, subtitle, data }) {
+function MiscCard({ icon, title, subtitle, data, path }) {
   const { themeState } = useContext(ThemeContext);
   const router = useRouter();
 
   const gameLink = (id) => {
     router.push(`/game/${id}`);
+  };
+
+  const cardLink = () => {
+    router.push(`/${path}/${data.id}`);
   };
 
   return (
@@ -17,6 +21,7 @@ function MiscCard({ icon, title, subtitle, data }) {
       style={{
         backgroundColor: themeState.background.secondary,
       }}
+      onClick={() => cardLink()}
     >
       <div className="misc-card__image">
         <Image

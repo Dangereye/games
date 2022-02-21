@@ -26,10 +26,12 @@ function GameStores({ stores }) {
       <MiscCards title="Game Stores.">
         {stores.results.map((store, index) => (
           <MiscCard
+            id={store.id}
             icon={GetSVG(store.slug)}
             title={store.name}
             subtitle="Popular Games"
             data={store}
+            path="stores"
             key={`store-${index}`}
           />
         ))}
