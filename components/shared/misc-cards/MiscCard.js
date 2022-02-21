@@ -7,7 +7,8 @@ function MiscCard({ icon, title, subtitle, data, path }) {
   const { themeState } = useContext(ThemeContext);
   const router = useRouter();
 
-  const gameLink = (id) => {
+  const gameLink = (e, id) => {
+    e.stopPropagation();
     router.push(`/game/${id}`);
   };
 
@@ -55,7 +56,7 @@ function MiscCard({ icon, title, subtitle, data, path }) {
                 key={`${title}-${game.slug}`}
                 style={{ color: themeState.text.primary }}
               >
-                <span onClick={() => gameLink(game.id)}>{game.name}</span>
+                <span onClick={(e) => gameLink(e, game.id)}>{game.name}</span>
               </li>
             ))}
         </ul>
