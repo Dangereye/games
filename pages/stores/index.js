@@ -1,3 +1,4 @@
+import useStatus from "../../hooks/useStatus";
 import Head from "next/head";
 import MiscCards from "../../components/shared/misc-cards/MiscCards";
 import MiscCard from "../../components/shared/misc-cards/MiscCard";
@@ -15,6 +16,7 @@ import {
 } from "../../components/shared/StoresSVGs";
 
 function GameStores({ stores }) {
+  const {} = useStatus(stores);
   console.log("Stores: ", stores);
   return (
     <>
