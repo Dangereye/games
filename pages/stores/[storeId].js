@@ -3,22 +3,23 @@ import GameCards from "../../components/shared/game_cards/GameCards";
 import useFilters from "../../hooks/useFilters";
 import useStatus from "../../hooks/useStatus";
 
-function DynamicStores({ store, filters }) {
+function DynamicStores({ store, all, filters }) {
   console.log("Store: ", store);
-  console.log("Games: ", filters);
+  console.log("All: ", all);
+  console.log("Filters: ", filters);
   const {} = useStatus(filters);
   const {} = useFilters("Stores");
   return (
     <>
       <Head>
-        <title>Games | {`${store.name} Store Games.`}</title>
+        <title>Games | {all.seo_h1}</title>
         <meta name="author" content="Craig Puxty" />
         <meta
           name="description"
           content="Video game database and discovery service - powered by RAWG.IO"
         />
       </Head>
-      <GameCards title={`${store.name} Store Games.`} />
+      <GameCards title={all.seo_h1} filters={all.filters} />
     </>
   );
 }
@@ -35,20 +36,26 @@ export async function getServerSideProps(context) {
   const dates = query.dates ? `&dates=${query.dates}` : "";
   const genres = query.genres ? `&genres=${query.genres}` : "";
 
-  let [store, filters] = await Promise.all([
+  let [store, all, filters] = await Promise.all([
     fetch(
       `https://api.rawg.io/api/stores/${params.storeId}?key=${process.env.API_KEY}`,
       options
     ),
+    fetch(
+      `https://api.rawg.io/api/games?stores=${params.storeId}&filter=true&comments=true&key=${process.env.API_KEY}`,
+      options
+    ),
+
     fetch(
       `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=40&stores=${params.storeId}${ordering}${dates}${genres}`,
       options
     ),
   ]);
   store = await store.json();
+  all = await all.json();
   filters = await filters.json();
 
   return {
-    props: { store, filters },
+    props: { store, all, filters },
   };
 }

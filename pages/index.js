@@ -40,7 +40,10 @@ export async function getServerSideProps(context) {
   const genres = query.genres ? `&genres=${query.genres}` : "";
 
   let [all, filters] = await Promise.all([
-    fetch(`https://api.rawg.io/api/games?key=${process.env.API_KEY}`, options),
+    fetch(
+      `https://api.rawg.io/api/games?filter=true&comments=true&key=${process.env.API_KEY}`,
+      options
+    ),
     fetch(
       `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=40${ordering}${dates}${genres}`,
       options
