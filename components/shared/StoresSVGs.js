@@ -1,3 +1,17 @@
+export const GetSVG = (name) => {
+  if (name === "steam") return <Steam />;
+  if (name === "playstation-store") return <PlayStationStore />;
+  if (name === "xbox-store") return <XboxStore />;
+  if (name === "apple-appstore") return <AppleStore />;
+  if (name === "gog") return <GogStore />;
+  if (name === "nintendo") return <NintendoStore />;
+  if (name === "xbox360") return <XboxStore />;
+  if (name === "google-play") return <GooglePlayStore />;
+  if (name === "itch") return <ItchIo />;
+  if (name === "epic-games") return <EpicGamesStore />;
+  return;
+};
+
 export function AppleStore() {
   return (
     <svg viewBox="0 0 300 300" xmlSpace="preserve">

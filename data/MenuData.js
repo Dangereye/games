@@ -26,7 +26,7 @@ export const BrowseData = [
     dropdown: false,
   },
   {
-    title: "Stores",
+    title: "Game Stores",
     icon: <HiDownload />,
     link: "/stores",
     dropdown: false,
