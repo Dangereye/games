@@ -5,15 +5,16 @@ import useStatus from "../../hooks/useStatus";
 import Head from "next/head";
 import MiscCards from "../../components/shared/misc-cards/MiscCards";
 import MiscCard from "../../components/shared/misc-cards/MiscCard";
+
 function Genres({ genres }) {
   const { appState } = useContext(AppContext);
   const {} = useStatus(genres);
   return (
     <>
       <Head>
-        <title>Games | Publishers</title>
+        <title>Games | Genres</title>
         <meta name="author" content="Craig Puxty" />
-        <meta name="description" content="Video game publishers." />
+        <meta name="description" content="Video game genres." />
       </Head>
       <MiscCards title="Game Genres.">
         {appState.data.results.map((genre, index) => (
