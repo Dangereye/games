@@ -19,6 +19,7 @@ import { CgGames } from "react-icons/cg";
 import { HiDownload } from "react-icons/hi";
 import { BsCodeSlash } from "react-icons/bs";
 import { RiBuilding2Line } from "react-icons/ri";
+import { BiCategory } from "react-icons/bi";
 
 export const BrowseData = [
   {
@@ -43,6 +44,12 @@ export const BrowseData = [
     title: "Publishers",
     icon: <RiBuilding2Line />,
     link: "/publishers",
+    dropdown: false,
+  },
+  {
+    title: "Genres",
+    icon: <BiCategory />,
+    link: "/genres",
     dropdown: false,
   },
 ];
