@@ -1,0 +1,51 @@
+import Head from "next/head";
+import { BsCodeSlash } from "react-icons/bs";
+import MiscCard from "../../components/shared/misc-cards/MiscCard";
+import MiscCards from "../../components/shared/misc-cards/MiscCards";
+import useStatus from "../../hooks/useStatus";
+
+function Developers({ developers }) {
+  const {} = useStatus(developers);
+  console.log("Developers", developers);
+  return (
+    <>
+      <Head>
+        <title>Games | Developers</title>
+        <meta name="author" content="Craig Puxty" />
+        <meta name="description" content="Video game developers." />
+      </Head>
+      <MiscCards title="Game Developers.">
+        {developers.results.map((developer, index) => (
+          <MiscCard
+            id={developer.id}
+            icon={<BsCodeSlash />}
+            title={developer.name}
+            subtitle="Popular Games"
+            data={developer}
+            path="developers"
+            key={`developer-${index}`}
+          />
+        ))}
+      </MiscCards>
+    </>
+  );
+}
+export default Developers;
+
+export async function getServerSideProps() {
+  const options = {
+    method: "GET",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+  };
+
+  const res = await fetch(
+    `https://api.rawg.io/api/developers?key=${process.env.API_KEY}&page_size=40`,
+    options
+  );
+  const developers = await res.json();
+
+  return {
+    props: { developers },
+  };
+}

@@ -17,6 +17,7 @@ import {
 
 import { CgGames } from "react-icons/cg";
 import { HiDownload } from "react-icons/hi";
+import { BsCodeSlash } from "react-icons/bs";
 
 export const BrowseData = [
   {
@@ -29,6 +30,12 @@ export const BrowseData = [
     title: "Game Stores",
     icon: <HiDownload />,
     link: "/stores",
+    dropdown: false,
+  },
+  {
+    title: "Developers",
+    icon: <BsCodeSlash />,
+    link: "/developers",
     dropdown: false,
   },
 ];

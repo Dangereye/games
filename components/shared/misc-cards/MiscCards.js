@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import useClientFetch from "../../../hooks/useClientFetch";
+import Button from "../buttons/Button";
 import FormatNumber from "../FormatNumber";
 import Loader from "../Loader";
 
