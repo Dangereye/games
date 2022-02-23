@@ -38,6 +38,7 @@ const AppReducer = (state, action) => {
       return {
         ...state,
         isLoading: true,
+        data: { results: [] },
       };
     case "LOADING_MORE":
       return {
