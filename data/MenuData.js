@@ -20,6 +20,7 @@ import { HiDownload } from "react-icons/hi";
 import { BsCodeSlash } from "react-icons/bs";
 import { RiBuilding2Line } from "react-icons/ri";
 import { BiCategory } from "react-icons/bi";
+import { FaHashtag } from "react-icons/fa";
 
 export const BrowseData = [
   {
@@ -50,6 +51,12 @@ export const BrowseData = [
     title: "Genres",
     icon: <BiCategory />,
     link: "/genres",
+    dropdown: false,
+  },
+  {
+    title: "Tags",
+    icon: <FaHashtag />,
+    link: "/tags",
     dropdown: false,
   },
 ];
