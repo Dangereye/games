@@ -11,7 +11,7 @@ import GameCardFilters from "./GameCardFilters";
 function GameCards({ title, filters }) {
   const { themeState } = useContext(ThemeContext);
   const { appState, appDispatch } = useContext(AppContext);
-  const addGames = useClientFetch();
+  const addContent = useClientFetch();
   const titleDates = appState.filters.dates.value
     ? ` in ${appState.filters.dates.name} `
     : "";
@@ -20,7 +20,7 @@ function GameCards({ title, filters }) {
     : "";
 
   const fetchMore = () => {
-    addGames(appState.data.next);
+    addContent(appState.data.next);
   };
 
   return (

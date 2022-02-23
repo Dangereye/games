@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { AppContext } from "../../contexts/AppContext";
 import useStatus from "../../hooks/useStatus";
 import Head from "next/head";
 import MiscCards from "../../components/shared/misc-cards/MiscCards";
@@ -16,6 +18,7 @@ import {
 } from "../../components/shared/StoresSVGs";
 
 function GameStores({ stores }) {
+  const { appState } = useContext(AppContext);
   const {} = useStatus(stores);
   console.log("Stores: ", stores);
   return (
@@ -26,7 +29,7 @@ function GameStores({ stores }) {
         <meta name="description" content="Video game stores." />
       </Head>
       <MiscCards title="Game Stores.">
-        {stores.results.map((store, index) => (
+        {appState.data.results.map((store, index) => (
           <MiscCard
             id={store.id}
             icon={GetSVG(store.slug)}

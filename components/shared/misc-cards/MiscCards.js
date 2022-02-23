@@ -10,10 +10,10 @@ function MiscCards({ title, children }) {
   const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
 
-  const addGames = useClientFetch();
+  const addContent = useClientFetch();
 
   const fetchMore = () => {
-    addGames(appState.data.next);
+    addContent(appState.data.next);
   };
   return (
     <section className="misc-cards" style={{ color: themeState.text.primary }}>

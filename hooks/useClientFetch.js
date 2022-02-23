@@ -3,7 +3,7 @@ import { AppContext } from "../contexts/AppContext";
 
 function useClientFetch() {
   const { appState, appDispatch } = useContext(AppContext);
-  const addGames = async (url) => {
+  const addContent = async (url) => {
     appDispatch({ type: "LOADING_MORE" });
 
     try {
@@ -36,7 +36,7 @@ function useClientFetch() {
     }
   };
 
-  return addGames;
+  return addContent;
 }
 
 export default useClientFetch;

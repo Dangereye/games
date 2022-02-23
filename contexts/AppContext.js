@@ -109,7 +109,7 @@ function AppComponent({ children }) {
     isLoading: true,
     isLoadingMore: false,
     error: { isError: false, status: "", message: "" },
-    data: [],
+    data: { results: [] },
     filters: {
       ordering: {
         name: "Relevance",

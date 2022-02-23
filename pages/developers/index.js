@@ -1,12 +1,16 @@
-import Head from "next/head";
+import { useContext } from "react";
+import { AppContext } from "../../contexts/AppContext";
 import { BsCodeSlash } from "react-icons/bs";
+import useStatus from "../../hooks/useStatus";
+import Head from "next/head";
 import MiscCard from "../../components/shared/misc-cards/MiscCard";
 import MiscCards from "../../components/shared/misc-cards/MiscCards";
-import useStatus from "../../hooks/useStatus";
 
 function Developers({ developers }) {
+  const { appState } = useContext(AppContext);
   const {} = useStatus(developers);
   console.log("Developers", developers);
+
   return (
     <>
       <Head>
@@ -15,7 +19,7 @@ function Developers({ developers }) {
         <meta name="description" content="Video game developers." />
       </Head>
       <MiscCards title="Game Developers.">
-        {developers.results.map((developer, index) => (
+        {appState.data.results.map((developer, index) => (
           <MiscCard
             id={developer.id}
             icon={<BsCodeSlash />}
