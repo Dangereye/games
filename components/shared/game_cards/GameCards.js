@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import { ThemeContext } from "../../../contexts/ThemeContext";
+import { FiltersContext } from "../../../contexts/FiltersContext";
 import useClientFetch from "../../../hooks/useClientFetch";
 import Button from "../buttons/Button";
 import GameCard from "./GameCard";
@@ -10,21 +11,31 @@ import GameCardFilters from "./GameCardFilters";
 
 function GameCards({ title, filters }) {
   const { themeState } = useContext(ThemeContext);
-  const { appState, appDispatch } = useContext(AppContext);
+  const { appState } = useContext(AppContext);
+  const { filtersState, filtersDispatch } = useContext(FiltersContext);
   const addContent = useClientFetch();
-  const titleDates = appState.filters.dates.value
-    ? ` in ${appState.filters.dates.name} `
+
+  const titleDates = filtersState.years.value
+    ? ` in ${filtersState.years.name} `
     : "";
-  const titleGenre = appState.filters.genres.value
-    ? `${appState.filters.genres.name} `
+  const titleGenre = filtersState.genres.value
+    ? `${filtersState.genres.name} `
     : "";
 
   const fetchMore = () => {
     addContent(appState.data.next);
   };
 
+  const closeFilters = () => {
+    filtersDispatch({ type: "CLOSE_ALL" });
+  };
+
   return (
-    <section className="section" style={{ color: themeState.text.primary }}>
+    <section
+      className="section"
+      style={{ color: themeState.text.primary }}
+      onClick={closeFilters}
+    >
       <div className="container">
         {appState.isLoading ? (
           <Loader />
@@ -65,7 +76,7 @@ function GameCards({ title, filters }) {
 
 GameCards.defaultProps = {
   title: "Unknown",
-  years: [],
+  filters: null,
 };
 
 export default GameCards;

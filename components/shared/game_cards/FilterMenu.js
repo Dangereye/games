@@ -1,37 +1,33 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { ThemeContext } from "../../../contexts/ThemeContext";
+import { FiltersContext } from "../../../contexts/FiltersContext";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
-function FilterMenu({ title, subtitle, activeFilter, children }) {
-  const [isActive, setIsActive] = useState(false);
+function FilterMenu({ state, title, subtitle, activeFilter, children, func }) {
+  const { filtersDispatch } = useContext(FiltersContext);
   const { themeState } = useContext(ThemeContext);
 
   const openFilter = (e) => {
-    e.target.focus();
-    setIsActive(true);
-  };
-
-  const closeFilter = () => {
-    setIsActive(false);
+    e.stopPropagation();
+    filtersDispatch({ type: "CLOSE_ALL" });
+    func();
   };
 
   return (
     <div
-      tabIndex="-1"
       className="filters__menu"
       style={{ backgroundColor: themeState.background.secondary }}
       onClick={openFilter}
-      onBlur={closeFilter}
     >
       <div className="filters__parent-element">
-        {title}
+        <span>{title}</span>
         <span>{activeFilter}</span>
         <span>
           <RiArrowDropDownLine />
         </span>
       </div>
       <div
-        className={isActive ? "filters__options active" : "filters__options"}
+        className={state ? "filters__options active" : "filters__options"}
         style={{ backgroundColor: themeState.background.secondary }}
       >
         <div
@@ -47,7 +43,13 @@ function FilterMenu({ title, subtitle, activeFilter, children }) {
 }
 
 FilterMenu.defaultProps = {
+  state: null,
   title: "Title",
   subtitle: "Select",
+  activeFilter: "All",
+  children: <p>Children...</p>,
+  func: () => {
+    return;
+  },
 };
 export default FilterMenu;

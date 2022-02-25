@@ -20,7 +20,7 @@
     font-style: italic;
     cursor: pointer;
 
-    span:first-child {
+    span:nth-child(2) {
       margin-left: 5px;
       font-weight: 600;
       font-style: normal;

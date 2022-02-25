@@ -65,39 +65,6 @@ const AppReducer = (state, action) => {
           next: action.payload.next,
         },
       };
-    case "FILTERS_ORDERING":
-      return {
-        ...state,
-        filters: {
-          ...state.filters,
-          ordering: {
-            name: action.payload.name,
-            value: action.payload.value,
-          },
-        },
-      };
-    case "FILTERS_DATES":
-      return {
-        ...state,
-        filters: {
-          ...state.filters,
-          dates: {
-            name: action.payload.name,
-            value: action.payload.value,
-          },
-        },
-      };
-    case "FILTERS_GENRES":
-      return {
-        ...state,
-        filters: {
-          ...state.filters,
-          genres: {
-            name: action.payload.name,
-            value: action.payload.value,
-          },
-        },
-      };
     default:
       return;
   }
@@ -111,20 +78,6 @@ function AppComponent({ children }) {
     isLoadingMore: false,
     error: { isError: false, status: "", message: "" },
     data: { results: [] },
-    filters: {
-      ordering: {
-        name: "Relevance",
-        value: "relevance",
-      },
-      dates: {
-        name: "All",
-        value: "",
-      },
-      genres: {
-        name: "All",
-        value: "",
-      },
-    },
   });
 
   return (

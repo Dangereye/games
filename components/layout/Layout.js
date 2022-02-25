@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { FiltersContext } from "../../contexts/FiltersContext";
 import { useRouter } from "next/router";
 
 import Navbar from "./Navbar";
@@ -12,11 +13,13 @@ import Modal from "./modal/Modal";
 function Layout({ children }) {
   const { themeState } = useContext(ThemeContext);
   const { appState, appDispatch } = useContext(AppContext);
+  const { filtersDispatch } = useContext(FiltersContext);
   const router = useRouter();
 
   useEffect(() => {
     const handleStart = () => {
       appDispatch({ type: "CLOSE_MOBILE_MENU" });
+      filtersDispatch({ type: "CLOSE_ALL" });
       appDispatch({ type: "LOADING" });
     };
 
