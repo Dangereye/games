@@ -8,16 +8,16 @@ function GameCardFilters({ filters }) {
   const { filtersState, filtersDispatch } = useContext(FiltersContext);
   const { years, genres } = filters;
 
-  const activateFilter = (dispatch, name, value) => {
-    filtersDispatch({ type: dispatch, payload: { name, value } });
+  const activateFilter = (filter, name, value) => {
+    filtersDispatch({ type: "SET_FILTER", payload: { filter, name, value } });
   };
 
   useEffect(() => {
     if (!years) {
-      filtersDispatch({ type: "RESET_YEARS" });
+      filtersDispatch({ type: "RESET_FILTER", payload: "years" });
     }
     if (!genres) {
-      filtersDispatch({ type: "RESET_GENRES" });
+      filtersDispatch({ type: "RESET_FILTER", payload: "genres" });
     }
   }, [filters]);
 
@@ -29,13 +29,13 @@ function GameCardFilters({ filters }) {
         title={"Ordered by:"}
         subtitle="select"
         activeFilter={filtersState.ordering.name}
-        func={() => filtersDispatch({ type: "OPEN_ORDERING" })}
+        func={() => filtersDispatch({ type: "OPEN_MENU", payload: "ordering" })}
       >
         {filterData.ordering_values.map((x, index) => (
           <div
             key={`ordering-filter-${index}`}
             className="filters__option"
-            onClick={() => activateFilter("SET_ORDERING", x.name, x.value)}
+            onClick={() => activateFilter("ordering", x.name, x.value)}
           >
             {x.name}
           </div>
@@ -49,11 +49,11 @@ function GameCardFilters({ filters }) {
           title={"Release Date:"}
           subtitle="Select"
           activeFilter={filtersState.years.name}
-          func={() => filtersDispatch({ type: "OPEN_YEARS" })}
+          func={() => filtersDispatch({ type: "OPEN_MENU", payload: "years" })}
         >
           <div
             className="filters__option"
-            onClick={() => activateFilter("SET_YEARS", "All", "")}
+            onClick={() => activateFilter("years", "All", "")}
           >
             All
           </div>
@@ -68,7 +68,7 @@ function GameCardFilters({ filters }) {
                   className="filters__option"
                   onClick={() =>
                     activateFilter(
-                      "SET_YEARS",
+                      "years",
                       y.year,
                       `${y.year}-01-01,${y.year}-12-31`
                     )
@@ -89,12 +89,12 @@ function GameCardFilters({ filters }) {
           title={"Genre:"}
           subtitle="select"
           activeFilter={filtersState.genres.name}
-          func={() => filtersDispatch({ type: "OPEN_GENRES" })}
+          func={() => filtersDispatch({ type: "OPEN_MENU", payload: "genres" })}
         >
           <>
             <div
               className="filters__option"
-              onClick={() => activateFilter("SET_GENRES", "All", "")}
+              onClick={() => activateFilter("genres", "All", "")}
             >
               All
             </div>
@@ -107,7 +107,7 @@ function GameCardFilters({ filters }) {
                   key={`ordering-filter-${index}`}
                   className="filters__option"
                   onClick={() =>
-                    activateFilter("SET_GENRES", item.name, item.value)
+                    activateFilter("genres", item.name, item.value)
                   }
                 >
                   {item.name}

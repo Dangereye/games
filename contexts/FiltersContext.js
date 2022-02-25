@@ -12,60 +12,32 @@ const FiltersReducer = (state, action) => {
         genres: { ...state.genres, menu: false },
       };
 
-    case "OPEN_ORDERING":
-      return { ...state, ordering: { ...state.ordering, menu: true } };
-
-    case "OPEN_YEARS":
-      return { ...state, years: { ...state.years, menu: true } };
-
-    case "OPEN_GENRES":
-      return { ...state, genres: { ...state.genres, menu: true } };
-
-    case "SET_ORDERING":
+    case "OPEN_MENU":
       return {
         ...state,
-        ordering: {
+        [action.payload]: { ...state[action.payload], menu: true },
+      };
+
+    case "SET_FILTER":
+      return {
+        ...state,
+        [action.payload.filter]: {
           menu: false,
           name: action.payload.name,
           value: action.payload.value,
         },
       };
-    case "SET_YEARS":
+
+    case "RESET_FILTER":
       return {
         ...state,
-        years: {
-          menu: false,
-          name: action.payload.name,
-          value: action.payload.value,
-        },
-      };
-    case "RESET_YEARS":
-      return {
-        ...state,
-        years: {
+        [action.payload]: {
           menu: false,
           name: "All",
           value: "",
         },
       };
-    case "SET_GENRES":
-      return {
-        ...state,
-        genres: {
-          menu: false,
-          name: action.payload.name,
-          value: action.payload.value,
-        },
-      };
-    case "RESET_GENRES":
-      return {
-        ...state,
-        genres: {
-          menu: false,
-          name: "All",
-          value: "",
-        },
-      };
+
     default:
       return;
   }
