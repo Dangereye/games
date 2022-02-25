@@ -47,14 +47,18 @@ function Achievements({ achievements }) {
                   <div className="achievement__image">
                     <Image
                       src={
-                        item.image ? item.image : "/images/missing-image.jpg"
+                        item.image
+                          ? item.image
+                          : "/images/missing-image-achievement.jpg"
                       }
                       width="75"
                       height="75"
                       alt={item.name}
                       placeholder="blur"
                       blurDataURL={
-                        item.image ? item.image : "/images/missing-image.jpg"
+                        item.image
+                          ? item.image
+                          : "/images/missing-image-achievement.jpg"
                       }
                     />
                   </div>

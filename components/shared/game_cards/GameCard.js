@@ -31,16 +31,16 @@ function GameCard({ game }) {
           src={
             game.background_image
               ? game.background_image
-              : "/images/missing-image.jpg"
+              : "/images/missing-image-game-card.jpg"
           }
           width="200"
           height="112.5"
           layout="responsive"
-          alt={game.name ? game.name : "Unknown"}
+          alt={game.name ? game.name : "Unknown game image."}
           blurDataURL={
             game.background_image
               ? game.background_image
-              : "/images/missing-image.jpg"
+              : "/images/missing-image-game-card.jpg"
           }
           placeholder="blur"
         />
