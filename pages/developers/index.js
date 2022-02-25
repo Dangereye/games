@@ -3,8 +3,8 @@ import { AppContext } from "../../contexts/AppContext";
 import { BsCodeSlash } from "react-icons/bs";
 import useStatus from "../../hooks/useStatus";
 import Head from "next/head";
-import MiscCard from "../../components/shared/misc-cards/MiscCard";
-import MiscCards from "../../components/shared/misc-cards/MiscCards";
+import MiscCard from "../../components/shared/misc_cards/MiscCard";
+import MiscCards from "../../components/shared/misc_cards/MiscCards";
 
 function Developers({ developers }) {
   const { appState } = useContext(AppContext);

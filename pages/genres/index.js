@@ -3,8 +3,8 @@ import { AppContext } from "../../contexts/AppContext";
 import { BiCategory } from "react-icons/bi";
 import useStatus from "../../hooks/useStatus";
 import Head from "next/head";
-import MiscCards from "../../components/shared/misc-cards/MiscCards";
-import MiscCard from "../../components/shared/misc-cards/MiscCard";
+import MiscCards from "../../components/shared/misc_cards/MiscCards";
+import MiscCard from "../../components/shared/misc_cards/MiscCard";
 
 function Genres({ genres }) {
   const { appState } = useContext(AppContext);
