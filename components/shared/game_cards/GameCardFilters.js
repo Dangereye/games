@@ -6,7 +6,10 @@ import FilterSubMenu from "./FilterSubMenu";
 
 function GameCardFilters({ filters }) {
   const { filtersState, filtersDispatch } = useContext(FiltersContext);
-  const { years, genres } = filters;
+  console.log("Game Card Filters: ", filters);
+  if (filters) {
+    const { years, genres } = filters;
+  }
 
   const activateFilter = (filter, name, value) => {
     filtersDispatch({ type: "SET_FILTER", payload: { filter, name, value } });
