@@ -22,7 +22,7 @@ const AppReducer = (state, action) => {
     case "CLOSE_MODAL":
       return {
         ...state,
-        modal: { ...state.modal, isOpen: false, type: "", data: [], index: 0 },
+        modal: { isOpen: false, type: "", data: [], index: 0 },
       };
     case "MODAL_INDEX":
       return {

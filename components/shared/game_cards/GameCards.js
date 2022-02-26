@@ -27,7 +27,7 @@ function GameCards({ title, filters }) {
   };
 
   const closeFilters = () => {
-    filtersDispatch({ type: "CLOSE_ALL" });
+    filtersDispatch({ type: "CLOSE_MENUS" });
   };
 
   return (

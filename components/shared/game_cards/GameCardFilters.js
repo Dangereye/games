@@ -25,11 +25,11 @@ function GameCardFilters({ filters }) {
     <div className="filters">
       {/* Orders filter */}
       <FilterMenu
+        name="ordering"
         state={filtersState.ordering.menu}
-        title={"Ordered by:"}
+        title={"Ordered By:"}
         subtitle="select"
         activeFilter={filtersState.ordering.name}
-        func={() => filtersDispatch({ type: "OPEN_MENU", payload: "ordering" })}
       >
         {filterData.ordering_values.map((x, index) => (
           <div
@@ -45,11 +45,11 @@ function GameCardFilters({ filters }) {
       {/* Years filter */}
       {years && (
         <FilterMenu
+          name="years"
           state={filtersState.years.menu}
           title={"Release Date:"}
           subtitle="Select"
           activeFilter={filtersState.years.name}
-          func={() => filtersDispatch({ type: "OPEN_MENU", payload: "years" })}
         >
           <div
             className="filters__option"
@@ -85,11 +85,11 @@ function GameCardFilters({ filters }) {
       {/* Genre filter */}
       {genres && (
         <FilterMenu
+          name="genres"
           state={filtersState.genres.menu}
           title={"Genre:"}
           subtitle="select"
           activeFilter={filtersState.genres.name}
-          func={() => filtersDispatch({ type: "OPEN_MENU", payload: "genres" })}
         >
           <>
             <div

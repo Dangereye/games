@@ -3,14 +3,14 @@ import { ThemeContext } from "../../../contexts/ThemeContext";
 import { FiltersContext } from "../../../contexts/FiltersContext";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
-function FilterMenu({ state, title, subtitle, activeFilter, children, func }) {
+function FilterMenu({ name, state, title, subtitle, activeFilter, children }) {
   const { filtersDispatch } = useContext(FiltersContext);
   const { themeState } = useContext(ThemeContext);
 
   const openFilter = (e) => {
     e.stopPropagation();
-    filtersDispatch({ type: "CLOSE_ALL" });
-    func();
+    filtersDispatch({ type: "CLOSE_MENUS" });
+    filtersDispatch({ type: "OPEN_MENU", payload: name });
   };
 
   return (
@@ -48,8 +48,5 @@ FilterMenu.defaultProps = {
   subtitle: "Select",
   activeFilter: "All",
   children: <p>Children...</p>,
-  func: () => {
-    return;
-  },
 };
 export default FilterMenu;
