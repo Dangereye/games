@@ -6,7 +6,7 @@ import FilterSubMenu from "./FilterSubMenu";
 
 function GameCardFilters({ filters }) {
   const { filtersState, filtersDispatch } = useContext(FiltersContext);
-  console.log("Game Card Filters: ", filters);
+  // console.log("Game Card Filters: ", filters);
 
   if (filters) {
     const { years, genres } = filters;

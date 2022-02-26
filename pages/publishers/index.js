@@ -18,7 +18,7 @@ function Publishers({ publishers }) {
         <meta name="author" content="Craig Puxty" />
         <meta name="description" content="Video game publishers." />
       </Head>
-      <MiscCards title="Game Publishers.">
+      <MiscCards title="Publishers">
         {appState.data.results.map((publisher, index) => (
           <MiscCard
             id={publisher.id}

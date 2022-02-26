@@ -17,7 +17,7 @@ function Genres({ genres }) {
         <meta name="author" content="Craig Puxty" />
         <meta name="description" content="Video game genres." />
       </Head>
-      <MiscCards title="Game Genres.">
+      <MiscCards title="Genres">
         {appState.data.results.map((genre, index) => (
           <MiscCard
             id={genre.id}

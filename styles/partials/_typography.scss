@@ -5,10 +5,36 @@ html {
   font-size: 62.5%;
 }
 
-.display {
-  font-size: clamp(3rem, 4.5vw, 6.5rem);
-  font-weight: 300;
-  margin-bottom: 1rem;
+.display-title {
+  text-transform: capitalize;
+  font-size: clamp(3rem, 5vw, 7rem);
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-bottom: 2rem;
+}
+
+.page-results {
+  text-transform: capitalize;
+
+  .format-number {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+}
+
+.section-title {
+  &.hidden {
+    display: none;
+  }
+}
+
+.section-subtitle {
+  margin-bottom: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  font-style: italic;
+  letter-spacing: 0.5px;
 }
 
 .card-title {
@@ -22,6 +48,7 @@ html {
     text-overflow: ellipsis;
     overflow: hidden;
 
+    text-transform: capitalize;
     font-size: clamp(1.6rem, 2vw, 2.4rem);
     font-weight: 800;
     letter-spacing: 1px;
@@ -36,12 +63,4 @@ html {
     width: clamp(1.8rem, 3vw, 2.6rem);
     height: clamp(1.8rem, 3vw, 2.6rem);
   }
-}
-
-h4.title {
-  margin-bottom: 2rem;
-  font-weight: 400;
-  line-height: 1;
-  font-style: italic;
-  letter-spacing: 0.5px;
 }

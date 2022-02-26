@@ -28,7 +28,7 @@ function GameStores({ stores }) {
         <meta name="author" content="Craig Puxty" />
         <meta name="description" content="Video game stores." />
       </Head>
-      <MiscCards title="Game Stores.">
+      <MiscCards title="Stores">
         {appState.data.results.map((store, index) => (
           <MiscCard
             id={store.id}

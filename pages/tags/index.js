@@ -16,7 +16,7 @@ function Tags({ tags }) {
         <meta name="author" content="Craig Puxty" />
         <meta name="description" content="Video game tags." />
       </Head>
-      <MiscCards title="Game Tags.">
+      <MiscCards title="Tags">
         {appState.data.results.map((tag, index) => (
           <MiscCard
             id={tag.id}

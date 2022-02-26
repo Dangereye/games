@@ -59,7 +59,7 @@ function GameDetails({
             <Loader />
           ) : appState.error.isError ? (
             <>
-              <h1 className="page-title">Network error.</h1>
+              <h1 className="display-title">Network error.</h1>
               <p>{appState.error.message}.</p>
             </>
           ) : (
@@ -67,7 +67,7 @@ function GameDetails({
               <header className="grid">
                 {/* Left */}
                 <div>
-                  <h1 className="display">{game.name}</h1>
+                  <h1 className="display-title">{game.name}</h1>
                   <InfoBanner game={game} />
                   <Trailer trailers={trailers.results} />
                   <Description description={game.description_raw} />
