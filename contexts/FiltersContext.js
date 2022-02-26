@@ -4,7 +4,7 @@ export const FiltersContext = createContext();
 
 const FiltersReducer = (state, action) => {
   switch (action.type) {
-    case "CLOSE_ALL":
+    case "CLOSE_MENUS":
       return {
         ...state,
         ordering: { ...state.ordering, menu: false },

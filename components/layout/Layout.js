@@ -18,8 +18,8 @@ function Layout({ children }) {
 
   useEffect(() => {
     const handleStart = () => {
-      appDispatch({ type: "CLOSE_MOBILE_MENU" });
-      filtersDispatch({ type: "CLOSE_ALL" });
+      appDispatch({ type: "MOBILE_MENU", payload: false });
+      filtersDispatch({ type: "CLOSE_MENUS" });
       appDispatch({ type: "LOADING" });
     };
 

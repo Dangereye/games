@@ -4,15 +4,10 @@ export const AppContext = createContext();
 
 const AppReducer = (state, action) => {
   switch (action.type) {
-    case "OPEN_MOBILE_MENU":
+    case "MOBILE_MENU":
       return {
         ...state,
-        mobileMenu_isOpen: true,
-      };
-    case "CLOSE_MOBILE_MENU":
-      return {
-        ...state,
-        mobileMenu_isOpen: false,
+        mobileMenu_isOpen: action.payload,
       };
     case "OPEN_MODAL":
       return {

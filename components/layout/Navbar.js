@@ -15,10 +15,11 @@ function Navbar() {
   const toggleMobileMenu = () => {
     if (appState.mobileMenu_isOpen) {
       appDispatch({
-        type: "CLOSE_MOBILE_MENU",
+        type: "MOBILE_MENU",
+        payload: false,
       });
     } else {
-      appDispatch({ type: "OPEN_MOBILE_MENU" });
+      appDispatch({ type: "MOBILE_MENU", payload: true });
     }
   };
 
