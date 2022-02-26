@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
-import { FaHashtag } from "react-icons/fa";
+import { HiOutlineHashtag } from "react-icons/hi";
 import Head from "next/head";
 import MiscCard from "../../components/shared/misc_cards/MiscCard";
 import MiscCards from "../../components/shared/misc_cards/MiscCards";
@@ -20,7 +20,7 @@ function Tags({ tags }) {
         {appState.data.results.map((tag, index) => (
           <MiscCard
             id={tag.id}
-            icon={<FaHashtag />}
+            icon={<HiOutlineHashtag />}
             title={tag.name}
             subtitle="Popular Games"
             data={tag}

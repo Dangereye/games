@@ -20,7 +20,7 @@ import { HiDownload } from "react-icons/hi";
 import { BsCodeSlash } from "react-icons/bs";
 import { RiBuilding2Line } from "react-icons/ri";
 import { BiCategory } from "react-icons/bi";
-import { FaHashtag } from "react-icons/fa";
+import { HiOutlineHashtag } from "react-icons/hi";
 
 export const BrowseData = [
   {
@@ -55,7 +55,7 @@ export const BrowseData = [
   },
   {
     title: "Tags",
-    icon: <FaHashtag />,
+    icon: <HiOutlineHashtag />,
     link: "/tags",
     dropdown: false,
   },
