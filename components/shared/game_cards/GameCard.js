@@ -54,11 +54,10 @@ function GameCard({ game }) {
           <MetacriticComponent score={game.metacritic} />
         </div>
 
-        <div
-          className="game-card__title"
-          style={{ color: themeState.text.primary }}
-        >
-          {game.name ? game.name : "Unknown"}
+        <div className="card-title" style={{ color: themeState.text.primary }}>
+          <span className="text">
+            {game.name ? game.name : "Untitled Game"}
+          </span>
         </div>
         <DateComponent date={game.released} />
       </div>

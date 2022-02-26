@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
-import { BsCodeSlash } from "react-icons/bs";
+import { DevelopersSVG } from "../../components/shared/CategoriesSVGs";
 import useStatus from "../../hooks/useStatus";
 import Head from "next/head";
 import MiscCard from "../../components/shared/misc_cards/MiscCard";
@@ -22,7 +22,7 @@ function Developers({ developers }) {
         {appState.data.results.map((developer, index) => (
           <MiscCard
             id={developer.id}
-            icon={<BsCodeSlash />}
+            icon={<DevelopersSVG />}
             title={developer.name}
             subtitle="Popular Games"
             data={developer}

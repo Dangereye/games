@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
+import { GenresSVG } from "../../components/shared/CategoriesSVGs";
 import { BiCategory } from "react-icons/bi";
 import useStatus from "../../hooks/useStatus";
 import Head from "next/head";
@@ -20,7 +21,7 @@ function Genres({ genres }) {
         {appState.data.results.map((genre, index) => (
           <MiscCard
             id={genre.id}
-            icon={<BiCategory />}
+            icon={<GenresSVG />}
             title={genre.name}
             subtitle="Popular Games"
             data={genre}

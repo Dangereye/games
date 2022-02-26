@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
-import { HiOutlineHashtag } from "react-icons/hi";
+import { TagsSVG } from "../../components/shared/CategoriesSVGs";
 import Head from "next/head";
 import MiscCard from "../../components/shared/misc_cards/MiscCard";
 import MiscCards from "../../components/shared/misc_cards/MiscCards";
@@ -20,7 +20,7 @@ function Tags({ tags }) {
         {appState.data.results.map((tag, index) => (
           <MiscCard
             id={tag.id}
-            icon={<HiOutlineHashtag />}
+            icon={<TagsSVG />}
             title={tag.name}
             subtitle="Popular Games"
             data={tag}

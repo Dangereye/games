@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
-import { RiBuilding2Line } from "react-icons/ri";
+import { PublishersSVG } from "../../components/shared/CategoriesSVGs";
 import useStatus from "../../hooks/useStatus";
 import Head from "next/head";
 import MiscCards from "../../components/shared/misc_cards/MiscCards";
@@ -22,7 +22,7 @@ function Publishers({ publishers }) {
         {appState.data.results.map((publisher, index) => (
           <MiscCard
             id={publisher.id}
-            icon={<RiBuilding2Line />}
+            icon={<PublishersSVG />}
             title={publisher.name}
             subtitle="Popular Games"
             data={publisher}

@@ -36,11 +36,11 @@ function MiscCard({ icon, title, subtitle, data, path }) {
         />
       </div>
       <header>
-        <div className="misc-card__title">
+        <div className="card-title">
           <span className="icon" style={{ fill: themeState.text.primary }}>
             {icon && icon}
           </span>
-          <span>{data.name}</span>
+          <span className="text">{data.name}</span>
         </div>
       </header>
       <div className="misc-card__body">

@@ -11,6 +11,33 @@ html {
   margin-bottom: 1rem;
 }
 
+.card-title {
+  display: flex;
+  align-items: flex-start;
+
+  .text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    font-size: clamp(1.6rem, 2vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 7px;
+    width: clamp(1.8rem, 3vw, 2.6rem);
+    height: clamp(1.8rem, 3vw, 2.6rem);
+  }
+}
+
 h4.title {
   margin-bottom: 2rem;
   font-weight: 400;

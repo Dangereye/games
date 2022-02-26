@@ -15,48 +15,50 @@ import {
   Xbox,
 } from "../components/shared/PlatformSVGs";
 
-import { CgGames } from "react-icons/cg";
-import { HiDownload } from "react-icons/hi";
-import { BsCodeSlash } from "react-icons/bs";
-import { RiBuilding2Line } from "react-icons/ri";
-import { BiCategory } from "react-icons/bi";
-import { HiOutlineHashtag } from "react-icons/hi";
+import {
+  GamesSVG,
+  GenresSVG,
+  StoresSVG,
+  DevelopersSVG,
+  PublishersSVG,
+  TagsSVG,
+} from "../components/shared/CategoriesSVGs";
 
 export const BrowseData = [
   {
     title: "All Games",
-    icon: <CgGames />,
+    icon: <GamesSVG />,
     link: "/",
     dropdown: false,
   },
   {
-    title: "Game Stores",
-    icon: <HiDownload />,
-    link: "/stores",
-    dropdown: false,
-  },
-  {
-    title: "Developers",
-    icon: <BsCodeSlash />,
-    link: "/developers",
-    dropdown: false,
-  },
-  {
-    title: "Publishers",
-    icon: <RiBuilding2Line />,
-    link: "/publishers",
-    dropdown: false,
-  },
-  {
     title: "Genres",
-    icon: <BiCategory />,
+    icon: <GenresSVG />,
     link: "/genres",
     dropdown: false,
   },
   {
     title: "Tags",
-    icon: <HiOutlineHashtag />,
+    icon: <TagsSVG />,
     link: "/tags",
+    dropdown: false,
+  },
+  {
+    title: "Developers",
+    icon: <DevelopersSVG />,
+    link: "/developers",
+    dropdown: false,
+  },
+  {
+    title: "Publishers",
+    icon: <PublishersSVG />,
+    link: "/publishers",
+    dropdown: false,
+  },
+  {
+    title: "Game Stores",
+    icon: <StoresSVG />,
+    link: "/stores",
     dropdown: false,
   },
 ];
