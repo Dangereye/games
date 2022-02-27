@@ -85,7 +85,7 @@ function Achievements({ achievements }) {
           {achievements.results.length > 4 && (
             <Button
               name={limit ? "Show More" : "Show Less"}
-              styles="btn--show-more"
+              classes="btn--show-more"
               func={toggleAmount}
             />
           )}

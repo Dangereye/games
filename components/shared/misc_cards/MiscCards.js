@@ -33,7 +33,7 @@ function MiscCards({ title, children }) {
             {appState.data.next && !appState.isLoadingMore && (
               <Button
                 name="Load More"
-                styles="btn--large btn--accent btn--center"
+                classes="btn--large btn--accent btn--center"
                 func={fetchMore}
               />
             )}

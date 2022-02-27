@@ -28,7 +28,7 @@ function CardsSection({ condition, title, list }) {
           {list.length > 5 && (
             <Button
               name={limit ? "Show More" : "Show Less"}
-              styles="btn--show-more"
+              classes="btn--show-more"
               func={toggleAmount}
             />
           )}

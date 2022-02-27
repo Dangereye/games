@@ -33,7 +33,7 @@ function Description({ description }) {
       {description && (
         <Button
           name={isOpen ? "Show Less" : "Show More"}
-          styles="btn--show-more"
+          classes="btn--show-more"
           func={toggleDescription}
         />
       )}

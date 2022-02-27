@@ -56,7 +56,7 @@ function GameCards({ title, filters }) {
             {appState.data.next && !appState.isLoadingMore && (
               <Button
                 name="Load More"
-                styles="btn--large btn--accent btn--center"
+                classes="btn--large btn--primary btn--center"
                 func={fetchMore}
               />
             )}
