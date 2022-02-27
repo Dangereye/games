@@ -9,7 +9,7 @@ html {
   margin-bottom: 2rem;
   text-transform: capitalize;
   font-size: clamp(3rem, 5vw, 7rem);
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 2px;
   line-height: 1;
 }
@@ -26,6 +26,8 @@ html {
 .section-title {
   margin-bottom: 2rem;
   text-transform: capitalize;
+  font-size: clamp(2.4rem, 3vw, 3rem);
+  font-weight: 400;
   letter-spacing: 1px;
 
   &.hidden {

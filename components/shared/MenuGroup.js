@@ -6,10 +6,7 @@ function MenuGroup({ title, data }) {
   const { themeState } = useContext(ThemeContext);
   return (
     <div className="menu-group">
-      <div
-        className="menu-group__title"
-        style={{ color: themeState.text.primary }}
-      >
+      <div className="section-title" style={{ color: themeState.text.primary }}>
         {title}
       </div>
       <div className="menu-group__items">
