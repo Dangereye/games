@@ -5,12 +5,8 @@
   transition: transform $time;
   cursor: pointer;
 
-  header {
-    padding: 2rem;
-  }
-
   &__body {
-    padding: 0 2rem 2rem 2rem;
+    padding: 2rem;
   }
 
   &__title {
@@ -36,31 +32,6 @@
   &__subtitle {
     font-weight: 500;
     margin-bottom: 1rem;
-  }
-
-  ul {
-    > *:not(:last-child) {
-      margin-bottom: 1rem;
-    }
-    li {
-      span {
-        transition: color $time;
-        &::before {
-          display: inline-block;
-          margin-right: 8px;
-          content: "";
-          width: 1rem;
-          height: 1rem;
-          border-radius: 50%;
-          border: 1px solid $accent;
-        }
-      }
-      &:hover {
-        span {
-          color: $accent;
-        }
-      }
-    }
   }
 
   &:hover {

@@ -105,4 +105,11 @@ body {
     border: 1px solid $accent;
     border-radius: 50%;
   }
+
+  .text {
+    transition: color $time;
+    &:hover {
+      color: $accent;
+    }
+  }
 }

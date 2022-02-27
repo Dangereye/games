@@ -35,28 +35,33 @@ function MiscCard({ icon, title, subtitle, data, path }) {
           layout="responsive"
         />
       </div>
-      <header>
+
+      <div className="misc-card__body">
         <div className="card-title">
           <span className="icon" style={{ fill: themeState.text.primary }}>
             {icon && icon}
           </span>
           <span className="text">{data.name}</span>
         </div>
-      </header>
-      <div className="misc-card__body">
-        <h4 className="title" style={{ color: themeState.text.tertiary }}>
+        <div
+          className="section-subtitle"
+          style={{ color: themeState.text.tertiary }}
+        >
           {subtitle}
-        </h4>
-        <ul className="misc-card__games-list">
+        </div>
+        <ul className="list">
           {data.games
             .filter((game, index) => index < 3)
             .map((game, index) => (
               <li
-                className="game"
+                className="list-icon-link"
                 key={`${title}-${game.slug}`}
                 style={{ color: themeState.text.primary }}
               >
-                <span onClick={(e) => gameLink(e, game.id)}>{game.name}</span>
+                <span className="icon"></span>
+                <span className="text" onClick={(e) => gameLink(e, game.id)}>
+                  {game.name}
+                </span>
               </li>
             ))}
         </ul>

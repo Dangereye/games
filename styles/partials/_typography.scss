@@ -36,6 +36,7 @@ html {
 .section-subtitle {
   margin-bottom: 2rem;
   text-transform: capitalize;
+  font-size: clamp(1.8rem, 3vw, 2rem);
   font-weight: 300;
   line-height: 1;
   font-style: italic;
@@ -44,6 +45,7 @@ html {
 }
 
 .card-title {
+  margin-bottom: 3rem;
   display: flex;
   align-items: flex-start;
 
@@ -55,7 +57,7 @@ html {
     overflow: hidden;
 
     text-transform: capitalize;
-    font-size: clamp(1.6rem, 2vw, 2.4rem);
+    font-size: clamp(1.8rem, 2vw, 2.4rem);
     font-weight: 800;
     letter-spacing: 1px;
     line-height: 1.2;

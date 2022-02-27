@@ -6,16 +6,9 @@
 
   transition: transform $time;
 
-  &__image {
-  }
-
   &__body {
     position: relative;
     padding: 2rem;
-
-    > *:not(:last-child) {
-      margin-bottom: 1rem;
-    }
 
     @media (max-width: $mobile) {
       padding: 2rem 1rem;
@@ -23,6 +16,7 @@
   }
 
   &__header {
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
   }
@@ -32,12 +26,6 @@
     margin-left: auto;
     padding: clamp(3px, 0.8vw, 6px);
     border: 1px solid transparent;
-  }
-
-  &__title {
-    font-size: clamp(1.6rem, 2.5vw, 2rem);
-    font-weight: 800;
-    letter-spacing: 0.5px;
   }
 
   &:hover {
