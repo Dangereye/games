@@ -1,23 +1,36 @@
 .btn {
-  display: flex;
+  margin-right: 3rem;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
 
-  width: max-content;
+  min-width: max-content;
   height: max-content;
   border: none;
   border-radius: 4rem;
 
+  text-transform: capitalize;
   font-family: "Inter", sans-serif;
-  font-size: 1.6rem;
+  font-size: $base-font-size;
   font-weight: 600;
   color: #222;
   background-color: $button;
 
   cursor: pointer;
 
-  &--accent {
+  &--primary {
     color: #fff;
     background-color: $accent;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  &--secondary {
+    color: inherit;
+    background-color: transparent;
+    border: 1px solid transparent;
   }
 
   &--center {
@@ -34,13 +47,20 @@
     padding: 1.6rem 3.2rem;
   }
 
+  &--block {
+    @media (max-width: $mobile) {
+      width: 100%;
+      display: flex;
+      text-align: center;
+    }
+  }
+
   &--show-more {
     margin-top: 2rem;
     background: transparent;
     color: $accent;
     font-weight: 400;
     font-style: italic;
-    font-size: 1.6rem;
     line-height: 1;
   }
 

@@ -1,6 +1,6 @@
-function Button({ name, styles, func }) {
+function Button({ name, classes, styles, func }) {
   return (
-    <button className={`btn ${styles}`} onClick={func}>
+    <button className={`btn ${classes}`} style={styles} onClick={func}>
       {name}
     </button>
   );
@@ -8,7 +8,8 @@ function Button({ name, styles, func }) {
 
 Button.defaultProps = {
   name: "Name",
-  styles: "btn--accent btn--small",
+  classes: "btn--accent btn--small",
+  styles: {},
   func: () => {
     return;
   },
