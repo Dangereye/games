@@ -23,10 +23,14 @@ function Description({ description }) {
         className={isOpen ? "description full " : "description"}
         style={{ color: themeState.text.tertiary }}
       >
-        <h4 className="title" style={{ color: themeState.text.tertiary }}>
+        <h2 className="section-title hidden">Game Description</h2>
+        <h3
+          className="section-subtitle"
+          style={{ color: themeState.text.tertiary }}
+        >
           Description
-        </h4>
-        <p style={{ color: themeState.text.primary }}>
+        </h3>
+        <p className="body-text" style={{ color: themeState.text.primary }}>
           {description ? formatDescription(description) : "N/A"}
         </p>
       </section>

@@ -6,12 +6,12 @@ html {
 }
 
 .display-title {
+  margin-bottom: 2rem;
   text-transform: capitalize;
   font-size: clamp(3rem, 5vw, 7rem);
   font-weight: 800;
   letter-spacing: 2px;
   line-height: 1;
-  margin-bottom: 2rem;
 }
 
 .page-results {
@@ -24,6 +24,10 @@ html {
 }
 
 .section-title {
+  margin-bottom: 2rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+
   &.hidden {
     display: none;
   }
@@ -31,10 +35,12 @@ html {
 
 .section-subtitle {
   margin-bottom: 2rem;
-  font-weight: 400;
+  text-transform: capitalize;
+  font-weight: 300;
   line-height: 1;
   font-style: italic;
   letter-spacing: 0.5px;
+  color: red;
 }
 
 .card-title {
@@ -63,4 +69,20 @@ html {
     width: clamp(1.8rem, 3vw, 2.6rem);
     height: clamp(1.8rem, 3vw, 2.6rem);
   }
+}
+
+.lead-text {
+  font-size: $large-font-size;
+  font-weight: 500;
+}
+
+.body-text {
+  font-size: $base-font-size;
+  font-weight: 400;
+  line-height: 1.618;
+  max-width: 75ch;
+}
+
+.small-text {
+  font-size: $small-font-size;
 }

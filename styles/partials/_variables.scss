@@ -4,7 +4,10 @@ $mobile-top-padding: 10rem;
 $page-bottom-padding: clamp(4rem, 5vw, 8rem);
 $page-hoz-padding: clamp(1rem, 2.5vw, 4rem);
 
+$large-font-size: clamp(1.8rem, 2.5vw, 2rem);
 $base-font-size: clamp(1.6rem, 2.5vw, 1.8rem);
+$small-font-size: clamp(1.4rem, 2vw, 1.6rem);
+
 $shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.1);
 
 $time: 0.4s;
