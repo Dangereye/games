@@ -109,22 +109,6 @@
       }
     }
 
-    .list {
-      > *:not(:last-child) {
-        margin-bottom: 1rem;
-      }
-
-      li::before {
-        content: "";
-        margin-right: 8px;
-        width: 8px;
-        height: 8px;
-        display: inline-block;
-        border: 1px solid $accent;
-        border-radius: 50%;
-      }
-    }
-
     .tags {
       display: flex;
       flex-wrap: wrap;

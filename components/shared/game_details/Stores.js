@@ -8,9 +8,13 @@ function Stores({ stores }) {
     <>
       {stores.count > 0 && (
         <section className="stores">
-          <h4 className="title" style={{ color: themeState.text.tertiary }}>
+          <h2 className="section-title hidden">Game stores to buy game</h2>
+          <h3
+            className="section-subtitle"
+            style={{ color: themeState.text.tertiary }}
+          >
             Where to buy
-          </h4>
+          </h3>
           <div className="stores__list grid">
             {stores.results.map((store, index) => {
               const item = storesData.find(

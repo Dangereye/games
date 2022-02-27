@@ -9,6 +9,7 @@ function Stats({ game, series, additions, achievements }) {
       className="stats"
       // style={{ backgroundColor: themeState.background.tertiary }}
     >
+      <h2 className="section-title hidden">Game statistics</h2>
       <Stat
         figure={`${game.metacritic}%`}
         stat="Metacritic Score"

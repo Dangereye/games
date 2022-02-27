@@ -13,6 +13,7 @@ function Screenshots({ screenshots }) {
     <>
       {screenshots.length ? (
         <section className="screenshots grid grid--screenshots">
+          <h2 className="section-title hidden">Game screenshots</h2>
           {screenshots.map((pic, index) => (
             <div className="screenshots__screenshot" key={pic.id}>
               <Image

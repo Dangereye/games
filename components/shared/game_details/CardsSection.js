@@ -3,7 +3,7 @@ import { ThemeContext } from "../../../contexts/ThemeContext";
 import Button from "../buttons/Button";
 import GameCard from "../game_cards/GameCard";
 
-function CardsSection({ condition, title, list }) {
+function CardsSection({ condition, title, subtitle, list }) {
   const { themeState } = useContext(ThemeContext);
   const [limit, setLimit] = useState(true);
 
@@ -15,9 +15,13 @@ function CardsSection({ condition, title, list }) {
     <>
       {condition && (
         <section className="cards">
-          <h4 className="title" style={{ color: themeState.text.tertiary }}>
-            {title}
-          </h4>
+          <h2 className="section-title hidden">{title}</h2>
+          <h3
+            className="section-subtitle"
+            style={{ color: themeState.text.tertiary }}
+          >
+            {subtitle}
+          </h3>
           <div className="grid grid--cards">
             {(limit ? list.filter((item, index) => index < 5) : list).map(
               (game, index) => (

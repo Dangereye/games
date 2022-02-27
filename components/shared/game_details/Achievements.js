@@ -33,9 +33,13 @@ function Achievements({ achievements }) {
     <>
       {achievements.count > 0 && (
         <section className="achievements">
-          <h4 className="title" style={{ color: themeState.text.tertiary }}>
+          <h2 className="section-title hidden">All game achievements</h2>
+          <h3
+            className="section-subtitle"
+            style={{ color: themeState.text.tertiary }}
+          >
             Achievements
-          </h4>
+          </h3>
           <div className="achievements__list">
             {(limit ? list.filter((item, index) => index < 4) : list).map(
               (item, index) => (

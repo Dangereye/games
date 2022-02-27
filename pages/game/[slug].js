@@ -91,13 +91,15 @@ function GameDetails({
               {/* Game Additions */}
               <CardsSection
                 condition={additions.count > 0}
-                title="Game Additions"
+                title="Game DLC's and other editions"
+                subtitle="Game Additions"
                 list={additions.results}
               />
               {/* Game Series */}
               <CardsSection
                 condition={series.count > 0}
-                title="GameSeries"
+                title="Other games in the series"
+                subtitle="Game series"
                 list={series.results}
               />
 
@@ -105,6 +107,7 @@ function GameDetails({
               <CardsSection
                 condition={parent.count > 0}
                 title="Addition to"
+                subtitle="Addition to"
                 list={parent.results}
               />
               <Achievements achievements={achievements} />
