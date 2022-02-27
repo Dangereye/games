@@ -6,9 +6,9 @@ function Links({ title, styles, condition, children }) {
   const text = themeState.text;
   return (
     <div className={`game-details__links ${styles}`}>
-      <h4 className="title" style={{ color: text.tertiary }}>
+      <h3 className="section-subtitle" style={{ color: text.tertiary }}>
         {title}
-      </h4>
+      </h3>
       {condition ? children : "N/A"}
     </div>
   );

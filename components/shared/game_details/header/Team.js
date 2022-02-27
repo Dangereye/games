@@ -4,6 +4,7 @@ import Link from ".././Link";
 function Team({ game }) {
   return (
     <section className="team grid">
+      <h2 className="section-title hidden">Game production team</h2>
       <Links title="Developers" condition={game.developers.length}>
         <ul className="list">
           {game.developers.map((x, index) => (
@@ -24,7 +25,7 @@ function Team({ game }) {
       </Links>
       <Links title="Website" condition={game.website && game.website !== ""}>
         <a
-          className="btn btn--small btn--accent"
+          className="btn btn--small btn--primary"
           href={game.website}
           target="_blank"
           rel="noreferrer"
