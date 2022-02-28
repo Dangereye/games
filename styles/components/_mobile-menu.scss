@@ -19,7 +19,7 @@
   &.active {
     left: 0;
 
-    @media (min-width: $mobile) {
+    @media (min-width: $tablet) {
       left: -100%;
     }
 
