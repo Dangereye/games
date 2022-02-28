@@ -34,6 +34,7 @@ function Specification({ game }) {
           <LinkItem
             key={`tags-${index}`}
             href={`/tags/${item.id}`}
+            classes="tags"
             name={item.name}
           />
         ))}

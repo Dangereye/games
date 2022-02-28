@@ -10,13 +10,6 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-
-    span {
-      padding: 5px 10px;
-      min-width: max-content;
-      border: 1px solid $accent;
-      border-radius: $border-radius-small;
-    }
   }
 
   &__item {
@@ -26,6 +19,13 @@
 
     span {
       display: inline-block;
+    }
+
+    &.tags {
+      padding: 5px 10px;
+      min-width: max-content;
+      border: 1px solid $accent;
+      border-radius: $border-radius-small;
     }
   }
 
