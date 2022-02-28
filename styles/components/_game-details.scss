@@ -96,34 +96,6 @@
     }
   }
 
-  &__links {
-    &.triple {
-      grid-column: span 3;
-
-      @media (max-width: 1760px) {
-        grid-column: span 2;
-      }
-
-      @media (max-width: 420px) {
-        grid-column: span 1;
-      }
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1rem;
-
-      .tag {
-        padding: 5px 10px;
-        min-width: max-content;
-        border: 1px solid $accent;
-        border-radius: $border-radius-small;
-      }
-    }
-  }
-
   .stats {
     width: 100%;
     display: flex;

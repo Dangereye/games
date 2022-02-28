@@ -1,39 +1,43 @@
-import Links from "./Links";
-import Link from "./Link";
+import LinksList from "../links_list/LinksList.js";
+import LinkItem from "../links_list/LinkItem.js";
 
 function Specification({ game }) {
   return (
     <section className="specification grid">
-      <Links title="Platforms" condition={game.platforms.length}>
-        <ul className="list">
-          {game.platforms.map((item, index) => (
-            <li key={`platforms-${index}`}>
-              <Link
-                href={`/platforms/${item.platform.id}`}
-                name={item.platform.name}
-              />
-            </li>
-          ))}
-        </ul>
-      </Links>
-      <Links title="Genres" condition={game.genres.length}>
-        <ul className="list">
-          {game.genres.map((item, index) => (
-            <li key={`genres-${index}`}>
-              <Link href={`/genres/${item.id}`} name={item.name} />
-            </li>
-          ))}
-        </ul>
-      </Links>
-      <Links title="Tags" styles={"triple"} condition={game.tags.length}>
-        <div className="tags">
-          {game.tags.map((item, index) => (
-            <div className="tag" key={`tags-${index}`}>
-              <Link href={`/tags/${item.id}`} name={item.name} />
-            </div>
-          ))}
-        </div>
-      </Links>
+      <LinksList title="Platforms" condition={game.platforms.length}>
+        {game.platforms.map((item, index) => (
+          <LinkItem
+            key={`platforms-${index}`}
+            href={`/platforms/${item.platform.id}`}
+            name={item.platform.name}
+            icon
+          />
+        ))}
+      </LinksList>
+      <LinksList title="Genres" condition={game.genres.length}>
+        {game.genres.map((item, index) => (
+          <LinkItem
+            key={`genres-${index}`}
+            href={`/genres/${item.id}`}
+            name={item.name}
+            icon
+          />
+        ))}
+      </LinksList>
+      <LinksList
+        title="Tags"
+        classes={"tags"}
+        condition={game.tags.length}
+        tags
+      >
+        {game.tags.map((item, index) => (
+          <LinkItem
+            key={`tags-${index}`}
+            href={`/tags/${item.id}`}
+            name={item.name}
+          />
+        ))}
+      </LinksList>
     </section>
   );
 }

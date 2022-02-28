@@ -10,6 +10,7 @@
 @import "components/sidebar";
 @import "components/mobile-menu";
 @import "components/menu-group";
+@import "components/links-list";
 @import "components/footer";
 @import "components/filters";
 @import "components/game-card";
@@ -36,6 +37,10 @@ a {
   &:hover {
     color: $accent;
   }
+}
+
+ul {
+  list-style-type: none;
 }
 
 // Global
@@ -83,33 +88,4 @@ body {
   margin: 0 auto;
   width: 100%;
   max-width: $page-width;
-}
-
-.list {
-  list-style-type: none;
-
-  > *:not(:last-child) {
-    margin-bottom: 1rem;
-  }
-}
-
-.list-icon-link {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-
-  .icon {
-    margin: 0.6rem 0.8rem 0 0;
-    width: 1rem;
-    height: 1rem;
-    border: 1px solid $accent;
-    border-radius: 50%;
-  }
-
-  .text {
-    transition: color $time;
-    &:hover {
-      color: $accent;
-    }
-  }
 }
