@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 function LinkItem({
   itemClasses,
@@ -8,20 +8,28 @@ function LinkItem({
   linkClasses,
   linkStyles,
   name,
-  external,
 }) {
+  const router = useRouter();
+
+  const followLink = (e) => {
+    e.stopPropagation();
+    router.push(href);
+  };
+
   return (
-    <div className={`links-list__item ${itemClasses}`} styles={itemStyles}>
+    <div
+      className={`links-list__item ${itemClasses}`}
+      styles={itemStyles}
+      onClick={followLink}
+    >
       {icon && (
         <div className="links-list__icon">
           <span className="icon"></span>
         </div>
       )}
-      <Link href={href} passHref>
-        <div className={`links-list__link ${linkClasses}`} style={linkStyles}>
-          <span className="link">{name}</span>
-        </div>
-      </Link>
+      <div className={`links-list__link ${linkClasses}`} style={linkStyles}>
+        <span className="link">{name}</span>
+      </div>
     </div>
   );
 }

@@ -18,16 +18,13 @@ function Developers({ developers }) {
         <meta name="author" content="Craig Puxty" />
         <meta name="description" content="Video game developers." />
       </Head>
-      <MiscCards title="Developers">
-        {appState.data.results.map((developer, index) => (
+      <MiscCards title="Game Developers">
+        {appState.data.results.map((d, i) => (
           <MiscCard
-            id={developer.id}
+            key={`developer-${i}`}
             icon={<DevelopersSVG />}
-            title={developer.name}
-            subtitle="Popular Games"
-            data={developer}
-            path="developers"
-            key={`developer-${index}`}
+            data={d}
+            href={`/developers/${d.id}`}
           />
         ))}
       </MiscCards>

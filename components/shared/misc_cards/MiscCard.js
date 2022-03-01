@@ -2,18 +2,16 @@ import { useContext } from "react";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import LinkGroup from "../links_list/LinkGroup";
+import LinksList from "../links_list/LinksList";
+import LinkItem from "../links_list/LinkItem";
 
-function MiscCard({ icon, title, subtitle, data, path }) {
+function MiscCard({ icon, data, href }) {
   const { themeState } = useContext(ThemeContext);
   const router = useRouter();
 
-  const gameLink = (e, id) => {
-    e.stopPropagation();
-    router.push(`/game/${id}`);
-  };
-
-  const cardLink = () => {
-    router.push(`/${path}/${data.id}`);
+  const followLink = () => {
+    router.push(href);
   };
 
   return (
@@ -22,7 +20,7 @@ function MiscCard({ icon, title, subtitle, data, path }) {
       style={{
         backgroundColor: themeState.background.secondary,
       }}
-      onClick={() => cardLink()}
+      onClick={followLink}
     >
       <div className="misc-card__image">
         <Image
@@ -35,7 +33,6 @@ function MiscCard({ icon, title, subtitle, data, path }) {
           layout="responsive"
         />
       </div>
-
       <div className="misc-card__body">
         <div className="card-title">
           <span className="icon" style={{ fill: themeState.text.primary }}>
@@ -43,28 +40,15 @@ function MiscCard({ icon, title, subtitle, data, path }) {
           </span>
           <span className="text">{data.name}</span>
         </div>
-        <div
-          className="section-subtitle"
-          style={{ color: themeState.text.tertiary }}
-        >
-          {subtitle}
-        </div>
-        <ul className="list">
-          {data.games
-            .filter((game, index) => index < 3)
-            .map((game, index) => (
-              <li
-                className="list-icon-link"
-                key={`${title}-${game.slug}`}
-                style={{ color: themeState.text.primary }}
-              >
-                <span className="icon"></span>
-                <span className="text" onClick={(e) => gameLink(e, game.id)}>
-                  {game.name}
-                </span>
-              </li>
-            ))}
-        </ul>
+        <LinkGroup title="Popular Games">
+          <LinksList condition={data.games.length}>
+            {data.games
+              .filter((g, i) => i < 3)
+              .map((g, i) => (
+                <LinkItem href={`/game/${g.id}`} name={g.name} icon />
+              ))}
+          </LinksList>
+        </LinkGroup>
       </div>
     </div>
   );
