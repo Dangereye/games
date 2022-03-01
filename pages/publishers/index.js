@@ -19,15 +19,12 @@ function Publishers({ publishers }) {
         <meta name="description" content="Video game publishers." />
       </Head>
       <MiscCards title="Publishers">
-        {appState.data.results.map((publisher, index) => (
+        {appState.data.results.map((p, i) => (
           <MiscCard
-            id={publisher.id}
+            key={`publisher-${i}`}
             icon={<PublishersSVG />}
-            title={publisher.name}
-            subtitle="Popular Games"
-            data={publisher}
-            path="publishers"
-            key={`publisher-${index}`}
+            data={p}
+            path={`/publishers/${p.id}`}
           />
         ))}
       </MiscCards>
