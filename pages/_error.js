@@ -15,7 +15,7 @@ function NotFound() {
       </p>
       <Button
         name="Go Back"
-        classes="btn--large btn--secondary btn--block"
+        classes="btn--large btn--secondary btn--block mr-3"
         styles={{ borderColor: themeState.text.primary }}
         func={() => router.back()}
       />
