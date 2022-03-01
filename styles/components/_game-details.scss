@@ -142,13 +142,10 @@
       }
     }
 
-    &__text {
-      margin-right: 1rem;
-    }
-
     &__icon {
       display: grid;
       place-items: center;
+      margin-right: 1rem;
 
       svg {
         width: 2rem;

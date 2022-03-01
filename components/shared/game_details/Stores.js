@@ -32,8 +32,8 @@ function Stores({ stores }) {
                     fill: themeState.text.primary,
                   }}
                 >
-                  <span className="stores__text">{item.name}</span>
                   <span className="stores__icon">{item.icon}</span>
+                  <span className="stores__text">{item.name}</span>
                 </a>
               );
             })}
