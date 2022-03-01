@@ -1,24 +1,39 @@
 import Link from "next/link";
 
-function LinkItem({ classes, href, icon, styles, name }) {
+function LinkItem({
+  itemClasses,
+  itemStyles,
+  icon,
+  href,
+  linkClasses,
+  linkStyles,
+  name,
+  external,
+}) {
   return (
-    <div className={`links-list__item ${classes}`}>
-      {icon && <span className="links-list__icon"></span>}
-      <Link href={href}>
-        <a className="links-list__link" style={styles}>
-          <span>{name}</span>
-        </a>
+    <div className={`links-list__item ${itemClasses}`} styles={itemStyles}>
+      {icon && (
+        <div className="links-list__icon">
+          <span className="icon"></span>
+        </div>
+      )}
+      <Link href={href} passHref>
+        <div className={`links-list__link ${linkClasses}`} style={linkStyles}>
+          <span className="link">{name}</span>
+        </div>
       </Link>
     </div>
   );
 }
 
 LinkItem.defaultProps = {
-  classes: "",
-  href: "/",
+  itemClasses: "",
+  itemStyles: {},
   icon: false,
-  styles: {},
-  name: "Name",
+  href: "/",
+  linkClasses: "",
+  linkStyles: {},
+  name: "Link Name",
 };
 
 export default LinkItem;

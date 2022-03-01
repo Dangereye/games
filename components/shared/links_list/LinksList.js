@@ -1,28 +1,21 @@
-import { useContext } from "react";
-import { ThemeContext } from "../../../contexts/ThemeContext";
-
-function LinksList({ title, classes, condition, children, tags }) {
-  const { themeState } = useContext(ThemeContext);
+function LinksList({ condition, classes, styles, children }) {
   return (
-    <div className={tags ? "tags" : ""}>
-      <h3
-        className="section-subtitle"
-        style={{ color: themeState.text.tertiary }}
-      >
-        {title}
-      </h3>
-      <ul className={`links-list ${classes}`}>
-        {condition ? children : "N/A"}
-      </ul>
-    </div>
+    <>
+      {condition ? (
+        <ul className={`links-list ${classes}`} style={styles}>
+          {children}
+        </ul>
+      ) : (
+        "N/A"
+      )}
+    </>
   );
 }
 
 LinksList.defaultProps = {
-  title: "List Title",
-  classes: "",
   condition: false,
-  expand: false,
+  classes: "fd-c",
+  styles: {},
 };
 
 export default LinksList;
