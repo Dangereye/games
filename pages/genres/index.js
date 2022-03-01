@@ -18,15 +18,12 @@ function Genres({ genres }) {
         <meta name="description" content="Video game genres." />
       </Head>
       <MiscCards title="Genres">
-        {appState.data.results.map((genre, index) => (
+        {appState.data.results.map((g, i) => (
           <MiscCard
-            id={genre.id}
+            key={`genre-${i}`}
             icon={<GenresSVG />}
-            title={genre.name}
-            subtitle="Popular Games"
-            data={genre}
-            path="genres"
-            key={`genre-${index}`}
+            data={g}
+            href={`/genres/${g.id}`}
           />
         ))}
       </MiscCards>
