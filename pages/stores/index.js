@@ -29,15 +29,12 @@ function GameStores({ stores }) {
         <meta name="description" content="Video game stores." />
       </Head>
       <MiscCards title="Stores">
-        {appState.data.results.map((store, index) => (
+        {appState.data.results.map((s, i) => (
           <MiscCard
-            id={store.id}
-            icon={GetSVG(store.slug)}
-            title={store.name}
-            subtitle="Popular Games"
-            data={store}
-            path="stores"
-            key={`store-${index}`}
+            key={`store-${i}`}
+            icon={GetSVG(s.slug)}
+            data={s}
+            href={`stores/${s.id}`}
           />
         ))}
       </MiscCards>
