@@ -17,15 +17,12 @@ function Tags({ tags }) {
         <meta name="description" content="Video game tags." />
       </Head>
       <MiscCards title="Tags">
-        {appState.data.results.map((tag, index) => (
+        {appState.data.results.map((t, i) => (
           <MiscCard
-            id={tag.id}
+            key={`tag-${i}`}
             icon={<TagsSVG />}
-            title={tag.name}
-            subtitle="Popular Games"
-            data={tag}
-            path="tags"
-            key={`tag-${index}`}
+            data={t}
+            href={`/tags/${t.id}`}
           />
         ))}
       </MiscCards>
