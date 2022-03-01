@@ -24,7 +24,7 @@ function Publishers({ publishers }) {
             key={`publisher-${i}`}
             icon={<PublishersSVG />}
             data={p}
-            path={`/publishers/${p.id}`}
+            href={`/publishers/${p.id}`}
           />
         ))}
       </MiscCards>
