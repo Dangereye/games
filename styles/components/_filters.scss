@@ -1,6 +1,4 @@
 .filters {
-  width: 100%;
-  margin-top: 4rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -8,6 +6,7 @@
   &__menu {
     position: relative;
     width: max-content;
+    min-width: max-content;
     padding: clamp(0.5rem, 1vw, 1rem) clamp(1rem, 2vw, 2rem);
     border-radius: $border-radius;
     font-size: clamp(1.4rem, 2vw, 1.8rem);
@@ -16,19 +15,29 @@
   &__parent-element {
     display: flex;
     align-items: center;
-    font-weight: 300;
-    font-style: italic;
+    gap: 5px;
+
     cursor: pointer;
 
-    span:nth-child(2) {
-      margin-left: 5px;
+    .filter {
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .value {
       font-weight: 600;
       font-style: normal;
     }
 
-    svg {
-      width: 2rem;
-      height: 2rem;
+    .icon {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
     }
   }
 

@@ -1,69 +1,58 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import { ThemeContext } from "../../../contexts/ThemeContext";
-import { FiltersContext } from "../../../contexts/FiltersContext";
 import useClientFetch from "../../../hooks/useClientFetch";
 import Loader from "../Loader";
-import ErrorMessage from "../ErrorMessage";
-import PageResults from "../PageResults";
-import GameCardFilters from "./GameCardFilters";
 import GameCard from "./GameCard";
 import Button from "../buttons/Button";
 
-function GameCards({ title, filters }) {
-  const { themeState } = useContext(ThemeContext);
+function GameCards({ limited }) {
+  const [limit, setLimit] = useState(limited);
   const { appState } = useContext(AppContext);
-  const { filtersState, filtersDispatch } = useContext(FiltersContext);
+  const { themeState } = useContext(ThemeContext);
 
   const addContent = useClientFetch();
-
-  const Year = filtersState.years.value
-    ? ` in ${filtersState.years.name} `
-    : "";
-
-  const Genre = filtersState.genres.value ? `${filtersState.genres.name} ` : "";
 
   const fetchMore = () => {
     addContent(appState.data.next);
   };
 
-  const closeFilters = () => {
-    filtersDispatch({ type: "CLOSE_MENUS" });
+  const toggleAmount = () => {
+    setLimit(!limit);
   };
 
   return (
-    <section style={{ color: themeState.text.primary }} onClick={closeFilters}>
-      {appState.isLoading ? (
-        <Loader />
-      ) : appState.error.isError ? (
-        <ErrorMessage />
-      ) : (
-        <>
-          <h1 className="display-title">{`${Genre}${title}${Year}`}</h1>
-          <PageResults />
-          <GameCardFilters filters={filters} />
-          <div className="grid grid--cards mt">
-            {appState.data.results.map((game) => (
-              <GameCard game={game} key={game.id} />
-            ))}
-          </div>
-          {appState.isLoadingMore && <Loader />}
-          {appState.data.next && !appState.isLoadingMore && (
-            <Button
-              name="Load More"
-              classes="btn--large btn--primary btn--center mt-4"
-              func={fetchMore}
-            />
-          )}
-        </>
+    <section style={{ color: themeState.text.primary }}>
+      <h2 className="section-title">Games list</h2>
+      <div className="grid grid--cards">
+        {(limit
+          ? appState.data.results.filter((game, i) => i < 5)
+          : appState.data.results
+        ).map((game) => (
+          <GameCard game={game} key={game.id} />
+        ))}
+      </div>
+      {appState.isLoadingMore && <Loader />}
+      {appState.data.next && !appState.isLoadingMore && !limit && (
+        <Button
+          name="Load More"
+          classes="btn--large btn--primary btn--center mt-4"
+          func={fetchMore}
+        />
+      )}
+      {appState.data.results.length > 5 && limit && (
+        <Button
+          name={limit ? "Show More" : "Show Less"}
+          classes="btn--more"
+          func={toggleAmount}
+        />
       )}
     </section>
   );
 }
 
 GameCards.defaultProps = {
-  title: "Unknown",
-  filters: null,
+  limited: false,
 };
 
 export default GameCards;

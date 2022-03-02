@@ -64,7 +64,10 @@ function Layout({ children }) {
             }}
           ></div>
         </div>
-        <div className="page grid grid--sidebar">
+        <div
+          className="page grid grid--sidebar"
+          onClick={() => filtersDispatch({ type: "CLOSE_MENUS" })}
+        >
           <Sidebar />
           <main>{children}</main>
         </div>
