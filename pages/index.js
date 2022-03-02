@@ -9,24 +9,11 @@ function Home({ all, filtered }) {
   const {} = useStatus(filtered);
   const {} = useFilters("Index");
 
-  // console.log("Home All: ", all);
-  // console.log("Home Filters: ", filters);
-
   return (
-    <>
-      <Head>
-        <title>Games | Video Game Database</title>
-        <meta name="author" content="Craig Puxty" />
-        <meta
-          name="description"
-          content="Video game database and discovery service - powered by RAWG.IO"
-        />
-      </Head>
-      <PageTemplate heading={all.seo_h1}>
-        <Filters years={all.filters.years} genres={all.filters.genres} />
-        <GameCards />
-      </PageTemplate>
-    </>
+    <PageTemplate heading={all.seo_h1}>
+      <Filters years={all.filters.years} genres={all.filters.genres} />
+      <GameCards />
+    </PageTemplate>
   );
 }
 
