@@ -5,7 +5,7 @@ import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
 import PageResults from "./PageResults";
 
-function PageTemplate({ heading, children }) {
+function PageTemplate({ title, children }) {
   const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
 
@@ -17,7 +17,7 @@ function PageTemplate({ heading, children }) {
         <ErrorMessage />
       ) : (
         <>
-          <h1 className="display-title">{heading}</h1>
+          <h1 className="display-title">{title}</h1>
           <PageResults />
           {children}
         </>
@@ -25,5 +25,9 @@ function PageTemplate({ heading, children }) {
     </section>
   );
 }
+
+PageTemplate.defaultProps = {
+  title: "Page Title",
+};
 
 export default PageTemplate;
