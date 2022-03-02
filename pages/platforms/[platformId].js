@@ -3,25 +3,26 @@ import { AppContext } from "../../contexts/AppContext";
 import useStatus from "../../hooks/useStatus";
 import useFilters from "../../hooks/useFilters";
 import Head from "next/head";
+import PageTemplate from "../../components/shared/PageTemplate";
+import Filters from "../../components/shared/filters/Filters";
 import GameCards from "../../components/shared/game_cards/GameCards";
 
-function Platforms({ all, filters }) {
+function Platforms({ all, filtered }) {
   const { appState } = useContext(AppContext);
-  const {} = useStatus(filters);
+  const {} = useStatus(filtered);
   const {} = useFilters("Platforms");
-
-  // console.log("Platforms All: ", all);
-  // console.log("Platforms Filters: ", filters);
 
   return (
     <>
       <Head>
         <title>{appState.data.seo_title}</title>
-        <meta name="author" content="Craig Puxty" />
         <meta name="keywords" content={appState.data.seo_keywords} />
         <meta name="description" content={appState.data.seo_description} />
       </Head>
-      <GameCards title={all.seo_h1} filters={all.filters ? all.filters : []} />
+      <PageTemplate heading={all.seo_h1}>
+        <Filters years={all.filters.years} genres={all.filters.genres} />
+        <GameCards />
+      </PageTemplate>
     </>
   );
 }
@@ -38,7 +39,7 @@ export async function getServerSideProps(context) {
   const dates = query.dates ? `&dates=${query.dates}` : "";
   const genres = query.genres ? `&genres=${query.genres}` : "";
 
-  let [all, filters] = await Promise.all([
+  let [all, filtered] = await Promise.all([
     fetch(
       `https://api.rawg.io/api/games?platforms=${params.platformId}&filter=true&comments=true&key=${process.env.API_KEY}`,
       options
@@ -50,9 +51,9 @@ export async function getServerSideProps(context) {
   ]);
 
   all = await all.json();
-  filters = await filters.json();
+  filtered = await filtered.json();
 
   return {
-    props: { all, filters },
+    props: { all, filtered },
   };
 }

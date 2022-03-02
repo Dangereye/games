@@ -40,7 +40,7 @@ function GameCards({ limited }) {
           func={fetchMore}
         />
       )}
-      {appState.data.results.length > 5 && limit && (
+      {appState.data.results.length > 5 && limited && (
         <Button
           name={limit ? "Show More" : "Show Less"}
           classes="btn--more"
