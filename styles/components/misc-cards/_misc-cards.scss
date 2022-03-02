@@ -1,6 +1,5 @@
 .misc-cards {
   &__list {
-    margin-top: $section-margin;
     grid-template-columns: repeat(auto-fit, minmax(34rem, 1fr));
 
     @media (max-width: $mobile) {

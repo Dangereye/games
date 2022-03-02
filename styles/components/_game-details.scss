@@ -125,15 +125,17 @@
 
   .stores {
     &__list {
-      grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      gap: $dynamic-gap;
     }
 
     &__item {
-      padding: 2rem 0;
+      width: max-content;
+      padding: clamp(1rem, 2vw, 2rem) clamp(2rem, 3vw, 3rem);
       display: flex;
       align-items: center;
-      justify-content: center;
-      border: 1px solid transparent;
+      gap: 1rem;
       border-radius: $border-radius;
       cursor: pointer;
 
@@ -145,7 +147,6 @@
     &__icon {
       display: grid;
       place-items: center;
-      margin-right: 1rem;
 
       svg {
         width: 2rem;

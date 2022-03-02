@@ -1,18 +1,28 @@
-.btn {
-  display: inline-flex;
+.btns {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  gap: $dynamic-gap;
+}
 
+.btn {
   width: max-content;
-  border: none;
-  border-radius: 4rem;
-
+  min-width: max-content;
   text-transform: capitalize;
   font-family: "Inter", sans-serif;
   font-size: $base-font-size;
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 1;
   color: #222;
+
   background-color: $button;
+  border-radius: $border-radius;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 
   cursor: pointer;
 
@@ -31,9 +41,22 @@
     border: 1px solid transparent;
   }
 
+  &--text {
+    color: inherit;
+    background-color: transparent;
+  }
+
+  &--more {
+    margin-top: 2rem;
+    color: $accent;
+    font-style: italic;
+    font-weight: 400;
+    background: transparent;
+  }
+
   &--center {
-    display: flex;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   &--small {
@@ -41,25 +64,14 @@
   }
 
   &--large {
-    margin-top: 3rem;
     padding: 1.6rem 3.2rem;
   }
 
-  &--block {
+  &--full {
     @media (max-width: $mobile) {
       width: 100%;
-      display: flex;
-      text-align: center;
+      justify-content: center;
     }
-  }
-
-  &--show-more {
-    margin-top: 2rem;
-    background: transparent;
-    color: $accent;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1;
   }
 
   &__toggle-group {
@@ -80,6 +92,7 @@
     min-width: 5.4rem;
     height: 3rem;
     background-color: $input-bg;
+    border-radius: 4rem;
     transition: background-color $time;
 
     .switch {

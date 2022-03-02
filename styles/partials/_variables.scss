@@ -1,27 +1,35 @@
-$page-width: 1920px;
-$page-top-padding: 16rem;
-$mobile-top-padding: 10rem;
-$page-bottom-padding: clamp(4rem, 5vw, 8rem);
-$page-hoz-padding: clamp(1rem, 2.5vw, 4rem);
-
-$large-font-size: clamp(1.8rem, 2.5vw, 2rem);
-$base-font-size: clamp(1.6rem, 2.5vw, 1.8rem);
-$small-font-size: clamp(1.4rem, 2vw, 1.6rem);
-
-$shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.1);
-
-$time: 0.4s;
-$border-radius: 1rem;
-$border-radius-small: 5px;
-
-// Media queries
+// Media sizes
 $laptop-lg: 1440px;
 $laptop: 1024px;
 $tablet: 768px;
 $mobile: 550px;
 
+// Page sizes
+$page-width: 1920px;
+$page-top-padding: clamp(8rem, 10vw, 16rem);
+$mobile-top-padding: 10rem;
+$page-bottom-padding: clamp(4rem, 5vw, 8rem);
+$page-hoz-padding: clamp(1rem, 2.5vw, 4rem);
+
+// Font sizes
+$large-font-size: clamp(1.8rem, 2.5vw, 2rem);
+$base-font-size: clamp(1.6rem, 2.5vw, 1.8rem);
+$small-font-size: clamp(1.4rem, 2vw, 1.6rem);
+
+// Shadows
+$shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.1);
+
+// Transition time
+$time: 0.4s;
+
+// Borders
+$border-radius: 1rem;
+$border-radius-small: 5px;
+
+// Gaps
+$dynamic-gap: clamp(1rem, 2vw, 2rem);
+
+// Colours
 $accent: #0e88eb;
 $button: #d1d2d4;
 $input-bg: #c0c0c0;
-
-$section-margin: 4rem;

@@ -32,37 +32,31 @@ function GameCards({ title, filters }) {
   };
 
   return (
-    <section
-      className="section"
-      style={{ color: themeState.text.primary }}
-      onClick={closeFilters}
-    >
-      <div className="container">
-        {appState.isLoading ? (
-          <Loader />
-        ) : appState.error.isError ? (
-          <ErrorMessage />
-        ) : (
-          <>
-            <h1 className="display-title">{`${Genre}${title}${Year}`}</h1>
-            <PageResults />
-            <GameCardFilters filters={filters} />
-            <div className="grid grid--cards mt">
-              {appState.data.results.map((game) => (
-                <GameCard game={game} key={game.id} />
-              ))}
-            </div>
-            {appState.isLoadingMore && <Loader />}
-            {appState.data.next && !appState.isLoadingMore && (
-              <Button
-                name="Load More"
-                classes="btn--large btn--primary btn--center"
-                func={fetchMore}
-              />
-            )}
-          </>
-        )}
-      </div>
+    <section style={{ color: themeState.text.primary }} onClick={closeFilters}>
+      {appState.isLoading ? (
+        <Loader />
+      ) : appState.error.isError ? (
+        <ErrorMessage />
+      ) : (
+        <>
+          <h1 className="display-title">{`${Genre}${title}${Year}`}</h1>
+          <PageResults />
+          <GameCardFilters filters={filters} />
+          <div className="grid grid--cards mt">
+            {appState.data.results.map((game) => (
+              <GameCard game={game} key={game.id} />
+            ))}
+          </div>
+          {appState.isLoadingMore && <Loader />}
+          {appState.data.next && !appState.isLoadingMore && (
+            <Button
+              name="Load More"
+              classes="btn--large btn--primary btn--center mt-4"
+              func={fetchMore}
+            />
+          )}
+        </>
+      )}
     </section>
   );
 }

@@ -54,66 +54,64 @@ function GameDetails({
         className="section game-details"
         style={{ color: themeState.text.primary }}
       >
-        <div className="container">
-          {appState.isLoading ? (
-            <Loader />
-          ) : appState.error.isError ? (
-            <>
-              <h1 className="display-title">Network error.</h1>
-              <p>{appState.error.message}.</p>
-            </>
-          ) : (
-            <>
-              <header className="grid">
-                {/* Left */}
-                <div>
-                  <h1 className="display-title">{game.name}</h1>
-                  <InfoBanner game={game} />
-                  <Trailer trailers={trailers.results} />
-                  <Description description={game.description_raw} />
-                  <Team game={game} />
-                  <ESRBRating esrb={game.esrb_rating} />
-                </div>
-                {/* Right */}
-                <div>
-                  <Screenshots screenshots={screenshots.results} />
-                </div>
-              </header>
-              <Stats
-                game={game}
-                series={series}
-                additions={additions}
-                achievements={achievements}
-              />
-              <Specification game={game} />
-              <Stores stores={stores} />
+        {appState.isLoading ? (
+          <Loader />
+        ) : appState.error.isError ? (
+          <>
+            <h1 className="display-title">Network error.</h1>
+            <p>{appState.error.message}.</p>
+          </>
+        ) : (
+          <>
+            <header className="grid">
+              {/* Left */}
+              <div>
+                <h1 className="display-title">{game.name}</h1>
+                <InfoBanner game={game} />
+                <Trailer trailers={trailers.results} />
+                <Description description={game.description_raw} />
+                <Team game={game} />
+                <ESRBRating esrb={game.esrb_rating} />
+              </div>
+              {/* Right */}
+              <div>
+                <Screenshots screenshots={screenshots.results} />
+              </div>
+            </header>
+            <Stats
+              game={game}
+              series={series}
+              additions={additions}
+              achievements={achievements}
+            />
+            <Specification game={game} />
+            <Stores stores={stores} />
 
-              {/* Game Additions */}
-              <CardsSection
-                condition={additions.count > 0}
-                title="Game DLC's and other editions"
-                subtitle="Game Additions"
-                list={additions.results}
-              />
-              {/* Game Series */}
-              <CardsSection
-                condition={series.count > 0}
-                title="Other games in the series"
-                subtitle="Game series"
-                list={series.results}
-              />
+            {/* Game Additions */}
+            <CardsSection
+              condition={additions.count > 0}
+              title="Game DLC's and other editions"
+              subtitle="Game Additions"
+              list={additions.results}
+            />
+            {/* Game Series */}
+            <CardsSection
+              condition={series.count > 0}
+              title="Other games in the series"
+              subtitle="Game series"
+              list={series.results}
+            />
 
-              {/* Parent Game */}
-              <CardsSection
-                condition={parent.count > 0}
-                title="Addition to"
-                subtitle="Addition to"
-                list={parent.results}
-              />
-              <Achievements achievements={achievements} />
-            </>
-          )}
-        </div>
+            {/* Parent Game */}
+            <CardsSection
+              condition={parent.count > 0}
+              title="Addition to"
+              subtitle="Addition to"
+              list={parent.results}
+            />
+            <Achievements achievements={achievements} />
+          </>
+        )}
       </section>
     </>
   );

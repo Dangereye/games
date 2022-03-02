@@ -19,10 +19,7 @@ function Description({ description }) {
 
   return (
     <>
-      <section
-        className={isOpen ? "description full " : "description"}
-        style={{ color: themeState.text.tertiary }}
-      >
+      <section style={{ color: themeState.text.tertiary }}>
         <h2 className="section-title hidden">Game Description</h2>
         <h3
           className="section-subtitle"
@@ -30,17 +27,19 @@ function Description({ description }) {
         >
           Description
         </h3>
-        <p className="body-text" style={{ color: themeState.text.primary }}>
-          {description ? formatDescription(description) : "N/A"}
-        </p>
+        <div className={isOpen ? "description full " : "description"}>
+          <p className="body-text" style={{ color: themeState.text.primary }}>
+            {description ? formatDescription(description) : "N/A"}
+          </p>
+        </div>
+        {description && (
+          <Button
+            name={isOpen ? "Show Less" : "Show More"}
+            classes="btn--more"
+            func={toggleDescription}
+          />
+        )}
       </section>
-      {description && (
-        <Button
-          name={isOpen ? "Show Less" : "Show More"}
-          classes="btn--show-more"
-          func={toggleDescription}
-        />
-      )}
     </>
   );
 }

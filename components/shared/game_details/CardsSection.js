@@ -32,7 +32,7 @@ function CardsSection({ condition, title, subtitle, list }) {
           {list.length > 5 && (
             <Button
               name={limit ? "Show More" : "Show Less"}
-              classes="btn--show-more"
+              classes="btn--more"
               func={toggleAmount}
             />
           )}

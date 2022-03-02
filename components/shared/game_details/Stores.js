@@ -15,7 +15,7 @@ function Stores({ stores }) {
           >
             Where to buy
           </h3>
-          <div className="stores__list grid">
+          <div className="stores__list">
             {stores.results.map((store, index) => {
               const item = storesData.find(
                 (item) => item.id === store.store_id
@@ -28,6 +28,7 @@ function Stores({ stores }) {
                   target="_blank"
                   rel="noreferrer"
                   style={{
+                    color: themeState.text.primary,
                     backgroundColor: themeState.background.secondary,
                     fill: themeState.text.primary,
                   }}

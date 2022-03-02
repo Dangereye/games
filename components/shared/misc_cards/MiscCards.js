@@ -19,27 +19,25 @@ function MiscCards({ title, children }) {
 
   return (
     <section className="misc-cards" style={{ color: themeState.text.primary }}>
-      <div className="container">
-        {appState.isLoading ? (
-          <Loader />
-        ) : appState.error.isError ? (
-          <ErrorMessage />
-        ) : (
-          <>
-            <h1 className="display-title">{title}</h1>
-            <PageResults />
-            <div className="misc-cards__list grid">{children}</div>
-            {appState.isLoadingMore && <Loader />}
-            {appState.data.next && !appState.isLoadingMore && (
-              <Button
-                name="Load More"
-                classes="btn--large btn--accent btn--center"
-                func={fetchMore}
-              />
-            )}
-          </>
-        )}
-      </div>
+      {appState.isLoading ? (
+        <Loader />
+      ) : appState.error.isError ? (
+        <ErrorMessage />
+      ) : (
+        <>
+          <h1 className="display-title">{title}</h1>
+          <PageResults />
+          <div className="misc-cards__list grid">{children}</div>
+          {appState.isLoadingMore && <Loader />}
+          {appState.data.next && !appState.isLoadingMore && (
+            <Button
+              name="Load More"
+              classes="btn--large btn--primary btn--center mt-4"
+              func={fetchMore}
+            />
+          )}
+        </>
+      )}
     </section>
   );
 }

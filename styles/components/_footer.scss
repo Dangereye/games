@@ -1,15 +1,22 @@
 .footer {
   width: 100%;
-  padding: 1rem $page-hoz-padding;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .container {
+    width: 100%;
+    max-width: $page-width;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 4rem;
   }
 
   &__copyright,
   &__backlink {
-    font-size: 1.2rem;
+    // font-size: 1.2rem;
   }
 }

@@ -27,6 +27,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  // border: 1px solid yellow;
 }
 
 a {
@@ -73,20 +74,35 @@ body {
 }
 
 .page {
+  border: 1px solid blue;
   position: relative;
-  width: 100%;
-  min-height: 100vh;
-  padding: $page-top-padding $page-hoz-padding $page-bottom-padding
-    $page-hoz-padding;
-
-  @media (max-width: $mobile) {
-    padding: $mobile-top-padding $page-hoz-padding $page-bottom-padding
-      $page-hoz-padding;
-  }
-}
-
-.container {
   margin: 0 auto;
   width: 100%;
   max-width: $page-width;
+  min-height: 100vh;
+  padding: $page-top-padding 1rem 0 1rem;
+}
+
+main {
+  padding: 2rem;
+  border: 1px solid green;
+}
+
+aside {
+  padding: 2rem;
+  border: 1px solid orange;
+}
+
+.container {
+  padding: 2rem;
+  border: 2px solid pink;
+}
+
+section {
+  padding: 2rem;
+  border: 1px solid red;
+
+  &:not(:first-of-type) {
+    margin-top: 4rem;
+  }
 }

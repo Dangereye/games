@@ -64,11 +64,9 @@ function Layout({ children }) {
             }}
           ></div>
         </div>
-        <div className="page ">
-          <div className="container grid grid--sidebar">
-            <Sidebar />
-            {children}
-          </div>
+        <div className="page grid grid--sidebar">
+          <Sidebar />
+          <main>{children}</main>
         </div>
         <Footer />
       </div>

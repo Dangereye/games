@@ -13,17 +13,19 @@ function NotFound() {
         Oops! We don&apos;t know how it happened, or why - the page you
         requested isn&apos;t here. Sorry :(
       </p>
-      <Button
-        name="Go Back"
-        classes="btn--large btn--secondary btn--block mr-3"
-        styles={{ borderColor: themeState.text.primary }}
-        func={() => router.back()}
-      />
-      <Button
-        name="View All games"
-        classes="btn btn--large btn--primary btn--block"
-        func={() => router.push("/")}
-      />
+      <div className="btns mt-4">
+        <Button
+          name="View All games"
+          classes="btn btn--large btn--primary btn--full"
+          func={() => router.push("/")}
+        />
+        <Button
+          name="Go Back"
+          classes="btn--small btn--text btn--full"
+          styles={{ borderColor: themeState.text.primary }}
+          func={() => router.back()}
+        />
+      </div>
     </section>
   );
 }

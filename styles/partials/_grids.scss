@@ -1,21 +1,9 @@
 .grid {
   display: grid;
-  gap: 2rem;
-
-  @media (max-width: $laptop) {
-    gap: 1.5rem;
-  }
-
-  @media (max-width: $mobile) {
-    gap: 1rem;
-  }
-
-  &.mt {
-    margin-top: 4rem;
-  }
+  gap: $dynamic-gap;
 
   &--sidebar {
-    column-gap: 4rem;
+    gap: 4rem;
     grid-template-columns: 20rem 1fr;
 
     @media (max-width: $tablet), (max-height: $mobile) {
@@ -47,9 +35,6 @@
 
     @media (max-width: $laptop-lg) {
       grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-    }
-
-    @media (max-width: $tablet) {
     }
 
     @media (max-width: $mobile) {
