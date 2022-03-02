@@ -1,4 +1,3 @@
-import Head from "next/head";
 import useStatus from "../hooks/useStatus";
 import useFilters from "../hooks/useFilters";
 import GameCards from "../components/shared/game_cards/GameCards";

@@ -6,7 +6,7 @@ import Loader from "../Loader";
 import GameCard from "./GameCard";
 import Button from "../buttons/Button";
 
-function GameCards({ limited }) {
+function GameCards({ title, subtitle, limited }) {
   const [limit, setLimit] = useState(limited);
   const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
@@ -23,7 +23,8 @@ function GameCards({ limited }) {
 
   return (
     <section style={{ color: themeState.text.primary }}>
-      <h2 className="section-title">Games list</h2>
+      <h2 className="section-title">{title}</h2>
+      <h3 className="section-subtitle">{subtitle}</h3>
       <div className="grid grid--cards">
         {(limit
           ? appState.data.results.filter((game, i) => i < 5)
@@ -52,6 +53,8 @@ function GameCards({ limited }) {
 }
 
 GameCards.defaultProps = {
+  title: "Section Title",
+  subtitle: "Section Subtitle",
   limited: false,
 };
 
