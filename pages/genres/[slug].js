@@ -1,28 +1,18 @@
-import { useContext } from "react";
-import { AppContext } from "../../contexts/AppContext";
 import useStatus from "../../hooks/useStatus";
 import useFilters from "../../hooks/useFilters";
-import Head from "next/head";
+import PageTemplate from "../../components/shared/PageTemplate";
+import Filters from "../../components/shared/filters/Filters";
 import GameCards from "../../components/shared/game_cards/GameCards";
 
-function Genres({ all, filters }) {
-  const { appState } = useContext(AppContext);
-  const {} = useStatus(filters);
-  const {} = useFilters("Genres");
-
-  // console.log("Genres All: ", all);
-  // console.log("Genres Filters: ", filters);
+function Genres({ data }) {
+  const {} = useStatus(data);
+  const {} = useFilters();
 
   return (
-    <>
-      <Head>
-        <title>{appState.data.seo_title}</title>
-        <meta name="author" content="Craig Puxty" />
-        <meta name="keywords" content={appState.data.seo_keywords} />
-        <meta name="description" content={appState.data.seo_description} />
-      </Head>
-      <GameCards title={all.seo_h1} filters={all.filters ? all.filters : []} />
-    </>
+    <PageTemplate>
+      <Filters />
+      <GameCards title="Games List" />
+    </PageTemplate>
   );
 }
 export default Genres;
@@ -36,22 +26,16 @@ export async function getServerSideProps(context) {
   };
   const ordering = query.ordering ? `&ordering=${query.ordering}` : "";
   const dates = query.dates ? `&dates=${query.dates}` : "";
+  const genres = query.genres ? `&genres=${query.genres}` : "";
 
-  let [all, filters] = await Promise.all([
-    fetch(
-      `https://api.rawg.io/api/games?genres=${params.slug}&filter=true&comments=true&key=${process.env.API_KEY}`,
-      options
-    ),
-    fetch(
-      `https://api.rawg.io/api/games?genres=${params.slug}&page_size=40&filter=true&comments=true&key=${process.env.API_KEY}${ordering}${dates}`,
-      options
-    ),
-  ]);
+  const res = await fetch(
+    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&genres=${params.slug}&page_size=40&filter=true&comments=true${ordering}${dates}${genres}`,
+    options
+  );
 
-  all = await all.json();
-  filters = await filters.json();
+  const data = await res.json();
 
   return {
-    props: { all, filters },
+    props: { data },
   };
 }
