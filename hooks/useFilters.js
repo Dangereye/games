@@ -16,7 +16,6 @@ function useFilters(route) {
     : "";
 
   useEffect(() => {
-    console.log(`Updating ${route} Route`);
     router.push(`${asPath.split("?")[0]}${ordering}${years}${genres}`);
   }, [
     asPath,

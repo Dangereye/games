@@ -1,12 +1,12 @@
 import useStatus from "../hooks/useStatus";
 import useFilters from "../hooks/useFilters";
-import GameCards from "../components/shared/game_cards/GameCards";
 import PageTemplate from "../components/shared/PageTemplate";
 import Filters from "../components/shared/filters/Filters";
+import GameCards from "../components/shared/game_cards/GameCards";
 
 function Home({ data }) {
   const {} = useStatus(data);
-  const {} = useFilters("Index");
+  const {} = useFilters();
 
   return (
     <PageTemplate>

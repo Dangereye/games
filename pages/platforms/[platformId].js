@@ -1,28 +1,21 @@
 import useStatus from "../../hooks/useStatus";
 import useFilters from "../../hooks/useFilters";
-import Head from "next/head";
 import PageTemplate from "../../components/shared/PageTemplate";
 import Filters from "../../components/shared/filters/Filters";
 import GameCards from "../../components/shared/game_cards/GameCards";
 
-function Platforms({ all, filtered }) {
-  const {} = useStatus(filtered);
-  const {} = useFilters("Platforms");
+function Platforms({ data }) {
+  const {} = useStatus(data);
+  const {} = useFilters();
 
   return (
-    <>
-      <Head>
-        <title>{all.seo_title}</title>
-        <meta name="keywords" content={all.seo_keywords} />
-        <meta name="description" content={all.seo_description} />
-      </Head>
-      <PageTemplate title={all.seo_h1}>
-        <Filters years={all.filters.years} genres={all.filters.genres} />
-        <GameCards title="Games List" />
-      </PageTemplate>
-    </>
+    <PageTemplate>
+      <Filters />
+      <GameCards title="Games List" />
+    </PageTemplate>
   );
 }
+
 export default Platforms;
 
 export async function getServerSideProps(context) {
@@ -36,21 +29,14 @@ export async function getServerSideProps(context) {
   const dates = query.dates ? `&dates=${query.dates}` : "";
   const genres = query.genres ? `&genres=${query.genres}` : "";
 
-  let [all, filtered] = await Promise.all([
-    fetch(
-      `https://api.rawg.io/api/games?platforms=${params.platformId}&filter=true&comments=true&key=${process.env.API_KEY}`,
-      options
-    ),
-    fetch(
-      `https://api.rawg.io/api/games?platforms=${params.platformId}&page_size=40&key=${process.env.API_KEY}${ordering}${dates}${genres}`,
-      options
-    ),
-  ]);
+  const res = await fetch(
+    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&platforms=${params.platformId}&page_size=40&filter=true&comments=true${ordering}${dates}${genres}`,
+    options
+  );
 
-  all = await all.json();
-  filtered = await filtered.json();
+  const data = await res.json();
 
   return {
-    props: { all, filtered },
+    props: { data },
   };
 }

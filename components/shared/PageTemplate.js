@@ -11,7 +11,7 @@ function PageTemplate({ title, children }) {
   const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
   const router = useRouter();
-  console.log(`${router.pathname}: `, appState);
+  console.log(`${router.asPath}: `, appState);
 
   return (
     <>
@@ -22,7 +22,7 @@ function PageTemplate({ title, children }) {
       ) : (
         <>
           <Head>
-            <title>{appState.data.seo_title}</title>
+            <title>Games | {appState.data.seo_title}</title>
             <meta name="keywords" content={appState.data.seo_keywords} />
             <meta name="description" content={appState.data.seo_description} />
           </Head>
