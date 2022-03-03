@@ -28,7 +28,7 @@ function PageTemplate({ title, children }) {
           </Head>
           <section style={{ color: themeState.text.primary }}>
             <h1 className="display-title">
-              {title ? title : appState.data.seo_h1}
+              {appState.data.seo_h1} {title}
             </h1>
             <PageResults />
             {children}
