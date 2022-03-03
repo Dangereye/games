@@ -6,12 +6,14 @@ import Loader from "../Loader";
 import GameCard from "./GameCard";
 import Button from "../buttons/Button";
 
-function GameCards({ title, subtitle, limited }) {
+function GameCards({ title, subtitle, list, limited }) {
   const { themeState } = useContext(ThemeContext);
   const { appState } = useContext(AppContext);
   const [limit, setLimit] = useState(limited);
 
   const addContent = useClientFetch();
+
+  const data = list ? list : appState.data.results;
 
   const fetchMore = () => {
     addContent(appState.data.next);
@@ -26,10 +28,7 @@ function GameCards({ title, subtitle, limited }) {
       <h2 className="section-title hidden">{title}</h2>
       {subtitle && <h3 className="section-subtitle">{subtitle}</h3>}
       <div className="grid grid--cards">
-        {(limit
-          ? appState.data.results.filter((game, i) => i < 5)
-          : appState.data.results
-        ).map((game) => (
+        {(limit ? data.filter((game, i) => i < 5) : data).map((game) => (
           <GameCard game={game} key={game.id} />
         ))}
       </div>
@@ -55,6 +54,7 @@ function GameCards({ title, subtitle, limited }) {
 GameCards.defaultProps = {
   title: "Section Title",
   subtitle: false,
+  list: false,
   limited: false,
 };
 
