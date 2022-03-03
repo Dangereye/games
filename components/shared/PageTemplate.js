@@ -22,9 +22,15 @@ function PageTemplate({ title, postTitle, children }) {
       ) : (
         <>
           <Head>
-            <title>Games | {appState.data.seo_title}</title>
-            <meta name="keywords" content={appState.data.seo_keywords} />
-            <meta name="description" content={appState.data.seo_description} />
+            <title>Games | {title ? title : appState.data.seo_title}</title>
+            <meta
+              name="keywords"
+              content={title ? "" : appState.data.seo_keywords}
+            />
+            <meta
+              name="description"
+              content={title ? "" : appState.data.seo_description}
+            />
           </Head>
           <header style={{ color: themeState.text.primary }}>
             <h1 className="display-title">

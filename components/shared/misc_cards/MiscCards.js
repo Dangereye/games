@@ -20,8 +20,8 @@ function MiscCards({ title, children }) {
       className="misc-cards mt-4"
       style={{ color: themeState.text.primary }}
     >
-      <h2 className="section-title">{title}</h2>
-      <div className=" grid grid--cards">{children}</div>
+      <h2 className="section-title hidden">{title}</h2>
+      <div className="misc-cards__list grid">{children}</div>
       {appState.isLoadingMore && <Loader />}
       {appState.data.next && !appState.isLoadingMore && (
         <Button
