@@ -3,6 +3,8 @@ import { AppContext } from "../../contexts/AppContext";
 import useStatus from "../../hooks/useStatus";
 import useFilters from "../../hooks/useFilters";
 import Head from "next/head";
+import PageTemplate from "../../components/shared/PageTemplate";
+import Filters from "../../components/shared/filters/Filters";
 import GameCards from "../../components/shared/game_cards/GameCards";
 
 function Tags({ all, filters }) {
@@ -10,18 +12,17 @@ function Tags({ all, filters }) {
   const {} = useStatus(filters);
   const {} = useFilters("Tags");
 
-  // console.log("Tags All: ", all);
-  // console.log("Tags Filters: ", filters);
-
   return (
     <>
       <Head>
         <title>{appState.data.seo_title}</title>
-        <meta name="author" content="Craig Puxty" />
         <meta name="keywords" content={appState.data.seo_keywords} />
         <meta name="description" content={appState.data.seo_description} />
       </Head>
-      <GameCards title={all.seo_h1} filters={all.filters} />
+      <PageTemplate title={all.seo_h1}>
+        <Filters years={all.filters.years} genres={all.filters.genres} />
+        <GameCards title="Games List" />
+      </PageTemplate>
     </>
   );
 }
