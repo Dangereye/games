@@ -43,9 +43,14 @@ function MiscCard({ icon, data, href }) {
         <LinkGroup title="Popular Games">
           <LinksList condition={data.games.length}>
             {data.games
-              .filter((g, i) => i < 3)
-              .map((g, i) => (
-                <LinkItem href={`/game/${g.id}`} name={g.name} icon />
+              .filter((game, i) => i < 3)
+              .map((game, i) => (
+                <LinkItem
+                  key={`game-${i}`}
+                  href={`/game/${game.id}`}
+                  name={game.name}
+                  icon
+                />
               ))}
           </LinksList>
         </LinkGroup>
