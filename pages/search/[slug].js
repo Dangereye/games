@@ -9,7 +9,7 @@ function SearchDetails({ data, slug }) {
   const {} = useFilters();
 
   return (
-    <PageTemplate title={`Matching "${slug}"`}>
+    <PageTemplate postTitle={`Matching "${slug}"`}>
       <Filters />
       <GameCards title="Games List" />
     </PageTemplate>

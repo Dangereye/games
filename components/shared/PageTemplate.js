@@ -7,7 +7,7 @@ import ErrorMessage from "./ErrorMessage";
 import Head from "next/head";
 import PageResults from "./PageResults";
 
-function PageTemplate({ title, children }) {
+function PageTemplate({ title, postTitle, children }) {
   const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
   const router = useRouter();
@@ -28,7 +28,7 @@ function PageTemplate({ title, children }) {
           </Head>
           <header style={{ color: themeState.text.primary }}>
             <h1 className="display-title">
-              {appState.data.seo_h1} {title}
+              {title ? title : appState.data.seo_h1} {postTitle}
             </h1>
             <PageResults />
           </header>
@@ -41,6 +41,7 @@ function PageTemplate({ title, children }) {
 
 PageTemplate.defaultProps = {
   title: false,
+  postTile: false,
 };
 
 export default PageTemplate;
