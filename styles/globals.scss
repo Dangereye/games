@@ -79,7 +79,7 @@ body {
   width: 100%;
   max-width: $page-width;
   min-height: 100vh;
-  padding: $page-top-padding 1rem 0 1rem;
+  padding: $page-top-padding 1rem 4rem 1rem;
 }
 
 section:not(:first-of-type) {
@@ -108,7 +108,7 @@ section:not(:first-of-type) {
 //   border: 2px solid pink;
 // }
 
-section {
-  padding: 2rem;
-  border: 1px solid red;
-}
+// section {
+//   padding: 2rem;
+//   border: 1px solid red;
+// }
