@@ -1,28 +1,26 @@
 import useStatus from "../../hooks/useStatus";
 import useFilters from "../../hooks/useFilters";
 import Head from "next/head";
+import PageTemplate from "../../components/shared/PageTemplate";
+import Filters from "../../components/shared/filters/Filters";
 import GameCards from "../../components/shared/game_cards/GameCards";
 
-function SearchDetails({ all, filters, slug }) {
-  const {} = useStatus(filters);
+function SearchDetails({ all, filtered, slug }) {
+  const {} = useStatus(filtered);
   const {} = useFilters("Search");
-
-  // console.log("Search All: ", all);
-  // console.log("Search Filters: ", filters);
-  // console.log("Slug: ", slug);
+  console.log("Search Results: ", all);
 
   return (
     <>
       <Head>
-        <title>Games | {slug}</title>
-        <meta name="author" content="Craig Puxty" />
-        <meta name="keywords" content={slug} />
-        <meta name="description" content={`Games including ${slug}`} />
+        <title>{all.seo_h1}</title>
+        <meta name="keywords" content={all.seo_keywords} />
+        <meta name="description" content={all.seo_description} />
       </Head>
-      <GameCards
-        title={`Search results for "${slug}".`}
-        filters={all.filters}
-      />
+      <PageTemplate title={`Games matching "${slug}"`}>
+        <Filters years={all.filters.years} genres={all.filters.genres} />
+        <GameCards title="Games List" />
+      </PageTemplate>
     </>
   );
 }
@@ -38,24 +36,26 @@ export async function getServerSideProps(context) {
   };
   const ordering = query.ordering ? `&ordering=${query.ordering}` : "";
   const dates = query.dates ? `&dates=${query.dates}` : "";
-  let [all, filters] = await Promise.all([
+  const genres = query.genres ? `&genres=${query.genres}` : "";
+
+  let [all, filtered] = await Promise.all([
     fetch(
-      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${params.slug}`,
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${params.slug}&filter=true&comments=true`,
       options
     ),
     fetch(
-      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${params.slug}&page_size=40${ordering}${dates}`,
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${params.slug}&page_size=40${ordering}${dates}${genres}`,
       options
     ),
   ]);
 
   all = await all.json();
-  filters = await filters.json();
+  filtered = await filtered.json();
 
   return {
     props: {
       all,
-      filters,
+      filtered,
       slug: params.slug,
     },
   };

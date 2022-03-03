@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { AppContext } from "../../contexts/AppContext";
 import useStatus from "../../hooks/useStatus";
 import useFilters from "../../hooks/useFilters";
 import Head from "next/head";
@@ -8,16 +6,15 @@ import Filters from "../../components/shared/filters/Filters";
 import GameCards from "../../components/shared/game_cards/GameCards";
 
 function Platforms({ all, filtered }) {
-  const { appState } = useContext(AppContext);
   const {} = useStatus(filtered);
   const {} = useFilters("Platforms");
 
   return (
     <>
       <Head>
-        <title>{appState.data.seo_title}</title>
-        <meta name="keywords" content={appState.data.seo_keywords} />
-        <meta name="description" content={appState.data.seo_description} />
+        <title>{all.seo_title}</title>
+        <meta name="keywords" content={all.seo_keywords} />
+        <meta name="description" content={all.seo_description} />
       </Head>
       <PageTemplate title={all.seo_h1}>
         <Filters years={all.filters.years} genres={all.filters.genres} />

@@ -1,29 +1,26 @@
+import useStatus from "../../hooks/useStatus";
+import useFilters from "../../hooks/useFilters";
 import Head from "next/head";
 import GameCards from "../../components/shared/game_cards/GameCards";
-import useFilters from "../../hooks/useFilters";
-import useStatus from "../../hooks/useStatus";
+import PageTemplate from "../../components/shared/PageTemplate";
+import Filters from "../../components/shared/filters/Filters";
 
-function DynamicStores({ store, all, filters }) {
-  console.log("Store: ", store);
-  console.log("All: ", all);
-  console.log("Filters: ", filters);
-  const {} = useStatus(filters);
+function Stores({ all, filtered }) {
+  const {} = useStatus(filtered);
   const {} = useFilters("Stores");
   return (
     <>
       <Head>
         <title>Games | {all.seo_h1}</title>
-        <meta name="author" content="Craig Puxty" />
-        <meta
-          name="description"
-          content="Video game database and discovery service - powered by RAWG.IO"
-        />
       </Head>
-      <GameCards title={all.seo_h1} filters={all.filters} />
+      <PageTemplate title={all.seo_h1}>
+        <Filters years={all.filters.years} genres={all.filters.genres} />
+        <GameCards title="Games List" />
+      </PageTemplate>
     </>
   );
 }
-export default DynamicStores;
+export default Stores;
 
 export async function getServerSideProps(context) {
   const { params, query } = context;
@@ -36,11 +33,7 @@ export async function getServerSideProps(context) {
   const dates = query.dates ? `&dates=${query.dates}` : "";
   const genres = query.genres ? `&genres=${query.genres}` : "";
 
-  let [store, all, filters] = await Promise.all([
-    fetch(
-      `https://api.rawg.io/api/stores/${params.storeId}?key=${process.env.API_KEY}`,
-      options
-    ),
+  let [all, filtered] = await Promise.all([
     fetch(
       `https://api.rawg.io/api/games?stores=${params.storeId}&filter=true&comments=true&key=${process.env.API_KEY}`,
       options
@@ -51,11 +44,10 @@ export async function getServerSideProps(context) {
       options
     ),
   ]);
-  store = await store.json();
   all = await all.json();
-  filters = await filters.json();
+  filtered = await filtered.json();
 
   return {
-    props: { store, all, filters },
+    props: { all, filtered },
   };
 }

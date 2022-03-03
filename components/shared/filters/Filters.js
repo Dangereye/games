@@ -1,11 +1,14 @@
 import { useEffect, useContext } from "react";
+import { AppContext } from "../../../contexts/AppContext";
 import { FiltersContext } from "../../../contexts/FiltersContext";
 import filterData from "../../../data/FilterData";
 import FilterMenu from "./FilterMenu";
 import FilterSubMenu from "./FilterSubMenu";
 
-function GameCardFilters({ years, genres }) {
+function GameCardFilters() {
+  const { appState } = useContext(AppContext);
   const { filtersState, filtersDispatch } = useContext(FiltersContext);
+  const { years, genres } = appState.data.filters;
 
   const activateFilter = (filter, name, value) => {
     filtersDispatch({ type: "SET_FILTER", payload: { filter, name, value } });
@@ -120,10 +123,5 @@ function GameCardFilters({ years, genres }) {
     </section>
   );
 }
-
-GameCardFilters.defaultProps = {
-  years: null,
-  genres: null,
-};
 
 export default GameCardFilters;
