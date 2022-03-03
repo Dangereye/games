@@ -26,13 +26,13 @@ function PageTemplate({ title, children }) {
             <meta name="keywords" content={appState.data.seo_keywords} />
             <meta name="description" content={appState.data.seo_description} />
           </Head>
-          <section style={{ color: themeState.text.primary }}>
+          <header style={{ color: themeState.text.primary }}>
             <h1 className="display-title">
               {appState.data.seo_h1} {title}
             </h1>
             <PageResults />
-            {children}
-          </section>
+          </header>
+          {children}
         </>
       )}
     </>

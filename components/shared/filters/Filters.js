@@ -1,5 +1,6 @@
 import { useEffect, useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
+import { ThemeContext } from "../../../contexts/ThemeContext";
 import { FiltersContext } from "../../../contexts/FiltersContext";
 import filterData from "../../../data/FilterData";
 import FilterMenu from "./FilterMenu";
@@ -7,6 +8,7 @@ import FilterSubMenu from "./FilterSubMenu";
 
 function GameCardFilters() {
   const { appState } = useContext(AppContext);
+  const { themeState } = useContext(ThemeContext);
   const { filtersState, filtersDispatch } = useContext(FiltersContext);
   const { years, genres } = appState.data.filters;
 
@@ -24,7 +26,7 @@ function GameCardFilters() {
   }, []);
 
   return (
-    <section className="mt-4">
+    <section className="mt-4" style={{ color: themeState.text.primary }}>
       <h2 className="section-title hidden">Filter menus</h2>
       <div className="filters">
         {/* Orders filter */}
