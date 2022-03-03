@@ -1,23 +1,17 @@
 import useStatus from "../../hooks/useStatus";
 import useFilters from "../../hooks/useFilters";
-import Head from "next/head";
-import GameCards from "../../components/shared/game_cards/GameCards";
 import PageTemplate from "../../components/shared/PageTemplate";
 import Filters from "../../components/shared/filters/Filters";
+import GameCards from "../../components/shared/game_cards/GameCards";
 
-function Stores({ all, filtered }) {
-  const {} = useStatus(filtered);
-  const {} = useFilters("Stores");
+function Stores({ data }) {
+  const {} = useStatus(data);
+  const {} = useFilters();
   return (
-    <>
-      <Head>
-        <title>Games | {all.seo_h1}</title>
-      </Head>
-      <PageTemplate title={all.seo_h1}>
-        <Filters years={all.filters.years} genres={all.filters.genres} />
-        <GameCards title="Games List" />
-      </PageTemplate>
-    </>
+    <PageTemplate>
+      <Filters />
+      <GameCards title="Games List" />
+    </PageTemplate>
   );
 }
 export default Stores;
@@ -33,21 +27,13 @@ export async function getServerSideProps(context) {
   const dates = query.dates ? `&dates=${query.dates}` : "";
   const genres = query.genres ? `&genres=${query.genres}` : "";
 
-  let [all, filtered] = await Promise.all([
-    fetch(
-      `https://api.rawg.io/api/games?stores=${params.storeId}&filter=true&comments=true&key=${process.env.API_KEY}`,
-      options
-    ),
-
-    fetch(
-      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page_size=40&stores=${params.storeId}${ordering}${dates}${genres}`,
-      options
-    ),
-  ]);
-  all = await all.json();
-  filtered = await filtered.json();
+  const res = await fetch(
+    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&stores=${params.storeId}&page_size=40&filter=true&comments=true${ordering}${dates}${genres}`,
+    options
+  );
+  const data = await res.json();
 
   return {
-    props: { all, filtered },
+    props: { data },
   };
 }
