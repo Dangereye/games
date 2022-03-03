@@ -1,29 +1,18 @@
-import { useContext } from "react";
-import { AppContext } from "../../contexts/AppContext";
 import useStatus from "../../hooks/useStatus";
 import useFilters from "../../hooks/useFilters";
-import Head from "next/head";
+import PageTemplate from "../../components/shared/PageTemplate";
+import Filters from "../../components/shared/filters/Filters";
 import GameCards from "../../components/shared/game_cards/GameCards";
 
-function Developers({ dev, all, filters }) {
-  const { appState } = useContext(AppContext);
-  const {} = useStatus(filters);
-  const {} = useFilters("Developers");
-
-  // console.log("Developer: ", dev);
-  // console.log("Developer All: ", all);
-  // console.log("Developer Filters: ", filters);
+function Developers({ data }) {
+  const {} = useStatus(data);
+  const {} = useFilters();
 
   return (
-    <>
-      <Head>
-        <title>{appState.data.seo_title}</title>
-        <meta name="author" content="Craig Puxty" />
-        <meta name="keywords" content={appState.data.seo_keywords} />
-        <meta name="description" content={appState.data.seo_description} />
-      </Head>
-      <GameCards title={`Games for ${dev.name}`} filters={all.filters} />
-    </>
+    <PageTemplate>
+      <Filters />
+      <GameCards title="Games List" />
+    </PageTemplate>
   );
 }
 
@@ -38,31 +27,18 @@ export async function getServerSideProps(context) {
   };
   const ordering = query.ordering ? `&ordering=${query.ordering}` : "";
   const dates = query.dates ? `&dates=${query.dates}` : "";
+  const genres = query.genres ? `&genres=${query.genres}` : "";
 
-  let [dev, all, filters] = await Promise.all([
-    fetch(
-      `https://api.rawg.io/api/developers/${params.devId}?key=${process.env.API_KEY}`,
-      options
-    ),
-    fetch(
-      `https://api.rawg.io/api/games?developers=${params.devId}&key=${process.env.API_KEY}`,
-      options
-    ),
-    fetch(
-      `https://api.rawg.io/api/games?developers=${params.devId}&page_size=40&key=${process.env.API_KEY}${ordering}${dates}`,
-      options
-    ),
-  ]);
+  const res = await fetch(
+    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&developers=${params.devId}&page_size=40&filter=true&comments=true${ordering}${dates}${genres}`,
+    options
+  );
 
-  dev = await dev.json();
-  all = await all.json();
-  filters = await filters.json();
+  const data = await res.json();
 
   return {
     props: {
-      dev,
-      all,
-      filters,
+      data,
     },
   };
 }
