@@ -43,12 +43,17 @@ html {
   line-height: 1;
   font-style: italic;
   letter-spacing: 0.5px;
+
+  &.hidden {
+    display: none;
+  }
 }
 
 .card-title {
   margin-bottom: 3rem;
   display: flex;
   align-items: flex-start;
+  gap: 1rem;
 
   .text {
     display: -webkit-box;

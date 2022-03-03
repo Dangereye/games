@@ -19,9 +19,9 @@ function Platforms({ all, filtered }) {
         <meta name="keywords" content={appState.data.seo_keywords} />
         <meta name="description" content={appState.data.seo_description} />
       </Head>
-      <PageTemplate heading={all.seo_h1}>
+      <PageTemplate title={all.seo_h1}>
         <Filters years={all.filters.years} genres={all.filters.genres} />
-        <GameCards />
+        <GameCards title="Games List" subtitle="Games" />
       </PageTemplate>
     </>
   );
