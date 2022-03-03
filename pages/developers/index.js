@@ -2,23 +2,17 @@ import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { DevelopersSVG } from "../../components/shared/CategoriesSVGs";
 import useStatus from "../../hooks/useStatus";
-import Head from "next/head";
-import MiscCard from "../../components/shared/misc_cards/MiscCard";
+import PageTemplate from "../../components/shared/PageTemplate";
 import MiscCards from "../../components/shared/misc_cards/MiscCards";
+import MiscCard from "../../components/shared/misc_cards/MiscCard";
 
 function Developers({ developers }) {
   const { appState } = useContext(AppContext);
   const {} = useStatus(developers);
-  console.log("Developers", developers);
 
   return (
-    <>
-      <Head>
-        <title>Games | Developers</title>
-        <meta name="author" content="Craig Puxty" />
-        <meta name="description" content="Video game developers." />
-      </Head>
-      <MiscCards title="Game Developers">
+    <PageTemplate title="Developers">
+      <MiscCards title="Developer list">
         {appState.data.results.map((d, i) => (
           <MiscCard
             key={`developer-${i}`}
@@ -28,7 +22,7 @@ function Developers({ developers }) {
           />
         ))}
       </MiscCards>
-    </>
+    </PageTemplate>
   );
 }
 export default Developers;
