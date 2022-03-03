@@ -22,7 +22,7 @@ function GameCardFilters({ years, genres }) {
 
   return (
     <section className="mt-4">
-      <h2 className="section-title">Filter menus</h2>
+      <h2 className="section-title hidden">Filter menus</h2>
       <div className="filters">
         {/* Orders filter */}
         <FilterMenu
