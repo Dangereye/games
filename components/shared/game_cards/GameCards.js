@@ -6,7 +6,7 @@ import Loader from "../Loader";
 import GameCard from "./GameCard";
 import Button from "../buttons/Button";
 
-function GameCards({ title, showTitle, subtitle, showSubtitle, limited }) {
+function GameCards({ title, subtitle, hideSub, limited }) {
   const [limit, setLimit] = useState(limited);
   const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
@@ -23,14 +23,8 @@ function GameCards({ title, showTitle, subtitle, showSubtitle, limited }) {
 
   return (
     <section style={{ color: themeState.text.primary }}>
-      <h2 className={showTitle ? "section-title" : "section-title hidden"}>
-        {title}
-      </h2>
-      <h3
-        className={
-          showSubtitle ? "section-subtitle" : "section-subtitle hidden"
-        }
-      >
+      <h2 className="section-title hidden">{title}</h2>
+      <h3 className={hideSub ? "section-subtitle hidden" : "section-subtitle"}>
         {subtitle}
       </h3>
       <div className="grid grid--cards">
@@ -62,9 +56,8 @@ function GameCards({ title, showTitle, subtitle, showSubtitle, limited }) {
 
 GameCards.defaultProps = {
   title: "Section Title",
-  showTitle: false,
   subtitle: "Section Subtitle",
-  showSubtitle: false,
+  hideSub: false,
   limited: false,
 };
 
