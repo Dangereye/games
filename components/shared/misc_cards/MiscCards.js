@@ -33,4 +33,7 @@ function MiscCards({ title, children }) {
     </section>
   );
 }
+
+MiscCards.defaultProps = { title: "Section title" };
+
 export default MiscCards;

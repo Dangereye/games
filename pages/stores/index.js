@@ -1,9 +1,5 @@
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
-import useStatus from "../../hooks/useStatus";
-import Head from "next/head";
-import MiscCards from "../../components/shared/misc_cards/MiscCards";
-import MiscCard from "../../components/shared/misc_cards/MiscCard";
 import {
   GetSVG,
   Steam,
@@ -16,29 +12,27 @@ import {
   ItchIo,
   EpicGamesStore,
 } from "../../components/shared/StoresSVGs";
+import useStatus from "../../hooks/useStatus";
+import PageTemplate from "../../components/shared/PageTemplate";
+import MiscCards from "../../components/shared/misc_cards/MiscCards";
+import MiscCard from "../../components/shared/misc_cards/MiscCard";
 
 function GameStores({ stores }) {
   const { appState } = useContext(AppContext);
   const {} = useStatus(stores);
-  console.log("Stores: ", stores);
   return (
-    <>
-      <Head>
-        <title>Games | Stores</title>
-        <meta name="author" content="Craig Puxty" />
-        <meta name="description" content="Video game stores." />
-      </Head>
-      <MiscCards title="Stores">
-        {appState.data.results.map((s, i) => (
+    <PageTemplate title="Stores">
+      <MiscCards title="Stores list">
+        {appState.data.results.map((store, i) => (
           <MiscCard
             key={`store-${i}`}
-            icon={GetSVG(s.slug)}
-            data={s}
-            href={`stores/${s.id}`}
+            icon={GetSVG(store.slug)}
+            data={store}
+            href={`stores/${store.id}`}
           />
         ))}
       </MiscCards>
-    </>
+    </PageTemplate>
   );
 }
 export default GameStores;
