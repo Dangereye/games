@@ -9,9 +9,9 @@ function Home({ all, filtered }) {
   const {} = useFilters("Index");
 
   return (
-    <PageTemplate heading={all.seo_h1}>
+    <PageTemplate title={all.seo_h1}>
       <Filters years={all.filters.years} genres={all.filters.genres} />
-      <GameCards />
+      <GameCards title="Games List" />
     </PageTemplate>
   );
 }

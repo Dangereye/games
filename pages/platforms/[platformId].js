@@ -21,7 +21,7 @@ function Platforms({ all, filtered }) {
       </Head>
       <PageTemplate title={all.seo_h1}>
         <Filters years={all.filters.years} genres={all.filters.genres} />
-        <GameCards title="Games List" subtitle="Games" />
+        <GameCards title="Games List" subtitle="Games" hideSub limited />
       </PageTemplate>
     </>
   );
