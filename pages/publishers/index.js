@@ -2,23 +2,17 @@ import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { PublishersSVG } from "../../components/shared/CategoriesSVGs";
 import useStatus from "../../hooks/useStatus";
-import Head from "next/head";
+import PageTemplate from "../../components/shared/PageTemplate";
 import MiscCards from "../../components/shared/misc_cards/MiscCards";
 import MiscCard from "../../components/shared/misc_cards/MiscCard";
 
 function Publishers({ publishers }) {
   const { appState } = useContext(AppContext);
   const {} = useStatus(publishers);
-  console.log("Publishers: ", publishers);
 
   return (
-    <>
-      <Head>
-        <title>Games | Publishers</title>
-        <meta name="author" content="Craig Puxty" />
-        <meta name="description" content="Video game publishers." />
-      </Head>
-      <MiscCards title="Publishers">
+    <PageTemplate title="Publishers">
+      <MiscCards title="Publisher list">
         {appState.data.results.map((p, i) => (
           <MiscCard
             key={`publisher-${i}`}
@@ -28,7 +22,7 @@ function Publishers({ publishers }) {
           />
         ))}
       </MiscCards>
-    </>
+    </PageTemplate>
   );
 }
 export default Publishers;
