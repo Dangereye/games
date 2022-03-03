@@ -13,14 +13,14 @@ function Trailer({ trailers }) {
   };
   return (
     <>
-      {trailers.length ? (
-        <section className="trailer" onClick={addTrailers}>
+      {trailers && (
+        <section className="trailer mt-4" onClick={addTrailers}>
           <div className="trailer__icon">
             <BsPlayFill />
           </div>
           <span>Watch Trailer</span>
         </section>
-      ) : null}
+      )}
     </>
   );
 }

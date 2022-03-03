@@ -19,7 +19,7 @@ function Description({ description }) {
 
   return (
     <>
-      <section style={{ color: themeState.text.tertiary }}>
+      <section className="mt-4" style={{ color: themeState.text.primary }}>
         <h2 className="section-title hidden">Game Description</h2>
         <h3
           className="section-subtitle"
@@ -28,7 +28,7 @@ function Description({ description }) {
           Description
         </h3>
         <div className={isOpen ? "description full " : "description"}>
-          <p className="body-text" style={{ color: themeState.text.primary }}>
+          <p className="body-text">
             {description ? formatDescription(description) : "N/A"}
           </p>
         </div>

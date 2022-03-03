@@ -1,202 +1,194 @@
 .game-details {
   margin-top: 30vh;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 4rem;
 
-  header {
-    grid-template-columns: 1.5fr 1fr;
-    gap: 4rem;
+  @media (max-width: $laptop) {
+    grid-template-columns: 1fr;
+  }
+}
 
-    @media (max-width: $laptop) {
-      grid-template-columns: 1fr;
+.info-banner {
+  line-height: 1.618;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+  row-gap: 1rem;
+
+  .date {
+    min-width: max-content;
+    border-radius: $border-radius-small;
+    background-color: $accent;
+    padding: 5px 10px;
+    color: #fff;
+  }
+}
+
+.trailer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+  cursor: pointer;
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: #dd0813;
+    color: #fff;
+
+    svg {
+      margin-left: 2px;
+      width: 3rem;
+      height: auto;
     }
   }
+}
 
-  section {
-    margin-top: 4rem;
+.description {
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  &.full {
+    display: block;
   }
 
-  .info-banner {
-    line-height: 1.618;
+  .body-text {
+    white-space: pre-wrap;
+  }
+}
+
+.team,
+.specification,
+.screenshots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $dynamic-gap;
+}
+
+.screenshots {
+  &__screenshot {
+    flex: 1 1 28rem;
+    overflow: hidden;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.stats {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: $accent;
+
+  &__group {
+    min-width: 18rem;
+    padding: 3rem;
+
+    .figure {
+      margin: 0;
+      font-size: 5rem;
+      font-weight: 300;
+      color: #fefefe;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .stat {
+      font-size: 2rem;
+      font-weight: 400;
+      color: #fefefe;
+    }
+  }
+}
+
+.stores {
+  &__list {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
-    column-gap: 2rem;
-    row-gap: 1rem;
-
-    .date {
-      min-width: max-content;
-      border-radius: $border-radius-small;
-      background-color: $accent;
-      padding: 5px 10px;
-      color: #fff;
-    }
+    gap: $dynamic-gap;
   }
 
-  .trailer {
+  &__item {
     width: max-content;
+    padding: clamp(1rem, 2vw, 2rem) clamp(2rem, 3vw, 3rem);
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 4rem;
+    border-radius: $border-radius;
     cursor: pointer;
 
-    &__icon {
+    &:hover {
+      color: inherit;
+    }
+  }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}
+
+.achievements {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+    gap: 1rem;
+
+    @media (max-width: $mobile) {
+      grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+    }
+  }
+
+  .achievement {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    border-radius: $border-radius-small;
+    gap: 1rem;
+
+    &__image {
       display: grid;
-      place-items: center;
-      width: 4rem;
-      height: 4rem;
-      border-radius: 50%;
-      background-color: #dd0813;
-      color: #fff;
+      place-content: center;
+    }
 
-      svg {
-        margin-left: 2px;
-        width: 3rem;
-        height: auto;
+    &__details {
+      > *:not(:last-child) {
+        margin-bottom: 5px;
       }
-    }
-  }
-
-  .description {
-    width: 100%;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 7;
-    text-overflow: ellipsis;
-    overflow: hidden;
-
-    &.full {
-      display: block;
-    }
-
-    .body-text {
-      white-space: pre-wrap;
-    }
-  }
-
-  .team,
-  .specification {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4rem;
-  }
-
-  .screenshots {
-    margin: 0;
-
-    &__screenshot {
-      overflow: hidden;
-      border-radius: $border-radius;
-      box-shadow: $shadow;
-      cursor: pointer;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-  }
-
-  .stats {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: $accent;
-
-    &__group {
-      min-width: 18rem;
-      padding: 3rem;
-
-      .figure {
-        margin: 0;
-        font-size: 5rem;
-        font-weight: 300;
-        color: #fefefe;
-        line-height: 1;
-        margin-bottom: 0.5rem;
-      }
-      .stat {
-        font-size: 2rem;
-        font-weight: 400;
-        color: #fefefe;
-      }
-    }
-  }
-
-  .stores {
-    &__list {
       display: flex;
-      flex-wrap: wrap;
-      gap: $dynamic-gap;
+      flex-direction: column;
+      justify-content: center;
     }
-
-    &__item {
-      width: max-content;
-      padding: clamp(1rem, 2vw, 2rem) clamp(2rem, 3vw, 3rem);
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      border-radius: $border-radius;
-      cursor: pointer;
-
-      &:hover {
-        color: inherit;
-      }
+    &__percent {
+      font-size: 1.2rem;
+      font-weight: 500;
     }
-
-    &__icon {
-      display: grid;
-      place-items: center;
-
-      svg {
-        width: 2rem;
-        height: 2rem;
-      }
+    &__name {
+      font-size: 1.6rem;
+      font-weight: 600;
     }
-  }
-
-  .achievements {
-    &__list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
-      gap: 1rem;
-
-      @media (max-width: $mobile) {
-        grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
-      }
-    }
-
-    .achievement {
-      padding: 1rem;
-      display: grid;
-      grid-template-columns: 7.5rem 1fr;
-      border-radius: $border-radius-small;
-      gap: 1rem;
-
-      &__image {
-        display: grid;
-        place-content: center;
-      }
-
-      &__details {
-        > *:not(:last-child) {
-          margin-bottom: 5px;
-        }
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      &__percent {
-        font-size: 1.2rem;
-        font-weight: 500;
-      }
-      &__name {
-        font-size: 1.6rem;
-        font-weight: 600;
-      }
-      &__description {
-        font-size: 1.2rem;
-      }
+    &__description {
+      font-size: 1.2rem;
     }
   }
 }
