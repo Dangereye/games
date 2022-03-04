@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, forwardRef } from "react";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import { AppContext } from "../../../contexts/AppContext";
 import { useRouter } from "next/router";
@@ -7,7 +7,7 @@ import ParentPlatforms from "../ParentPlatforms";
 import MetacriticComponent from "../MetacriticComponent";
 import DateComponent from "../DateComponent";
 
-function GameCard({ game }) {
+const GameCard = forwardRef(({ game }, ref) => {
   const { appDispatch } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
   const router = useRouter();
@@ -19,6 +19,7 @@ function GameCard({ game }) {
 
   return (
     <div
+      ref={ref}
       className="game-card"
       style={{
         color: themeState.text.tertiary,
@@ -63,7 +64,7 @@ function GameCard({ game }) {
       </div>
     </div>
   );
-}
+});
 
 GameCard.defaultProps = {
   game: {

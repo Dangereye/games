@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import { useRouter } from "next/router";
 import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
 import Head from "next/head";
@@ -10,8 +9,6 @@ import PageResults from "./PageResults";
 function PageTemplate({ title, postTitle, children }) {
   const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
-  const router = useRouter();
-  console.log(`${router.asPath}: `, appState);
 
   return (
     <>

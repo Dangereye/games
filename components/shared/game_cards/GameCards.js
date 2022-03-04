@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import useClientFetch from "../../../hooks/useClientFetch";
@@ -10,6 +10,7 @@ function GameCards({ condition, title, subtitle, list, limited }) {
   const { themeState } = useContext(ThemeContext);
   const { appState } = useContext(AppContext);
   const [limit, setLimit] = useState(limited);
+  const [element, setElement] = useState(null);
 
   const addContent = useClientFetch();
 
@@ -22,6 +23,29 @@ function GameCards({ condition, title, subtitle, list, limited }) {
   const toggleAmount = () => {
     setLimit(!limit);
   };
+
+  const options = { rootMargin: "800px" };
+
+  const callBack = (entries) => {
+    const entry = entries[0];
+    if (entry.isIntersecting) {
+      fetchMore();
+    }
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(callBack, options);
+
+    if (element) {
+      observer.observe(element);
+    }
+
+    return () => {
+      if (element) {
+        observer.unobserve(element);
+      }
+    };
+  }, [element]);
 
   return (
     <>
@@ -38,17 +62,20 @@ function GameCards({ condition, title, subtitle, list, limited }) {
           )}
           <div className="grid grid--cards">
             {(limit ? data.filter((game, i) => i < 5) : data).map((game) => (
-              <GameCard game={game} key={game.id} />
+              <GameCard ref={setElement} game={game} key={game.id} />
             ))}
           </div>
           {appState.isLoadingMore && <Loader />}
-          {appState.data.next && !appState.isLoadingMore && !limit && (
-            <Button
-              name="Load More"
-              classes="btn--large btn--primary btn--center mt-4"
-              func={fetchMore}
-            />
-          )}
+          {appState.data.next &&
+            !appState.isLoadingMore &&
+            !limit &&
+            !appState.infinite_scroll && (
+              <Button
+                name="Load More"
+                classes="btn--large btn--primary btn--center mt-4"
+                func={fetchMore}
+              />
+            )}
           {data.length > 5 && limited && (
             <Button
               name={limit ? "Show More" : "Show Less"}

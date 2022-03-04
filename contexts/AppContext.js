@@ -73,7 +73,7 @@ const AppReducer = (state, action) => {
 function AppComponent({ children }) {
   const [appState, appDispatch] = useReducer(AppReducer, {
     mobileMenu_isOpen: false,
-    infinite_scroll: false,
+    infinite_scroll: true,
     modal: { isOpen: false, type: "", data: [], index: 0 },
     isLoading: true,
     isLoadingMore: false,
