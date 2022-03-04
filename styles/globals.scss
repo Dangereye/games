@@ -17,11 +17,13 @@
 @import "components/game-card";
 @import "components/misc-cards/misc-cards";
 @import "components/misc-cards/misc-card";
-@import "components/game-details";
 @import "components/parent-platforms";
 @import "components/loader";
 @import "components/metacritic";
 
+//Pages
+@import "pages/game-details";
+@import "pages/settings";
 // Reset
 * {
   margin: 0;
@@ -106,12 +108,12 @@ section:not(:first-of-type) {
 //   border: 2px solid pink;
 // }
 
-// header {
-//   padding: 2rem;
-//   border: 1px solid purple;
-// }
+header {
+  padding: 2rem;
+  border: 1px solid purple;
+}
 
-// section {
-//   padding: 2rem;
-//   border: 1px solid red;
-// }
+section {
+  padding: 2rem;
+  border: 1px solid red;
+}

@@ -76,9 +76,11 @@
 
   &__toggle-group {
     width: 100%;
+    max-width: 30rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 2rem;
 
     span {
       display: block;

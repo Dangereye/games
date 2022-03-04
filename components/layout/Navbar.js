@@ -3,6 +3,7 @@ import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { FaSearch } from "react-icons/fa";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 function Navbar() {
   const [background, setBackground] = useState(false);
@@ -131,10 +132,11 @@ function Navbar() {
           className="navbar__list"
           style={{ color: themeState.text.secondary }}
         >
-          <li className="navbar__list-item">1</li>
-          <li className="navbar__list-item">2</li>
-          <li className="navbar__list-item">3</li>
-          <li className="navbar__list-item">4</li>
+          <li className="navbar__list-item">
+            <Link href="/settings">
+              <a>Settings</a>
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>
