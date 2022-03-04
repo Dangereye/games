@@ -36,12 +36,12 @@ function GameCards({ condition, title, subtitle, list, limited }) {
   useEffect(() => {
     const observer = new IntersectionObserver(callBack, options);
 
-    if (element) {
+    if (appState.infinite_scroll && element) {
       observer.observe(element);
     }
 
     return () => {
-      if (element) {
+      if (appState.infinite_scroll && element) {
         observer.unobserve(element);
       }
     };
