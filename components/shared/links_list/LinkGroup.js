@@ -17,7 +17,7 @@ function LinkGroup({ classes, styles, title, children }) {
 }
 LinkGroup.defaultProps = {
   classes: "",
-  styles: { flexBasis: "25rem" },
+  styles: { flexBasis: "30rem" },
   title: "Group Title",
 };
 export default LinkGroup;

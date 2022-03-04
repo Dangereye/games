@@ -66,14 +66,16 @@
 }
 
 .team,
-.specification,
+.specification {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+}
+
 .screenshots {
   display: flex;
   flex-wrap: wrap;
   gap: $dynamic-gap;
-}
-
-.screenshots {
   &__screenshot {
     flex: 1 1 28rem;
     overflow: hidden;
