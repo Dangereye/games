@@ -6,13 +6,21 @@ import Button from "../components/shared/buttons/Button";
 
 function Settings() {
   const { appState, appDispatch } = useContext(AppContext);
-  const { themeState } = useContext(ThemeContext);
+  const { themeState, themeDispatch } = useContext(ThemeContext);
 
   const toggleTheme = () => {
     if (themeState.dark_mode) {
       themeDispatch({ type: "LIGHT" });
     } else {
       themeDispatch({ type: "DARK" });
+    }
+  };
+
+  const toggleInfiniteScroll = () => {
+    if (appState.infinite_scroll) {
+      appDispatch({ type: "INFINITE_SCROLL", payload: false });
+    } else {
+      appDispatch({ type: "INFINITE_SCROLL", payload: true });
     }
   };
 
@@ -47,8 +55,8 @@ function Settings() {
         <div className="settings">
           <ToggleButton
             name="Infinite Scroll"
-            option={themeState.dark_mode}
-            func={toggleTheme}
+            option={appState.infinite_scroll}
+            func={toggleInfiniteScroll}
           />
         </div>
       </section>

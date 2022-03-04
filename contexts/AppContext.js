@@ -9,6 +9,11 @@ const AppReducer = (state, action) => {
         ...state,
         mobileMenu_isOpen: action.payload,
       };
+    case "INFINITE_SCROLL":
+      return {
+        ...state,
+        infinite_scroll: action.payload,
+      };
     case "OPEN_MODAL":
       return {
         ...state,
@@ -68,6 +73,7 @@ const AppReducer = (state, action) => {
 function AppComponent({ children }) {
   const [appState, appDispatch] = useReducer(AppReducer, {
     mobileMenu_isOpen: false,
+    infinite_scroll: false,
     modal: { isOpen: false, type: "", data: [], index: 0 },
     isLoading: true,
     isLoadingMore: false,
