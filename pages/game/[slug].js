@@ -3,6 +3,7 @@ import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import useStatus from "../../hooks/useStatus";
 import Loader from "../../components/shared/Loader";
+import ErrorMessage from "../../components/shared/ErrorMessage";
 import Head from "next/head";
 import InfoBanner from "../../components/shared/game_details/header/InfoBannner";
 import Trailer from "../../components/shared/game_details/header/Trailer";
@@ -13,7 +14,6 @@ import Screenshots from "../../components/shared/game_details/header/Screenshots
 import Stats from "../../components/shared/game_details/stats/Stats";
 import Stores from "../../components/shared/game_details/Stores";
 import Specification from "../../components/shared/game_details/Specification";
-import CardsSection from "../../components/shared/game_details/CardsSection";
 import GameCards from "../../components/shared/game_cards/GameCards";
 import Achievements from "../../components/shared/game_details/Achievements";
 
@@ -31,14 +31,6 @@ function GameDetails({
   const { themeState } = useContext(ThemeContext);
   const {} = useStatus(initial);
   const game = appState.data;
-  console.log("Data: ", initial);
-  console.log("Screenshots: ", screenshots);
-  console.log("Additions: ", additions);
-  console.log("Trailers", trailers);
-  console.log("Series", series);
-  console.log("Achievements", achievements);
-  console.log("Stores", stores);
-  console.log("Parent", parent);
 
   return (
     <>
