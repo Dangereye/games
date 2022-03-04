@@ -14,11 +14,14 @@ function Trailer({ trailers }) {
   return (
     <>
       {trailers && (
-        <section className="trailer mt-4" onClick={addTrailers}>
-          <div className="trailer__icon">
-            <BsPlayFill />
+        <section className="mt-4">
+          <h2 className="section-title hidden">Game Trailers</h2>
+          <div className="trailer" onClick={addTrailers}>
+            <div className="trailer__icon">
+              <BsPlayFill />
+            </div>
+            <span>Watch Trailer</span>
           </div>
-          <span>Watch Trailer</span>
         </section>
       )}
     </>
