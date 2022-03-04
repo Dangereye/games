@@ -6,7 +6,7 @@ import Loader from "../Loader";
 import GameCard from "./GameCard";
 import Button from "../buttons/Button";
 
-function GameCards({ title, subtitle, list, limited }) {
+function GameCards({ condition, title, subtitle, list, limited }) {
   const { themeState } = useContext(ThemeContext);
   const { appState } = useContext(AppContext);
   const [limit, setLimit] = useState(limited);
@@ -24,34 +24,46 @@ function GameCards({ title, subtitle, list, limited }) {
   };
 
   return (
-    <section style={{ color: themeState.text.primary }}>
-      <h2 className="section-title hidden">{title}</h2>
-      {subtitle && <h3 className="section-subtitle">{subtitle}</h3>}
-      <div className="grid grid--cards">
-        {(limit ? data.filter((game, i) => i < 5) : data).map((game) => (
-          <GameCard game={game} key={game.id} />
-        ))}
-      </div>
-      {appState.isLoadingMore && <Loader />}
-      {appState.data.next && !appState.isLoadingMore && !limit && (
-        <Button
-          name="Load More"
-          classes="btn--large btn--primary btn--center mt-4"
-          func={fetchMore}
-        />
+    <>
+      {condition && (
+        <section style={{ color: themeState.text.primary }}>
+          <h2 className="section-title hidden">{title}</h2>
+          {subtitle && (
+            <h3
+              className="section-subtitle"
+              style={{ color: themeState.text.tertiary }}
+            >
+              {subtitle}
+            </h3>
+          )}
+          <div className="grid grid--cards">
+            {(limit ? data.filter((game, i) => i < 5) : data).map((game) => (
+              <GameCard game={game} key={game.id} />
+            ))}
+          </div>
+          {appState.isLoadingMore && <Loader />}
+          {appState.data.next && !appState.isLoadingMore && !limit && (
+            <Button
+              name="Load More"
+              classes="btn--large btn--primary btn--center mt-4"
+              func={fetchMore}
+            />
+          )}
+          {data.length > 5 && limited && (
+            <Button
+              name={limit ? "Show More" : "Show Less"}
+              classes="btn--more"
+              func={toggleAmount}
+            />
+          )}
+        </section>
       )}
-      {appState.data.results.length > 5 && limited && (
-        <Button
-          name={limit ? "Show More" : "Show Less"}
-          classes="btn--more"
-          func={toggleAmount}
-        />
-      )}
-    </section>
+    </>
   );
 }
 
 GameCards.defaultProps = {
+  condition: true,
   title: "Section Title",
   subtitle: false,
   list: false,

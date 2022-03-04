@@ -7,8 +7,8 @@ function Stores({ stores }) {
   return (
     <>
       {stores.count > 0 && (
-        <section className="stores">
-          <h2 className="section-title hidden">Game stores to buy game</h2>
+        <section className="stores" style={{ color: themeState.text.primary }}>
+          <h2 className="section-title hidden">Stores to purchase the game</h2>
           <h3
             className="section-subtitle"
             style={{ color: themeState.text.tertiary }}

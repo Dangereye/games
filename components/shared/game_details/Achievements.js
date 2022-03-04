@@ -32,8 +32,11 @@ function Achievements({ achievements }) {
   return (
     <>
       {achievements.count > 0 && (
-        <section className="achievements">
-          <h2 className="section-title hidden">All game achievements</h2>
+        <section
+          className="achievements"
+          style={{ color: themeState.text.primary }}
+        >
+          <h2 className="section-title hidden">Trophies and achievements</h2>
           <h3
             className="section-subtitle"
             style={{ color: themeState.text.tertiary }}

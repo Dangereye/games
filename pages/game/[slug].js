@@ -14,7 +14,7 @@ import Stats from "../../components/shared/game_details/stats/Stats";
 import Stores from "../../components/shared/game_details/Stores";
 import Specification from "../../components/shared/game_details/Specification";
 import CardsSection from "../../components/shared/game_details/CardsSection";
-import GameCard from "../../components/shared/game_cards/GameCard";
+import GameCards from "../../components/shared/game_cards/GameCards";
 import Achievements from "../../components/shared/game_details/Achievements";
 
 function GameDetails({
@@ -83,27 +83,28 @@ function GameDetails({
           <Specification game={game} />
           <Stores stores={stores} />
 
-          {/* Game Additions */}
-          <CardsSection
+          <GameCards
             condition={additions.count > 0}
-            title="Game DLC's and other editions"
-            subtitle="Game Additions"
+            title="Editions, DLC's and  apps"
+            subtitle="Game additions"
             list={additions.results}
-          />
-          {/* Game Series */}
-          <CardsSection
-            condition={series.count > 0}
-            title="Other games in the series"
-            subtitle="Game series"
-            list={series.results}
+            limited
           />
 
-          {/* Parent Game */}
-          <CardsSection
+          <GameCards
+            condition={series.count > 0}
+            title="Games in the series"
+            subtitle="Game series"
+            list={series.results}
+            limited
+          />
+
+          <GameCards
             condition={parent.count > 0}
-            title="Addition to"
+            title="Parent game"
             subtitle="Addition to"
             list={parent.results}
+            limited
           />
           <Achievements achievements={achievements} />
         </>
