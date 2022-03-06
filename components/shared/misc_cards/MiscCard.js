@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { forwardRef, useContext, forwardRef } from "react";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -6,7 +6,7 @@ import LinkGroup from "../links_list/LinkGroup";
 import LinksList from "../links_list/LinksList";
 import LinkItem from "../links_list/LinkItem";
 
-function MiscCard({ icon, data, href }) {
+const MiscCard = forwardRef(({ icon, data, href }, ref) => {
   const { themeState } = useContext(ThemeContext);
   const router = useRouter();
 
@@ -16,6 +16,7 @@ function MiscCard({ icon, data, href }) {
 
   return (
     <div
+      ref={ref}
       className="misc-card"
       style={{
         backgroundColor: themeState.background.secondary,
@@ -57,5 +58,5 @@ function MiscCard({ icon, data, href }) {
       </div>
     </div>
   );
-}
+});
 export default MiscCard;
