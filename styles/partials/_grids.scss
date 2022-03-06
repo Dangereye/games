@@ -21,12 +21,9 @@
     @media (max-width: $laptop) {
       grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     }
-    @media (max-width: $tablet) {
-      grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
-    }
 
     @media (max-width: $mobile) {
-      grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
     }
   }
 }

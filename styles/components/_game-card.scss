@@ -8,11 +8,7 @@
 
   &__body {
     position: relative;
-    padding: 2rem;
-
-    @media (max-width: $mobile) {
-      padding: 2rem 1rem;
-    }
+    padding: clamp(1.2rem, 2vw, 2rem);
   }
 
   &__header {
