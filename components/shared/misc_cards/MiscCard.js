@@ -44,7 +44,7 @@ export default forwardRef(function MiscCard({ icon, data, href }, ref) {
           <span className="text">{data.name}</span>
         </div>
         <div className="popular-games">
-          <LinkGroup title="Popular Games">
+          <LinkGroup title="Popular">
             <LinksList condition={data.games.length}>
               {data.games
                 .filter((game, i) => i < 3)
