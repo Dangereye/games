@@ -14,7 +14,7 @@ $base-font-size: clamp(1.6rem, 2.5vw, 1.8rem);
 $small-font-size: clamp(1.4rem, 2vw, 1.6rem);
 
 // Icon Sizes
-$icon-size: 2.4rem;
+$icon-size: clamp(2rem, 3vw, 2.4rem);
 
 // Shadows
 $shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.1);
