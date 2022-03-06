@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import useClientFetch from "../../../hooks/useClientFetch";
+import useInifiniteScroll from "../../../hooks/useInfiniteScroll";
 import Loader from "../Loader";
 import GameCard from "./GameCard";
 import Button from "../buttons/Button";
@@ -10,9 +11,9 @@ function GameCards({ condition, title, subtitle, list, limited }) {
   const { themeState } = useContext(ThemeContext);
   const { appState } = useContext(AppContext);
   const [limit, setLimit] = useState(limited);
-  const [element, setElement] = useState(null);
 
   const addContent = useClientFetch();
+  const { element, setElement } = useInifiniteScroll();
 
   const data = list ? list : appState.data.results;
 
@@ -23,29 +24,6 @@ function GameCards({ condition, title, subtitle, list, limited }) {
   const toggleAmount = () => {
     setLimit(!limit);
   };
-
-  const options = { rootMargin: "800px" };
-
-  const callBack = (entries) => {
-    const entry = entries[0];
-    if (entry.isIntersecting) {
-      fetchMore();
-    }
-  };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(callBack, options);
-
-    if (appState.infinite_scroll && element) {
-      observer.observe(element);
-    }
-
-    return () => {
-      if (appState.infinite_scroll && element) {
-        observer.unobserve(element);
-      }
-    };
-  }, [element]);
 
   return (
     <>
