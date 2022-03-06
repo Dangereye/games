@@ -30,7 +30,7 @@ function useClientFetch() {
           isError: true,
           status: err.message,
           message:
-            "Oops! Something went wrong - refresh the page and try again",
+            "Something went wrong. Not to worry - either refresh the page and try again or...",
         },
       });
     }

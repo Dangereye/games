@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import useClientFetch from "../../../hooks/useClientFetch";
@@ -13,7 +13,7 @@ function GameCards({ condition, title, subtitle, list, limited }) {
   const [limit, setLimit] = useState(limited);
 
   const addContent = useClientFetch();
-  const { element, setElement } = useInifiniteScroll();
+  const { setElement } = useInifiniteScroll();
 
   const data = list ? list : appState.data.results;
 

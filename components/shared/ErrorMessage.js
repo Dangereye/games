@@ -10,7 +10,7 @@ function ErrorMessage() {
   const router = useRouter();
   return (
     <section style={{ color: themeState.text.primary }}>
-      <h1 className="display-title">Awkward...</h1>
+      <h1 className="display-title">Oops!</h1>
       <p>{appState.error.message}.</p>
       <div className="btns mt-4">
         <Button

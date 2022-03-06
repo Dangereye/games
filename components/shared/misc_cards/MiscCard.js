@@ -1,4 +1,4 @@
-import { forwardRef, useContext, forwardRef } from "react";
+import { useContext, forwardRef } from "react";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import { useRouter } from "next/router";
 import Image from "next/image";

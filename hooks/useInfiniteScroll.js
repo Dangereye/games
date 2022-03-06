@@ -20,12 +20,12 @@ function useInfiniteScroll() {
   useEffect(() => {
     const observer = new IntersectionObserver(callBack, options);
 
-    if (appState.infinite_scroll && element) {
+    if (appState.infinite_scroll && appState.data.next && element) {
       observer.observe(element);
     }
 
     return () => {
-      if (appState.infinite_scroll && element) {
+      if (element) {
         observer.unobserve(element);
       }
     };
