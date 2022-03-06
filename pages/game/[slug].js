@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import useStatus from "../../hooks/useStatus";
+import useUpdateState from "../../hooks/useUpdateState";
 import Loader from "../../components/shared/Loader";
 import ErrorMessage from "../../components/shared/ErrorMessage";
 import Head from "next/head";
@@ -29,7 +29,7 @@ function GameDetails({
 }) {
   const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
-  const {} = useStatus(initial);
+  const {} = useUpdateState(initial);
   const game = appState.data;
 
   return (

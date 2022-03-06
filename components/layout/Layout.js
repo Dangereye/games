@@ -3,6 +3,7 @@ import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { FiltersContext } from "../../contexts/FiltersContext";
 import { useRouter } from "next/router";
+import useFilters from "../../hooks/useFilters";
 
 import Navbar from "./Navbar";
 import MobileMenu from "./MobileMenu";
@@ -15,6 +16,7 @@ function Layout({ children }) {
   const { appState, appDispatch } = useContext(AppContext);
   const { filtersDispatch } = useContext(FiltersContext);
   const router = useRouter();
+  const {} = useFilters();
 
   useEffect(() => {
     const handleStart = () => {

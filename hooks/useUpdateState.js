@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import { AppContext } from "../contexts/AppContext";
 
-function useStatus(data) {
+function useUpdateState(data) {
   const { appDispatch } = useContext(AppContext);
 
   useEffect(() => {
@@ -22,4 +22,4 @@ function useStatus(data) {
   return { data };
 }
 
-export default useStatus;
+export default useUpdateState;

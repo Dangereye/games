@@ -12,14 +12,14 @@ import {
   ItchIo,
   EpicGamesStore,
 } from "../../components/shared/StoresSVGs";
-import useStatus from "../../hooks/useStatus";
+import useUpdateState from "../../hooks/useUpdateState";
 import PageTemplate from "../../components/shared/PageTemplate";
 import MiscCards from "../../components/shared/misc_cards/MiscCards";
 import MiscCard from "../../components/shared/misc_cards/MiscCard";
 
 function GameStores({ stores }) {
   const { appState } = useContext(AppContext);
-  const {} = useStatus(stores);
+  const {} = useUpdateState(stores);
   return (
     <PageTemplate title="Stores">
       <MiscCards title="Stores list">

@@ -1,12 +1,10 @@
-import useStatus from "../hooks/useStatus";
-import useFilters from "../hooks/useFilters";
+import useUpdateState from "../hooks/useUpdateState";
 import PageTemplate from "../components/shared/PageTemplate";
 import Filters from "../components/shared/filters/Filters";
 import GameCards from "../components/shared/game_cards/GameCards";
 
 function Home({ data }) {
-  const {} = useStatus(data);
-  const {} = useFilters();
+  const {} = useUpdateState(data);
 
   return (
     <PageTemplate>
