@@ -7,8 +7,7 @@
   transition: transform $time;
 
   &__body {
-    position: relative;
-    padding: clamp(1.2rem, 2vw, 2rem);
+    padding: $card-padding;
   }
 
   &__header {
@@ -26,5 +25,11 @@
 
   &:hover {
     transform: translateY(-1rem);
+  }
+
+  .popular-games {
+    @media (max-width: $mobile) {
+      display: none;
+    }
   }
 }

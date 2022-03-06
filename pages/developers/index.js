@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
-import { DevelopersSVG } from "../../components/shared/CategoriesSVGs";
 import useStatus from "../../hooks/useStatus";
 import useInfiniteScroll from "../../hooks/useInfiniteScroll";
 import PageTemplate from "../../components/shared/PageTemplate";
@@ -19,7 +18,6 @@ function Developers({ developers }) {
           <MiscCard
             ref={setElement}
             key={`developer-${i}`}
-            icon={<DevelopersSVG />}
             data={d}
             href={`/developers/${d.id}`}
           />

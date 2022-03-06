@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
-import { TagsSVG } from "../../components/shared/CategoriesSVGs";
 import useStatus from "../../hooks/useStatus";
 import useInfiniteScroll from "../../hooks/useInfiniteScroll";
 import PageTemplate from "../../components/shared/PageTemplate";
@@ -18,7 +17,6 @@ function Tags({ tags }) {
           <MiscCard
             ref={setElement}
             key={`tag-${i}`}
-            icon={<TagsSVG />}
             data={tag}
             href={`/tags/${tag.id}`}
           />

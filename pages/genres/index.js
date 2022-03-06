@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
-import { GenresSVG } from "../../components/shared/CategoriesSVGs";
 import useStatus from "../../hooks/useStatus";
 import PageTemplate from "../../components/shared/PageTemplate";
 import MiscCards from "../../components/shared/misc_cards/MiscCards";
@@ -15,7 +14,6 @@ function Genres({ genres }) {
         {appState.data.results.map((genre, i) => (
           <MiscCard
             key={`genre-${i}`}
-            icon={<GenresSVG />}
             data={genre}
             href={`/genres/${genre.id}`}
           />

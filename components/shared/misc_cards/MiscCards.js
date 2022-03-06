@@ -16,12 +16,9 @@ function MiscCards({ title, children }) {
   };
 
   return (
-    <section
-      className="misc-cards mt-4"
-      style={{ color: themeState.text.primary }}
-    >
+    <section className="mt-4" style={{ color: themeState.text.primary }}>
       <h2 className="section-title hidden">{title}</h2>
-      <div className="misc-cards__list grid">{children}</div>
+      <div className="grid grid--cards">{children}</div>
       {appState.isLoadingMore && <Loader />}
       {appState.data.next && !appState.isLoadingMore && (
         <Button

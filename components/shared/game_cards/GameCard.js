@@ -34,8 +34,8 @@ export default forwardRef(function GameCard({ game }, ref) {
               ? game.background_image
               : "/images/missing-image-game-card.jpg"
           }
-          width="200"
-          height="112.5"
+          width="250"
+          height="150"
           layout="responsive"
           alt={game.name ? game.name : "Unknown game image."}
           blurDataURL={
