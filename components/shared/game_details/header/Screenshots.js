@@ -14,7 +14,7 @@ function Screenshots({ screenshots }) {
   };
   return (
     <>
-      {screenshots && (
+      {screenshots && screenshots.length > 0 && (
         <section style={{ color: themeState.text.primary }}>
           <h2 className="section-title hidden">Game screenshots</h2>
           <div className="screenshots">

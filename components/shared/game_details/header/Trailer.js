@@ -3,8 +3,8 @@ import { BsPlayFill } from "react-icons/bs";
 import { AppContext } from "../../../../contexts/AppContext";
 
 function Trailer({ trailers }) {
-  const { appDispatch } = useContext(AppContext);
-
+  const { appState, appDispatch } = useContext(AppContext);
+  console.log(trailers);
   const addTrailers = (e) => {
     appDispatch({
       type: "OPEN_MODAL",
@@ -13,7 +13,7 @@ function Trailer({ trailers }) {
   };
   return (
     <>
-      {trailers && (
+      {trailers && trailers.length > 0 && (
         <section className="mt-4">
           <h2 className="section-title hidden">Game Trailers</h2>
           <div className="trailer" onClick={addTrailers}>
