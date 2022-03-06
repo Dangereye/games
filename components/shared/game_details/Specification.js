@@ -11,7 +11,7 @@ function Specification({ game }) {
       <h2 className="section-title hidden">Game Platforms, genres and Tags</h2>
       <div className="specification">
         <LinkGroup title="Platforms">
-          <LinksList condition={game.platforms.length}>
+          <LinksList condition={game.platforms && game.platforms.length > 0}>
             {game.platforms.map((p, i) => (
               <LinkItem
                 key={`platforms-${i}`}
@@ -23,7 +23,7 @@ function Specification({ game }) {
           </LinksList>
         </LinkGroup>
         <LinkGroup title="Genres">
-          <LinksList condition={game.genres.length}>
+          <LinksList condition={game.genres && game.genres.length > 0}>
             {game.genres.map((g, i) => (
               <LinkItem
                 key={`genres-${i}`}
@@ -35,7 +35,10 @@ function Specification({ game }) {
           </LinksList>
         </LinkGroup>
         <LinkGroup classes="grow shrink" title="Tags">
-          <LinksList classes="fd-r" condition={game.tags.length}>
+          <LinksList
+            classes="fd-r"
+            condition={game.tags && game.tags.length > 0}
+          >
             {game.tags.map((t, i) => (
               <LinkItem
                 key={`tags-${i}`}
