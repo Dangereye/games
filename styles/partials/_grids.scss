@@ -1,6 +1,6 @@
 .grid {
   display: grid;
-  gap: 1rem;
+  gap: $dynamic-gap;
 
   &--sidebar {
     gap: 4rem;

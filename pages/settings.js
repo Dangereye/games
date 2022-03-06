@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
 import { ThemeContext } from "../contexts/ThemeContext";
 import ToggleButton from "../components/shared/buttons/ToggleButton";
@@ -11,20 +11,26 @@ function Settings() {
   const toggleTheme = () => {
     if (themeState.dark_mode) {
       themeDispatch({ type: "LIGHT" });
+      localStorage.setItem("theme", "LIGHT");
     } else {
       themeDispatch({ type: "DARK" });
+      localStorage.setItem("theme", "DARK");
     }
   };
 
   const toggleInfiniteScroll = () => {
     if (appState.infinite_scroll) {
       appDispatch({ type: "INFINITE_SCROLL", payload: false });
+      localStorage.setItem("infinite_scroll", JSON.stringify(false));
     } else {
       appDispatch({ type: "INFINITE_SCROLL", payload: true });
+      localStorage.setItem("infinite_scroll", JSON.stringify(true));
     }
   };
 
-  useEffect(() => {}, []);
+  const clearStorage = () => {
+    localStorage.clear();
+  };
 
   return (
     <>
@@ -72,7 +78,11 @@ function Settings() {
           This application saves settings in your browsers local storage - to
           remember them for future use.
         </p>
-        <Button name="Clear Storage" classes="btn--large btn--primary mt-4" />
+        <Button
+          name="Clear Storage"
+          classes="btn--large btn--primary mt-4"
+          func={clearStorage}
+        />
       </section>
     </>
   );
