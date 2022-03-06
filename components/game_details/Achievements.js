@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
-import { ThemeContext } from "../../../contexts/ThemeContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import Image from "next/image";
-import Button from "../buttons/Button";
+import Button from "../shared/buttons/Button";
 
 function Achievements({ achievements }) {
   const { themeState } = useContext(ThemeContext);
@@ -9,14 +9,16 @@ function Achievements({ achievements }) {
   const [list, setList] = useState(achievements.results);
   const [page, setPage] = useState(achievements.next);
   const [limit, setLimit] = useState(true);
+  const [isFetching, setIsFetching] = useState(false);
 
   const toggleAmount = () => {
     setLimit(!limit);
   };
 
   useEffect(() => {
+    setIsFetching(true);
     const fetchMore = async () => {
-      if (list.length < count) {
+      if (!isFetching && list.length < count) {
         const res = await fetch(page, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
@@ -24,9 +26,15 @@ function Achievements({ achievements }) {
         const data = await res.json();
         setPage(data.next);
         setList([...list, ...data.results]);
+        setIsFetching(false);
       }
     };
+
     fetchMore();
+
+    return () => {
+      setIsFetching(false);
+    };
   }, [list]);
 
   return (

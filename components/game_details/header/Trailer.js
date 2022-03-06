@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import { BsPlayFill } from "react-icons/bs";
-import { AppContext } from "../../../../contexts/AppContext";
+import { AppContext } from "../../../contexts/AppContext";
 
 function Trailer({ trailers }) {
-  const { appState, appDispatch } = useContext(AppContext);
-  console.log(trailers);
+  const { appDispatch } = useContext(AppContext);
   const addTrailers = (e) => {
     appDispatch({
       type: "OPEN_MODAL",

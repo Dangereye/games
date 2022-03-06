@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../../../contexts/ThemeContext";
+import { ThemeContext } from "../../../contexts/ThemeContext";
 import Stat from "./Stat";
 
 function Stats({ game, series, additions, achievements }) {

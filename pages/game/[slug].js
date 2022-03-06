@@ -5,17 +5,17 @@ import useUpdateState from "../../hooks/useUpdateState";
 import Loader from "../../components/shared/Loader";
 import ErrorMessage from "../../components/shared/ErrorMessage";
 import Head from "next/head";
-import InfoBanner from "../../components/shared/game_details/header/InfoBannner";
-import Trailer from "../../components/shared/game_details/header/Trailer";
-import Description from "../../components/shared/game_details/header/Description";
-import Team from "../../components/shared/game_details/header/Team";
-import ESRBRating from "../../components/shared/game_details/header/ESRBRating";
-import Screenshots from "../../components/shared/game_details/header/Screenshots";
-import Stats from "../../components/shared/game_details/stats/Stats";
-import Stores from "../../components/shared/game_details/Stores";
-import Specification from "../../components/shared/game_details/Specification";
+import InfoBanner from "../../components/game_details/header/InfoBannner";
+import Trailer from "../../components/game_details/header/Trailer";
+import Description from "../../components/game_details/header/Description";
+import Team from "../../components/game_details/header/Team";
+import ESRBRating from "../../components/game_details/header/ESRBRating";
+import Screenshots from "../../components/game_details/header/Screenshots";
+import Stats from "../../components/game_details/stats/Stats";
+import Stores from "../../components/game_details/Stores";
+import Specification from "../../components/game_details/Specification";
 import GameCards from "../../components/shared/game_cards/GameCards";
-import Achievements from "../../components/shared/game_details/Achievements";
+import Achievements from "../../components/game_details/Achievements";
 
 function GameDetails({
   initial,

@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { AppContext } from "../../../../contexts/AppContext";
-import { ThemeContext } from "../../../../contexts/ThemeContext";
+import { AppContext } from "../../../contexts/AppContext";
+import { ThemeContext } from "../../../contexts/ThemeContext";
 import Image from "next/image";
 
 function Screenshots({ screenshots }) {

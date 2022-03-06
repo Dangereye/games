@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../../contexts/ThemeContext";
-import storesData from "../../../data/storesData";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import storesData from "../../data/storesData";
 
 function Stores({ stores }) {
   const { themeState } = useContext(ThemeContext);

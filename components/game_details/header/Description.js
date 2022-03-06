@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
-import { ThemeContext } from "../../../../contexts/ThemeContext";
-import Button from "../../buttons/Button";
+import { ThemeContext } from "../../../contexts/ThemeContext";
+import Button from "../../shared/buttons/Button";
 
 function Description({ description }) {
   const { themeState } = useContext(ThemeContext);

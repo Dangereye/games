@@ -1,6 +1,6 @@
-import LinkGroup from "../../links_list/LinkGroup";
-import LinksList from "../../links_list/LinksList";
-import LinkItem from "../../links_list/LinkItem.js";
+import LinkGroup from "../../shared/links_list/LinkGroup";
+import LinksList from "../../shared/links_list/LinksList";
+import LinkItem from "../../shared/links_list/LinkItem.js";
 
 function Team({ game }) {
   return (

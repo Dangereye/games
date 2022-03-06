@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../../contexts/ThemeContext.js";
-import LinkGroup from "../links_list/LinkGroup.js";
-import LinksList from "../links_list/LinksList.js";
-import LinkItem from "../links_list/LinkItem.js";
+import { ThemeContext } from "../../contexts/ThemeContext.js";
+import LinkGroup from "../shared/links_list/LinkGroup.js";
+import LinksList from "../shared/links_list/LinksList.js";
+import LinkItem from "../shared/links_list/LinkItem.js";
 
 function Specification({ game }) {
   const { themeState } = useContext(ThemeContext);

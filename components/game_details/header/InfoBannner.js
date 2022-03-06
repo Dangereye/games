@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../../../contexts/ThemeContext";
-import DateComponent from "../../DateComponent";
-import ParentPlatforms from "../../ParentPlatforms";
+import { ThemeContext } from "../../../contexts/ThemeContext";
+import DateComponent from "../../shared/DateComponent";
+import ParentPlatforms from "../../shared/ParentPlatforms";
 
 function InfoBanner({ game }) {
   const { themeState } = useContext(ThemeContext);
