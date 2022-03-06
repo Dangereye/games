@@ -6,7 +6,7 @@ import LinkGroup from "../links_list/LinkGroup";
 import LinksList from "../links_list/LinksList";
 import LinkItem from "../links_list/LinkItem";
 
-const MiscCard = forwardRef(({ icon, data, href }, ref) => {
+export default forwardRef(function MiscCard({ icon, data, href }, ref) {
   const { themeState } = useContext(ThemeContext);
   const router = useRouter();
 
@@ -59,4 +59,3 @@ const MiscCard = forwardRef(({ icon, data, href }, ref) => {
     </div>
   );
 });
-export default MiscCard;

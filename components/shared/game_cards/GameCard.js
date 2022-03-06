@@ -7,7 +7,7 @@ import ParentPlatforms from "../ParentPlatforms";
 import MetacriticComponent from "../MetacriticComponent";
 import DateComponent from "../DateComponent";
 
-const GameCard = forwardRef(({ game }, ref) => {
+export default forwardRef(function GameCard({ game }, ref) {
   const { appDispatch } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
   const router = useRouter();
@@ -65,12 +65,3 @@ const GameCard = forwardRef(({ game }, ref) => {
     </div>
   );
 });
-
-GameCard.defaultProps = {
-  game: {
-    background_image: "/images/missing-image.jpg",
-    name: "Unknown",
-    parent_platforms: [],
-  },
-};
-export default GameCard;
