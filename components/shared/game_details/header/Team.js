@@ -1,17 +1,14 @@
-import { useContext } from "react";
-import { ThemeContext } from "../../../../contexts/ThemeContext";
+import LinkGroup from "../../links_list/LinkGroup";
 import LinksList from "../../links_list/LinksList";
 import LinkItem from "../../links_list/LinkItem.js";
-import LinkGroup from "../../links_list/LinkGroup";
 
 function Team({ game }) {
-  const { themeState } = useContext(ThemeContext);
   return (
     <section>
       <h2 className="section-title hidden">Developers and production teams</h2>
       <div className="team">
         <LinkGroup title="Developers">
-          <LinksList condition={game.developers.length}>
+          <LinksList condition={game.developers && game.developers.length > 0}>
             {game.developers.map((d, i) => (
               <LinkItem
                 key={`developers-${i}`}
@@ -23,7 +20,7 @@ function Team({ game }) {
           </LinksList>
         </LinkGroup>
         <LinkGroup title="Publishers">
-          <LinksList condition={game.publishers.length}>
+          <LinksList condition={game.publishers && game.publishers.length > 0}>
             {game.publishers.map((p, i) => (
               <LinkItem
                 key={`publishers-${i}`}

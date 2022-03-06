@@ -4,7 +4,7 @@ import { ThemeContext } from "../../../../contexts/ThemeContext";
 import Image from "next/image";
 
 function Screenshots({ screenshots }) {
-  const { appState, appDispatch } = useContext(AppContext);
+  const { appDispatch } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
   const addScreenshots = (index) => {
     appDispatch({

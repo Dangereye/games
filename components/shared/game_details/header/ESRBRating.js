@@ -11,7 +11,7 @@ function ESRBRating({ esrb }) {
         src={esrb ? `/svg/esrb/${esrb.slug}.svg` : "/svg/esrb/pending.svg"}
         width="100"
         height="150"
-        alt={esrb.slug}
+        alt={esrb ? esrb.slug : "Pending"}
       />
     </section>
   );
