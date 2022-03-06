@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import useClientFetch from "../../../hooks/useClientFetch";
-import useInifiniteScroll from "../../../hooks/useInfiniteScroll";
+import useInfiniteScroll from "../../../hooks/useInfiniteScroll";
 import Loader from "../Loader";
 import GameCard from "./GameCard";
 import Button from "../buttons/Button";
@@ -13,7 +13,7 @@ function GameCards({ condition, title, subtitle, list, limited }) {
   const [limit, setLimit] = useState(limited);
 
   const addContent = useClientFetch();
-  const { setElement } = useInifiniteScroll();
+  const { setElement } = useInfiniteScroll();
 
   const data = list ? list : appState.data.results;
 

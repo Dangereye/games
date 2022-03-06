@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { PublishersSVG } from "../../components/shared/CategoriesSVGs";
 import useStatus from "../../hooks/useStatus";
+import useInfiniteScroll from "../../hooks/useInfiniteScroll";
 import PageTemplate from "../../components/shared/PageTemplate";
 import MiscCards from "../../components/shared/misc_cards/MiscCards";
 import MiscCard from "../../components/shared/misc_cards/MiscCard";
@@ -9,12 +10,14 @@ import MiscCard from "../../components/shared/misc_cards/MiscCard";
 function Publishers({ publishers }) {
   const { appState } = useContext(AppContext);
   const {} = useStatus(publishers);
+  const { setElement } = useInfiniteScroll();
 
   return (
     <PageTemplate title="Publishers">
       <MiscCards title="Publisher list">
         {appState.data.results.map((p, i) => (
           <MiscCard
+            ref={setElement}
             key={`publisher-${i}`}
             icon={<PublishersSVG />}
             data={p}
