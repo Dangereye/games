@@ -13,7 +13,7 @@ import {
   Sega,
   Web,
   Xbox,
-} from "../components/shared/PlatformSVGs";
+} from "../components/shared/svg_functions/PlatformSVGs";
 
 import {
   GamesSVG,
@@ -22,7 +22,7 @@ import {
   DevelopersSVG,
   PublishersSVG,
   TagsSVG,
-} from "../components/shared/CategoriesSVGs";
+} from "../components/shared/svg_functions/CategoriesSVGs";
 
 export const BrowseData = [
   {

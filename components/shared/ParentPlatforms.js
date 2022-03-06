@@ -14,7 +14,7 @@ import {
   Sega,
   Web,
   Xbox,
-} from "./PlatformSVGs";
+} from "../shared/svg_functions/PlatformSVGs";
 
 function ParentPlatforms({ platforms, limit }) {
   return (

@@ -8,7 +8,7 @@ import {
   GooglePlayStore,
   Steam,
   XboxStore,
-} from "../components/shared/StoresSVGs";
+} from "../components/shared/svg_functions/StoresSVGs";
 
 const storesData = [
   { id: 1, name: "Steam", icon: <Steam /> },

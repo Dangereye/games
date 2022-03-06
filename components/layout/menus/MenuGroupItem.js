@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { useRouter } from "next/router";
-import { ThemeContext } from "../../contexts/ThemeContext";
-import { AppContext } from "../../contexts/AppContext";
+import { ThemeContext } from "../../../contexts/ThemeContext";
+import { AppContext } from "../../../contexts/AppContext";
 import { IoMdArrowDropdown } from "react-icons/io";
 
 function MenuGroupItem({ data }) {

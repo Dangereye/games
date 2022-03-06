@@ -3,10 +3,10 @@ import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { BrowseData, PlatformData } from "../../data/MenuData";
 import ToggleButton from "../shared/buttons/ToggleButton";
-import MenuGroup from "../shared/MenuGroup";
+import MenuGroup from "./menus/MenuGroup";
 
 function MobileMenu() {
-  const { appState, appDispatch } = useContext(AppContext);
+  const { appState } = useContext(AppContext);
   const { themeState, themeDispatch } = useContext(ThemeContext);
 
   const toggleDM = () => {

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { BrowseData, PlatformData } from "../../data/MenuData";
-import MenuGroup from "../shared/MenuGroup";
+import MenuGroup from "./menus/MenuGroup";
 
 function Sidebar() {
   const { themeState } = useContext(ThemeContext);

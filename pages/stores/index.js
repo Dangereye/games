@@ -11,7 +11,7 @@ import {
   GooglePlayStore,
   ItchIo,
   EpicGamesStore,
-} from "../../components/shared/StoresSVGs";
+} from "../../components/shared/svg_functions/StoresSVGs";
 import useUpdateState from "../../hooks/useUpdateState";
 import PageTemplate from "../../components/shared/PageTemplate";
 import MiscCards from "../../components/shared/misc_cards/MiscCards";
