@@ -1,0 +1,52 @@
+.menu {
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &__items {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+
+      &.active {
+        display: flex;
+      }
+    }
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    font-size: 2rem;
+  }
+
+  &__icon {
+    display: grid;
+    place-content: center;
+    width: $icon-size;
+    height: $icon-size;
+
+    svg {
+      width: $icon-size;
+      height: $icon-size;
+    }
+  }
+
+  &__text {
+    cursor: pointer;
+    transition: color $time;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+}

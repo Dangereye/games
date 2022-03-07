@@ -23,7 +23,8 @@ html {
   }
 }
 
-.section-title {
+.section-title,
+.menu-title {
   margin-bottom: 2rem;
   text-transform: capitalize;
   font-size: clamp(2.4rem, 3vw, 3rem);
