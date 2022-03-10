@@ -13,7 +13,6 @@ function GameCardFilters() {
   const { themeState } = useContext(ThemeContext);
   const { filtersState, filtersDispatch } = useContext(FiltersContext);
   const { years, genres } = appState.data.filters;
-  console.log({ appState });
 
   const activateFilter = (state, name, value) => {
     filtersDispatch({ type: "SET_FILTER", payload: { state, name, value } });

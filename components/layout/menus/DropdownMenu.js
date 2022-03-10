@@ -24,7 +24,7 @@ function DropdownMenu({ data }) {
         }
       >
         {data.items.map((item, i) => (
-          <DropdownLink data={item} />
+          <DropdownLink key={`dropdown-${i}`} data={item} />
         ))}
       </div>
     </>
