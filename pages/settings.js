@@ -74,10 +74,7 @@ function Settings() {
         >
           Local storage
         </h3>
-        <p>
-          This application saves settings in your browsers local storage - to
-          remember them for future use.
-        </p>
+        <p>Settings are saved to your browsers local storage.</p>
         <Button
           name="Clear Storage"
           classes="btn--large btn--primary mt-4"
