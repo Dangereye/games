@@ -6,6 +6,11 @@
 
   transition: transform $time;
 
+  &__image {
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+
   &__body {
     padding: $card-padding;
   }

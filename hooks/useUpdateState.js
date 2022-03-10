@@ -6,6 +6,7 @@ function useUpdateState(data) {
   const { appDispatch } = useContext(AppContext);
 
   useEffect(() => {
+    console.log("useUpdateState Ran");
     if (data.error) {
       appDispatch({
         type: "ERROR",

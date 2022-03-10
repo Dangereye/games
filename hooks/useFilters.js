@@ -7,18 +7,17 @@ function useFilters(route) {
   const router = useRouter();
   const { asPath } = router;
 
-  const ordering = `?ordering=${filtersState.ordering.value}`;
-  const years = filtersState.years.value
-    ? `&dates=${filtersState.years.value}`
-    : "";
-  const genres = filtersState.genres.value
-    ? `&genres=${filtersState.genres.value}`
-    : "";
-
   useEffect(() => {
+    console.log("useFilters Ran.");
+    const ordering = `?ordering=${filtersState.ordering.value}`;
+    const years = filtersState.years.value
+      ? `&dates=${filtersState.years.value}`
+      : "";
+    const genres = filtersState.genres.value
+      ? `&genres=${filtersState.genres.value}`
+      : "";
     router.push(`${asPath.split("?")[0]}${ordering}${years}${genres}`);
   }, [
-    asPath,
     filtersState.ordering.value,
     filtersState.years.value,
     filtersState.genres.value,

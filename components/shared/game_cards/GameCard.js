@@ -37,6 +37,7 @@ export default forwardRef(function GameCard({ game }, ref) {
           width="250"
           height="150"
           layout="responsive"
+          sizes="17vw"
           alt={game.name ? game.name : "Unknown game image."}
           blurDataURL={
             game.background_image

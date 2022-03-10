@@ -14,14 +14,22 @@ import Modal from "./modal/Modal";
 function Layout({ children }) {
   const { themeState } = useContext(ThemeContext);
   const { appState, appDispatch } = useContext(AppContext);
-  const { filtersDispatch } = useContext(FiltersContext);
+  const { filtersState, filtersDispatch } = useContext(FiltersContext);
   const router = useRouter();
   const {} = useLocalStorage();
 
   useEffect(() => {
     const handleStart = () => {
-      appDispatch({ type: "MOBILE_MENU", payload: false });
-      filtersDispatch({ type: "CLOSE_MENUS" });
+      if (appState.mobileMenu_isOpen) {
+        appDispatch({ type: "MOBILE_MENU", payload: false });
+      }
+      if (
+        filtersState.ordering.menu ||
+        filtersState.years.menu ||
+        filtersState.genres.menu
+      ) {
+        filtersDispatch({ type: "CLOSE_MENUS" });
+      }
       appDispatch({ type: "LOADING" });
     };
 
