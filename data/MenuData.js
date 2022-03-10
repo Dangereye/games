@@ -24,6 +24,17 @@ import {
   TagsSVG,
 } from "../components/shared/svg_functions/CategoriesSVGs";
 
+import { RiSettings3Fill } from "react-icons/ri";
+
+export const ApplicationData = [
+  {
+    title: "Settings",
+    icon: <RiSettings3Fill />,
+    link: "/settings",
+    dropdown: false,
+  },
+];
+
 export const BrowseData = [
   {
     title: "All Games",

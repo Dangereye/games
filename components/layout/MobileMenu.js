@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import { BrowseData, PlatformData } from "../../data/MenuData";
+import { BrowseData, PlatformData, ApplicationData } from "../../data/MenuData";
 import Menu from "./menus/Menu";
 
 function MobileMenu() {
@@ -20,6 +20,7 @@ function MobileMenu() {
     >
       <Menu title="Browse" data={BrowseData} />
       <Menu title="Platforms" data={PlatformData} />
+      <Menu title="Application" data={ApplicationData} />
     </div>
   );
 }
