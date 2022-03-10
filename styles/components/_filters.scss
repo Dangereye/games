@@ -11,7 +11,7 @@
     border-radius: $border-radius;
   }
 
-  &__parent-element {
+  &__current {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -45,8 +45,7 @@
     overflow-y: scroll;
     width: 100%;
     min-width: max-content;
-    height: min-content;
-    max-height: 25rem;
+    max-height: 30rem;
     position: absolute;
     top: 0;
     left: 0;

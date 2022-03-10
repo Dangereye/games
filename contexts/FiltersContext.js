@@ -21,7 +21,7 @@ const FiltersReducer = (state, action) => {
     case "SET_FILTER":
       return {
         ...state,
-        [action.payload.filter]: {
+        [action.payload.state]: {
           menu: false,
           name: action.payload.name,
           value: action.payload.value,

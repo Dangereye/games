@@ -3,14 +3,14 @@ import { ThemeContext } from "../../../contexts/ThemeContext";
 import { FiltersContext } from "../../../contexts/FiltersContext";
 import { MdArrowDropDown } from "react-icons/md";
 
-function FilterMenu({ name, active, title, subtitle, value, children }) {
+function FilterMenu({ state, active, name, value, children }) {
   const { filtersDispatch } = useContext(FiltersContext);
   const { themeState } = useContext(ThemeContext);
 
   const openFilter = (e) => {
     e.stopPropagation();
     filtersDispatch({ type: "CLOSE_MENUS" });
-    filtersDispatch({ type: "OPEN_MENU", payload: name });
+    filtersDispatch({ type: "OPEN_MENU", payload: state });
   };
 
   return (
@@ -22,8 +22,8 @@ function FilterMenu({ name, active, title, subtitle, value, children }) {
       }}
       onClick={openFilter}
     >
-      <div className="filters__parent-element">
-        <span className="filter">{title}</span>
+      <div className="filters__current">
+        <span className="filter">{name}</span>
         <span className="value">{value}</span>
         <div className="icon">
           <MdArrowDropDown />
@@ -37,7 +37,7 @@ function FilterMenu({ name, active, title, subtitle, value, children }) {
           className="filters__title"
           style={{ color: themeState.text.tertiary }}
         >
-          {subtitle}
+          Select
         </div>
         {children}
       </div>

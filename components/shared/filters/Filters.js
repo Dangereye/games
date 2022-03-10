@@ -5,15 +5,18 @@ import { FiltersContext } from "../../../contexts/FiltersContext";
 import filterData from "../../../data/FilterData";
 import FilterMenu from "./FilterMenu";
 import FilterSubMenu from "./FilterSubMenu";
+import Option from "./Option";
+import Reset from "./Reset";
 
 function GameCardFilters() {
   const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
   const { filtersState, filtersDispatch } = useContext(FiltersContext);
   const { years, genres } = appState.data.filters;
+  console.log({ appState });
 
-  const activateFilter = (filter, name, value) => {
-    filtersDispatch({ type: "SET_FILTER", payload: { filter, name, value } });
+  const activateFilter = (state, name, value) => {
+    filtersDispatch({ type: "SET_FILTER", payload: { state, name, value } });
   };
 
   useEffect(() => {
@@ -29,93 +32,82 @@ function GameCardFilters() {
     <section className="mt-4" style={{ color: themeState.text.primary }}>
       <h2 className="section-title hidden">Filter menus</h2>
       <div className="filters">
-        {/* Orders filter */}
+        {/* Ordering filter */}
         <FilterMenu
-          name="ordering"
+          state="ordering"
           active={filtersState.ordering.menu}
-          title={"Ordered By:"}
-          subtitle="select"
+          name={"Ordered By:"}
           value={filtersState.ordering.name}
         >
-          {filterData.ordering_values.map((x, index) => (
-            <div
-              key={`ordering-filter-${index}`}
-              className="filters__option"
-              onClick={() => activateFilter("ordering", x.name, x.value)}
-            >
-              {x.name}
-            </div>
+          {filterData.ordering_values.map((ordering, i) => (
+            <Option
+              key={`ordering-filter-${i}`}
+              name={ordering.name}
+              func={() =>
+                activateFilter("ordering", ordering.name, ordering.value)
+              }
+            />
           ))}
         </FilterMenu>
+
         {/* Years filter */}
         {years && (
           <FilterMenu
-            name="years"
+            state="years"
             active={filtersState.years.menu}
-            title={"Release Date:"}
-            subtitle="Select"
+            name={"Release Date:"}
             value={filtersState.years.name}
           >
-            <div
-              className="filters__option"
-              onClick={() => activateFilter("years", "All", "")}
-            >
-              All
-            </div>
-            {years.map((x, index) => (
+            <Reset
+              condition={filtersState.years.value !== ""}
+              func={() => activateFilter("years", "All", "")}
+            />
+            {years.map((year, i) => (
               <FilterSubMenu
-                key={`dates-filter ${index}`}
-                subtitle={`${x.from} - ${x.to}`}
+                key={`dates-filter-${i}`}
+                subtitle={`${year.from} - ${year.to}`}
               >
-                {x.years.map((y, index) => (
-                  <div
-                    key={`sub-dates-filter-${index}`}
-                    className="filters__option"
-                    onClick={() =>
+                {year.years.map((year, i) => (
+                  <Option
+                    key={`dates-subfilter-${i}`}
+                    name={year.year}
+                    func={() =>
                       activateFilter(
                         "years",
-                        y.year,
-                        `${y.year}-01-01,${y.year}-12-31`
+                        year.year,
+                        `${year.year}-01-01,${year.year}-12-31`
                       )
                     }
-                  >
-                    {y.year}
-                  </div>
+                  />
                 ))}
               </FilterSubMenu>
             ))}
           </FilterMenu>
         )}
-        {/* Genre filter */}
+
+        {/* Genres filter */}
         {genres && (
           <FilterMenu
-            name="genres"
+            state="genres"
             active={filtersState.genres.menu}
-            title={"Genre:"}
-            subtitle="select"
+            name={"Genre:"}
             value={filtersState.genres.name}
           >
             <>
-              <div
-                className="filters__option"
-                onClick={() => activateFilter("genres", "All", "")}
-              >
-                All
-              </div>
-              {genres.map((x, index) => {
+              <Reset
+                condition={filtersState.genres.value !== ""}
+                func={() => activateFilter("genres", "All", "")}
+              />
+              {genres.map((genre, i) => {
                 const item = filterData.genres_values.find(
-                  (item) => item.id === x.id
+                  (item) => item.id === genre.id
                 );
                 return (
-                  <div
-                    key={`ordering-filter-${index}`}
-                    className="filters__option"
-                    onClick={() =>
-                      activateFilter("genres", item.name, item.value)
-                    }
-                  >
-                    {item.name}
-                  </div>
+                  <Option
+                    key={`genres-filter-${i}`}
+                    name={item.name}
+                    func={() => activateFilter("genres", item.name, item.value)}
+                  />
                 );
               })}
             </>
