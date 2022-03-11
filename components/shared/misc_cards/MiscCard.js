@@ -30,17 +30,9 @@ export default forwardRef(function MiscCard({ icon, data, href }, ref) {
               ? data.image_background
               : "/images/missing-image-game-card.jpg"
           }
-          width="250"
-          height="150"
-          layout="responsive"
+          layout="fill"
           sizes="17vw"
           alt={data.name ? data.name : "Unknown image"}
-          blurDataURL={
-            data.image_background
-              ? data.image_background
-              : "/images/missing-image-game-card.jpg"
-          }
-          placeholder="blur"
         />
       </div>
       <div className="game-card__body">
