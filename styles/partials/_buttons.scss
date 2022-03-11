@@ -33,6 +33,10 @@
     &:hover {
       color: #fff;
     }
+
+    &:focus {
+      outline: 2px solid #fff;
+    }
   }
 
   &--secondary {
@@ -52,6 +56,7 @@
     font-style: italic;
     font-weight: 400;
     background: transparent;
+    outline-offset: 1rem;
   }
 
   &--center {

@@ -1,5 +1,32 @@
-// Partials
 @import "partials/variables";
+
+// Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  line-height: 1.2;
+  transition: color $time;
+
+  &:hover {
+    color: $accent;
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+:focus {
+  outline: 2px solid $accent;
+}
+
+// Partials
 @import "partials/typography";
 @import "partials/grids";
 @import "partials/utilities";
@@ -22,28 +49,6 @@
 //Pages
 @import "pages/game-details";
 @import "pages/settings";
-// Reset
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  // border: 1px solid yellow;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  line-height: 1.2;
-  transition: color $time;
-
-  &:hover {
-    color: $accent;
-  }
-}
-
-ul {
-  list-style-type: none;
-}
 
 // Global
 body {

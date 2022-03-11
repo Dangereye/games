@@ -1,21 +1,22 @@
-import { useRouter } from "next/router";
+import { useContext } from "react";
+import { ThemeContext } from "../../../contexts/ThemeContext";
+import Link from "next/link";
 
 function MenuLink({ data }) {
-  const router = useRouter();
-
-  const followLink = () => {
-    router.push(data.link);
-  };
-
+  const { themeState } = useContext(ThemeContext);
   return (
-    <>
-      <div className="menu__title">
-        <div className="menu__icon">{data.icon}</div>
-        <div className="menu__text" onClick={followLink}>
-          {data.title}
-        </div>
-      </div>
-    </>
+    <Link href={data.link}>
+      <a
+        className="menu__title"
+        style={{
+          fill: themeState.text.primary,
+          color: themeState.text.primary,
+        }}
+      >
+        <span className="menu__icon">{data.icon}</span>
+        <span className="menu__text">{data.title}</span>
+      </a>
+    </Link>
   );
 }
 

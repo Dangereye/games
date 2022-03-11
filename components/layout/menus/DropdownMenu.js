@@ -5,18 +5,28 @@ import DropdownLink from "./DropdownLink";
 function DropdownMenu({ data }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
+  const handleClick = () => {
     setIsOpen(!isOpen);
+  };
+  const handleKeyPress = (e) => {
+    if (e.code === "Enter") {
+      setIsOpen(!isOpen);
+    }
   };
 
   return (
     <>
-      <div className="menu__title ">
-        <div className="menu__icon">{data.icon}</div>
-        <div className="menu__text" onClick={toggleMenu}>
+      <div
+        className="menu__title"
+        tabIndex="0"
+        onClick={handleClick}
+        onKeyPress={handleKeyPress}
+      >
+        <span className="menu__icon">{data.icon}</span>
+        <span className="menu__text">
           {data.title}
           <MdArrowDropDown />
-        </div>
+        </span>
       </div>
       <div
         className={

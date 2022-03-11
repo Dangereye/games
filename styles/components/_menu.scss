@@ -1,19 +1,21 @@
 .menu {
+  width: 100%;
+
   &__items {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 5px;
   }
 
   &__dropdown {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 5px;
 
     &__items {
       display: none;
       flex-direction: column;
-      gap: 1rem;
+      gap: 5px;
 
       &.active {
         display: flex;
@@ -22,10 +24,11 @@
   }
 
   &__title {
+    padding: 5px;
     display: flex;
     align-items: center;
     gap: 1rem;
-
+    outline-offset: -2px;
     font-size: 2rem;
   }
 

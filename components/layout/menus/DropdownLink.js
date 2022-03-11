@@ -1,24 +1,17 @@
 import { useContext } from "react";
 import { ThemeContext } from "../../../contexts/ThemeContext";
-import { useRouter } from "next/router";
+import Link from "next/link";
 
 function DropdownLink({ data }) {
   const { themeState } = useContext(ThemeContext);
-  const router = useRouter();
-
-  const followLink = () => {
-    router.push(data.link);
-  };
 
   return (
-    <>
-      <div className="menu__title" style={{ color: themeState.text.tertiary }}>
-        <div className="menu__icon"></div>
-        <div className="menu__text" onClick={followLink}>
-          {data.name}
-        </div>
-      </div>
-    </>
+    <Link href={data.link}>
+      <a className="menu__title" style={{ color: themeState.text.tertiary }}>
+        <span className="menu__icon"></span>
+        <span className="menu__text">{data.name}</span>
+      </a>
+    </Link>
   );
 }
 export default DropdownLink;
