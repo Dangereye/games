@@ -1,3 +1,4 @@
+// Global Variables
 @import "partials/variables";
 
 // Reset
@@ -5,9 +6,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border: none;
+  outline: none;
 }
 
 a {
+  padding: 5px;
   color: inherit;
   text-decoration: none;
   line-height: 1.2;
@@ -15,6 +19,10 @@ a {
 
   &:hover {
     color: $accent;
+  }
+
+  &:focus:hover {
+    color: #fff;
   }
 }
 
@@ -24,6 +32,18 @@ ul {
 
 :focus {
   outline: 2px solid $accent;
+  outline-offset: 0;
+  background-color: $accent;
+  color: #fff;
+
+  span {
+    color: #fff;
+    fill: #fff;
+
+    &:hover {
+      color: #fff;
+    }
+  }
 }
 
 // Partials
