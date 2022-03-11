@@ -5,7 +5,8 @@ import { FiltersContext } from "../contexts/FiltersContext";
 function useFilters(route) {
   const { filtersState } = useContext(FiltersContext);
   const router = useRouter();
-  const { asPath } = router;
+  const { pathname, asPath } = router;
+  console.log({ pathname });
 
   useEffect(() => {
     console.log("useFilters Ran.");
@@ -18,6 +19,7 @@ function useFilters(route) {
       : "";
     router.push(`${asPath.split("?")[0]}${ordering}${years}${genres}`);
   }, [
+    pathname,
     filtersState.ordering.value,
     filtersState.years.value,
     filtersState.genres.value,

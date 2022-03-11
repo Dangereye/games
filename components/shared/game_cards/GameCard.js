@@ -34,17 +34,9 @@ export default forwardRef(function GameCard({ game }, ref) {
               ? game.background_image
               : "/images/missing-image-game-card.jpg"
           }
-          width="250"
-          height="150"
-          layout="responsive"
+          layout="fill"
           sizes="17vw"
           alt={game.name ? game.name : "Unknown game image."}
-          blurDataURL={
-            game.background_image
-              ? game.background_image
-              : "/images/missing-image-game-card.jpg"
-          }
-          placeholder="blur"
         />
       </div>
       <div className="game-card__body">

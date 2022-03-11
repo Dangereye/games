@@ -7,8 +7,14 @@
   transition: transform $time;
 
   &__image {
+    position: relative;
     width: 100%;
     aspect-ratio: 16/9;
+
+    img {
+      object-position: top center;
+      object-fit: cover;
+    }
   }
 
   &__body {
