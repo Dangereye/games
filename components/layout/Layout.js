@@ -18,6 +18,16 @@ function Layout({ children }) {
   const router = useRouter();
   const {} = useLocalStorage();
 
+  const closeOpenMenus = () => {
+    if (
+      filtersState.ordering.menu ||
+      filtersState.years.menu ||
+      filtersState.genres.menu
+    ) {
+      filtersDispatch({ type: "CLOSE_MENUS" });
+    }
+  };
+
   useEffect(() => {
     const handleStart = () => {
       if (appState.mobileMenu_isOpen) {
@@ -74,10 +84,7 @@ function Layout({ children }) {
             }}
           ></div>
         </div>
-        <div
-          className="page grid grid--sidebar"
-          onClick={() => filtersDispatch({ type: "CLOSE_MENUS" })}
-        >
+        <div className="page grid grid--sidebar" onClick={closeOpenMenus}>
           <Sidebar />
           <main>{children}</main>
         </div>
