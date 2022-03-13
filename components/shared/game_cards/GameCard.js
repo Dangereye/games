@@ -10,8 +10,9 @@ export default forwardRef(function GameCard({ game }, ref) {
   const { themeState } = useContext(ThemeContext);
 
   return (
-    <Link href={`/game/${game.slug}`} ref={ref}>
+    <Link href={`/game/${game.slug}`}>
       <a
+        ref={ref}
         className="game-card"
         style={{
           color: themeState.text.tertiary,

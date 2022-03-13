@@ -10,8 +10,9 @@ export default forwardRef(function MiscCard({ icon, data, href }, ref) {
   const { themeState } = useContext(ThemeContext);
 
   return (
-    <Link href={href} ref={ref}>
+    <Link href={href}>
       <a
+        ref={ref}
         className="game-card"
         style={{
           color: themeState.text.primary,
