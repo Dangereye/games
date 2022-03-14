@@ -30,7 +30,6 @@ function PageTemplate({ title, postTitle, children }) {
               content={title ? "" : appState.data.seo_description}
             />
           </Head>
-          {console.log("PageTemplate was built.")}
           <header style={{ color: themeState.text.primary }}>
             <h1 className="display-title">
               {title ? title : appState.data.seo_h1} {postTitle}

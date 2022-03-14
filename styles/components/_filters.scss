@@ -58,10 +58,18 @@
 
     transition: opacity $time;
 
+    & > * {
+      display: none;
+    }
+
     &.active {
       user-select: initial;
       pointer-events: initial;
       opacity: 1;
+
+      & > * {
+        display: block;
+      }
     }
 
     &::-webkit-scrollbar {
@@ -76,6 +84,10 @@
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    &:focus {
+      outline-offset: -2px;
     }
   }
 

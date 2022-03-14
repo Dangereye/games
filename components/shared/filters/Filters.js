@@ -15,6 +15,7 @@ function GameCardFilters() {
   const { years, genres } = appState.data.filters;
 
   const activateFilter = (state, name, value) => {
+    filtersDispatch({ type: "CLOSE_MENUS" });
     filtersDispatch({ type: "SET_FILTER", payload: { state, name, value } });
   };
 
