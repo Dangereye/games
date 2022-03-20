@@ -39,6 +39,7 @@ function Screenshots({ screenshots }) {
                   layout="fill"
                   sizes="17vw"
                   alt="Screenshot"
+                  priority
                 />
               </div>
             ))}
