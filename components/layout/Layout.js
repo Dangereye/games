@@ -10,6 +10,7 @@ import MobileMenu from "./MobileMenu";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import Modal from "./modal/Modal";
+import Image from "next/image";
 
 function Layout({ children }) {
   const { themeState } = useContext(ThemeContext);
@@ -69,21 +70,23 @@ function Layout({ children }) {
           backgroundColor: themeState.background.primary,
         }}
       >
-        <div
-          className="layout__background"
-          style={{
-            backgroundImage: appState.data.background_image
-              ? `url(${appState.data.background_image})`
-              : "none",
-          }}
-        >
-          <div
-            className="layout__background__overlay"
-            style={{
-              background: themeState.background.gradient,
-            }}
-          ></div>
-        </div>
+        {appState.data.background_image && (
+          <div className="layout__background">
+            <div className="layout__background__image">
+              <Image
+                src={appState.data.background_image}
+                layout="fill"
+                priority
+              />
+            </div>
+            <div
+              className="layout__background__overlay"
+              style={{
+                background: themeState.background.gradient,
+              }}
+            ></div>
+          </div>
+        )}
         <div className="page grid grid--sidebar" onClick={closeOpenMenus}>
           <Sidebar />
           <main>{children}</main>
