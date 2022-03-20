@@ -1,14 +1,17 @@
 import { useContext } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import { MdArrowBackIos } from "react-icons/md";
+import Button from "../../shared/buttons/Button";
 function PrevButton({ func }) {
-  const { appState, appDispatch } = useContext(AppContext);
+  const { appState } = useContext(AppContext);
   return (
     <>
       {appState.modal.index > 0 && (
-        <div className="modal__prev" onClick={() => func(appState.modal.index)}>
-          <MdArrowBackIos />
-        </div>
+        <Button
+          name={<MdArrowBackIos />}
+          classes="modal__prev"
+          func={() => func(appState.modal.index)}
+        />
       )}
     </>
   );

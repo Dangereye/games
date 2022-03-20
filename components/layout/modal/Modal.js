@@ -5,6 +5,7 @@ import PrevButton from "./PrevButton";
 import NextButton from "./NextButton";
 import Video from "./Video";
 import Screenshots from "./Screenshots";
+import Button from "../../shared/buttons/Button";
 function Modal() {
   const { appState, appDispatch } = useContext(AppContext);
 
@@ -24,17 +25,11 @@ function Modal() {
     }
   };
 
-  const changeItem = (index) => {
-    appDispatch({ type: "MODAL_INDEX", payload: index });
-  };
-
   return (
     <div className={appState.modal.isOpen ? "modal active" : "modal"}>
+      <Button name={<MdClose />} classes="modal__close" func={closeModal} />
       <PrevButton func={prevItem} />
       <NextButton func={nextItem} />
-      <div className="modal__close" onClick={closeModal}>
-        <MdClose />
-      </div>
       <Video func={nextItem} />
       <Screenshots />
     </div>
