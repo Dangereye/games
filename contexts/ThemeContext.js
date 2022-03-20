@@ -6,14 +6,12 @@ export const ThemeContext = createContext();
 const darkPrimary = "34,34,34";
 const darkSecondary = "64, 64, 64";
 const darkTertiary = "94, 94, 94";
-const darkGradient = `linear-gradient(rgba(${darkPrimary}, 0.6), rgb(${darkPrimary}))`;
-const darkCardGradient = `linear-gradient(rgba(${darkSecondary}, 0.8), rgb(${darkSecondary}))`;
+const darkGradient = `linear-gradient(rgba(${darkPrimary}, 0.8), rgb(${darkPrimary}))`;
 
 const lightPrimary = "250,250,250";
 const lightSecondary = "235, 235, 235";
 const lightTertiary = "193, 193, 193";
-const lightGradient = `linear-gradient(rgba(${lightPrimary}, 0.6), rgb(${lightPrimary}))`;
-const lightCardGradient = `linear-gradient(rgba(${lightSecondary}, 0.8), rgb(${lightSecondary}))`;
+const lightGradient = `linear-gradient(rgba(${lightPrimary}, 0.8), rgb(${lightPrimary}))`;
 
 const ThemeReducer = (state, action) => {
   switch (action.type) {
@@ -22,8 +20,8 @@ const ThemeReducer = (state, action) => {
         ...state,
         dark_mode: true,
         text: {
-          primary: `rgb(${lightSecondary})`,
-          secondary: `rgb(${lightPrimary})`,
+          primary: `rgb(${lightPrimary})`,
+          secondary: `rgb(${lightSecondary})`,
           tertiary: `rgb(${lightTertiary})`,
         },
         background: {
@@ -32,7 +30,6 @@ const ThemeReducer = (state, action) => {
           tertiary: `rgb(${darkTertiary})`,
           navbar: `rgba(${darkPrimary},.8)`,
           gradient: darkGradient,
-          cardGradient: darkCardGradient,
           inputs: `rgba(${lightPrimary},.2)`,
         },
       };
@@ -51,7 +48,6 @@ const ThemeReducer = (state, action) => {
           tertiary: `rgb(${lightTertiary})`,
           navbar: `rgba(${lightPrimary},.8)`,
           gradient: lightGradient,
-          cardGradient: lightCardGradient,
           inputs: `rgba(${darkPrimary},.2)`,
         },
       };
@@ -64,8 +60,8 @@ function ThemeComponent({ children }) {
   const [themeState, themeDispatch] = useReducer(ThemeReducer, {
     dark_mode: true,
     text: {
-      primary: `rgb(${lightSecondary})`,
-      secondary: `rgb(${lightPrimary})`,
+      primary: `rgb(${lightPrimary})`,
+      secondary: `rgb(${lightSecondary})`,
       tertiary: `rgb(${lightTertiary})`,
     },
     background: {
@@ -74,7 +70,6 @@ function ThemeComponent({ children }) {
       tertiary: `rgb(${darkTertiary})`,
       navbar: `rgba(${darkPrimary},.8)`,
       gradient: darkGradient,
-      cardGradient: darkCardGradient,
       inputs: `rgba(${lightPrimary},.2)`,
     },
   });
