@@ -130,15 +130,8 @@
     position: relative;
     width: 100vw;
     height: auto;
-    max-width: 120rem;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  @media (max-height: $mobile) {
-    video {
-      width: 65vw;
-    }
   }
 }
