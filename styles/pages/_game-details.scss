@@ -78,13 +78,20 @@
   gap: $dynamic-gap;
 
   &__screenshot {
+    width: 100%;
     position: relative;
     aspect-ratio: 16/9;
+
     flex: 1 1 28rem;
     overflow: hidden;
     border-radius: $border-radius;
     box-shadow: $shadow;
     cursor: pointer;
+
+    img {
+      object-position: top center;
+      object-fit: cover;
+    }
   }
 }
 
@@ -165,8 +172,14 @@
     gap: 1rem;
 
     &__image {
-      display: grid;
-      place-content: center;
+      position: relative;
+      width: 75px;
+      height: 75px;
+
+      img {
+        object-position: center;
+        object-fit: cover;
+      }
     }
 
     &__details {

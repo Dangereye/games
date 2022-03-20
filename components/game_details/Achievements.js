@@ -66,15 +66,9 @@ function Achievements({ achievements }) {
                           ? item.image
                           : "/images/missing-image-achievement.jpg"
                       }
-                      width="75"
-                      height="75"
-                      alt={item.name}
-                      placeholder="blur"
-                      blurDataURL={
-                        item.image
-                          ? item.image
-                          : "/images/missing-image-achievement.jpg"
-                      }
+                      layout="fill"
+                      sizes="17vw"
+                      alt={item.name ? item.name : "Achievement image"}
                     />
                   </div>
 
