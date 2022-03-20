@@ -36,9 +36,7 @@ function Screenshots({ screenshots }) {
               >
                 <Image
                   src={pic.image}
-                  width={pic.width}
-                  height={pic.height}
-                  layout="responsive"
+                  layout="fill"
                   alt="Screenshot"
                   blurDataURL={pic.image}
                   placeholder="blur"
