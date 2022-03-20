@@ -95,6 +95,19 @@
   }
 }
 
+.esrb-rating {
+  &__image {
+    width: 10rem;
+    height: 15rem;
+    position: relative;
+
+    img {
+      object-position: top center;
+      object-fit: cover;
+    }
+  }
+}
+
 .stats {
   width: 100%;
   display: flex;
