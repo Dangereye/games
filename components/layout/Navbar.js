@@ -83,63 +83,67 @@ function Navbar() {
   }, [appState.mobileMenu_isOpen]);
 
   return (
-    <nav className="navbar" style={navBg}>
-      <div className="container">
-        <div
-          className="navbar__logo"
-          style={{ color: themeState.text.primary }}
-        >
-          Games
-        </div>
-        <div
-          className="navbar__search"
-          style={{ color: themeState.text.primary }}
-        >
-          <div className="navbar__search__icon">
-            <FaSearch />
+    <>
+      {!appState.modal.isOpen && (
+        <nav className="navbar" style={navBg}>
+          <div className="container">
+            <div
+              className="navbar__logo"
+              style={{ color: themeState.text.primary }}
+            >
+              Games
+            </div>
+            <div
+              className="navbar__search"
+              style={{ color: themeState.text.primary }}
+            >
+              <div className="navbar__search__icon">
+                <FaSearch />
+              </div>
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  placeholder="Search  games."
+                  value={search}
+                  onChange={handleChange}
+                  ref={searchInput}
+                  onFocus={searchFocus}
+                  onMouseEnter={searchFocus}
+                  onBlur={searchBlur}
+                  onMouseLeave={searchBlur}
+                  style={{
+                    color: themeState.text.primary,
+                    backgroundColor: themeState.background.inputs,
+                  }}
+                />
+              </form>
+            </div>
+            <div
+              className={
+                appState.mobileMenu_isOpen
+                  ? "navbar__mobile-menu active"
+                  : "navbar__mobile-menu"
+              }
+              onClick={toggleMobileMenu}
+            >
+              <div style={{ backgroundColor: themeState.text.primary }}></div>
+              <div style={{ backgroundColor: themeState.text.primary }}></div>
+              <div style={{ backgroundColor: themeState.text.primary }}></div>
+            </div>
+            <ul
+              className="navbar__list"
+              style={{ color: themeState.text.secondary }}
+            >
+              <li className="navbar__list-item">
+                <Link href="/settings">
+                  <a>Settings</a>
+                </Link>
+              </li>
+            </ul>
           </div>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Search  games."
-              value={search}
-              onChange={handleChange}
-              ref={searchInput}
-              onFocus={searchFocus}
-              onMouseEnter={searchFocus}
-              onBlur={searchBlur}
-              onMouseLeave={searchBlur}
-              style={{
-                color: themeState.text.primary,
-                backgroundColor: themeState.background.inputs,
-              }}
-            />
-          </form>
-        </div>
-        <div
-          className={
-            appState.mobileMenu_isOpen
-              ? "navbar__mobile-menu active"
-              : "navbar__mobile-menu"
-          }
-          onClick={toggleMobileMenu}
-        >
-          <div style={{ backgroundColor: themeState.text.primary }}></div>
-          <div style={{ backgroundColor: themeState.text.primary }}></div>
-          <div style={{ backgroundColor: themeState.text.primary }}></div>
-        </div>
-        <ul
-          className="navbar__list"
-          style={{ color: themeState.text.secondary }}
-        >
-          <li className="navbar__list-item">
-            <Link href="/settings">
-              <a>Settings</a>
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </nav>
+        </nav>
+      )}
+    </>
   );
 }
 
