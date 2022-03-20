@@ -13,7 +13,7 @@
 
 .links-list {
   display: flex;
-  gap: 1rem;
+  gap: 5px;
 
   &.fd-c {
     flex-direction: column;
@@ -36,15 +36,18 @@
     cursor: pointer;
 
     &.tag {
-      padding: 5px 10px;
       min-width: max-content;
       border: 1px solid $accent;
       border-radius: $border-radius-small;
+
+      a {
+        padding: 5px 10px;
+      }
     }
   }
 
   &__icon {
-    padding-top: 6px;
+    padding-top: 1.1rem;
     align-self: flex-start;
 
     .icon {

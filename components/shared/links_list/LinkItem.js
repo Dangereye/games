@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 function LinkItem({
@@ -17,20 +18,18 @@ function LinkItem({
   };
 
   return (
-    <div
-      className={`links-list__item ${itemClasses}`}
-      styles={itemStyles}
-      onClick={followLink}
-    >
+    <li className={`links-list__item ${itemClasses}`} styles={itemStyles}>
       {icon && (
         <div className="links-list__icon">
           <span className="icon"></span>
         </div>
       )}
-      <div className={`links-list__link ${linkClasses}`} style={linkStyles}>
-        <span className="link">{name}</span>
-      </div>
-    </div>
+      <Link href={href}>
+        <a className={`links-list__link ${linkClasses}`} style={linkStyles}>
+          <span className="link">{name}</span>
+        </a>
+      </Link>
+    </li>
   );
 }
 
