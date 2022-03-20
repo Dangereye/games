@@ -3,6 +3,13 @@ import { ThemeContext } from "../../../contexts/ThemeContext";
 
 function ToggleButton({ name, option, func }) {
   const { themeState } = useContext(ThemeContext);
+
+  const handleKeyPress = (e) => {
+    if (e.code === "Enter") {
+      func();
+    }
+  };
+
   return (
     <div
       className="btn__toggle-group"
@@ -10,8 +17,10 @@ function ToggleButton({ name, option, func }) {
     >
       <span>{name}</span>
       <div
+        tabIndex="0"
         className={option ? "btn btn--toggle active" : "btn btn--toggle"}
         onClick={func}
+        onKeyPress={handleKeyPress}
       >
         <div className="switch"></div>
       </div>
