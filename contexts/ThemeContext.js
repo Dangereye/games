@@ -9,8 +9,8 @@ const darkTertiary = "94, 94, 94";
 const darkGradient = `linear-gradient(rgba(${darkPrimary}, 0.6), rgb(${darkPrimary}))`;
 const darkCardGradient = `linear-gradient(rgba(${darkSecondary}, 0.8), rgb(${darkSecondary}))`;
 
-const lightPrimary = "223, 223, 223";
-const lightSecondary = "253, 253, 253";
+const lightPrimary = "250,250,250";
+const lightSecondary = "235, 235, 235";
 const lightTertiary = "193, 193, 193";
 const lightGradient = `linear-gradient(rgba(${lightPrimary}, 0.6), rgb(${lightPrimary}))`;
 const lightCardGradient = `linear-gradient(rgba(${lightSecondary}, 0.8), rgb(${lightSecondary}))`;

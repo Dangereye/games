@@ -17,7 +17,8 @@ $small-font-size: clamp(1.4rem, 2vw, 1.6rem);
 $icon-size: clamp(2rem, 3vw, 2.4rem);
 
 // Shadows
-$shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+// $shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+$shadow: none;
 
 // Transition time
 $time: 0.4s;
