@@ -6,12 +6,20 @@ import Image from "next/image";
 function Screenshots({ screenshots }) {
   const { appDispatch } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
+
   const addScreenshots = (index) => {
     appDispatch({
       type: "OPEN_MODAL",
       payload: { type: "screenshots", data: screenshots, index },
     });
   };
+
+  const handleKeyPress = (e, index) => {
+    if (e.code === "Enter") {
+      addScreenshots(index);
+    }
+  };
+
   return (
     <>
       {screenshots && screenshots.length > 0 && (
@@ -19,7 +27,13 @@ function Screenshots({ screenshots }) {
           <h2 className="section-title hidden">Game screenshots</h2>
           <div className="screenshots">
             {screenshots.map((pic, index) => (
-              <div className="screenshots__screenshot" key={pic.id}>
+              <div
+                key={pic.id}
+                tabIndex="0"
+                className="screenshots__screenshot"
+                onClick={() => addScreenshots(index)}
+                onKeyPress={(e) => handleKeyPress(e, index)}
+              >
                 <Image
                   src={pic.image}
                   width={pic.width}
@@ -28,7 +42,6 @@ function Screenshots({ screenshots }) {
                   alt="Screenshot"
                   blurDataURL={pic.image}
                   placeholder="blur"
-                  onClick={() => addScreenshots(index)}
                 />
               </div>
             ))}
