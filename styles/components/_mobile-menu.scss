@@ -11,21 +11,13 @@
   z-index: 99;
   transition: left $time;
   overflow-y: scroll;
-  display: none;
 
   &::-webkit-scrollbar {
     display: none;
   }
 
-  &.active {
-    display: flex;
-    left: 0;
-
-    @media (min-width: $tablet) {
-      left: -100%;
-    }
-
-    @media (max-height: $mobile) {
+  @media (max-width: $tablet) {
+    &.active {
       left: 0;
     }
   }
