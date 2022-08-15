@@ -23,6 +23,7 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  transition: color $time, background-color $time;
 
   cursor: pointer;
 
@@ -30,8 +31,11 @@
     color: #fff;
     background-color: $accent;
 
-    &:hover {
-      color: #fff;
+    @media (hover: hover) {
+      &:hover {
+        color: #fff;
+        background-color: darken($accent, 15%);
+      }
     }
 
     &:focus {

@@ -1,6 +1,6 @@
 .back-to-top {
   position: fixed;
-  bottom: 2rem;
+  bottom: 7rem;
   right: -6rem;
   width: 6rem;
   height: 6rem;
@@ -9,12 +9,20 @@
   color: #fff;
   background-color: $accent;
   border-radius: 50%;
-  transition: right $time;
+  transition: right $time, background-color $time;
   cursor: pointer;
   z-index: 200;
 
-  &:hover {
-    color: #fff;
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: #fff;
+      background-color: darken($accent, 15%);
+    }
   }
 
   &.active {
