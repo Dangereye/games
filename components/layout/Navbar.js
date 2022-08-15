@@ -91,7 +91,9 @@ function Navbar() {
               className="navbar__logo"
               style={{ color: themeState.text.primary }}
             >
-              Games
+              <Link href="/">
+                <a>Games</a>
+              </Link>
             </div>
             <div
               className="navbar__search"
