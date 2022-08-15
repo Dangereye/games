@@ -1,0 +1,23 @@
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: -6rem;
+  width: 6rem;
+  height: 6rem;
+  display: grid;
+  place-content: center;
+  color: #fff;
+  background-color: $accent;
+  border-radius: 50%;
+  transition: right $time;
+  cursor: pointer;
+  z-index: 200;
+
+  &:hover {
+    color: #fff;
+  }
+
+  &.active {
+    right: 2rem;
+  }
+}

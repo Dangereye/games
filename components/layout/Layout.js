@@ -11,6 +11,7 @@ import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import Modal from "./modal/Modal";
 import Image from "next/image";
+import BackToTop from "../shared/BackToTop";
 
 function Layout({ children }) {
   const { themeState } = useContext(ThemeContext);
@@ -63,6 +64,7 @@ function Layout({ children }) {
     <>
       <Modal />
       <MobileMenu />
+      <BackToTop />
       <Navbar />
       <div
         className="layout"
