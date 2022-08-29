@@ -70,8 +70,17 @@
 
   &__logo {
     font-size: 2rem;
-    font-weight: 900;
+    font-weight: 400;
     text-transform: uppercase;
+    & a:focus {
+      outline: none;
+    }
+
+    @media (hover: hover) {
+      & a:hover {
+        color: #fff;
+      }
+    }
   }
 
   &__search {
