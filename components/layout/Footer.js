@@ -17,7 +17,7 @@ function Footer() {
         >
           <div className="container">
             <div className="footer__copyright">
-              <span>&copy; Craig Puxty, 2021. All rights Reserved.</span>
+              <span>&copy; Craig Puxty, 2021. All rights reserved.</span>
             </div>
             <div
               className="footer__backlink"
