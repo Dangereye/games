@@ -28,8 +28,15 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    outline-offset: -2px;
+    outline: none;
     font-size: 2rem;
+    &:focus {
+      span {
+        color: $accent;
+        fill: $accent;
+        outline: none;
+      }
+    }
   }
 
   &__icon {
@@ -48,8 +55,10 @@
     cursor: pointer;
     transition: color $time;
 
-    &:hover {
-      color: $accent;
+    @media (hover: hover) {
+      &:hover {
+        color: $accent;
+      }
     }
   }
 }
