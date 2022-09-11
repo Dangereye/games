@@ -19,7 +19,7 @@
   .date {
     min-width: max-content;
     border-radius: $border-radius-small;
-    background-color: $accent;
+    background-color: rgba($accent, 0.2);
     padding: 5px 10px;
     color: #fff;
   }
