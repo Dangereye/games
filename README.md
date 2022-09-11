@@ -6,7 +6,7 @@ The application utilises the intersection observer API to provide an optional in
 
 ## Design
 
-Games is an adapted reconstruction of rawg.io (data provider) with an additional light or dark theme, simplified navigation and a little less clutter. Content is compartmentalised and has extra room to breathe, making it easier to navigate and aesthetically pleasing.
+Games is an adapted reconstruction of rawg.io (data provider) with an additional light or dark theme, simplified navigation and a little less clutter. Content (Free version) is compartmentalised and has extra room to breathe, making it easier to navigate and more aesthetically pleasing.
 
 ## Features
 
@@ -27,6 +27,16 @@ Games is an adapted reconstruction of rawg.io (data provider) with an additional
 - SVGs
 - React
 - Next
+
+## Apis
+
+- [RAWG](https://rawg.io/apidocs)
+- Local storage
+- Intersection observer
+
+## Third party
+
+- React Icons
 
 ## Design tools
 
