@@ -33,6 +33,11 @@ ul {
   animation: focus 0.6s 0.1s forwards;
 }
 
+a:focus {
+  color: $accent;
+  outline: none;
+}
+
 @keyframes focus {
   100% {
     outline-color: transparent;
