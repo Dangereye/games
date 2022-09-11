@@ -13,7 +13,6 @@ Games is an adapted reconstruction of rawg.io (data provider) with an additional
 - Responsive design
 - Search games
 - Multiple game filters
-- Server side rendering (SSR)
 - Image carousel
 - Light & dark theme
 - Infinite scroll data fetching
@@ -27,6 +26,7 @@ Games is an adapted reconstruction of rawg.io (data provider) with an additional
 - SVGs
 - React
 - Next
+- Server side rendering (SSR)
 
 ## Apis
 
