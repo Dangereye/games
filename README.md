@@ -1,34 +1,90 @@
 # Games
 
-Search and explore 500,000+ games for 50 platforms - including mobiles.
-Containing comprehensive video game data - courtesy of RAWG: videos, screenshots, descriptions, genres, ERSB ratings, Metacritic ratings and more...
-The application utilises the intersection observer API to provide an optional infinite scrolling feature.
+Embark on an immersive gaming journey with access to an extensive database featuring over 500,000 games across 50 platforms, including mobile. This vast collection is sourced from the RAWG API, providing comprehensive details such as videos, screenshots, descriptions, genres, ESRB ratings, Metacritic scores, and more. Begin your exploration today and uncover your next gaming obsession!
 
 ## Design
 
-Games is an adapted reconstruction of rawg.io (data provider) with an additional light or dark theme, simplified navigation and a little less clutter. Content (Free version) is compartmentalised and has extra room to breathe, making it easier to navigate and more aesthetically pleasing.
+The Games platform is a modified rendition of rawg.io, our data provider. It features an added light or dark theme, simplified navigation, and reduced clutter for an enhanced user experience. The content is organized into compartments, providing more breathing space, improving navigation, and enhancing the overall aesthetic appeal.
 
 ## Features
 
-- Responsive design
-- Search games
-- Multiple game filters
-- Image carousel
-- Light & dark theme
-- Infinite scroll data fetching
+- Responsive layout & images
+- Infinite scroll data loading or pagination
+- Mobile navigation - able to be toggled to save space on smaller screens
+- Modal - to view screenshots or trailers
+- Light or dark theme
+- Bespoke SVG icons
+- Search
+- Browse: all games, genres, tags, developers, publishers, game stores
+- Platforms: PC, Playstation, Nintendo, Xbox, Apple Mac, Linux, ISO, Android, Amiga, Sega, Atari, Neo Geo, 3DO, Web
+
+### Game card
+
+- Game image
+- Platform SVG icons
+- Metacritic score
+- Name
+- Release date
+
+### Game/id
+
+- Background image
+- Title
+- Release date
+- Platform SVG icons
+- Trailer
+- Description
+- Developers
+- Publishers
+- Website link
+- ESRB rating
+- Stats: metacritic score, avg playtime, games in series, # of additions, achievements
+- Platforms
+- Genres
+- Tags
+- Where to buy
+- Additions
+- Series
+- Achievements
+- Screenshots
+
+### All games
+
+- Title
+- Results count
+- Sort: relevance, name, release date, top rated
+- Filters: release date
+- List of all games
+
+### Genres, tags, developers, publishers, game stores
+
+- Title
+- Results count
+- List of all games
+
+#### card
+
+- Image
+- Name
+- Popular games
+
+### Platforms
+
+- Title
+- Results count
+- Sort: relevance, name, release date, top rated
+- Filters: release date, genres
 
 ## Technologies
 
 - HTML5
-- CSS3
-- Sass
+- Sass / Scss
 - JavaScript ES6+
-- SVGs
 - React
 - Next
 - Server side rendering (SSR)
 
-## Apis
+## APIs
 
 - [RAWG](https://rawg.io/apidocs)
 - Local storage
@@ -36,20 +92,9 @@ Games is an adapted reconstruction of rawg.io (data provider) with an additional
 
 ## Third party
 
-- React Icons
+- React icons
 
 ## Design tools
 
+- Adobe Photoshop
 - Adobe Illustrator
-
-## Dependencies
-
-- next: 12.1.0
-- react: 17.0.2
-- react-dom: 17.0.2
-- react-icons: 4.3.1
-- sass: 1.43.4
-
-## Setup
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
