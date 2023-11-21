@@ -87,6 +87,7 @@ The Games platform is a modified rendition of rawg.io, our data provider. It fea
 ## APIs
 
 - [RAWG](https://rawg.io/apidocs)
+- Fetch
 - Local storage
 - Intersection observer
 
