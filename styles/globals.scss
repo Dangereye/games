@@ -1,5 +1,5 @@
 // Global Variables
-@import "partials/variables";
+@import 'partials/variables';
 
 // Reset
 * {
@@ -45,29 +45,29 @@ a:focus {
 }
 
 // Partials
-@import "partials/typography";
-@import "partials/grids";
-@import "partials/utilities";
-@import "partials/buttons";
+@import 'partials/typography';
+@import 'partials/grids';
+@import 'partials/utilities';
+@import 'partials/buttons';
 
 // Components
-@import "components/modal";
-@import "components/navbar";
-@import "components/sidebar";
-@import "components/mobile-menu";
-@import "components/menu";
-@import "components/links-group";
-@import "components/footer";
-@import "components/filters";
-@import "components/game-card";
-@import "components/parent-platforms";
-@import "components/loader";
-@import "components/metacritic";
-@import "components/back-to-top";
+@import 'components/modal';
+@import 'components/navbar';
+@import 'components/sidebar';
+@import 'components/mobile-menu';
+@import 'components/menu';
+@import 'components/links-group';
+@import 'components/footer';
+@import 'components/filters';
+@import 'components/game-card';
+@import 'components/parent-platforms';
+@import 'components/loader';
+@import 'components/metacritic';
+@import 'components/back-to-top';
 
 //Pages
-@import "pages/game-details";
-@import "pages/settings";
+@import 'pages/game-details';
+@import 'pages/settings';
 
 // Global
 body {
