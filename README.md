@@ -7,7 +7,7 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-yellow)
 ![SCSS](https://img.shields.io/badge/SCSS-1.43.4-cc6699)
 ![RAWG API](https://img.shields.io/badge/API-RAWG-green)
-[![Vercel](https://vercel.badge.vercel.app/api/Dangereye/games)](https://games-inky-seven.vercel.app)
+![Deployed on Vercel](https://img.shields.io/badge/Deployed-Vercel-black?logo=vercel)
 ![Repo size](https://img.shields.io/github/repo-size/Dangereye/games)
 ![Last commit](https://img.shields.io/github/last-commit/Dangereye/games)
 
