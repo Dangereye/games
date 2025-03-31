@@ -1,5 +1,5 @@
-export default async function fetchGames(query, req) {
-  const searchParams = new URLSearchParams(query).toString();
+export default async function fetchRawgData(query, req, type = 'games') {
+  const searchParams = new URLSearchParams({ ...query, type }).toString();
 
   const protocol = req?.headers?.['x-forwarded-proto'] || 'http';
   const host = req?.headers?.host || 'localhost:3000';
@@ -10,7 +10,7 @@ export default async function fetchGames(query, req) {
     if (!res.ok) throw new Error(`API error: ${res.status}`);
     return await res.json();
   } catch (error) {
-    console.error('fetchGames error:', error);
+    console.error('fetchRawgData error:', error);
     return { results: [], error: true };
   }
 }

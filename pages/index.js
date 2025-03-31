@@ -1,13 +1,13 @@
+import fetchRawgData from '../utils/fetchRawgData';
 import useUpdateState from '../hooks/useUpdateState';
 import useFilters from '../hooks/useFilters';
 import PageTemplate from '../components/shared/PageTemplate';
 import Filters from '../components/shared/filters/Filters';
 import GameCards from '../components/shared/game_cards/GameCards';
-import fetchGames from '../utils/fetchGames';
 
 function Home({ data }) {
-  const {} = useFilters();
-  const {} = useUpdateState(data);
+  useFilters();
+  useUpdateState(data);
 
   return (
     <PageTemplate>
@@ -20,6 +20,9 @@ function Home({ data }) {
 export default Home;
 
 export async function getServerSideProps(context) {
-  const data = await fetchGames(context.query, context.req);
-  return { props: { data } };
+  const data = await fetchRawgData(context.query, context.req, 'games');
+
+  return {
+    props: { data },
+  };
 }
