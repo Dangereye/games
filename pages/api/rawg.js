@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   });
 
   const rawgUrl = `https://api.rawg.io/api/${path}?${searchParams.toString()}`;
-
+  console.log('🔍 RAWG URL (server):', rawgUrl);
   try {
     const response = await fetch(rawgUrl);
     const data = await response.json();

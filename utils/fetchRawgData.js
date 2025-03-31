@@ -27,12 +27,7 @@ export default async function fetchRawgData(
 
   const cleanedParams = Object.entries(queryParams).reduce(
     (acc, [key, value]) => {
-      if (
-        value !== undefined &&
-        value !== '' &&
-        allowedKeys.includes(key) &&
-        !(key === 'ordering' && value === 'relevance')
-      ) {
+      if (value !== undefined && value !== '') {
         acc[key] = value;
       }
       return acc;
