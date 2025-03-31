@@ -16,6 +16,7 @@ import Stores from '../../components/game_details/Stores';
 import Specification from '../../components/game_details/Specification';
 import GameCards from '../../components/shared/game_cards/GameCards';
 import Achievements from '../../components/game_details/Achievements';
+import fetchRawgData from '../../utils/fetchRawgData';
 
 function GameDetails({
   initial,
@@ -112,14 +113,10 @@ function GameDetails({
 export default GameDetails;
 
 export async function getServerSideProps(context) {
-  const { params } = context;
-  const options = {
-    method: 'GET',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-  };
+  const { params, req } = context;
+  const slug = params.slug;
 
-  let [
+  const [
     initial,
     screenshots,
     trailers,
@@ -129,48 +126,15 @@ export async function getServerSideProps(context) {
     additions,
     parent,
   ] = await Promise.all([
-    fetch(
-      `https://api.rawg.io/api/games/${params.slug}?key=${process.env.API_KEY}`,
-      options
-    ),
-    fetch(
-      `https://api.rawg.io/api/games/${params.slug}/screenshots?key=${process.env.API_KEY}&page_size=20`,
-      options
-    ),
-    fetch(
-      `https://api.rawg.io/api/games/${params.slug}/movies?key=${process.env.API_KEY}`,
-      options
-    ),
-    fetch(
-      `https://api.rawg.io/api/games/${params.slug}/game-series?key=${process.env.API_KEY}&page_size=40`,
-      options
-    ),
-    fetch(
-      `https://api.rawg.io/api/games/${params.slug}/achievements?key=${process.env.API_KEY}&page_size=40`,
-      options
-    ),
-    fetch(
-      `https://api.rawg.io/api/games/${params.slug}/stores?key=${process.env.API_KEY}`,
-      options
-    ),
-    fetch(
-      `https://api.rawg.io/api/games/${params.slug}/additions?key=${process.env.API_KEY}&page_size=40`,
-      options
-    ),
-    fetch(
-      `https://api.rawg.io/api/games/${params.slug}/parent-games?key=${process.env.API_KEY}&page_size=40`,
-      options
-    ),
+    fetchRawgData({}, req, `games/${slug}`),
+    fetchRawgData({ page_size: 20 }, req, `games/${slug}/screenshots`),
+    fetchRawgData({}, req, `games/${slug}/movies`),
+    fetchRawgData({ page_size: 40 }, req, `games/${slug}/game-series`),
+    fetchRawgData({ page_size: 40 }, req, `games/${slug}/achievements`),
+    fetchRawgData({}, req, `games/${slug}/stores`),
+    fetchRawgData({ page_size: 40 }, req, `games/${slug}/additions`),
+    fetchRawgData({ page_size: 40 }, req, `games/${slug}/parent-games`),
   ]);
-
-  initial = await initial.json();
-  screenshots = await screenshots.json();
-  trailers = await trailers.json();
-  series = await series.json();
-  achievements = await achievements.json();
-  stores = await stores.json();
-  additions = await additions.json();
-  parent = await parent.json();
 
   return {
     props: {
