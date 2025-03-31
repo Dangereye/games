@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 html {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 62.5%;
 }
 
@@ -53,12 +53,13 @@ html {
 .card-title {
   margin-bottom: 2.4rem;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.5rem;
 
   .text {
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    line-clamp: 2;
     -webkit-line-clamp: 2;
     text-overflow: ellipsis;
     overflow: hidden;

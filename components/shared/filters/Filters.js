@@ -29,7 +29,7 @@ function GameCardFilters() {
     if (!genres) {
       filtersDispatch({ type: 'RESET_FILTER', payload: 'genres' });
     }
-  }, []);
+  }, [years, genres, filtersDispatch]);
 
   return (
     <section className='mt-4' style={{ color: themeState.text.primary }}>
