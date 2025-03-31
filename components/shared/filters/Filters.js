@@ -7,11 +7,13 @@ import FilterMenu from './FilterMenu';
 import FilterSubMenu from './FilterSubMenu';
 import Option from './Option';
 import Reset from './Reset';
+import { useRouter } from 'next/router';
 
 function GameCardFilters() {
   const { appState } = useContext(AppContext);
   const { themeState } = useContext(ThemeContext);
   const { filtersState, filtersDispatch } = useContext(FiltersContext);
+  const router = useRouter();
   const years = appState?.data?.filters?.years;
   const genres = appState?.data?.filters?.genres;
 
@@ -87,7 +89,7 @@ function GameCardFilters() {
         )}
 
         {/* Genres filter */}
-        {genres && (
+        {genres && !router.pathname.includes('/genres/[genreId]') && (
           <FilterMenu
             state='genres'
             active={filtersState.genres.menu}

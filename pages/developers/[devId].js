@@ -10,7 +10,7 @@ function Developers({ data, developer }) {
   useFilters();
 
   return (
-    <PageTemplate title={`Developed by ${developer?.name}`}>
+    <PageTemplate>
       <Filters />
       <GameCards title={`Games by ${developer?.name}`} />
     </PageTemplate>
