@@ -1,21 +1,27 @@
-import { useContext, useEffect, useState } from "react";
-import { AppContext } from "../contexts/AppContext";
-import useClientFetch from "./useClientFetch";
+import { useContext, useEffect, useState, useCallback, useMemo } from 'react';
+import { AppContext } from '../contexts/AppContext';
+import useClientFetch from './useClientFetch';
 
 function useInfiniteScroll() {
   const { appState } = useContext(AppContext);
   const [element, setElement] = useState(null);
-
   const addContent = useClientFetch();
 
-  const options = { rootMargin: "800px" };
+  const options = useMemo(() => ({ rootMargin: '800px' }), []);
 
-  const callBack = (entries) => {
-    const entry = entries[0];
-    if (entry.isIntersecting) {
-      addContent(appState.data.next);
-    }
-  };
+  const callBack = useCallback(
+    (entries) => {
+      const entry = entries[0];
+      if (
+        entry.isIntersecting &&
+        !appState.isLoadingMore &&
+        appState.data.next
+      ) {
+        addContent(appState.data.next);
+      }
+    },
+    [addContent, appState.data.next, appState.isLoadingMore]
+  );
 
   useEffect(() => {
     const observer = new IntersectionObserver(callBack, options);
@@ -29,8 +35,15 @@ function useInfiniteScroll() {
         observer.unobserve(element);
       }
     };
-  }, [element]);
+  }, [
+    element,
+    appState.data.next,
+    appState.infinite_scroll,
+    callBack,
+    options,
+  ]);
 
   return { element, setElement };
 }
+
 export default useInfiniteScroll;
