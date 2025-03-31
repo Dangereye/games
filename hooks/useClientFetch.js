@@ -4,12 +4,31 @@ import { AppContext } from '../contexts/AppContext';
 function useClientFetch() {
   const { appState, appDispatch } = useContext(AppContext);
 
-  const addContent = async (nextUrl) => {
+  // ✅ Rewrites RAWG's full next URL to your internal /api/rawg route
+  const getLocalUrlFromRawgNext = (rawgUrl) => {
+    try {
+      const url = new URL(rawgUrl);
+      const path = url.pathname.replace('/api/', '');
+      const params = new URLSearchParams(url.search);
+
+      // 🔒 Strip the API key if present
+      params.delete('key');
+
+      return `/api/rawg?path=${path}&${params.toString()}`;
+    } catch (err) {
+      console.error('❌ Failed to parse RAWG next URL:', rawgUrl);
+      return null;
+    }
+  };
+
+  const addContent = async (rawgNextUrl) => {
     appDispatch({ type: 'LOADING_MORE' });
 
+    const localUrl = getLocalUrlFromRawgNext(rawgNextUrl);
+    if (!localUrl) return;
+
     try {
-      const queryString = nextUrl.split('?')[1]; // safely get query params
-      const res = await fetch(`/api/rawg?${queryString}`, {
+      const res = await fetch(localUrl, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -32,7 +51,7 @@ function useClientFetch() {
           isError: true,
           status: err.message,
           message:
-            'Something went wrong. Not to worry - either refresh the page and try again or',
+            'Something went wrong. Not to worry — either refresh the page and try again, or come back later.',
         },
       });
     }
