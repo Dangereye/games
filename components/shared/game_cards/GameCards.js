@@ -39,15 +39,15 @@ function GameCards({ condition, title, subtitle, list, limited }) {
             </h3>
           )}
           <div className='grid grid--cards'>
-            {(limit ? data.filter((game, i) => i < 5) : data).map(
-              (game, i, arr) => (
+            {(limit ? data.slice(0, 5) : data)
+              .filter((game) => game && typeof game.id !== 'undefined')
+              .map((game, i, arr) => (
                 <GameCard
-                  ref={i === arr.length - 1 ? setElement : null} // Only observe last item
+                  ref={i === arr.length - 1 ? setElement : null}
                   game={game}
                   key={game.id}
                 />
-              )
-            )}
+              ))}
           </div>
 
           {appState.isLoadingMore && <Loader />}

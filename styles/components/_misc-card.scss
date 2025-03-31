@@ -36,14 +36,16 @@
   }
 
   .popular-games {
+    .link {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      line-clamp: 1;
+      -webkit-line-clamp: 1;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
     @media (max-width: $mobile) {
       .link {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
-        text-overflow: ellipsis;
-        overflow: hidden;
-
         font-size: 1.4rem;
       }
     }

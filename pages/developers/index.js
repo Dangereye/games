@@ -7,22 +7,24 @@ import MiscCards from '../../components/shared/misc_cards/MiscCards';
 import MiscCard from '../../components/shared/misc_cards/MiscCard';
 import fetchRawgData from '../../utils/fetchRawgData';
 
-function Developers({ developers }) {
+function Developers({ data }) {
   const { appState } = useContext(AppContext);
-  useUpdateState(developers);
+  useUpdateState(data);
   const { setElement } = useInfiniteScroll();
 
   return (
     <PageTemplate title='Developers'>
       <MiscCards title='Developer list'>
-        {appState.data.results.map((d, i, arr) => (
-          <MiscCard
-            ref={i === arr.length - 1 ? setElement : null}
-            key={`developer-${i}`}
-            data={d}
-            href={`/developers/${d.id}`}
-          />
-        ))}
+        {appState.data.results
+          ?.filter((d) => d && typeof d.id !== 'undefined')
+          .map((d, i) => (
+            <MiscCard
+              ref={setElement}
+              key={`developer-${i}`}
+              data={d}
+              href={`/developers/${d.id}`}
+            />
+          ))}
       </MiscCards>
     </PageTemplate>
   );
@@ -31,13 +33,19 @@ function Developers({ developers }) {
 export default Developers;
 
 export async function getServerSideProps(context) {
-  const developers = await fetchRawgData(
-    context.query,
-    context.req,
+  const { req, query } = context;
+  const { ordering = '', page = '' } = query;
+
+  const data = await fetchRawgData(
+    {
+      ordering,
+      page,
+    },
+    req,
     'developers'
   );
 
   return {
-    props: { developers },
+    props: { data },
   };
 }
