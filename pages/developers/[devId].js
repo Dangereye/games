@@ -1,17 +1,18 @@
-import useUpdateState from "../../hooks/useUpdateState";
-import useFilters from "../../hooks/useFilters";
-import PageTemplate from "../../components/shared/PageTemplate";
-import Filters from "../../components/shared/filters/Filters";
-import GameCards from "../../components/shared/game_cards/GameCards";
+import useUpdateState from '../../hooks/useUpdateState';
+import useFilters from '../../hooks/useFilters';
+import PageTemplate from '../../components/shared/PageTemplate';
+import Filters from '../../components/shared/filters/Filters';
+import GameCards from '../../components/shared/game_cards/GameCards';
+import fetchRawgData from '../../utils/fetchRawgData';
 
-function Developers({ data }) {
-  const {} = useUpdateState(data);
-  const {} = useFilters();
+function Developers({ data, developer }) {
+  useUpdateState(data);
+  useFilters();
 
   return (
     <PageTemplate>
       <Filters />
-      <GameCards title="Games List" />
+      <GameCards title={`Games by ${developer?.name}`} />
     </PageTemplate>
   );
 }
@@ -19,26 +20,34 @@ function Developers({ data }) {
 export default Developers;
 
 export async function getServerSideProps(context) {
-  const { params, query } = context;
-  const options = {
-    method: "GET",
-    mode: "no-cors",
-    headers: { "Content-Type": "application/json" },
-  };
-  const ordering = query.ordering ? `&ordering=${query.ordering}` : "";
-  const dates = query.dates ? `&dates=${query.dates}` : "";
-  const genres = query.genres ? `&genres=${query.genres}` : "";
+  const { params, query, req } = context;
+  const { devId } = params;
+  const { ordering = '', dates = '', genres = '' } = query;
 
-  const res = await fetch(
-    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&developers=${params.devId}&page_size=40&filter=true&comments=true${ordering}${dates}${genres}`,
-    options
+  // 🔁 Fetch the list of games filtered by developer
+  const data = await fetchRawgData(
+    {
+      developers: devId,
+      ordering,
+      dates,
+      genres,
+      filter: true,
+      comments: true,
+    },
+    req,
+    'games'
   );
 
-  const data = await res.json();
+  // 🔁 Fetch metadata for the developer (name, etc.)
+  const metaRes = await fetch(
+    `https://api.rawg.io/api/developers/${devId}?key=${process.env.API_KEY}`
+  );
+  const developer = await metaRes.json();
 
   return {
     props: {
       data,
+      developer,
     },
   };
 }

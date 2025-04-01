@@ -5,9 +5,9 @@ import Filters from '../../components/shared/filters/Filters';
 import GameCards from '../../components/shared/game_cards/GameCards';
 import fetchRawgData from '../../utils/fetchRawgData';
 
-function Platforms({ data }) {
-  useUpdateState(data);
-  useFilters();
+function Genres({ data }) {
+  const {} = useUpdateState(data);
+  const {} = useFilters();
 
   return (
     <PageTemplate>
@@ -16,27 +16,24 @@ function Platforms({ data }) {
     </PageTemplate>
   );
 }
-
-export default Platforms;
+export default Genres;
 
 export async function getServerSideProps(context) {
   const { params, query, req } = context;
-  const { platformId } = params;
+  const { genreId } = params;
   const { ordering = '', dates = '', genres = '' } = query;
 
-  const filters = {
-    platforms: platformId?.toString(),
-    filter: 'true',
-    comments: 'true',
-  };
-
-  if (ordering) filters.ordering = ordering;
-  if (dates) filters.dates = dates;
-  if (genres) filters.genres = genres;
-
-  console.log('📦 filters passed to fetchRawgData:', filters);
-
-  const data = await fetchRawgData(filters, req, 'games');
+  const data = await fetchRawgData(
+    {
+      genres: genreId,
+      ordering,
+      dates,
+      filter: true,
+      comments: true,
+    },
+    req,
+    'games'
+  );
 
   return {
     props: { data },

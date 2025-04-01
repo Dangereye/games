@@ -1,17 +1,18 @@
-import useUpdateState from "../../hooks/useUpdateState";
-import useFilters from "../../hooks/useFilters";
-import PageTemplate from "../../components/shared/PageTemplate";
-import Filters from "../../components/shared/filters/Filters";
-import GameCards from "../../components/shared/game_cards/GameCards";
+import useUpdateState from '../../hooks/useUpdateState';
+import useFilters from '../../hooks/useFilters';
+import PageTemplate from '../../components/shared/PageTemplate';
+import Filters from '../../components/shared/filters/Filters';
+import GameCards from '../../components/shared/game_cards/GameCards';
+import fetchRawgData from '../../utils/fetchRawgData';
 
 function SearchDetails({ data, slug }) {
-  const {} = useUpdateState(data);
-  const {} = useFilters();
+  useUpdateState(data);
+  useFilters();
 
   return (
     <PageTemplate postTitle={`Matching "${slug}"`}>
       <Filters />
-      <GameCards title="Games List" />
+      <GameCards title='Games List' />
     </PageTemplate>
   );
 }
@@ -19,27 +20,26 @@ function SearchDetails({ data, slug }) {
 export default SearchDetails;
 
 export async function getServerSideProps(context) {
-  const { params, query } = context;
-  const options = {
-    method: "GET",
-    mode: "no-cors",
-    headers: { "Content-Type": "application/json" },
+  const { params, query, req } = context;
+  const { slug } = params;
+  const { ordering = '', dates = '', genres = '' } = query;
+
+  const filters = {
+    search: slug,
+    filter: true,
+    comments: true,
   };
-  const ordering = query.ordering ? `&ordering=${query.ordering}` : "";
-  const dates = query.dates ? `&dates=${query.dates}` : "";
-  const genres = query.genres ? `&genres=${query.genres}` : "";
 
-  const res = await fetch(
-    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${params.slug}&page_size=40&filter=true&comments=true${ordering}${dates}${genres}`,
-    options
-  );
+  if (ordering) filters.ordering = ordering;
+  if (dates) filters.dates = dates;
+  if (genres) filters.genres = genres;
 
-  const data = await res.json();
+  const data = await fetchRawgData(filters, req, 'games');
 
   return {
     props: {
       data,
-      slug: params.slug,
+      slug,
     },
   };
 }

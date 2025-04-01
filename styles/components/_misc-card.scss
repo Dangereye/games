@@ -1,9 +1,8 @@
-.game-card {
+.misc-card {
   padding: 0;
   overflow: hidden;
   border-radius: $border-radius;
   box-shadow: $shadow;
-  cursor: pointer;
 
   transition: transform $time;
 
@@ -28,14 +27,27 @@
     align-items: center;
   }
 
-  .metacritic {
-    width: max-content;
-    margin-left: auto;
-    padding: clamp(3px, 0.8vw, 6px);
-    border: 1px solid transparent;
-  }
-
   &:hover {
     transform: translateY(-1rem);
+  }
+
+  .text:hover {
+    color: $accent;
+  }
+
+  .popular-games {
+    .link {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      line-clamp: 1;
+      -webkit-line-clamp: 1;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    @media (max-width: $mobile) {
+      .link {
+        font-size: 1.4rem;
+      }
+    }
   }
 }
